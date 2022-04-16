@@ -54,9 +54,8 @@ export const Colors = () => {
     </Space>;
 };
 
-
 export const Font = () => {
-    return <Space vertical align="left">
+	return <Space vertical align="left">
         <Title>Font</Title>
         <Text>Jundao Design uses the font <Text code>Inter</Text> for its UI and <Text code>JetBrains Mono</Text> as monospace.</Text>
         <Text>The base font size is assumed to be <Text code>16px</Text> and a line height of <Text code>1.5715</Text> based on the root font size.</Text>
