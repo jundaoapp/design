@@ -1,6 +1,6 @@
-<p align="center">
-  <a href="https://design.jundao.app/" target="_blank"><img width="150" src="https://github.com/jundaoapp/design/blob/main/docs/banner.svg?raw=true" alt="Jundao Design banner"></a>
-</p>
+<div align="center">
+  <a href="https://design.jundao.app/" target="_blank"><img width="400" src="https://github.com/jundaoapp/design/blob/main/docs/banner.svg?raw=true" alt="Jundao Design banner"></a>
+</div>
 
 <h1 align="center">Jundao Design</h1>
 
