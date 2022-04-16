@@ -1,0 +1,43 @@
+h1, h2, h3, h4, h5, h6 {
+  &.jdd {
+    color: var(--jdd-gray-12);
+    font-weight: 600;
+    margin-bottom: .5em;
+
+    .jdd-dark & {
+      color: var(--jdd-gray-1);
+    }
+  }
+}
+
+h1.jdd {
+  font-size: 2.375rem;
+}
+
+h2.jdd {
+  font-size: 1.875rem;
+}
+
+h3.jdd {
+  font-size: 1.5rem;
+}
+
+h4.jdd {
+  font-size: 1.25rem;
+}
+
+h5.jdd {
+  font-size: 1.1rem;
+}
+
+h6.jdd {
+  font-size: 1rem;
+}
+
+.jdd-typography {
+  + h1, + h2, + h3, + h4, + h5, + h6 {
+    &.jdd {
+      margin-top: 1.2em;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+name: Pull request
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  format:
+    name: Format Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Rome
+        uses: rome/setup-rome@v0.1
+        with:
+          version: latest
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Rome Format
+        run: rome format --ci components stories
