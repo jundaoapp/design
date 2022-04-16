@@ -26,7 +26,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook && cp .storybook/favicon.ico storybook-static",
     "format": "rome format components stories"
   },
   "dependencies": {
