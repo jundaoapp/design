@@ -22,3 +22,8 @@ An enterprise-class fast and modern [SolidJS](https://www.solidjs.com) UI librar
 
 # Usage
 TODO
+
+# Contributing
+Before contributing please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+All contributions are moderated under the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).
