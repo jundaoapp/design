@@ -1,8 +1,8 @@
 import "./index.scss";
-import { HTMLAttributes } from "solid-js/types/jsx";
+import {JSX} from "solid-js/types/jsx";
 import { splitProps } from "solid-js";
 
-export interface IconProps extends HTMLAttributes<HTMLElement> {
+export type IconProps = JSX.IntrinsicElements["i"] & {
 	icon: string,
 	line?: boolean,
 	fill?: boolean,
@@ -11,7 +11,7 @@ export interface IconProps extends HTMLAttributes<HTMLElement> {
 }
 
 export default function Icon(props: IconProps) {
-	const [{ icon, line, fill, spin, label }, others] = splitProps(
+	const [{ icon, line, fill, spin, label = "" }, others] = splitProps(
 		props,
 		["icon", "line", "fill", "spin", "label"],
 	);

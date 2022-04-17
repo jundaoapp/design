@@ -1,9 +1,9 @@
 import "./index.scss";
 import { Button } from "@jundao/design";
-import { HTMLAttributes } from "solid-js/types/jsx";
+import {JSX} from "solid-js/types/jsx";
 import { splitProps } from "solid-js";
 
-export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
+export type ButtonGroupProps = JSX.IntrinsicElements["div"] & {
 	children: typeof Button,
 }
 

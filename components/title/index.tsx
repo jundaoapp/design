@@ -1,11 +1,12 @@
 import "./index.scss";
 import { Button } from "@jundao/design";
-import { HTMLAttributes } from "solid-js/types/jsx";
+import {JSX} from "solid-js/types/jsx";
 import { ButtonGroupProps } from "@jundao/design/button-group";
 import { JSXElement, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
+import {DividerProps} from "@jundao/design/divider";
 
-export interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
+export type TitleProps = JSX.IntrinsicElements["h1"] & {
 	children: JSXElement,
 	level?: 1 | 2 | 3 | 4 | 5 | 6,
 }

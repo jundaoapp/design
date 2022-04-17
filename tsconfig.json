@@ -3,13 +3,14 @@
     "baseUrl": "./",
     "paths": {
       "@jundao/design": ["components"],
-      "@jundao/design/*": ["components/*"],
+      "@jundao/design/*": ["components/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "strict": true,
     "module": "esnext",
-    "target": "es2021",
+    "target": "esnext",
+    "moduleResolution": "node"
   },
   "include": [
     "components/**/*",

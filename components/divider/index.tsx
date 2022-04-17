@@ -1,9 +1,9 @@
 import "./index.scss";
-import { HTMLAttributes } from "solid-js/types/jsx";
+import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 import { Text } from "@jundao/design";
 
-export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
+export type DividerProps = JSX.IntrinsicElements["div"] & {
 	children?: JSXElement,
 	vertical?: boolean,
 	dashed?: boolean,
