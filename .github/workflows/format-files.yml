@@ -3,6 +3,11 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - '**.js'
+      - '**.jsx'
+      - '**.ts'
+      - '**.tsx'
   push:
     branches:
       - main
