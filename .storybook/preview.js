@@ -11,7 +11,7 @@ export const parameters = {
 			...themes.dark,
 
 			brandTitle: "Jundao Design",
-			brandUrl: "https://design.jundao.app",
+			brandUrl: "https://github.com/jundaoapp/design",
 			brandImage: bannerLight,
 
 			// Typography
@@ -44,7 +44,7 @@ export const parameters = {
 			...themes.normal,
 
 			brandTitle: "Jundao Design",
-			brandUrl: "https://design.jundao.app",
+			brandUrl: "https://github.com/jundaoapp/design",
 			brandImage: bannerDark,
 
 			// Typography
