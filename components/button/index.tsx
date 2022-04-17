@@ -1,14 +1,16 @@
 import { JSXElement, splitProps } from "solid-js";
 import "./index.scss";
-import {JSX} from "solid-js/types/jsx";
+import { JSX } from "solid-js/types/jsx";
 
-export type ButtonProps = JSX.IntrinsicElements["button"] & {
-	children: JSXElement,
-	type?: "primary" | "default" | "dashed",
-	size?: "small" | "default" | "large",
-	disabled?: boolean,
-	danger?: boolean,
-}
+export type ButtonProps =
+	& JSX.IntrinsicElements["button"]
+	& {
+		children: JSXElement,
+		type?: "primary" | "default" | "dashed",
+		size?: "small" | "default" | "large",
+		disabled?: boolean,
+		danger?: boolean,
+	};
 
 export default function Button(props: ButtonProps) {
 	const [{ children, type, size, disabled = false, danger }, others] = splitProps(

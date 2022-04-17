@@ -1,16 +1,18 @@
 import "./index.scss";
-import {JSX} from "solid-js/types/jsx";
+import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
 type t = JSX.IntrinsicElements["div"];
 
-export type SpaceProps = JSX.IntrinsicElements["div"] & {
-	children: JSXElement,
-	size?: "small" | "medium" | "large",
-	vertical?: boolean,
-	wrap?: boolean,
-	align?: "left" | "center" | "right",
-}
+export type SpaceProps =
+	& JSX.IntrinsicElements["div"]
+	& {
+		children: JSXElement,
+		size?: "small" | "medium" | "large",
+		vertical?: boolean,
+		wrap?: boolean,
+		align?: "left" | "center" | "right",
+	};
 
 export default function Space(props: SpaceProps) {
 	const [{ size = "small", vertical, wrap, align }, others] = splitProps(

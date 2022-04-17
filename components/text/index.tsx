@@ -3,17 +3,19 @@ import { Button } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
-export type TextProps = JSX.IntrinsicElements["span"] & {
-	children: JSXElement,
-	type?: "default" | "secondary" | "success" | "warning" | "danger",
-	underline?: boolean,
-	delete?: boolean,
-	bold?: boolean,
-	italic?: boolean,
-	mark?: boolean,
-	code?: boolean,
-	keyboard?: boolean,
-}
+export type TextProps =
+	& JSX.IntrinsicElements["span"]
+	& {
+		children: JSXElement,
+		type?: "default" | "secondary" | "success" | "warning" | "danger",
+		underline?: boolean,
+		delete?: boolean,
+		bold?: boolean,
+		italic?: boolean,
+		mark?: boolean,
+		code?: boolean,
+		keyboard?: boolean,
+	};
 
 export default function Text(props: TextProps) {
 	const [
