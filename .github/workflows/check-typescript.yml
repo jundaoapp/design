@@ -1,0 +1,33 @@
+name: Check Typescript
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.js'
+      - '**.jsx'
+      - '**.ts'
+      - '**.tsx'
+  push:
+    branches:
+      - main
+
+jobs:
+  format:
+    name: Check Typescript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Check Typescript
+        run: yarn check-typescript

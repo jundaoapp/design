@@ -1,17 +1,20 @@
 import "./index.scss";
-import { HTMLAttributes } from "solid-js/types/jsx";
+import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
-import { TextProps } from "@jundao/design/text";
 
-export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
-	children: JSXElement,
-	size?: "small" | "medium" | "large",
-	vertical?: boolean,
-	wrap?: boolean,
-	align?: "left" | "center" | "right",
-}
+type t = JSX.IntrinsicElements["div"];
 
-export default function Space(props: TextProps) {
+export type SpaceProps =
+	& JSX.IntrinsicElements["div"]
+	& {
+		children: JSXElement,
+		size?: "small" | "medium" | "large",
+		vertical?: boolean,
+		wrap?: boolean,
+		align?: "left" | "center" | "right",
+	};
+
+export default function Space(props: SpaceProps) {
 	const [{ size = "small", vertical, wrap, align }, others] = splitProps(
 		props,
 		["size", "vertical", "wrap", "align"],

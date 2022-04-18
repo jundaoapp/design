@@ -22,12 +22,14 @@
     "rome": "next",
     "storybook-addon-sass-postcss": "^0.1.0",
     "storybook-dark-mode": "^1.0.9",
-    "tsconfig-paths-webpack-plugin": "^3.5.2"
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook && cp .storybook/favicon.ico storybook-static",
-    "format": "rome format components stories"
+    "format": "rome format components stories",
+    "check-typescript": "tsc --noEmit"
   },
   "dependencies": {
     "remixicon": "^2.5.0",

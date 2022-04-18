@@ -1,8 +1,17 @@
-name: Checks
+name: Format Files
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.js'
+      - '**.jsx'
+      - '**.ts'
+      - '**.tsx'
   push:
     branches:
       - main
+
 jobs:
   format:
     name: Format Files

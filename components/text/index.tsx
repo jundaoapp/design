@@ -1,22 +1,21 @@
 import "./index.scss";
 import { Button } from "@jundao/design";
-import { HTMLAttributes } from "solid-js/types/jsx";
-import { ButtonGroupProps } from "@jundao/design/button-group";
-import { JSXElement, Match, splitProps, Switch } from "solid-js";
-import { Dynamic } from "solid-js/web";
-import { TitleProps } from "@jundao/design/title";
+import { JSX } from "solid-js/types/jsx";
+import { JSXElement, splitProps } from "solid-js";
 
-export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-	children: JSXElement,
-	type?: "default" | "secondary" | "success" | "warning" | "danger",
-	underline?: boolean,
-	delete?: boolean,
-	bold?: boolean,
-	italic?: boolean,
-	mark?: boolean,
-	code?: boolean,
-	keyboard?: boolean,
-}
+export type TextProps =
+	& JSX.IntrinsicElements["span"]
+	& {
+		children: JSXElement,
+		type?: "default" | "secondary" | "success" | "warning" | "danger",
+		underline?: boolean,
+		delete?: boolean,
+		bold?: boolean,
+		italic?: boolean,
+		mark?: boolean,
+		code?: boolean,
+		keyboard?: boolean,
+	};
 
 export default function Text(props: TextProps) {
 	const [

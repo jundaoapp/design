@@ -1,17 +1,19 @@
 import { JSXElement, splitProps } from "solid-js";
 import "./index.scss";
-import { ButtonHTMLAttributes } from "solid-js/types/jsx";
+import { JSX } from "solid-js/types/jsx";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	children: JSXElement,
-	type?: "primary" | "default" | "dashed",
-	size?: "small" | "default" | "large",
-	disabled?: boolean,
-	danger?: boolean,
-}
+export type ButtonProps =
+	& JSX.IntrinsicElements["button"]
+	& {
+		children: JSXElement,
+		type?: "primary" | "default" | "dashed",
+		size?: "small" | "default" | "large",
+		disabled?: boolean,
+		danger?: boolean,
+	};
 
 export default function Button(props: ButtonProps) {
-	const [{ children, type, size, disabled, danger }, others] = splitProps(
+	const [{ children, type, size, disabled = false, danger }, others] = splitProps(
 		props,
 		["children", "type", "size", "disabled", "danger"],
 	);
