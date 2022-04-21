@@ -27,6 +27,10 @@ button.jdd {
   &.dashed {
     border-style: dashed;
     border-color: var(--jdd-gray-5);
+
+    &:disabled {
+      border-color: var(--jdd-gray-4);
+    }
   }
 
   &.small {
@@ -78,7 +82,7 @@ button.jdd {
 
   &:disabled {
     cursor: not-allowed;
-    color: var(--jdd-gray-11);
-    background-color: var(--jdd-gray-2)
+    color: var(--jdd-gray-10);
+    background-color: var(--jdd-gray-2);
   }
 }

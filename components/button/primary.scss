@@ -62,8 +62,8 @@
     }
 
     &:disabled {
-      color: var(--jdd-gray-6);
-      background-color: var(--jdd-gray-1)
+      color: var(--jdd-gray-10);
+      background-color: var(--jdd-gray-2);
     }
   }
 
@@ -83,5 +83,7 @@
 
   &:disabled {
     border-color: var(--jdd-gray-4);
+    color: var(--jdd-gray-10);
+    text-shadow: none;
   }
 }
