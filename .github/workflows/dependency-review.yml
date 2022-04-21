@@ -3,6 +3,9 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'package.json'
+      - 'yarn.lock'
   push:
     branches:
       - main
