@@ -50,7 +50,7 @@ The following commit prefixes are supported:
 - `feat:`, a new feature
 - `fix:`, a bugfix
 - `docs:`, a documentation update
-- `test`, a test update
+- `test:`, a test update
 - `chore:`, project housekeeping
 - `perf:`, project performance
 - `refactor:`, refactor of the code without change in functionality

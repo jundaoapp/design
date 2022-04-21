@@ -17,7 +17,7 @@ button.jdd {
 
     &:disabled {
       color: var(--jdd-gray-5);
-      background-color: var(--jdd-gray-9);
+      background-color: var(--jdd-gray-10);
       border-color: var(--jdd-gray-8);
     }
   }
@@ -27,6 +27,14 @@ button.jdd {
   &.dashed {
     border-style: dashed;
     border-color: var(--jdd-gray-5);
+
+    &:disabled {
+      border-color: var(--jdd-gray-4);
+    }
+
+    .jdd-dark &:disabled {
+      border-color: var(--jdd-gray-8);
+    }
   }
 
   &.small {
@@ -61,6 +69,11 @@ button.jdd {
     &:disabled {
       border-color: var(--jdd-gray-4);
     }
+
+    .jdd-dark &:disabled {
+      color: var(--jdd-gray-5);
+      border-color: var(--jdd-gray-8);
+    }
   }
 
   &:not(:disabled) {
@@ -78,7 +91,7 @@ button.jdd {
 
   &:disabled {
     cursor: not-allowed;
-    color: var(--jdd-gray-11);
-    background-color: var(--jdd-gray-2)
+    color: var(--jdd-gray-10);
+    background-color: var(--jdd-gray-2);
   }
 }
