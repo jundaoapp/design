@@ -7,4 +7,12 @@
 
 .jdd {
   font-family: var(--jdd-font-sans);
+
+  &:focus-visible {
+    outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
+
+    .jdd-dark & {
+      outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
+    }
+  }
 }
