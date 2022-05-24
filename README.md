@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://design.jundao.app/" target="_blank"><img width="400" src="https://github.com/jundaoapp/design/blob/main/.storybook/banner-light.svg?raw=true#gh-dark-mode-only" alt="Jundao Design banner"></a>
-  <a href="https://design.jundao.app/" target="_blank"><img width="400" src="https://github.com/jundaoapp/design/blob/main/.storybook/banner-dark.svg?raw=true#gh-light-mode-only" alt="Jundao Design banner"></a>
+  <a href="https://design.jundao.app/#gh-dark-mode-only" target="_blank"><img width="400" src="https://github.com/jundaoapp/design/blob/main/.storybook/banner-light.svg?raw=true" alt="Jundao Design banner"></a>
+  <a href="https://design.jundao.app/#gh-light-mode-only" target="_blank"><img width="400" src="https://github.com/jundaoapp/design/blob/main/.storybook/banner-dark.svg?raw=true" alt="Jundao Design banner"></a>
 </div>
 
 <h1 align="center">Jundao Design</h1>
