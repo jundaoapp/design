@@ -22,6 +22,7 @@
     "rome": "next",
     "storybook-addon-sass-postcss": "^0.1.1",
     "storybook-dark-mode": "^1.1.0",
+    "trim-newlines": "3.0.1",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.3"
   },
