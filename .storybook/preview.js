@@ -1,6 +1,6 @@
 import { themes } from "@storybook/theming";
-import bannerLight from "./banner-light.png";
-import bannerDark from "./banner-dark.png";
+import bannerLight from "./banner-light.svg";
+import bannerDark from "./banner-dark.svg";
 
 export const parameters = {
 	actions: { argTypesRegex: "^on[A-Z].*" },
