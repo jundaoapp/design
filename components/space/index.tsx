@@ -2,8 +2,6 @@ import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
-type t = JSX.IntrinsicElements["div"];
-
 export type SpaceProps =
 	& JSX.IntrinsicElements["div"]
 	& {
@@ -22,14 +20,14 @@ export default function Space(props: SpaceProps) {
 
 	return (
 		<div class="jdd jdd-space"
-              classList={{
-				  vertical: vertical === true,
-				  medium: size === "medium",
-				  large: size === "large",
-				  wrap: wrap === true,
-				  left: align === "left",
-				  right: align === "right",
-        }}
-              {...others}/>
+             classList={{
+                 vertical: vertical === true,
+                 medium: size === "medium",
+                 large: size === "large",
+                 wrap: wrap === true,
+                 left: align === "left",
+                 right: align === "right",
+             }}
+             {...others}/>
 	);
 }
