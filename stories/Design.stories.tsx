@@ -37,14 +37,14 @@ export const Colors = () => {
                         <For each={[...Array( 10).keys()]} fallback={<div>Loading...</div>}>
                             {(brightness) => (
                                 <div style={{
-                                    "background-color": `var(--jdd-${color}-${brightness})`,
+                                    "background-color": `var(--jdd-${color}-${brightness + 1})`,
                                     width: "100%",
                                     height: "2rem",
                                     color: brightness > 5 ? "white" : "var(--gray-12)",
                                     padding: "1rem"
                                 }}><Text bold style={{
                                     color: brightness > 5 ? "white" : "var(--gray-12)"
-                                }}>{color}:</Text> {brightness}</div>
+                                }}>{color}:</Text> {brightness + 1}</div>
                             )}
                         </For>
                     </div>
