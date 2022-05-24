@@ -37,6 +37,6 @@
   },
   "packageManager": "yarn@3.2.0",
   "resolutions": {
-    "trim-newlines": "2.0.9"
+    "trim-newlines": "3.0.1"
   }
 }
