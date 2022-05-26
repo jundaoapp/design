@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Rome
-        uses: rome/setup-rome@v0.1
+        uses: rome/setup-rome@v0.3
         with:
           version: latest
 
