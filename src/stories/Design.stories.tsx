@@ -1,57 +1,54 @@
-import { Text, Title, Space } from "@jundao/design";
+import {Text, Title, Space, Divider} from "@jundao/design";
 import { For } from "solid-js";
 
 export default { title: "Design" };
 
-const colors = ["blue", "red", "orange", "yellow", "green", "purple", "magenta"];
+const colors = ["gray", "blue", "red", "orange", "yellow", "green", "purple", "magenta"];
 
 export const Colors = () => {
-	return <Space vertical align="left">
+	return <>
         <Title>Colors</Title>
-        <Text>Jundao Design's colors are based on Ant Design. The primary color is blue and the primary brightness is<Text code>6</Text>.</Text>
+        <Text>Jundao Design's colors are based on Ant Design. The primary color is blue and the primary brightness is<Text code>6</Text>.</Text><br/>
+        <Text>Colors are accessible as css variables <Text code>var(--jdd-{"{"}<Text mark>color</Text>{"}"}-{"{"}<Text mark>brightness</Text>{"}"})</Text>.</Text>
 
-        <div style={{
-            display: "flex",
-        }}>
-            <For each={[...Array(13).keys()]} fallback={<div>Loading...</div>}>
-                {(brightness) => (
-                    <div style={{
-                        "background-color": `var(--jdd-gray-${brightness + 1})`,
-                        height: "4rem",
-                        width: "4rem",
-                        color: brightness > 5 ? "white" : "var(--gray-12)",
-                        padding: "1rem"
-                    }}><Text bold style={{
-                        color: brightness > 5 ? "white" : "var(--gray-12)"
-                    }}>gray:</Text> {brightness}</div>
-                )}
-            </For>
-        </div>
+        <Divider/>
 
-        <Space wrap>
+        <style>
+            {`
+            body {
+                --jdd-inline-border-color: var(--jdd-gray-13);
+            }
+            body.jdd-dark {
+                --jdd-inline-border-color: var(--jdd-gray-1);
+            }
+            `}
+        </style>
+
+        <Space wrap vertical align="left">
             <For each={colors} fallback={<div>Loading...</div>}>
                 {(color) => (
-                    <div style={{
-                        width: "6rem",
-                    }}>
-                        <For each={[...Array( 10).keys()]} fallback={<div>Loading...</div>}>
+                    <Space>
+                        <Text style={{width: "5rem", "margin-bottom": "2rem"}}>{color}</Text>
+                        <For each={[...Array( color == "gray" ? 13 : 10).keys()]} fallback={<div>Loading...</div>}>
                             {(brightness) => (
-                                <div style={{
-                                    "background-color": `var(--jdd-${color}-${brightness + 1})`,
-                                    width: "100%",
-                                    height: "2rem",
-                                    color: brightness > 5 ? "white" : "var(--gray-12)",
-                                    padding: "1rem"
-                                }}><Text bold style={{
-                                    color: brightness > 5 ? "white" : "var(--gray-12)"
-                                }}>{color}:</Text> {brightness + 1}</div>
+                                <Space vertical>
+                                    <div style={{
+                                        "background-color": `var(--jdd-${color}-${brightness + 1})`,
+                                        width: "3.5rem",
+                                        height: "2.25rem",
+                                        "border-radius": ".5rem",
+                                        "border": brightness == 5 ? "2px solid var(--jdd-inline-border-color)" : "",
+                                    }}/>
+
+                                    <Text bold>{brightness + 1}</Text>
+                                </Space>
                             )}
                         </For>
-                    </div>
+                    </Space>
                 )}
             </For>
         </Space>
-    </Space>;
+    </>;
 };
 
 export const Font = () => {
