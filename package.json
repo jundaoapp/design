@@ -1,42 +1,46 @@
 {
   "name": "@jundao/design",
   "version": "0.1.0",
-  "description": "An enterprise-class fast and modern SolidJS UI library.",
-  "main": "index.js",
-  "repository": "https://github.com/jundaoapp/design",
-  "author": "jer3m01",
+  "description": "",
+  "scripts": {
+    "check": "rome check src/",
+    "format": "rome format src/ --write",
+    "check-typescript": "tsc --noEmit",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook"
+  },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@storybook/addon-a11y": "^6.5.5",
-    "@storybook/addon-actions": "^6.5.5",
-    "@storybook/addon-essentials": "^6.5.5",
-    "@storybook/addon-links": "^6.5.5",
-    "@storybook/addons": "^6.5.5",
-    "@storybook/builder-webpack5": "^6.5.5",
-    "@storybook/html": "^6.5.5",
-    "@storybook/manager-webpack5": "^6.5.5",
-    "@storybook/theming": "^6.5.5",
-    "babel-loader": "^8.2.4",
-    "babel-preset-solid": "^1.3.13",
-    "rome": "next",
-    "storybook-addon-sass-postcss": "^0.1.1",
-    "storybook-dark-mode": "^1.1.0",
-    "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "typescript": "^4.6.3"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook && cp .storybook/favicon.ico storybook-static",
-    "format": "rome format components stories",
-    "check-typescript": "tsc --noEmit"
+    "@babel/core": "^7.19.3",
+    "@storybook/addon-a11y": "^6.5.13",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.3",
+    "@storybook/html": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5",
+    "cross-env": "^7.0.3",
+    "rome": "^10.0.1",
+    "sass": "^1.56.1",
+    "storybook-dark-mode": "^1.1.2",
+    "typescript": "^4.9.3",
+    "vite": "^3.1.6",
+    "vite-plugin-solid": "^2.3.9"
   },
   "dependencies": {
     "remixicon": "^2.5.0",
-    "solid-js": "^1.3.14"
+    "solid-js": "^1.5.1"
   },
-  "packageManager": "yarn@3.2.0",
-  "resolutions": {
-    "trim-newlines": "3.0.1"
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@types/react",
+        "webpack",
+        "react",
+        "react-dom"
+      ]
+    }
   }
 }

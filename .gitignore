@@ -1,16 +1,3 @@
 node_modules
-*.log
-.idea
-*.iml
 dist
-build
-package-lock.json
 storybook-static
-
-# Yarn stuff
-/**/.yarn/*
-!/**/.yarn/releases
-!/**/.yarn/plugins
-!/**/.yarn/sdks
-!/**/.yarn/versions
-/**/.pnp.*

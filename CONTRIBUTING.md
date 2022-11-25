@@ -8,8 +8,8 @@ Our [Discord server](https://discord.gg/uUw8Hj4AzE) is open for help and more ad
 
 ## Getting Started
 
-Building this project requires Node.js [`v16.11.1`](./.nvmrc), which can be installed using [nvm](https://www.rust-lang.org/tools/install) (recommended) or [Node.js](https://nodejs.org/).
-We use Yarn [`3.2.0`](./.yarnrc.yml) as a package manager, which can be installed following [Yarn Installation](https://yarnpkg.com/getting-started/install).
+Building this project requires Node.js [`v19.1.0`](./.nvmrc), which can be installed using [nvm](https://github.com/nvm-sh/nvm) (recommended) or [Node.js](https://nodejs.org/).
+We use pnpm `7.17.0` as a package manager, which can be installed following [pnpm Installation](https://pnpm.io/installation).
 
 Clone the repository and navigate to the `design` directory:
 ```bash
@@ -18,11 +18,11 @@ cd design
 ```
 Install all packages and dependencies:
 ```bash
-yarn install
+pnpm install
 ```
 Running Storybook:
 ```bash
-yarn storybook
+pnpm storybook
 ```
 
 ## Components
@@ -38,7 +38,8 @@ You can find more information on this process [here](https://help.github.com/en/
 
 ## Checks
 
-- `yarn format` is script that runs [Rome](https://rome.tools/) under the hood;
+- `pnpm check` is script that runs [Rome](https://rome.tools/) under the hood;
+- `pnpm check-typescript` is script that runs the [Typescript](https://www.typescriptlang.org/) compiler;
 
 ## Commit messages
 

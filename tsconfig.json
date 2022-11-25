@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@jundao/design": ["components"],
-      "@jundao/design/*": ["components/*"]
+      "@jundao/design": ["src/components/index.ts"],
+      "@jundao/design/*": ["src/components/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
@@ -13,8 +13,7 @@
     "moduleResolution": "node"
   },
   "include": [
-    "components/**/*",
-    "stories/**/*"
+    "src/**/*",
   ],
   "exclude": ["node_modules"]
 }

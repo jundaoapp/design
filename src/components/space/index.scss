@@ -1,0 +1,33 @@
+div.jdd.jdd-space {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+
+  &.medium {
+    gap: 1rem;
+  }
+
+  &.large {
+    gap: 1.5rem;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  &.left {
+    align-items: start;
+  }
+
+  &.right {
+    align-items: end;
+  }
+
+  .jdd.jdd-divider {
+    margin: 0;
+  }
+}

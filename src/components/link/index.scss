@@ -1,0 +1,83 @@
+a.jdd {
+  color: var(--jdd-gray-11);
+  cursor: not-allowed;
+
+  .jdd-dark & {
+    color: var(--jdd-gray-1);
+  }
+
+  &[href] {
+    cursor: pointer;
+    color: var(--jdd-blue-6);
+    transition: var(--jdd-transition-colors);
+
+    &:hover {
+      color: var(--jdd-blue-5);
+
+      .jdd-dark & {
+        color: var(--jdd-blue-7);
+      }
+    }
+
+    &.secondary {
+      color: var(--jdd-gray-8);
+
+      .jdd-dark & {
+        color: var(--jdd-gray-5);
+      }
+
+      &:hover {
+        color: var(--jdd-gray-7);
+
+        .jdd-dark & {
+          color: var(--jdd-gray-6);
+        }
+      }
+    }
+
+    &.success {
+      color: var(--jdd-green-6);
+
+      &:hover {
+        color: var(--jdd-green-5);
+
+        .jdd-dark & {
+          color: var(--jdd-green-7);
+        }
+      }
+    }
+
+    &.warning {
+      color: var(--jdd-orange-6);
+
+      &:hover {
+        color: var(--jdd-orange-5);
+
+        .jdd-dark & {
+          color: var(--jdd-orange-7);
+        }
+      }
+    }
+
+    &.danger {
+      color: var(--jdd-red-6);
+
+      &:hover {
+        color: var(--jdd-red-5);
+
+        .jdd-dark & {
+          color: var(--jdd-red-7);
+        }
+      }
+    }
+
+    &[target="_blank"] {
+      display: inline-block;
+      transition: var(--jdd-transition-colors), transform var(--jdd-transition-duration) var(--jdd-transition-function);
+
+      &:hover {
+        transform: translateY(-1px) translateX(1px);
+      }
+    }
+  }
+}
