@@ -7,7 +7,7 @@
     "format": "rome format src/ --write",
     "check-typescript": "tsc --noEmit",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
-    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook"
+    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static"
   },
   "license": "MIT",
   "devDependencies": {
