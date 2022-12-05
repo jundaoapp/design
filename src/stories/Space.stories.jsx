@@ -5,9 +5,15 @@ export default {
 	title: "Components/Space",
 	argTypes: {
 		vertical: { control: "boolean" },
-		size: { control: { type: "select" }, options: ["small", "medium", "large"] },
+		size: {
+			control: { type: "select" },
+			options: ["small", "medium", "large"],
+		},
 		wrap: { control: "boolean" },
-		align: { control: { type: "select" }, options: ["left", "center", "right"] },
+		align: {
+			control: { type: "select" },
+			options: ["left", "center", "right"],
+		},
 	},
 };
 
@@ -16,16 +22,16 @@ const Template = (props) => {
 
 	return (
 		<>
-            <Space {...props}>
-                <Button>Button</Button>
-                <Button>Button</Button>
-                <Button>Button</Button>
-                <Text>Text</Text>
-                <Text>Text</Text>
-                <Divider vertical={!vertical}/>
-                <Text>Text</Text>
-            </Space>
-        </>
+			<Space {...props}>
+				<Button>Button</Button>
+				<Button>Button</Button>
+				<Button>Button</Button>
+				<Text>Text</Text>
+				<Text>Text</Text>
+				<Divider vertical={!vertical} />
+				<Text>Text</Text>
+			</Space>
+		</>
 	);
 };
 
@@ -49,13 +55,13 @@ Right.args = { vertical: true, align: "right" };
 
 const WrapTemplate = (props) => {
 	return (
-		<div style={{width: "40rem"}}>
-            <Space {...props}>
-                <For each={[...Array(10).keys()]} fallback={<div>Loading...</div>}>
-                    {() => <Button>Button</Button>}
-                </For>
-            </Space>
-        </div>
+		<div style={{ width: "40rem" }}>
+			<Space {...props}>
+				<For each={[...Array(10).keys()]} fallback={<div>Loading...</div>}>
+					{() => <Button>Button</Button>}
+				</For>
+			</Space>
+		</div>
 	);
 };
 

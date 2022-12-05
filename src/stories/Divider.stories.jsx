@@ -14,10 +14,18 @@ export default {
 const Template = (props) => {
 	return (
 		<>
-            <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</Text>
-            <Divider {...props} />
-            <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</Text>
-        </>
+			<Text>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+				merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
+				quo modo.
+			</Text>
+			<Divider {...props} />
+			<Text>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+				merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
+				quo modo.
+			</Text>
+		</>
 	);
 };
 
@@ -39,10 +47,10 @@ WithTextRight.args = { children: "Text", orientation: "right" };
 const VerticalTemplate = (props) => {
 	return (
 		<>
-            <Text>Text</Text>
-            <Divider {...props} />
-            <Text>Text</Text>
-        </>
+			<Text>Text</Text>
+			<Divider {...props} />
+			<Text>Text</Text>
+		</>
 	);
 };
 

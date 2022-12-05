@@ -2,19 +2,18 @@ import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
-export type LinkProps =
-	& JSX.IntrinsicElements["a"]
-	& {
-		children: JSXElement,
-		disabled?: boolean,
-		type?: "default" | "secondary" | "success" | "warning" | "danger",
-	};
+export type LinkProps = JSX.IntrinsicElements["a"] & {
+	children: JSXElement;
+	disabled?: boolean;
+	type?: "default" | "secondary" | "success" | "warning" | "danger";
+};
 
 export default function Link(props: LinkProps) {
-	const [{ href, disabled, type }, others] = splitProps(
-		props,
-		["href", "disabled", "type"],
-	);
+	const [{ href, disabled, type }, others] = splitProps(props, [
+		"href",
+		"disabled",
+		"type",
+	]);
 
 	let hrefProp: { href?: string } = {};
 
@@ -23,14 +22,16 @@ export default function Link(props: LinkProps) {
 	}
 
 	return (
-		<a class="jdd"
-           classList={{
-               secondary: type === "secondary",
-               success: type === "success",
-               warning: type === "warning",
-               danger: type === "danger",
-           }}
-           {...hrefProp}
-           {...others}/>
+		<a
+			class="jdd"
+			classList={{
+				secondary: type === "secondary",
+				success: type === "success",
+				warning: type === "warning",
+				danger: type === "danger",
+			}}
+			{...hrefProp}
+			{...others}
+		/>
 	);
 }

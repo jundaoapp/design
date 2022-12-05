@@ -18,24 +18,22 @@ export default {
 };
 
 const Template = (props) => {
-	return (<Link {...props}/>);
+	return <Link {...props} />;
 };
 
 export const Default = Template.bind({});
 Default.args = { children: "Jundao Design (link)", href: "https://jundao.app" };
 
 export const Disabled = Template.bind({});
-Disabled.args =
-	{
-		children: "Jundao Design (link)",
-		href: "https://jundao.app",
-		disabled: true,
-	};
+Disabled.args = {
+	children: "Jundao Design (link)",
+	href: "https://jundao.app",
+	disabled: true,
+};
 
 export const Blank = Template.bind({});
-Blank.args =
-	{
-		children: "Jundao Design (link)",
-		href: "https://jundao.app",
-		target: "_blank",
-	};
+Blank.args = {
+	children: "Jundao Design (link)",
+	href: "https://jundao.app",
+	target: "_blank",
+};

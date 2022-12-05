@@ -9,15 +9,17 @@ export default {
 };
 
 const Template = (props) => {
-	return <>
-        <Title {...props}/>
-        <Title level={1}>h1. Jundao Design</Title>
-        <Title level={2}>h2. Jundao Design</Title>
-        <Title level={3}>h3. Jundao Design</Title>
-        <Title level={4}>h4. Jundao Design</Title>
-        <Title level={5}>h5. Jundao Design</Title>
-        <Title level={6}>h6. Jundao Design</Title>
-    </>;
+	return (
+		<>
+			<Title {...props} />
+			<Title level={1}>h1. Jundao Design</Title>
+			<Title level={2}>h2. Jundao Design</Title>
+			<Title level={3}>h3. Jundao Design</Title>
+			<Title level={4}>h4. Jundao Design</Title>
+			<Title level={5}>h5. Jundao Design</Title>
+			<Title level={6}>h6. Jundao Design</Title>
+		</>
+	);
 };
 
 export const Default = Template.bind({});

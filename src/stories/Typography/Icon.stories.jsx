@@ -12,21 +12,28 @@ export default {
 };
 
 const Template = (props) => {
-	return <>
-        <Title>Remix Icon</Title>
-        <Text>Jundao Design uses Remix Icon, the icon prop is the name of the icon. The size is linked to the current font-size.</Text>
-        <div style={{
-            "margin-top": "1rem",
-            display: "flex",
-            gap: ".25rem",
-            "font-size": "2rem",
-        }}>
-            <Icon {...props}/>
-            <Icon icon="home" line label="Home"/>
-            <Icon icon="terminal-box" fill label="Terminal"/>
-            <Icon icon="loader-5" line spin label="loading" />
-        </div>
-    </>;
+	return (
+		<>
+			<Title>Remix Icon</Title>
+			<Text>
+				Jundao Design uses Remix Icon, the icon prop is the name of the icon.
+				The size is linked to the current font-size.
+			</Text>
+			<div
+				style={{
+					"margin-top": "1rem",
+					display: "flex",
+					gap: ".25rem",
+					"font-size": "2rem",
+				}}
+			>
+				<Icon {...props} />
+				<Icon icon="home" line label="Home" />
+				<Icon icon="terminal-box" fill label="Terminal" />
+				<Icon icon="loader-5" line spin label="loading" />
+			</div>
+		</>
+	);
 };
 
 export const Default = Template.bind({});
