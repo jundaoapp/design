@@ -42,10 +42,10 @@ export default function Switch(props: SwitchProps) {
 		controlled ? !!checkedProp : defaultChecked,
 	);
 
-	const clickHandler = () => {
+    const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (event) => {
 		if (!disabled) setChecked(controlled ? !checkedProp : !checked());
 
-		if (typeof onClick === "function") onClick();
+    if (typeof onClick === "function") onClick(event);
 		if (typeof onChange === "function") onChange(checked());
 	};
 
