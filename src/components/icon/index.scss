@@ -1,11 +1,7 @@
 i.jdd.icon {
-  color: var(--jdd-gray-11);
+  color: currentColor;
   text-rendering: optimizelegibility;
   font-size: 1em;
-
-  .jdd-dark & {
-    color: var(--jdd-gray-1);
-  }
 
   &.spin {
     animation: jdd-icon-spin 1s infinite linear;
@@ -14,6 +10,6 @@ i.jdd.icon {
 
 @keyframes jdd-icon-spin {
   to {
-    transform:rotate(360deg)
+    transform: rotate(360deg);
   }
 }

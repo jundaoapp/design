@@ -15,6 +15,10 @@ export default function Title(props: TitleProps) {
 	const [{ level = 1 }, others] = splitProps(props, ["level"]);
 
 	return (
-		<Dynamic component={`h${level}`} class="jdd jdd-typography" {...others} />
+		<Dynamic
+			component={`h${level}`}
+			class="jdd title jdd-typography"
+			{...others}
+		/>
 	);
 }

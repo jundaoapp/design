@@ -73,7 +73,7 @@ export default function Text(props: TextProps) {
 
 	return (
 		<span
-			class="jdd jdd-typography"
+			class="jdd text jdd-typography"
 			classList={{
 				secondary: type === "secondary",
 				success: type === "success",

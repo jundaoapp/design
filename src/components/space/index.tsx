@@ -18,7 +18,7 @@ export default function Space(props: SpaceProps) {
 
 	return (
 		<div
-			class="jdd jdd-space"
+			class="jdd space"
 			classList={{
 				vertical: vertical === true,
 				medium: size === "medium",

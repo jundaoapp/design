@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5, h6 {
-  &.jdd {
+  &.jdd.title {
     color: var(--jdd-gray-12);
     font-weight: 600;
     margin-bottom: .5em;
@@ -10,33 +10,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1.jdd {
+h1.jdd.title {
   font-size: 2.375rem;
 }
 
-h2.jdd {
+h2.jdd.title {
   font-size: 1.875rem;
 }
 
-h3.jdd {
+h3.jdd.title {
   font-size: 1.5rem;
 }
 
-h4.jdd {
+h4.jdd.title {
   font-size: 1.25rem;
 }
 
-h5.jdd {
+h5.jdd.title {
   font-size: 1.1rem;
 }
 
-h6.jdd {
+h6.jdd.title {
   font-size: 1rem;
 }
 
 .jdd-typography {
   + h1, + h2, + h3, + h4, + h5, + h6 {
-    &.jdd {
+      &.jdd.title {
       margin-top: 1.2em;
     }
   }

@@ -22,7 +22,7 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
-    "rome": "^10.0.1",
+    "rome": "^11.0.0",
     "sass": "^1.56.1",
     "storybook-dark-mode": "^1.1.2",
     "typescript": "^4.9.3",

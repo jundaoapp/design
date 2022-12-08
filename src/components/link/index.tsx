@@ -23,7 +23,7 @@ export default function Link(props: LinkProps) {
 
 	return (
 		<a
-			class="jdd"
+			class="jdd link"
 			classList={{
 				secondary: type === "secondary",
 				success: type === "success",

@@ -5,21 +5,19 @@ import { splitProps } from "solid-js";
 export type IconProps = JSX.IntrinsicElements["i"] & {
 	icon: string;
 	line?: boolean;
-	fill?: boolean;
 	spin?: boolean;
 	label?: string;
 };
 
 export default function Icon(props: IconProps) {
-	const [{ icon, line, fill, spin, label = "" }, others] = splitProps(props, [
+	const [{ icon, line, spin, label = "" }, others] = splitProps(props, [
 		"icon",
 		"line",
-		"fill",
 		"spin",
 		"label",
 	]);
 
-	const suffix = line === true ? "-line" : fill === true ? "-fill" : "";
+	const suffix = line === true ? "-line" : "-fill";
 
 	return (
 		<i

@@ -24,7 +24,7 @@ export default function Divider(props: DividerProps) {
 
 	return (
 		<div
-			class={`jdd jdd-divider ${orientation ?? ""}`}
+			class={`jdd divider ${orientation ?? ""}`}
 			classList={{
 				vertical: vertical === true,
 				dashed: dashed === true,

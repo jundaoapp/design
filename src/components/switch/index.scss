@@ -1,0 +1,328 @@
+$handle-size: 1.3rem;
+$handle-margin: 0.14rem;
+$inline-margin-min: calc($handle-size / 2);
+$inline-margin-max: $handle-size + $handle-margin * 2;
+$inline-margin-offset: $handle-size + $handle-margin * 2;
+
+$small-multiplier: 0.5;
+$large-multiplier: 1.35;
+
+button.jdd.switch {
+  background: var(--jdd-gray-5);
+  border: none;
+  border-radius: 9999px;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--jdd-transition-colors);
+  vertical-align: middle;
+  display: inline-block;
+  line-height: $handle-size + $handle-margin * 2;
+  height: $handle-size + $handle-margin * 2;
+  min-width: $handle-size * 2 + $handle-margin * 4;
+
+  > .handle {
+    position: absolute;
+    top: $handle-margin;
+    width: $handle-size;
+    height: $handle-size;
+    background-color: var(--jdd-gray-1);
+    border-radius: 9999px;
+    inset-inline-start: $handle-margin;
+    transition-duration: var(--jdd-transition-duration);
+    transition-timing-function: var(--jdd-transition-function);
+    transition-property: inset-inline-start;
+  }
+
+  > .inner {
+    display: block;
+    overflow: hidden;
+    border-radius: 100px;
+    height: 100%;
+
+    > .checked,
+    > .unchecked {
+      height: 100%;
+      display: block;
+      transition-duration: var(--jdd-transition-duration);
+      transition-timing-function: var(--jdd-transition-function);
+      transition-property: margin-inline-start, margin-inline-end;
+      pointer-events: none;
+    }
+
+    > .checked {
+      color: var(--jdd-gray-1);
+      margin-inline-start: calc(
+        $inline-margin-min - 100% + $inline-margin-offset
+      );
+      margin-inline-end: calc(
+        $inline-margin-max + 100% - $inline-margin-offset
+      );
+    }
+
+    > .unchecked {
+      color: var(--jdd-gray-11);
+      margin-top: -($handle-size + $handle-margin * 2);
+      margin-inline-start: $handle-size + $handle-margin * 3;
+      margin-inline-end: calc($handle-size / 2 - $handle-margin);
+
+      .jdd-dark & {
+        color: var(--jdd-gray-1);
+      }
+    }
+  }
+
+  &[aria-checked="true"] {
+    background: var(--jdd-blue-6);
+
+    > .handle {
+      inset-inline-start: calc(100% - $handle-margin - $handle-size);
+    }
+
+    > .inner {
+      > .checked {
+        margin-inline-start: calc($handle-size / 2 - $handle-margin);
+        margin-inline-end: $handle-size + $handle-margin * 3;
+      }
+
+      > .unchecked {
+        margin-inline-start: calc(
+          $inline-margin-max + 100% - $inline-margin-offset
+        );
+        margin-inline-end: calc(
+          $inline-margin-min - 100% + $inline-margin-offset
+        );
+      }
+    }
+
+    .jdd-dark & {
+      background: var(--jdd-blue-6);
+    }
+  }
+
+  &:disabled,
+  &.loading {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):not(.loading) {
+    &:hover,
+    &:focus-visible {
+      background: var(--jdd-gray-4);
+
+      &[aria-checked="true"] {
+        background: var(--jdd-blue-5);
+      }
+
+      .jdd-dark & {
+        background: var(--jdd-gray-9);
+
+        &[aria-checked="true"] {
+          background: var(--jdd-blue-7);
+        }
+      }
+    }
+  }
+
+  .jdd-dark & {
+    background: var(--jdd-gray-8);
+  }
+
+  &.small {
+    line-height: ($handle-size + $handle-margin * 2) * $small-multiplier;
+    height: ($handle-size + $handle-margin * 2) * $small-multiplier;
+    min-width: ($handle-size * 2 + $handle-margin * 4) * $small-multiplier;
+
+    > .handle {
+      top: $handle-margin * $small-multiplier;
+      width: $handle-size * $small-multiplier;
+      height: $handle-size * $small-multiplier;
+      inset-inline-start: $handle-margin * $small-multiplier;
+    }
+
+    > .inner {
+      > .checked {
+        margin-inline-start: calc(
+          ($inline-margin-min * $small-multiplier) - 100% +
+            ($inline-margin-offset * $small-multiplier)
+        );
+        margin-inline-end: calc(
+          ($inline-margin-max * $small-multiplier) + 100% -
+            ($inline-margin-offset * $small-multiplier)
+        );
+      }
+
+      > .unchecked {
+        margin-top: -(($handle-size + $handle-margin * 2) * $small-multiplier);
+        margin-inline-start: ($handle-size + $handle-margin * 3) *
+          $small-multiplier;
+        margin-inline-end: calc(
+          ($handle-size * $small-multiplier) / 2 -
+            ($handle-margin * $small-multiplier)
+        );
+      }
+    }
+
+    &[aria-checked="true"] {
+      > .handle {
+        inset-inline-start: calc(
+          100% - (($handle-margin + $handle-size)) * $small-multiplier
+        );
+      }
+
+      > .inner {
+        > .checked {
+          margin-inline-start: calc(
+            ($handle-size * $small-multiplier) / 2 -
+              ($handle-margin * $small-multiplier)
+          );
+          margin-inline-end: ($handle-size + $handle-margin * 3) *
+            $small-multiplier;
+        }
+
+        > .unchecked {
+          margin-inline-start: calc(
+            ($inline-margin-max * $small-multiplier) + 100% -
+              ($inline-margin-offset * $small-multiplier)
+          );
+          margin-inline-end: calc(
+            ($inline-margin-min * $small-multiplier) - 100% +
+              ($inline-margin-offset * $small-multiplier)
+          );
+        }
+      }
+    }
+  }
+
+  &.small {
+    line-height: ($handle-size + $handle-margin * 2) * $small-multiplier;
+    height: ($handle-size + $handle-margin * 2) * $small-multiplier;
+    min-width: ($handle-size * 2 + $handle-margin * 4) * $small-multiplier;
+
+    > .handle {
+      top: $handle-margin * $small-multiplier;
+      width: $handle-size * $small-multiplier;
+      height: $handle-size * $small-multiplier;
+      inset-inline-start: $handle-margin * $small-multiplier;
+    }
+
+    > .inner {
+      > .checked {
+        margin-inline-start: calc(
+          ($inline-margin-min * $small-multiplier) - 100% +
+            ($inline-margin-offset * $small-multiplier)
+        );
+        margin-inline-end: calc(
+          ($inline-margin-max * $small-multiplier) + 100% -
+            ($inline-margin-offset * $small-multiplier)
+        );
+      }
+
+      > .unchecked {
+        margin-top: -(($handle-size + $handle-margin * 2) * $small-multiplier);
+        margin-inline-start: ($handle-size + $handle-margin * 3) *
+          $small-multiplier;
+        margin-inline-end: calc(
+          ($handle-size * $small-multiplier) / 2 -
+            ($handle-margin * $small-multiplier)
+        );
+      }
+    }
+
+    &[aria-checked="true"] {
+      > .handle {
+        inset-inline-start: calc(
+          100% - (($handle-margin + $handle-size)) * $small-multiplier
+        );
+      }
+
+      > .inner {
+        > .checked {
+          margin-inline-start: calc(
+            ($handle-size * $small-multiplier) / 2 -
+              ($handle-margin * $small-multiplier)
+          );
+          margin-inline-end: ($handle-size + $handle-margin * 3) *
+            $small-multiplier;
+        }
+
+        > .unchecked {
+          margin-inline-start: calc(
+            ($inline-margin-max * $small-multiplier) + 100% -
+              ($inline-margin-offset * $small-multiplier)
+          );
+          margin-inline-end: calc(
+            ($inline-margin-min * $small-multiplier) - 100% +
+              ($inline-margin-offset * $small-multiplier)
+          );
+        }
+      }
+    }
+  }
+
+  &.large {
+    line-height: ($handle-size + $handle-margin * 2) * $large-multiplier;
+    height: ($handle-size + $handle-margin * 2) * $large-multiplier;
+    min-width: ($handle-size * 2 + $handle-margin * 4) * $large-multiplier;
+
+    > .handle {
+      top: $handle-margin * $large-multiplier;
+      width: $handle-size * $large-multiplier;
+      height: $handle-size * $large-multiplier;
+      inset-inline-start: $handle-margin * $large-multiplier;
+    }
+
+    > .inner {
+      > .checked {
+        margin-inline-start: calc(
+          ($inline-margin-min * $large-multiplier) - 100% +
+            ($inline-margin-offset * $large-multiplier)
+        );
+        margin-inline-end: calc(
+          ($inline-margin-max * $large-multiplier) + 100% -
+            ($inline-margin-offset * $large-multiplier)
+        );
+      }
+
+      > .unchecked {
+        margin-top: -(($handle-size + $handle-margin * 2) * $large-multiplier);
+        margin-inline-start: ($handle-size + $handle-margin * 3) *
+          $large-multiplier;
+        margin-inline-end: calc(
+          ($handle-size * $large-multiplier) / 2 -
+            ($handle-margin * $large-multiplier)
+        );
+      }
+    }
+
+    &[aria-checked="true"] {
+      > .handle {
+        inset-inline-start: calc(
+          100% - (($handle-margin + $handle-size)) * $large-multiplier
+        );
+      }
+
+      > .inner {
+        > .checked {
+          margin-inline-start: calc(
+            ($handle-size * $large-multiplier) / 2 -
+              ($handle-margin * $large-multiplier)
+          );
+          margin-inline-end: ($handle-size + $handle-margin * 3) *
+            $large-multiplier;
+        }
+
+        > .unchecked {
+          margin-inline-start: calc(
+            ($inline-margin-max * $large-multiplier) + 100% -
+              ($inline-margin-offset * $large-multiplier)
+          );
+          margin-inline-end: calc(
+            ($inline-margin-min * $large-multiplier) - 100% +
+              ($inline-margin-offset * $large-multiplier)
+          );
+        }
+      }
+    }
+  }
+}

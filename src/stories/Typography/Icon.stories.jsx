@@ -5,7 +5,6 @@ export default {
 	argTypes: {
 		icon: { control: "text" },
 		line: { control: "boolean" },
-		fill: { control: "boolean" },
 		spin: { control: "boolean" },
 		label: { control: "text" },
 	},
@@ -29,7 +28,7 @@ const Template = (props) => {
 			>
 				<Icon {...props} />
 				<Icon icon="home" line label="Home" />
-				<Icon icon="terminal-box" fill label="Terminal" />
+				<Icon icon="terminal-box" label="Terminal" />
 				<Icon icon="loader-5" line spin label="loading" />
 			</div>
 		</>
@@ -37,4 +36,4 @@ const Template = (props) => {
 };
 
 export const Default = Template.bind({});
-Default.args = { icon: "html5", fill: true };
+Default.args = { icon: "html5" };

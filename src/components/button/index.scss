@@ -1,4 +1,4 @@
-button.jdd {
+button.jdd.button {
   color: var(--jdd-gray-11);
   background-color: white;
   padding: .5rem 1rem;
@@ -59,7 +59,7 @@ button.jdd {
         border-color: var(--jdd-red-5);
       }
 
-      &:active, .active {
+      &:active {
         color: var(--jdd-red-8);
         border-color: var(--jdd-red-8);
         outline: solid .15rem rgba(var(--jdd-red-6-rgb), 0.25);
@@ -82,7 +82,7 @@ button.jdd {
       border-color: var(--jdd-blue-5);
     }
 
-    &:active, .active {
+    &:active {
       color: var(--jdd-blue-7);
       border-color: var(--jdd-blue-7);
       outline: solid .15rem rgba(var(--jdd-blue-6-rgb), 0.25);

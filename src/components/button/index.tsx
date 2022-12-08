@@ -16,7 +16,7 @@ export default function Button(props: ButtonProps) {
 
 	return (
 		<button
-			class="jdd"
+			class="jdd button"
 			disabled={disabled}
 			classList={{
 				primary: type === "primary",
