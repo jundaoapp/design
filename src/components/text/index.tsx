@@ -3,19 +3,17 @@ import { Button } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
-export type TextProps =
-	& JSX.IntrinsicElements["span"]
-	& {
-		children: JSXElement,
-		type?: "default" | "secondary" | "success" | "warning" | "danger",
-		underline?: boolean,
-		delete?: boolean,
-		bold?: boolean,
-		italic?: boolean,
-		mark?: boolean,
-		code?: boolean,
-		keyboard?: boolean,
-	};
+export type TextProps = JSX.IntrinsicElements["span"] & {
+	children: JSXElement;
+	type?: "default" | "secondary" | "success" | "warning" | "danger";
+	underline?: boolean;
+	delete?: boolean;
+	bold?: boolean;
+	italic?: boolean;
+	mark?: boolean;
+	code?: boolean;
+	keyboard?: boolean;
+};
 
 export default function Text(props: TextProps) {
 	const [
@@ -31,20 +29,17 @@ export default function Text(props: TextProps) {
 			keyboard,
 		},
 		others,
-	] = splitProps(
-		props,
-		[
-			"children",
-			"type",
-			"underline",
-			"delete",
-			"bold",
-			"italic",
-			"mark",
-			"code",
-			"keyboard",
-		],
-	);
+	] = splitProps(props, [
+		"children",
+		"type",
+		"underline",
+		"delete",
+		"bold",
+		"italic",
+		"mark",
+		"code",
+		"keyboard",
+	]);
 
 	let child = children;
 
@@ -77,15 +72,17 @@ export default function Text(props: TextProps) {
 	}
 
 	return (
-		<span class="jdd jdd-typography"
-              classList={{
-                  secondary: type === "secondary",
-                  success: type === "success",
-                  warning: type === "warning",
-                  danger: type === "danger",
-        }}
-              {...others}>
-            {child}
-        </span>
+		<span
+			class="jdd text jdd-typography"
+			classList={{
+				secondary: type === "secondary",
+				success: type === "success",
+				warning: type === "warning",
+				danger: type === "danger",
+			}}
+			{...others}
+		>
+			{child}
+		</span>
 	);
 }

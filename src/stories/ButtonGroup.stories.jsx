@@ -5,12 +5,12 @@ export default { title: "Components/ButtonGroup" };
 const Template = (props) => {
 	return (
 		<>
-            <ButtonGroup>
-                <Button {...props} />
-                <Button {...props} />
-                <Button {...props} />
-            </ButtonGroup>
-        </>
+			<ButtonGroup>
+				<Button {...props} />
+				<Button {...props} />
+				<Button {...props} />
+			</ButtonGroup>
+		</>
 	);
 };
 

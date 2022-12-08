@@ -19,7 +19,7 @@ export default {
 };
 
 const Template = (props) => {
-	return <Button {...props}/>;
+	return <Button {...props} />;
 };
 
 export const Primary = Template.bind({});

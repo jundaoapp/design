@@ -11,7 +11,7 @@
         border-color: var(--jdd-blue-7);
       }
 
-      &:active, .active {
+      &:active {
         background-color: var(--jdd-blue-4);
         border-color: var(--jdd-blue-4);
       }
@@ -35,7 +35,7 @@
           border-color: var(--jdd-red-7);
         }
 
-        &:active, .active {
+        &:active {
           background-color: var(--jdd-red-4);
           border-color: var(--jdd-red-4);
         }
@@ -55,7 +55,7 @@
         color: var(--jdd-gray-1);
       }
 
-      &:active, .active {
+      &:active {
         background-color: var(--jdd-red-7);
         border-color: var(--jdd-red-7);
         color: var(--jdd-gray-1);
@@ -75,7 +75,7 @@
       color: var(--jdd-gray-1);
     }
 
-    &:active, .active {
+    &:active {
       background-color: var(--jdd-blue-7);
       border-color: var(--jdd-blue-7);
       color: var(--jdd-gray-1);
