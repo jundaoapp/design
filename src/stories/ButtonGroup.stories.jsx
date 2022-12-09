@@ -1,16 +1,26 @@
-import { Button, ButtonGroup } from "@jundao/design";
+import { Button, ButtonGroup, Space } from "@jundao/design";
+import { default as ButtonStory } from "./Button.stories.jsx";
 
-export default { title: "Components/ButtonGroup" };
+export default {
+	title: "Components/ButtonGroup",
+	argTypes: ButtonStory.argTypes,
+};
 
 const Template = (props) => {
 	return (
-		<>
+		<Space vertical>
 			<ButtonGroup>
 				<Button {...props} />
 				<Button {...props} />
 				<Button {...props} />
 			</ButtonGroup>
-		</>
+
+			<ButtonGroup>
+				<Button>Button</Button>
+				<Button {...props} />
+				<Button>Button</Button>
+			</ButtonGroup>
+		</Space>
 	);
 };
 

@@ -1,0 +1,63 @@
+.jdd.spinner {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: .8s;
+    animation-name: jdd-spinner-spin;
+
+    > circle {
+      stroke: currentColor;
+      stroke-width: 10%;
+      transform-origin: 50% 50% 0;
+      stroke-linecap: round;
+      r: 45%;
+      fill: none;
+      cy: 50%;
+      cx: 50%;
+
+      animation-timing-function: var(--jdd-transition-function);
+      animation-iteration-count: infinite;
+      animation-duration: 1.6s;
+      animation-name: jdd-spinner-stroke;
+    }
+
+    &.small {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    &.large {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+@keyframes jdd-spinner-spin {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(540deg);
+    }
+}
+
+@keyframes jdd-spinner-stroke {
+    0% {
+        stroke-dasharray: 45%, 9999px;
+        stroke-dashoffset: -75%;
+    }
+    50% {
+        stroke-dasharray: 45%, 99999px;
+        stroke-dashoffset: -75%;
+    }
+75% {
+        stroke-dasharray: 120%, 99999px;
+        stroke-dashoffset: -30%;
+    }
+100% {
+        stroke-dasharray: 45%, 99999px;
+        stroke-dashoffset: -75%;
+    }
+}

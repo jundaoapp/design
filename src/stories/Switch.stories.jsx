@@ -15,6 +15,7 @@ export default {
 		defaultChecked: { control: "boolean" },
 		checkedChildren: { control: "text" },
 		uncheckedChildren: { control: "text" },
+		loading: { control: "boolean" },
 	},
 };
 
@@ -53,3 +54,6 @@ export const All = (props) => (
 
 export const Controlled = Template.bind({});
 Controlled.args = { checked: true };
+
+export const Loading = Template.bind({});
+Loading.args = { loading: true };

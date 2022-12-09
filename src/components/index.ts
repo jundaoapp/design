@@ -4,6 +4,7 @@ export { default as Divider } from "@jundao/design/divider";
 export { default as Icon } from "@jundao/design/icon";
 export { default as Link } from "@jundao/design/link";
 export { default as Space } from "@jundao/design/space";
+export { default as Spinner } from "@jundao/design/spinner";
 export { default as Switch } from "@jundao/design/switch";
 export { default as Text } from "@jundao/design/text";
 export { default as Title } from "@jundao/design/title";

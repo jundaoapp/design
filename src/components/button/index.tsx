@@ -1,6 +1,7 @@
-import { JSXElement, splitProps } from "solid-js";
+import { JSXElement, Show, splitProps } from "solid-js";
 import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
+import { Spinner } from "@jundao/design";
 
 export type ButtonProps = JSX.IntrinsicElements["button"] & {
 	children: JSXElement;
@@ -8,11 +9,21 @@ export type ButtonProps = JSX.IntrinsicElements["button"] & {
 	size?: "small" | "default" | "large";
 	disabled?: boolean;
 	danger?: boolean;
+	loading?: boolean;
 };
 
 export default function Button(props: ButtonProps) {
-	const [{ children, type, size, disabled = false, danger }, others] =
-		splitProps(props, ["children", "type", "size", "disabled", "danger"]);
+	const [{ children, type, size, disabled = false, danger, loading }, others] =
+		splitProps(props, [
+			"children",
+			"type",
+			"size",
+			"disabled",
+			"danger",
+			"loading",
+		]);
+
+	const child = children ? <span>{children}</span> : null;
 
 	return (
 		<button
@@ -24,10 +35,14 @@ export default function Button(props: ButtonProps) {
 				small: size === "small",
 				large: size === "large",
 				danger: danger === true,
+				loading,
 			}}
 			{...others}
 		>
-			{children}
+			<Show when={loading}>
+				<Spinner />
+			</Show>
+			{child}
 		</button>
 	);
 }

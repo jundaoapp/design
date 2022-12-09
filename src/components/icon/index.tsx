@@ -28,6 +28,6 @@ export default function Icon(props: IconProps) {
 				spin: spin === true,
 			}}
 			{...others}
-		></i>
+		/>
 	);
 }

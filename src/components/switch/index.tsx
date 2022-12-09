@@ -1,6 +1,7 @@
 import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
-import { createSignal, JSXElement, splitProps } from "solid-js";
+import { createSignal, JSXElement, Show, splitProps } from "solid-js";
+import { Spinner } from "@jundao/design";
 
 export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 	defaultChecked?: boolean;
@@ -10,6 +11,7 @@ export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 	checkedChildren?: JSXElement;
 	uncheckedChildren?: JSXElement;
 	size?: "small" | "default" | "large";
+	loading?: boolean;
 };
 
 export default function Switch(props: SwitchProps) {
@@ -23,6 +25,7 @@ export default function Switch(props: SwitchProps) {
 			uncheckedChildren,
 			onClick,
 			size = "default",
+			loading = false,
 		},
 		others,
 	] = splitProps(props, [
@@ -34,18 +37,21 @@ export default function Switch(props: SwitchProps) {
 		"onClick",
 		"onChange",
 		"size",
+		"loading",
 	]);
 
-	const controlled = checkedProp != undefined && onChange != undefined;
+	const controlled = checkedProp !== undefined && onChange !== undefined;
 
 	const [checked, setChecked] = createSignal(
 		controlled ? !!checkedProp : defaultChecked,
 	);
 
-    const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (event) => {
+	const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (
+		event,
+	) => {
 		if (!disabled) setChecked(controlled ? !checkedProp : !checked());
 
-    if (typeof onClick === "function") onClick(event);
+		if (typeof onClick === "function") onClick(event);
 		if (typeof onChange === "function") onChange(checked());
 	};
 
@@ -63,9 +69,14 @@ export default function Switch(props: SwitchProps) {
 			classList={{
 				small: size === "small",
 				large: size === "large",
+				loading,
 			}}
 		>
-			<div class="handle" />
+			<div class="handle">
+				<Show when={loading}>
+					<Spinner />
+				</Show>
+			</div>
 			<div class="inner">
 				<span class="checked">{checkedChildren}</span>
 				<span class="unchecked">{uncheckedChildren}</span>

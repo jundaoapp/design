@@ -9,7 +9,8 @@ export type LinkProps = JSX.IntrinsicElements["a"] & {
 };
 
 export default function Link(props: LinkProps) {
-	const [{ href, disabled, type }, others] = splitProps(props, [
+	const [{ children, href, disabled, type }, others] = splitProps(props, [
+		"children",
 		"href",
 		"disabled",
 		"type",
@@ -32,6 +33,8 @@ export default function Link(props: LinkProps) {
 			}}
 			{...hrefProp}
 			{...others}
-		/>
+		>
+			{children}
+		</a>
 	);
 }

@@ -15,6 +15,7 @@ export default {
 		},
 		disabled: { control: "boolean" },
 		danger: { control: "boolean" },
+		loading: { control: "boolean" },
 	},
 };
 
@@ -42,3 +43,6 @@ Disabled.args = { children: "Button", disabled: true };
 
 export const Danger = Template.bind({});
 Danger.args = { children: "Button", danger: true };
+
+export const Loading = Template.bind({});
+Loading.args = { children: "Button", loading: true };
