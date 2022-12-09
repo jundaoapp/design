@@ -23,7 +23,7 @@ export default function Button(props: ButtonProps) {
 			"loading",
 		]);
 
-    const child = children ? <span>{children}</span> : null;
+	const child = children ? <span>{children}</span> : null;
 
 	return (
 		<button
@@ -42,7 +42,7 @@ export default function Button(props: ButtonProps) {
 			<Show when={loading}>
 				<Spinner />
 			</Show>
-      {child}
+			{child}
 		</button>
 	);
 }

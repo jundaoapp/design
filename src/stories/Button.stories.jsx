@@ -14,8 +14,8 @@ export default {
 			options: ["small", "default", "large"],
 		},
 		disabled: { control: "boolean" },
-    danger: { control: "boolean" },
-    loading: { control: "boolean" },
+		danger: { control: "boolean" },
+		loading: { control: "boolean" },
 	},
 };
 

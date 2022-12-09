@@ -1,7 +1,10 @@
 import { Button, ButtonGroup, Space } from "@jundao/design";
 import { default as ButtonStory } from "./Button.stories.jsx";
 
-export default { title: "Components/ButtonGroup", argTypes: ButtonStory.argTypes };
+export default {
+	title: "Components/ButtonGroup",
+	argTypes: ButtonStory.argTypes,
+};
 
 const Template = (props) => {
 	return (
@@ -12,11 +15,11 @@ const Template = (props) => {
 				<Button {...props} />
 			</ButtonGroup>
 
-      <ButtonGroup>
-        <Button>Button</Button>
-        <Button {...props} />
-        <Button>Button</Button>
-      </ButtonGroup>
+			<ButtonGroup>
+				<Button>Button</Button>
+				<Button {...props} />
+				<Button>Button</Button>
+			</ButtonGroup>
 		</Space>
 	);
 };
