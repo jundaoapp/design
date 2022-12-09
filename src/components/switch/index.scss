@@ -109,14 +109,14 @@ button.jdd.switch {
     }
   }
 
-  &:disabled,
-  &.loading {
+  &:disabled {
     cursor: not-allowed;
   }
 
-  &:not(:disabled):not(.loading) {
+  &:not(:disabled) {
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &.loading {
       background: var(--jdd-gray-4);
 
       &[aria-checked="true"] {

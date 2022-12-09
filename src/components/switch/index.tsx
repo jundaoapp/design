@@ -69,6 +69,7 @@ export default function Switch(props: SwitchProps) {
 			classList={{
 				small: size === "small",
 				large: size === "large",
+				loading,
 			}}
 		>
 			<div class="handle">
