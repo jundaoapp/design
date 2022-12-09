@@ -18,7 +18,7 @@ export default function Divider(props: DividerProps) {
 
 	let child = children;
 
-	if (!!children) {
+	if (children) {
 		child = <Text>{child}</Text>;
 	}
 

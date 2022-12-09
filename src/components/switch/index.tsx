@@ -36,7 +36,7 @@ export default function Switch(props: SwitchProps) {
 		"size",
 	]);
 
-	const controlled = checkedProp != undefined && onChange != undefined;
+	const controlled = checkedProp !== undefined && onChange !== undefined;
 
 	const [checked, setChecked] = createSignal(
 		controlled ? !!checkedProp : defaultChecked,

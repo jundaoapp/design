@@ -55,7 +55,7 @@ export const Colors = () => {
 								{color}
 							</Text>
 							<For
-								each={[...Array(color == "gray" ? 13 : 10).keys()]}
+								each={[...Array(color === "gray" ? 13 : 10).keys()]}
 								fallback={<div>Loading...</div>}
 							>
 								{(brightness) => (
@@ -69,7 +69,7 @@ export const Colors = () => {
 												height: "2.25rem",
 												"border-radius": ".5rem",
 												border:
-													brightness == 5
+													brightness === 5
 														? "2px solid var(--jdd-inline-border-color)"
 														: "",
 											}}
