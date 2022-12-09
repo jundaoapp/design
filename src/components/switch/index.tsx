@@ -1,6 +1,7 @@
 import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
-import { createSignal, JSXElement, splitProps } from "solid-js";
+import { createSignal, JSXElement, Show, splitProps } from "solid-js";
+import { Spinner } from "@jundao/design";
 
 export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 	defaultChecked?: boolean;
@@ -10,6 +11,7 @@ export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 	checkedChildren?: JSXElement;
 	uncheckedChildren?: JSXElement;
 	size?: "small" | "default" | "large";
+	loading?: boolean;
 };
 
 export default function Switch(props: SwitchProps) {
@@ -23,6 +25,7 @@ export default function Switch(props: SwitchProps) {
 			uncheckedChildren,
 			onClick,
 			size = "default",
+			loading = false,
 		},
 		others,
 	] = splitProps(props, [
@@ -34,6 +37,7 @@ export default function Switch(props: SwitchProps) {
 		"onClick",
 		"onChange",
 		"size",
+		"loading",
 	]);
 
 	const controlled = checkedProp !== undefined && onChange !== undefined;
@@ -67,7 +71,11 @@ export default function Switch(props: SwitchProps) {
 				large: size === "large",
 			}}
 		>
-			<div class="handle" />
+			<div class="handle">
+				<Show when={loading}>
+					<Spinner />
+				</Show>
+			</div>
 			<div class="inner">
 				<span class="checked">{checkedChildren}</span>
 				<span class="unchecked">{uncheckedChildren}</span>

@@ -32,6 +32,15 @@ button.jdd.switch {
     transition-duration: var(--jdd-transition-duration);
     transition-timing-function: var(--jdd-transition-function);
     transition-property: inset-inline-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .jdd.spinner {
+        height: 80%;
+        width: 80%;
+        color: var(--jdd-blue-6);
+    }
   }
 
   > .inner {
