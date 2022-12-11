@@ -13,15 +13,17 @@ export type ButtonProps = JSX.IntrinsicElements["button"] & {
 };
 
 export default function Button(props: ButtonProps) {
-	const [{ children, type, size, disabled = false, danger, loading }, others] =
-		splitProps(props, [
-			"children",
-			"type",
-			"size",
-			"disabled",
-			"danger",
-			"loading",
-		]);
+	const [
+		{ children, type, size, disabled = false, danger = false, loading = false },
+		others,
+	] = splitProps(props, [
+		"children",
+		"type",
+		"size",
+		"disabled",
+		"danger",
+		"loading",
+	]);
 
 	const child = children ? <span>{children}</span> : null;
 
@@ -34,8 +36,8 @@ export default function Button(props: ButtonProps) {
 				dashed: type === "dashed",
 				small: size === "small",
 				large: size === "large",
-				danger: danger === true,
-				loading,
+				danger: danger,
+				loading: loading,
 			}}
 			{...others}
 		>

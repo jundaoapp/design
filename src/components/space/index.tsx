@@ -11,19 +11,17 @@ export type SpaceProps = JSX.IntrinsicElements["div"] & {
 };
 
 export default function Space(props: SpaceProps) {
-	const [{ size = "small", vertical, wrap, align }, others] = splitProps(
-		props,
-		["size", "vertical", "wrap", "align"],
-	);
+	const [{ size = "small", vertical = false, wrap = false, align }, others] =
+		splitProps(props, ["size", "vertical", "wrap", "align"]);
 
 	return (
 		<div
 			class="jdd space"
 			classList={{
-				vertical: vertical === true,
+				vertical: vertical,
 				medium: size === "medium",
 				large: size === "large",
-				wrap: wrap === true,
+				wrap: wrap,
 				left: align === "left",
 				right: align === "right",
 			}}

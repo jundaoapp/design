@@ -2,9 +2,9 @@
   --jdd-font-sans: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
   --jdd-font-mono: "JetBrains Mono", SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
 
-  --jdd-border-radius: .75rem;
-  --jdd-border-radius-small: .5rem;
-  --jdd-border-radius-large: 1rem;
+  --jdd-border-radius: .5rem;
+  --jdd-border-radius-small: .3rem;
+  --jdd-border-radius-large: .8rem;
 
   --jdd-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
   --jdd-shadow-small: 0 .125rem .25rem rgba(0, 0, 0, .075);
