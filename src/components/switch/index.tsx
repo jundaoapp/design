@@ -1,6 +1,13 @@
 import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
-import { createSignal, JSXElement, Show, splitProps } from "solid-js";
+import {
+	createEffect,
+	createSignal,
+	JSXElement,
+	on,
+	Show,
+	splitProps,
+} from "solid-js";
 import { Spinner } from "@jundao/design";
 
 export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
@@ -17,7 +24,6 @@ export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 export default function Switch(props: SwitchProps) {
 	const [
 		{
-			checked: checkedProp,
 			defaultChecked = false,
 			onChange,
 			disabled = false,
@@ -40,28 +46,38 @@ export default function Switch(props: SwitchProps) {
 		"loading",
 	]);
 
-	const controlled = checkedProp !== undefined && onChange !== undefined;
+	const controlled = props.checked !== undefined && onChange !== undefined;
 
 	const [checked, setChecked] = createSignal(
-		controlled ? !!checkedProp : defaultChecked,
+		controlled ? !!props.checked : defaultChecked,
+	);
+
+	createEffect(
+		on(
+			() => props.checked,
+			(checked) => {
+				if (checked !== undefined) setChecked(checked);
+			},
+		),
 	);
 
 	const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (
 		event,
 	) => {
-		if (!disabled) setChecked(controlled ? !checkedProp : !checked());
+		if (!disabled) {
+			if (typeof onChange === "function")
+				onChange(controlled ? !props.checked : !checked());
+			if (!controlled) setChecked(!checked());
+		}
 
 		if (typeof onClick === "function") onClick(event);
-		if (typeof onChange === "function") onChange(checked());
 	};
-
-	console.log(checkedChildren, uncheckedChildren);
 
 	return (
 		<button
 			type="button"
 			role="switch"
-			aria-checked={controlled ? checkedProp : checked()}
+			aria-checked={checked()}
 			onClick={clickHandler}
 			class="jdd switch"
 			disabled={disabled}
@@ -69,7 +85,7 @@ export default function Switch(props: SwitchProps) {
 			classList={{
 				small: size === "small",
 				large: size === "large",
-				loading,
+				loading: loading,
 			}}
 		>
 			<div class="handle">

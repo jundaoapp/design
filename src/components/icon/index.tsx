@@ -10,14 +10,12 @@ export type IconProps = JSX.IntrinsicElements["i"] & {
 };
 
 export default function Icon(props: IconProps) {
-	const [{ icon, line, spin, label = "" }, others] = splitProps(props, [
-		"icon",
-		"line",
-		"spin",
-		"label",
-	]);
+	const [{ icon, line = false, spin = false, label = "" }, others] = splitProps(
+		props,
+		["icon", "line", "spin", "label"],
+	);
 
-	const suffix = line === true ? "-line" : "-fill";
+	const suffix = line ? "-line" : "-fill";
 
 	return (
 		<i
@@ -25,7 +23,7 @@ export default function Icon(props: IconProps) {
 			role="img"
 			aria-label={label}
 			classList={{
-				spin: spin === true,
+				spin: spin,
 			}}
 			{...others}
 		/>

@@ -92,10 +92,6 @@ export const decorators = [
 
     solidRoot.setAttribute("id", "solid-root");
 
-    // Detect storybook dark background and enable dark theme
-    // if (window === "dark") {
-    //   solidRoot.classList.add("jdd-dark");
-    // }
     root.appendChild(solidRoot);
 
     disposeStory = render(Story, solidRoot);
@@ -104,30 +100,3 @@ export const decorators = [
     // return createRoot(() => Story()); // do not work correctly https://github.com/solidjs/solid/issues/553
   },
 ];
-
-// import { render } from "solid-js/web";
-// import "../src/components/style";
-//
-// let disposeStory;
-//
-// export const decorators = [
-//   (Story) => {
-//     if (disposeStory) {
-//       disposeStory();
-//     }
-//     const root = document.getElementById("root");
-//     const solid = document.createElement("div");
-//
-//     solid.setAttribute("id", "solid-root");
-//
-//     // Detect storybook dark background and enable dark theme
-//     if (window === "dark") {
-//       solid.classList.add("jdd-dark");
-//     }
-//
-//     root.appendChild(solid);
-//     disposeStory = render(Story, solid);
-//     return solid;
-//     // return createRoot(() => Story()); // do not work correctly https://github.com/solidjs/solid/issues/553
-//   },
-// ];

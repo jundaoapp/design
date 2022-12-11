@@ -11,10 +11,8 @@ export type DividerProps = JSX.IntrinsicElements["div"] & {
 };
 
 export default function Divider(props: DividerProps) {
-	const [{ children, vertical, dashed, orientation }, others] = splitProps(
-		props,
-		["children", "vertical", "dashed", "orientation"],
-	);
+	const [{ children, vertical = false, dashed = false, orientation }, others] =
+		splitProps(props, ["children", "vertical", "dashed", "orientation"]);
 
 	let child = children;
 
@@ -26,8 +24,8 @@ export default function Divider(props: DividerProps) {
 		<div
 			class={`jdd divider ${orientation ?? ""}`}
 			classList={{
-				vertical: vertical === true,
-				dashed: dashed === true,
+				vertical: vertical,
+				dashed: dashed,
 				"with-text": !!children,
 			}}
 			role="separator"
