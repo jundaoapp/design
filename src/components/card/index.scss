@@ -1,0 +1,35 @@
+div.jdd.card {
+    border: 1px solid var(--jdd-gray-2);
+    border-radius: var(--jdd-border-radius-large);
+    background: var(--jdd-gray-2);
+    overflow: hidden;
+
+    > .title {
+        font-size: 1.15rem;
+        background: var(--jdd-gray-3);
+        padding: .5rem 1.5rem;
+    }
+
+    &:not(.no-padding) > .content {
+        padding: 1.25rem 1.5rem;
+    }
+
+    &.small {
+        > .title {
+            padding: .25rem 1.1rem;
+        }
+
+        &:not(.no-padding) > .content {
+            padding: .9rem 1.1rem;
+        }
+    }
+
+    .jdd-dark & {
+        border-color: var(--jdd-gray-10);
+        background: var(--jdd-gray-11);
+
+        > .title {
+            background: var(--jdd-gray-11);
+        }
+    }
+}
