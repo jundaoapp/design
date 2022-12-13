@@ -16,7 +16,7 @@ const colors = [
 
 export const Colors = () => {
 	return (
-		<Space vertical align="left">
+		<Space vertical align="start">
 			<Title>Colors</Title>
 			<Text>
 				Jundao Design's colors are based on Ant Design. The primary color is
@@ -47,7 +47,7 @@ export const Colors = () => {
             `}
 			</style>
 
-			<Space wrap vertical align="left">
+			<Space wrap vertical align="start">
 				<For each={colors} fallback={<div>Loading...</div>}>
 					{(color) => (
 						<Space>
@@ -55,7 +55,7 @@ export const Colors = () => {
 								{color}
 							</Text>
 							<For
-								each={[...Array(color === "gray" ? 13 : 10).keys()]}
+								each={[...Array(color === "gray" ? 18 : 10).keys()]}
 								fallback={<div>Loading...</div>}
 							>
 								{(brightness) => (
@@ -69,7 +69,7 @@ export const Colors = () => {
 												height: "2.25rem",
 												"border-radius": ".5rem",
 												border:
-													brightness === 5
+													brightness === 5 && color !== "gray"
 														? "2px solid var(--jdd-inline-border-color)"
 														: "",
 											}}
@@ -89,7 +89,7 @@ export const Colors = () => {
 
 export const Font = () => {
 	return (
-		<Space vertical align="left">
+		<Space vertical align="start">
 			<Title>Font</Title>
 			<Text>
 				Jundao Design uses the font <Text code>Inter</Text> for its UI and{" "}

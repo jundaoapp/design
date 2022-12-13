@@ -1,13 +1,44 @@
 div.jdd.card {
-    border: 1px solid var(--jdd-gray-2);
     border-radius: var(--jdd-border-radius-large);
-    background: var(--jdd-gray-2);
+    background: var(--jdd-gray-1);
     overflow: hidden;
+    box-shadow: var(--jdd-shadow);
+    border: 1px solid var(--jdd-gray-2);
 
     > .title {
         font-size: 1.15rem;
-        background: var(--jdd-gray-3);
+        background: var(--jdd-gray-2);
         padding: .5rem 1.5rem;
+
+        .collapse-toggle {
+            float: right;
+            cursor: pointer;
+            margin-bottom: -100%;
+            font-size: 1.5rem;
+            line-height: 100%;
+            margin-top: .2rem;
+            transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
+            margin-right: -.25rem;
+        }
+    }
+
+    > .content {
+        transition: max-height var(--jdd-transition-duration) var(--jdd-transition-function), padding var(--jdd-transition-duration) var(--jdd-transition-function);
+        max-height: 100vh;
+    }
+
+    &.collapsed {
+        > .title {
+            .collapse-toggle {
+                transform: rotateX(180deg);
+            }
+        }
+
+        > .content.content {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
     }
 
     &:not(.no-padding) > .content {
@@ -25,11 +56,12 @@ div.jdd.card {
     }
 
     .jdd-dark & {
-        border-color: var(--jdd-gray-10);
-        background: var(--jdd-gray-11);
+        background: var(--jdd-gray-13);
+        box-shadow: none;
+        border: none;
 
         > .title {
-            background: var(--jdd-gray-11);
+            background: var(--jdd-gray-12);
         }
     }
 }

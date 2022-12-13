@@ -20,7 +20,7 @@ export default {
 
 const Template = (props) => {
 	return (
-		<Space vertical align="left">
+		<Space vertical align="start">
 			<Text {...props} />
 			<Text>Jundao Design (default)</Text>
 			<Text type="secondary">Jundao Design (secondary)</Text>

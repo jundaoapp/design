@@ -12,18 +12,19 @@ export type IconProps = JSX.IntrinsicElements["i"] & {
 export default function Icon(props: IconProps) {
 	const [{ icon, line = false, spin = false, label = "" }, others] = splitProps(
 		props,
-		["icon", "line", "spin", "label"],
+		["icon", "line", "spin", "label", "class", "classList"],
 	);
 
 	const suffix = line ? "-line" : "-fill";
 
 	return (
 		<i
-			class={`jdd icon ri-${icon}${suffix}`}
+			class={`jdd icon ri-${icon}${suffix} ${props.class ?? ""}`}
 			role="img"
 			aria-label={label}
 			classList={{
 				spin: spin,
+				...props.classList,
 			}}
 			{...others}
 		/>

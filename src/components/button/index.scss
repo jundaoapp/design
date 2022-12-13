@@ -1,6 +1,6 @@
 button.jdd.button {
   color: var(--jdd-gray-11);
-  background-color: white;
+  background-color: var(--jdd-gray-1);
   padding: .4rem 1rem;
   border: 1px solid var(--jdd-gray-4);
   border-radius: var(--jdd-border-radius);
@@ -12,12 +12,12 @@ button.jdd.button {
 
   .jdd-dark & {
     color: var(--jdd-gray-1);
-    background-color: var(--jdd-gray-12);
+    background-color: transparent;
     border-color: var(--jdd-gray-9);
 
     &:disabled {
       color: var(--jdd-gray-5);
-      background-color: var(--jdd-gray-10);
+      background-color: var(--jdd-gray-11);
       border-color: var(--jdd-gray-8);
     }
   }
@@ -110,6 +110,7 @@ button.jdd.button {
     color: var(--jdd-gray-10);
     background-color: var(--jdd-gray-2);
     border-color: var(--jdd-gray-5);
+    box-shadow: none;
   }
 
   .jdd.spinner {

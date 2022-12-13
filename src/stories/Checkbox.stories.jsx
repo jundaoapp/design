@@ -61,7 +61,7 @@ const IndeterminateTemplate = (props) => {
 	};
 
 	return (
-		<Space vertical align="left">
+		<Space vertical align="start">
 			<Space>
 				<Checkbox
 					indeterminate={indeterminate()}

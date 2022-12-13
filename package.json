@@ -24,6 +24,7 @@
     "cross-env": "^7.0.3",
     "rome": "^11.0.0",
     "sass": "^1.56.1",
+    "sass-hsv": "^1.0.2",
     "storybook-dark-mode": "^1.1.2",
     "typescript": "^4.9.3",
     "vite": "^3.1.6",

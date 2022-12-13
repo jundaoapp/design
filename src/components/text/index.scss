@@ -1,52 +1,52 @@
 span.jdd.text {
-  color: var(--jdd-gray-11);
+  color: var(--jdd-gray-15);
   line-height: 1.5715;
 
-  .jdd-dark &, .jdd-dark & mark {
+  .jdd-dark &, .jdd-dark & mark.jdd.text {
     color: var(--jdd-gray-1);
   }
 
-  &.secondary, &.secondary mark {
+  &.secondary, &.secondary mark.jdd.text {
     color: var(--jdd-gray-8);
 
     .jdd-dark & {
-      color: var(--jdd-gray-5);
+      color: var(--jdd-gray-6);
     }
   }
 
-  &.success, &.success mark {
+  &.success, &.success mark.jdd.text {
     color: var(--jdd-green-6);
   }
 
-  &.warning, &.warning mark {
+  &.warning, &.warning mark.jdd.text {
     color: var(--jdd-orange-6);
   }
 
-  &.danger, &.danger mark {
+  &.danger, &.danger mark.jdd.text {
     color: var(--jdd-red-6);
   }
 
-  u {
+  u.jdd.text {
     text-decoration: underline;
   }
 
-  del {
+  del.jdd.text {
     text-decoration: line-through;
   }
 
-  strong {
+  strong.jdd.text {
     font-weight: bold;
   }
 
-  i {
+  i.jdd.text {
     font-style: italic;
   }
 
-  mark {
+  mark.jdd.text {
     background-color: rgba(var(--jdd-blue-5-rgb), 0.5);
   }
 
-  > code {
+  > code.jdd.text {
     font-family: var(--jdd-font-mono);
     margin: 0 .2em;
     padding: .2em .4em .1em;
@@ -56,7 +56,7 @@ span.jdd.text {
     border-radius: 3px;
   }
 
-  > kbd {
+  > kbd.jdd.text {
     font-family: var(--jdd-font-mono);
     margin: 0 .2em;
     padding: .15em .4em .1em;
