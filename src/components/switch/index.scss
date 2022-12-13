@@ -124,7 +124,7 @@ button.jdd.switch {
       }
 
       .jdd-dark & {
-        background: var(--jdd-gray-9);
+        background: var(--jdd-gray-10);
 
         &[aria-checked="true"] {
           background: var(--jdd-blue-7);
@@ -134,7 +134,7 @@ button.jdd.switch {
   }
 
   .jdd-dark & {
-    background: var(--jdd-gray-8);
+    background: var(--jdd-gray-9);
   }
 
   &.small {

@@ -1,5 +1,4 @@
 import "./index.scss";
-import { Button } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
 import { JSXElement, splitProps } from "solid-js";
 
@@ -44,31 +43,31 @@ export default function Text(props: TextProps) {
 	let child = children;
 
 	if (underline === true) {
-		child = <u>{child}</u>;
+		child = <u class="jdd text">{child}</u>;
 	}
 
 	if (deleteProp === true) {
-		child = <del>{child}</del>;
+		child = <del class="jdd text">{child}</del>;
 	}
 
 	if (bold === true) {
-		child = <strong>{child}</strong>;
+		child = <strong class="jdd text">{child}</strong>;
 	}
 
 	if (italic === true) {
-		child = <i>{child}</i>;
+		child = <i class="jdd text">{child}</i>;
 	}
 
 	if (mark === true) {
-		child = <mark>{child}</mark>;
+		child = <mark class="jdd text">{child}</mark>;
 	}
 
 	if (code === true) {
-		child = <code>{child}</code>;
+		child = <code class="jdd text">{child}</code>;
 	}
 
 	if (keyboard === true) {
-		child = <kbd>{child}</kbd>;
+		child = <kbd class="jdd text">{child}</kbd>;
 	}
 
 	return (

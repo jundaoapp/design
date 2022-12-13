@@ -7,7 +7,7 @@ export type SpaceProps = JSX.IntrinsicElements["div"] & {
 	size?: "small" | "medium" | "large";
 	vertical?: boolean;
 	wrap?: boolean;
-	align?: "left" | "center" | "right";
+	align?: "start" | "center" | "end";
 };
 
 export default function Space(props: SpaceProps) {
@@ -22,8 +22,8 @@ export default function Space(props: SpaceProps) {
 				medium: size === "medium",
 				large: size === "large",
 				wrap: wrap,
-				left: align === "left",
-				right: align === "right",
+				start: align === "start",
+				end: align === "end",
 			}}
 			{...others}
 		/>

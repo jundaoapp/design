@@ -21,8 +21,8 @@ export const parameters = {
       fontCode: '"JetBrains Mono", monospace',
 
       // UI
-      appBg: "#141414",
-      appContentBg: "#141414",
+      appBg: "#0d0e0f",
+      appContentBg: "#0a0b0b",
       appBorderColor: "#262626",
       appBorderRadius: "1rem",
 
@@ -39,7 +39,7 @@ export const parameters = {
       // Toolbar default and active colors
       barTextColor: "#fafafa",
       barSelectedColor: "#1890ff",
-      barBg: "#1f1f1f",
+      barBg: "#141516",
     },
     // Override the default light theme
     light: {

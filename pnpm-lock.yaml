@@ -15,6 +15,7 @@ specifiers:
   remixicon: ^2.5.0
   rome: ^11.0.0
   sass: ^1.56.1
+  sass-hsv: ^1.0.2
   solid-js: ^1.5.1
   storybook-dark-mode: ^1.1.2
   typescript: ^4.9.3
@@ -39,6 +40,7 @@ devDependencies:
   cross-env: 7.0.3
   rome: 11.0.0
   sass: 1.56.1
+  sass-hsv: 1.0.2
   storybook-dark-mode: 1.1.2
   typescript: 4.9.3
   vite: 3.2.4_sass@1.56.1
@@ -10116,6 +10118,10 @@ packages:
       walker: 1.0.8
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /sass-hsv/1.0.2:
+    resolution: {integrity: sha512-KrAok5dC3ucL9501uIIvlFDuWKngGfT4zMgTigaFBeOLE6OIr20CJ4JBxNe4siS/CWAVqQ6wylTkew9H0HgaxA==}
     dev: true
 
   /sass/1.56.1:
