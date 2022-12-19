@@ -1,16 +1,21 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
 import {
+	ComponentProps,
 	createEffect,
 	createSignal,
 	JSXElement,
+	mergeProps,
 	on,
 	Show,
 	splitProps,
 } from "solid-js";
 import { Spinner } from "@jundao/design";
+import { JSX } from "solid-js/types/jsx";
 
-export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
+export type SwitchProps = Omit<
+	ComponentProps<"button">,
+	"children" | "onChange"
+> & {
 	defaultChecked?: boolean;
 	onChange?: (checked: boolean) => void;
 	checked?: boolean;
@@ -21,20 +26,15 @@ export type SwitchProps = Omit<JSX.IntrinsicElements["button"], "children"> & {
 	loading?: boolean;
 };
 
+const defaultProps = {
+	defaultChecked: false,
+	disabled: false,
+	size: "default",
+	loading: false,
+};
+
 export default function Switch(props: SwitchProps) {
-	const [
-		{
-			defaultChecked = false,
-			onChange,
-			disabled = false,
-			checkedChildren,
-			uncheckedChildren,
-			onClick,
-			size = "default",
-			loading = false,
-		},
-		others,
-	] = splitProps(props, [
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
 		"checked",
 		"defaultChecked",
 		"disabled",
@@ -46,10 +46,11 @@ export default function Switch(props: SwitchProps) {
 		"loading",
 	]);
 
-	const controlled = props.checked !== undefined && onChange !== undefined;
+	const controlled =
+		props.checked !== undefined && local.onChange !== undefined;
 
 	const [checked, setChecked] = createSignal(
-		controlled ? !!props.checked : defaultChecked,
+		controlled ? !!props.checked : local.defaultChecked,
 	);
 
 	createEffect(
@@ -64,13 +65,13 @@ export default function Switch(props: SwitchProps) {
 	const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (
 		event,
 	) => {
-		if (!disabled) {
-			if (typeof onChange === "function")
-				onChange(controlled ? !props.checked : !checked());
+		if (!local.disabled) {
+			if (typeof local.onChange === "function")
+				local.onChange(controlled ? !local.checked : !checked());
 			if (!controlled) setChecked(!checked());
 		}
 
-		if (typeof onClick === "function") onClick(event);
+		if (typeof local.onClick === "function") local.onClick(event);
 	};
 
 	return (
@@ -80,22 +81,22 @@ export default function Switch(props: SwitchProps) {
 			aria-checked={checked()}
 			onClick={clickHandler}
 			class="jdd switch"
-			disabled={disabled}
+			disabled={local.disabled}
 			{...others}
 			classList={{
-				small: size === "small",
-				large: size === "large",
-				loading: loading,
+				small: local.size === "small",
+				large: local.size === "large",
+				loading: local.loading,
 			}}
 		>
 			<div class="handle">
-				<Show when={loading}>
+				<Show when={local.loading}>
 					<Spinner />
 				</Show>
 			</div>
 			<div class="inner">
-				<span class="checked">{checkedChildren}</span>
-				<span class="unchecked">{uncheckedChildren}</span>
+				<span class="checked">{local.checkedChildren}</span>
+				<span class="unchecked">{local.uncheckedChildren}</span>
 			</div>
 		</button>
 	);

@@ -1,14 +1,18 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { splitProps } from "solid-js";
+import { ComponentProps, mergeProps, splitProps } from "solid-js";
 
-export type SpinnerProps = Omit<JSX.IntrinsicElements["svg"], "children"> & {
+export type SpinnerProps = Omit<ComponentProps<"svg">, "children"> & {
 	size?: "small" | "default" | "large";
 	label?: string;
 };
 
+const defaultProps = {
+	size: "default",
+	label: "Loading",
+};
+
 export default function Spinner(props: SpinnerProps) {
-	const [{ size = "default", label = "loading" }, others] = splitProps(props, [
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
 		"size",
 		"label",
 	]);
@@ -17,12 +21,12 @@ export default function Spinner(props: SpinnerProps) {
 		<svg
 			class="jdd spinner"
 			classList={{
-				small: size === "small",
-				large: size === "large",
+				small: local.size === "small",
+				large: local.size === "large",
 			}}
 			{...others}
 		>
-			<title>{label}</title>
+			<title>{local.label}</title>
 			<circle />
 		</svg>
 	);

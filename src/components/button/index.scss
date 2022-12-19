@@ -1,4 +1,4 @@
-button.jdd.button {
+.jdd.button {
   color: var(--jdd-gray-11);
   background-color: var(--jdd-gray-1);
   padding: .4rem 1rem;
@@ -121,4 +121,24 @@ button.jdd.button {
           margin-right: .75rem;
       }
   }
+}
+
+div.button-group.jdd {
+    > .jdd.button {
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+    &:not(:last-child) {
+            margin-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:hover:not(:disabled) {
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
 }

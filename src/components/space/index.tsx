@@ -1,29 +1,37 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { JSXElement, splitProps } from "solid-js";
+import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 
-export type SpaceProps = JSX.IntrinsicElements["div"] & {
-	children: JSXElement;
+export type SpaceProps = RequiredChildren<ComponentProps<"div">> & {
 	size?: "small" | "medium" | "large";
 	vertical?: boolean;
 	wrap?: boolean;
 	align?: "start" | "center" | "end";
 };
 
+const defaultProps = {
+	size: "small",
+	vertical: false,
+	wrap: false,
+};
+
 export default function Space(props: SpaceProps) {
-	const [{ size = "small", vertical = false, wrap = false, align }, others] =
-		splitProps(props, ["size", "vertical", "wrap", "align"]);
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
+		"size",
+		"vertical",
+		"wrap",
+		"align",
+	]);
 
 	return (
 		<div
 			class="jdd space"
 			classList={{
-				vertical: vertical,
-				medium: size === "medium",
-				large: size === "large",
-				wrap: wrap,
-				start: align === "start",
-				end: align === "end",
+				vertical: local.vertical,
+				medium: local.size === "medium",
+				large: local.size === "large",
+				wrap: local.wrap,
+				start: local.align === "start",
+				end: local.align === "end",
 			}}
 			{...others}
 		/>

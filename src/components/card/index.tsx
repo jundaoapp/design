@@ -1,27 +1,30 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { createSignal, Show, splitProps } from "solid-js";
+import {
+	ComponentProps,
+	createSignal,
+	JSXElement,
+	mergeProps,
+	Show,
+	splitProps,
+} from "solid-js";
 import { Icon, Text } from "@jundao/design";
 
-export type CardProps = JSX.IntrinsicElements["div"] & {
-	title?: JSX.Element;
+export type CardProps = ComponentProps<"div"> & {
+	title?: JSXElement;
 	size?: "small" | "default";
 	noPadding?: boolean;
 	collapsible?: boolean;
 	collapsed?: boolean;
 };
 
+const defaultProps = {
+	size: "default",
+	noPaddng: false,
+	collapsible: false,
+};
+
 export default function Card(props: CardProps) {
-	const [
-		{
-			title,
-			size = "default",
-			children,
-			noPadding = false,
-			collapsible = false,
-		},
-		others,
-	] = splitProps(props, [
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
 		"title",
 		"size",
 		"children",
@@ -36,17 +39,21 @@ export default function Card(props: CardProps) {
 		<div
 			class="jdd card"
 			classList={{
-				small: size === "small",
-				"no-padding": noPadding,
+				small: local.size === "small",
+				"no-padding": local.noPadding,
 				collapsed: props.collapsed ?? collapsed(),
 			}}
 			{...others}
 		>
-			<Show when={title || collapsible}>
+			<Show when={local.title || local.collapsible}>
 				<div class="title">
-					{typeof title === "string" ? <Text>{title}</Text> : title}
+					{typeof local.title === "string" ? (
+						<Text>{local.title}</Text>
+					) : (
+						local.title
+					)}
 
-					<Show when={collapsible}>
+					<Show when={local.collapsible}>
 						<Text>
 							<Icon
 								class="collapse-toggle"
@@ -60,7 +67,7 @@ export default function Card(props: CardProps) {
 					</Show>
 				</div>
 			</Show>
-			<div class="content">{children}</div>
+			<div class="content">{local.children}</div>
 		</div>
 	);
 }
