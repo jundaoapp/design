@@ -1,32 +1,40 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { JSXElement, splitProps } from "solid-js";
+import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 import { Text } from "@jundao/design";
 
-export type DividerProps = JSX.IntrinsicElements["div"] & {
+export type DividerProps = ComponentProps<"div"> & {
 	children?: JSXElement;
 	vertical?: boolean;
 	dashed?: boolean;
 	orientation?: "left" | "right";
 };
 
+const defaultProps = {
+	vertical: false,
+	dashed: false,
+};
+
 export default function Divider(props: DividerProps) {
-	const [{ children, vertical = false, dashed = false, orientation }, others] =
-		splitProps(props, ["children", "vertical", "dashed", "orientation"]);
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
+		"children",
+		"vertical",
+		"dashed",
+		"orientation",
+	]);
 
-	let child = children;
+	let child = <>{local.children}</>;
 
-	if (children) {
+	if (local.children) {
 		child = <Text>{child}</Text>;
 	}
 
 	return (
 		<div
-			class={`jdd divider ${orientation ?? ""}`}
+			class={`jdd divider ${local.orientation ?? ""}`}
 			classList={{
-				vertical: vertical,
-				dashed: dashed,
-				"with-text": !!children,
+				vertical: local.vertical,
+				dashed: local.dashed,
+				"with-text": !!local.children,
 			}}
 			role="separator"
 			children={child}

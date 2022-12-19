@@ -1,13 +1,20 @@
 import "./index.scss";
 import { JSX } from "solid-js/types/jsx";
-import { createEffect, createSignal, on, splitProps } from "solid-js";
-import { colors } from "@storybook/addon-interactions/dist/ts3.9/theme";
+import {
+	ComponentProps,
+	createEffect,
+	createSignal,
+	on,
+	splitProps,
+} from "solid-js";
+import { Label } from "@jundao/design";
 
-export type CheckboxProps = JSX.IntrinsicElements["input"] & {
+export type CheckboxProps = Omit<ComponentProps<"input">, "onChange"> & {
 	defaultChecked?: boolean;
 	onChange?: (checked: boolean) => void;
 	size?: "small" | "default" | "large";
 	indeterminate?: boolean;
+	label?: string;
 };
 
 export default function Checkbox(props: CheckboxProps) {
@@ -19,6 +26,7 @@ export default function Checkbox(props: CheckboxProps) {
 			disabled = false,
 			onClick,
 			value,
+			label,
 		},
 		others,
 	] = splitProps(props, [
@@ -30,6 +38,7 @@ export default function Checkbox(props: CheckboxProps) {
 		"onClick",
 		"indeterminate",
 		"value",
+		"label",
 	]);
 
 	let ref!: HTMLInputElement;
@@ -85,7 +94,7 @@ export default function Checkbox(props: CheckboxProps) {
 		if (typeof onClick === "function") onClick(event);
 	};
 
-	return (
+	const input = (
 		<input
 			ref={ref}
 			class="jdd checkbox"
@@ -100,5 +109,11 @@ export default function Checkbox(props: CheckboxProps) {
 			value={props.indeterminate === true ? "indeterminate" : value}
 			{...others}
 		/>
-	);
+	) as HTMLInputElement;
+
+	if (label !== undefined) {
+		return <Label for={input}>{label}</Label>;
+	}
+
+	return input;
 }

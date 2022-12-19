@@ -1,5 +1,4 @@
-import { Checkbox, Text, Button } from "@jundao/design";
-import { Space } from "../components";
+import { Space, Checkbox, Text, Button } from "@jundao/design";
 import { createSignal, splitProps } from "solid-js";
 
 export default {
@@ -15,6 +14,7 @@ export default {
 		disabled: { control: "boolean" },
 		checked: { control: "boolean" },
 		defaultChecked: { control: "boolean" },
+		label: { control: "text" },
 	},
 };
 
@@ -46,18 +46,15 @@ export const Controlled = Template.bind({});
 Controlled.args = { checked: true };
 
 const IndeterminateTemplate = (props) => {
-	const [{ indeterminate: indeterminateProp, onChange }, others] = splitProps(
-		props,
-		["indeterminate", "onChange"],
-	);
+	const [local, others] = splitProps(props, ["indeterminate", "onChange"]);
 
-	const [indeterminate, setIndeterminate] = createSignal(indeterminateProp);
+	const [indeterminate, setIndeterminate] = createSignal(local.indeterminate);
 	const [checked, setChecked] = createSignal(false);
 
 	const changeHandler = (value) => {
 		setChecked(value);
 		setIndeterminate(false);
-		if (typeof onChange === "function") onChange(value);
+		if (typeof local.onChange === "function") local.onChange(value);
 	};
 
 	return (
@@ -92,3 +89,6 @@ const IndeterminateTemplate = (props) => {
 
 export const Indeterminate = IndeterminateTemplate.bind({});
 Indeterminate.args = { indeterminate: true };
+
+export const Label = Template.bind({});
+Label.args = { label: "Label" };

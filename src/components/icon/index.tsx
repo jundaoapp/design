@@ -1,30 +1,39 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { splitProps } from "solid-js";
+import { ComponentProps, mergeProps, splitProps } from "solid-js";
 
-export type IconProps = JSX.IntrinsicElements["i"] & {
+export type IconProps = ComponentProps<"i"> & {
 	icon: string;
 	line?: boolean;
 	spin?: boolean;
 	label?: string;
 };
 
-export default function Icon(props: IconProps) {
-	const [{ icon, line = false, spin = false, label = "" }, others] = splitProps(
-		props,
-		["icon", "line", "spin", "label", "class", "classList"],
-	);
+const defaultProps = {
+	line: false,
+	spin: false,
+	label: "",
+};
 
-	const suffix = line ? "-line" : "-fill";
+export default function Icon(props: IconProps) {
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
+		"icon",
+		"line",
+		"spin",
+		"label",
+		"class",
+		"classList",
+	]);
+
+	const suffix = local.line ? "-line" : "-fill";
 
 	return (
 		<i
-			class={`jdd icon ri-${icon}${suffix} ${props.class ?? ""}`}
+			class={`jdd icon ri-${local.icon}${suffix} ${local.class ?? ""}`}
 			role="img"
-			aria-label={label}
+			aria-label={local.label}
 			classList={{
-				spin: spin,
-				...props.classList,
+				spin: local.spin,
+				...local.classList,
 			}}
 			{...others}
 		/>

@@ -1,4 +1,4 @@
-import { Button } from "@jundao/design";
+import { Button, Space } from "@jundao/design";
 
 export default {
 	title: "Components/Button",
@@ -46,3 +46,22 @@ Danger.args = { children: "Button", danger: true };
 
 export const Loading = Template.bind({});
 Loading.args = { children: "Button", loading: true };
+
+const GroupTemplate = (props) => (
+	<Space vertical>
+		<Button.Group>
+			<Button {...props} />
+			<Button {...props} />
+			<Button {...props} />
+		</Button.Group>
+
+		<Button.Group>
+			<Button>Button</Button>
+			<Button {...props} />
+			<Button>Button</Button>
+		</Button.Group>
+	</Space>
+);
+
+export const Group = GroupTemplate.bind({});
+Group.args = { children: "Button", type: "primary" };

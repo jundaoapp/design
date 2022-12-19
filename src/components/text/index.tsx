@@ -1,9 +1,7 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { JSXElement, splitProps } from "solid-js";
+import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 
-export type TextProps = JSX.IntrinsicElements["span"] & {
-	children: JSXElement;
+export type TextProps = ComponentProps<"span"> & {
 	type?: "default" | "secondary" | "success" | "warning" | "danger";
 	underline?: boolean;
 	delete?: boolean;
@@ -14,21 +12,12 @@ export type TextProps = JSX.IntrinsicElements["span"] & {
 	keyboard?: boolean;
 };
 
+const defaultProps = {
+	type: "default",
+};
+
 export default function Text(props: TextProps) {
-	const [
-		{
-			children,
-			type = "default",
-			underline,
-			delete: deleteProp,
-			bold,
-			italic,
-			mark,
-			code,
-			keyboard,
-		},
-		others,
-	] = splitProps(props, [
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
 		"children",
 		"type",
 		"underline",
@@ -40,33 +29,33 @@ export default function Text(props: TextProps) {
 		"keyboard",
 	]);
 
-	let child = children;
+	let child = <>{local.children}</>;
 
-	if (underline === true) {
+	if (local.underline === true) {
 		child = <u class="jdd text">{child}</u>;
 	}
 
-	if (deleteProp === true) {
+	if (local.delete === true) {
 		child = <del class="jdd text">{child}</del>;
 	}
 
-	if (bold === true) {
+	if (local.bold === true) {
 		child = <strong class="jdd text">{child}</strong>;
 	}
 
-	if (italic === true) {
+	if (local.italic === true) {
 		child = <i class="jdd text">{child}</i>;
 	}
 
-	if (mark === true) {
+	if (local.mark === true) {
 		child = <mark class="jdd text">{child}</mark>;
 	}
 
-	if (code === true) {
+	if (local.code === true) {
 		child = <code class="jdd text">{child}</code>;
 	}
 
-	if (keyboard === true) {
+	if (local.keyboard === true) {
 		child = <kbd class="jdd text">{child}</kbd>;
 	}
 
@@ -74,10 +63,10 @@ export default function Text(props: TextProps) {
 		<span
 			class="jdd text jdd-typography"
 			classList={{
-				secondary: type === "secondary",
-				success: type === "success",
-				warning: type === "warning",
-				danger: type === "danger",
+				secondary: local.type === "secondary",
+				success: local.type === "success",
+				warning: local.type === "warning",
+				danger: local.type === "danger",
 			}}
 			{...others}
 		>
