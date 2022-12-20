@@ -1,4 +1,5 @@
 export { default as Button } from "@jundao/design/button";
+export { default as Breadcrumb } from "@jundao/design/breadcrumb";
 export { default as Card } from "@jundao/design/card";
 export { default as Checkbox } from "@jundao/design/checkbox";
 export { default as Divider } from "@jundao/design/divider";
