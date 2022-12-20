@@ -26,10 +26,12 @@ const Template = (props) => {
 					"font-size": "2rem",
 				}}
 			>
-				<Icon {...props} />
-				<Icon icon="home" line label="Home" />
-				<Icon icon="terminal-box" label="Terminal" />
-				<Icon icon="loader-5" line spin label="loading" />
+				<Text>
+					<Icon {...props} />
+					<Icon icon="home" line label="Home" />
+					<Icon icon="terminal-box" label="Terminal" />
+					<Icon icon="loader-5" line spin label="loading" />
+				</Text>
 			</div>
 		</>
 	);

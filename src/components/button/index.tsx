@@ -27,7 +27,12 @@ function Button(props: ButtonProps) {
 		"loading",
 	]);
 
-	const child = local.children ? <span>{local.children}</span> : null;
+	const child =
+		typeof local.children === "string" ? (
+			<span>{local.children}</span>
+		) : (
+			local.children
+		);
 
 	return (
 		<button

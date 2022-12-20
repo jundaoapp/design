@@ -41,7 +41,7 @@ export default function Card(props: CardProps) {
 			classList={{
 				small: local.size === "small",
 				"no-padding": local.noPadding,
-				collapsed: props.collapsed ?? collapsed(),
+				collapsed: local.collapsed ?? collapsed(),
 			}}
 			{...others}
 		>
