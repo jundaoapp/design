@@ -1,5 +1,5 @@
 import "./index.scss";
-import { ComponentProps, JSXElement, splitProps } from "solid-js";
+import { ComponentProps, splitProps } from "solid-js";
 
 export type LinkProps = RequiredChildren<ComponentProps<"a">> & {
 	disabled?: boolean;

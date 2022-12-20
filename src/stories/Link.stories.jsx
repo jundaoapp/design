@@ -17,9 +17,7 @@ export default {
 	},
 };
 
-const Template = (props) => {
-	return <Link {...props} />;
-};
+const Template = (props) => <Link {...props} />;
 
 export const Default = Template.bind({});
 Default.args = { children: "Jundao Design (link)", href: "https://jundao.app" };
