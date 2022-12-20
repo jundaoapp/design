@@ -4,7 +4,7 @@ import { Show, ComponentProps, mergeProps, splitProps } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
 
 export type ButtonProps = Omit<ComponentProps<"button">, "type"> & {
-	type?: "primary" | "default" | "dashed";
+	type?: "primary" | "default";
 	size?: "small" | "default" | "large";
 	disabled?: boolean;
 	danger?: boolean;
@@ -40,7 +40,6 @@ function Button(props: ButtonProps) {
 			disabled={local.disabled}
 			classList={{
 				primary: local.type === "primary",
-				dashed: local.type === "dashed",
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,

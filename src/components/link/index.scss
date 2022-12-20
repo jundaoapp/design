@@ -1,6 +1,7 @@
 a.jdd.link {
   color: var(--jdd-gray-11);
   cursor: not-allowed;
+  text-decoration: underline solid transparent;
 
   .jdd-dark & {
     color: var(--jdd-gray-1);
@@ -9,10 +10,11 @@ a.jdd.link {
   &[href] {
     cursor: pointer;
     color: var(--jdd-blue-6);
-    transition: var(--jdd-transition-colors);
+    transition: text-decoration var(--jdd-transition-function) var(--jdd-transition-duration), var(--jdd-transition-colors);
 
     &:hover {
       color: var(--jdd-blue-5);
+      text-decoration: underline solid Currentcolor;
 
       .jdd-dark & {
         color: var(--jdd-blue-7);

@@ -1,10 +1,8 @@
 .jdd.button {
   color: var(--jdd-gray-11);
-  background-color: var(--jdd-gray-1);
+  background-color: var(--jdd-gray-4);
   padding: .4rem 1rem;
-  border: 1px solid var(--jdd-gray-4);
   border-radius: var(--jdd-border-radius);
-  box-shadow: var(--jdd-shadow-small);
   cursor: pointer;
   transition: var(--jdd-transition-colors), translateX 0.2s var(--jdd-transition-function);
   font-size: .9rem;
@@ -12,37 +10,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 
   .jdd-dark & {
     color: var(--jdd-gray-1);
-    background-color: transparent;
-    border-color: var(--jdd-gray-9);
+    background-color: var(--jdd-gray-13);
 
     &:disabled {
       color: var(--jdd-gray-5);
       background-color: var(--jdd-gray-11);
-      border-color: var(--jdd-gray-8);
     }
   }
 
   @import "primary";
 
-  &.dashed {
-    border-style: dashed;
-    border-color: var(--jdd-gray-5);
-
-    &:disabled {
-      border-color: var(--jdd-gray-4);
-    }
-
-    .jdd-dark &:disabled {
-      border-color: var(--jdd-gray-8);
-    }
-  }
-
   &.small {
     font-size: .7rem;
     padding: .15rem .3rem;
+    border-radius: var(--jdd-border-radius-small);
   }
 
   &.large {
@@ -51,51 +36,38 @@
   }
 
   &.danger {
-    border-color: var(--jdd-red-6);
-    color: var(--jdd-red-6);
-
     &:not(:disabled) {
-      &:hover, &:focus-visible, &.loading {
-        color: var(--jdd-red-5);
-        border-color: var(--jdd-red-5);
+        &:hover, &:focus-visible, &.loading {
+            background-color: var(--jdd-red-1);
+            color: var(--jdd-red-6);
       }
 
       &:active {
-        color: var(--jdd-red-8);
-        border-color: var(--jdd-red-8);
-        outline: solid .15rem rgba(var(--jdd-red-6-rgb), 0.25);
+            background-color: var(--jdd-red-2);
+            color: var(--jdd-red-7);
       }
-    }
-
-    &:disabled {
-      border-color: var(--jdd-gray-4);
     }
 
     .jdd-dark &:disabled {
       color: var(--jdd-gray-5);
-      border-color: var(--jdd-gray-8);
     }
   }
 
   &:not(:disabled) {
     &:hover, &:focus-visible, &.loading {
-      color: var(--jdd-blue-5);
-      border-color: var(--jdd-blue-5);
+      background-color: var(--jdd-gray-5);
     }
 
     &:active {
-      color: var(--jdd-blue-7);
-      border-color: var(--jdd-blue-7);
-      outline: solid .15rem rgba(var(--jdd-blue-6-rgb), 0.25);
+      color: var(--jdd-blue-6);
+      background-color: var(--jdd-blue-1);
     }
   }
 
   &:disabled {
     cursor: not-allowed;
     color: var(--jdd-gray-10);
-    background-color: var(--jdd-gray-2);
-    border-color: var(--jdd-gray-5);
-    box-shadow: none;
+    background-color: var(--jdd-gray-5);
   }
 
   .jdd.spinner {
@@ -118,7 +90,7 @@ div.button-group.jdd {
             border-bottom-left-radius: 0;
         }
 
-    &:not(:last-child) {
+        &:not(:last-child) {
             margin-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;

@@ -1,4 +1,4 @@
-import { Label, Text, Space, Breadcrumb, Switch } from "@jundao/design";
+import { Text, Space, Breadcrumb, Switch } from "@jundao/design";
 import { createSignal } from "solid-js";
 import { Link } from "../components";
 
@@ -12,7 +12,7 @@ export default {
 
 const Template = (props) => (
 	<Breadcrumb {...props}>
-		<Text>Home</Text>
+		<Link href="#">Home</Link>
 		<Text>Account</Text>
 		<Text>Profile</Text>
 	</Breadcrumb>
@@ -47,7 +47,7 @@ const CollapsedTemplate = (props) => {
 	return (
 		<Space vertical align="start">
 			<Breadcrumb {...props} collapsed={collapsed()}>
-				<Text>Home</Text>
+				<Link href="#">Home</Link>
 				<Text>Account</Text>
 				<Text>Profile</Text>
 				<Text>Option 1</Text>

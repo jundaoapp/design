@@ -7,7 +7,7 @@ export default {
 		onClick: { action: "onClick" },
 		type: {
 			control: { type: "select" },
-			options: ["primary", "default", "dashed"],
+			options: ["primary", "default"],
 		},
 		size: {
 			control: { type: "select" },
@@ -28,9 +28,6 @@ Primary.args = { children: "Button", type: "primary" };
 
 export const Default = Template.bind({});
 Default.args = { children: "Button" };
-
-export const Dashed = Template.bind({});
-Dashed.args = { children: "Button", type: "dashed" };
 
 export const Large = Template.bind({});
 Large.args = { children: "Button", size: "large" };
