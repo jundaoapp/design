@@ -1,6 +1,6 @@
 import { Label, Text, Space, Breadcrumb, Switch } from "@jundao/design";
 import { createSignal } from "solid-js";
-import {Link} from "../components";
+import { Link } from "../components";
 
 export default {
 	title: "Components/Breadcrumb",
@@ -27,7 +27,7 @@ Separator.args = { separator: ">" };
 const AutoCollapseTemplate = (props) => {
 	return (
 		<Breadcrumb {...props}>
-      <Link href="#">Home</Link>
+			<Link href="#">Home</Link>
 			<Text>Account</Text>
 			<Text>Profile</Text>
 			<Text>Option 1</Text>
@@ -57,9 +57,7 @@ const CollapsedTemplate = (props) => {
 			</Breadcrumb>
 			<Switch
 				defaultChecked
-				onChange={
-					setCollapsed
-				}
+				onChange={setCollapsed}
 				checkedChildren="collapsed"
 				uncheckedChildren="extended"
 			/>
