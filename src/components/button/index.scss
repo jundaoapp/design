@@ -14,11 +14,22 @@
 
   .jdd-dark & {
     color: var(--jdd-gray-1);
-    background-color: var(--jdd-gray-13);
+    background-color: var(--jdd-gray-12);
 
     &:disabled {
       color: var(--jdd-gray-5);
-      background-color: var(--jdd-gray-11);
+      background-color: var(--jdd-gray-10);
+    }
+
+    &:not(:disabled) {
+        &:hover, &:focus-visible, &.loading {
+            background-color: var(--jdd-gray-11);
+        }
+
+        &:active {
+            background-color: var(--jdd-blue-10);
+            color: var(--jdd-blue-6);
+        }
     }
   }
 
@@ -48,8 +59,20 @@
       }
     }
 
-    .jdd-dark &:disabled {
-      color: var(--jdd-gray-5);
+    .jdd-dark & {
+        &:disabled {
+            color: var(--jdd-gray-5);
+        }
+
+        &:not(:disabled) {
+            &:hover, &:focus-visible, &.loading {
+                background-color: var(--jdd-red-10);
+            }
+
+        &:active {
+                background-color: var(--jdd-red-9);
+            }
+        }
     }
   }
 

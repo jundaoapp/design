@@ -20,6 +20,7 @@ export type SwitchProps = Omit<
 	onChange?: (checked: boolean) => void;
 	checked?: boolean;
 	disabled?: boolean;
+	danger?: boolean;
 	checkedChildren?: JSXElement;
 	uncheckedChildren?: JSXElement;
 	size?: "small" | "default" | "large";
@@ -31,6 +32,7 @@ const defaultProps = {
 	disabled: false,
 	size: "default",
 	loading: false,
+	danger: false,
 };
 
 export default function Switch(props: SwitchProps) {
@@ -44,6 +46,7 @@ export default function Switch(props: SwitchProps) {
 		"onChange",
 		"size",
 		"loading",
+		"danger",
 	]);
 
 	const controlled =
@@ -87,6 +90,7 @@ export default function Switch(props: SwitchProps) {
 				small: local.size === "small",
 				large: local.size === "large",
 				loading: local.loading,
+				danger: local.danger,
 			}}
 		>
 			<div class="handle">

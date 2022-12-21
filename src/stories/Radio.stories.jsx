@@ -12,12 +12,9 @@ export default {
 		},
 		disabled: { control: "boolean" },
 		checked: { control: "boolean" },
+		danger: { control: "boolean" },
 		label: { control: "text" },
 		value: { control: "text" },
-		as: {
-			control: { type: "select" },
-			options: ["radio", "button"],
-		},
 	},
 };
 
@@ -27,6 +24,9 @@ const Template = (props) => {
 
 export const Default = Template.bind({});
 Default.args = { value: "value" };
+
+export const Danger = Template.bind({});
+Danger.args = { danger: true, value: "value" };
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: true, value: "value" };
