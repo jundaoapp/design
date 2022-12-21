@@ -10,10 +10,12 @@ export type RadioProps = Omit<ComponentProps<"input">, "value"> & {
 	size?: "small" | "default" | "large";
 	label?: string;
 	value: string | string[] | number;
+	danger?: boolean;
 };
 
 const defaultProps = {
 	size: "default",
+	danger: false,
 };
 
 function Radio(props: RadioProps) {
@@ -23,6 +25,7 @@ function Radio(props: RadioProps) {
 		"onChange",
 		"value",
 		"name",
+		"danger",
 	]);
 
 	const context = useContext(RadioGroupContext);
@@ -40,6 +43,7 @@ function Radio(props: RadioProps) {
 			classList={{
 				small: local.size === "small",
 				large: local.size === "large",
+				danger: local.danger,
 			}}
 			checked={context !== undefined && context[0].value === local.value}
 			name={context !== undefined ? context[0].name : local.name}

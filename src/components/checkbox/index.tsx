@@ -4,6 +4,7 @@ import {
 	ComponentProps,
 	createEffect,
 	createSignal,
+	mergeProps,
 	on,
 	splitProps,
 } from "solid-js";
@@ -14,22 +15,19 @@ export type CheckboxProps = Omit<ComponentProps<"input">, "onChange"> & {
 	onChange?: (checked: boolean) => void;
 	size?: "small" | "default" | "large";
 	indeterminate?: boolean;
+	danger?: boolean;
 	label?: string;
 };
 
+const defaultProps = {
+	defaultChecked: false,
+	danger: false,
+	size: "default",
+	disabled: false,
+};
+
 export default function Checkbox(props: CheckboxProps) {
-	const [
-		{
-			defaultChecked = false,
-			onChange,
-			size = "default",
-			disabled = false,
-			onClick,
-			value,
-			label,
-		},
-		others,
-	] = splitProps(props, [
+	const [local, others] = splitProps(mergeProps(defaultProps, props), [
 		"defaultChecked",
 		"onChange",
 		"checked",
@@ -39,6 +37,7 @@ export default function Checkbox(props: CheckboxProps) {
 		"indeterminate",
 		"value",
 		"label",
+		"danger",
 	]);
 
 	let ref!: HTMLInputElement;
@@ -55,10 +54,11 @@ export default function Checkbox(props: CheckboxProps) {
 		),
 	);
 
-	const controlled = props.checked !== undefined && onChange !== undefined;
+	const controlled =
+		props.checked !== undefined && local.onChange !== undefined;
 
 	const [checked, setChecked] = createSignal(
-		controlled ? !!props.checked : !props.indeterminate && defaultChecked,
+		controlled ? !!props.checked : !props.indeterminate && local.defaultChecked,
 	);
 
 	createEffect(
@@ -84,14 +84,14 @@ export default function Checkbox(props: CheckboxProps) {
 	const clickHandler: JSX.EventHandler<HTMLInputElement, MouseEvent> = (
 		event,
 	) => {
-		if (!disabled) {
-			if (typeof onChange === "function")
-				onChange(controlled ? !props.checked : !checked());
+		if (!local.disabled) {
+			if (typeof local.onChange === "function")
+				local.onChange(controlled ? !props.checked : !checked());
 			if (!controlled) setChecked(!checked());
 		}
 		if (controlled) event.preventDefault();
 
-		if (typeof onClick === "function") onClick(event);
+		if (typeof local.onClick === "function") local.onClick(event);
 	};
 
 	const input = (
@@ -100,19 +100,20 @@ export default function Checkbox(props: CheckboxProps) {
 			class="jdd checkbox"
 			type="checkbox"
 			classList={{
-				small: size === "small",
-				large: size === "large",
+				small: local.size === "small",
+				large: local.size === "large",
+				danger: local.danger,
 			}}
-			disabled={disabled}
+			disabled={local.disabled}
 			checked={checked()}
 			onClick={clickHandler}
-			value={props.indeterminate === true ? "indeterminate" : value}
+			value={props.indeterminate === true ? "indeterminate" : local.value}
 			{...others}
 		/>
 	) as HTMLInputElement;
 
-	if (label !== undefined) {
-		return <Label for={input}>{label}</Label>;
+	if (local.label !== undefined) {
+		return <Label for={input}>{local.label}</Label>;
 	}
 
 	return input;

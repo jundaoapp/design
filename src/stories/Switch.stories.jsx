@@ -12,6 +12,7 @@ export default {
 		},
 		disabled: { control: "boolean" },
 		checked: { control: "boolean" },
+		danger: { control: "boolean" },
 		defaultChecked: { control: "boolean" },
 		checkedChildren: { control: "text" },
 		uncheckedChildren: { control: "text" },
@@ -25,6 +26,9 @@ const Template = (props) => {
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const Danger = Template.bind({});
+Danger.args = { danger: true };
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: true };

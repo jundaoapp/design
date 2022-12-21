@@ -84,6 +84,10 @@ button.jdd.switch {
   &[aria-checked="true"] {
     background: var(--jdd-blue-6);
 
+    .jdd-dark & {
+        background: var(--jdd-blue-6);
+    }
+
     > .handle {
       inset-inline-start: calc(100% - $handle-margin - $handle-size);
     }
@@ -104,9 +108,10 @@ button.jdd.switch {
       }
     }
 
-    .jdd-dark & {
-      background: var(--jdd-blue-6);
-    }
+  }
+
+  &.danger[aria-checked="true"] {
+      background: var(--jdd-red-6);
   }
 
   &:disabled {
@@ -119,15 +124,31 @@ button.jdd.switch {
     &.loading {
       background: var(--jdd-gray-4);
 
+      &.danger {
+          background: var(--jdd-red-3);
+      }
+
       &[aria-checked="true"] {
         background: var(--jdd-blue-5);
+
+        &.danger {
+            background: var(--jdd-red-5);
+        }
       }
 
       .jdd-dark & {
         background: var(--jdd-gray-10);
 
+        &.danger {
+            background: var(--jdd-red-10);
+        }
+
         &[aria-checked="true"] {
           background: var(--jdd-blue-7);
+
+          &.danger {
+              background: var(--jdd-red-7);
+          }
         }
       }
     }
