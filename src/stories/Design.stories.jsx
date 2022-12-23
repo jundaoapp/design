@@ -54,9 +54,7 @@ export const Colors = () => {
 							<Text style={{ width: "5rem", "margin-bottom": "2rem" }}>
 								{color}
 							</Text>
-							<For
-								each={[...Array(color === "gray" ? 18 : 10).keys()]}
-							>
+							<For each={[...Array(color === "gray" ? 18 : 10).keys()]}>
 								{(brightness) => (
 									<Space vertical>
 										<div
