@@ -1,3 +1,4 @@
+export { default as Avatar } from "@jundao/design/avatar";
 export { default as Button } from "@jundao/design/button";
 export { default as Breadcrumb } from "@jundao/design/breadcrumb";
 export { default as Card } from "@jundao/design/card";

@@ -47,9 +47,12 @@ export default function Breadcrumb(props: BreadcrumbProps) {
 		local.afterCollapse ??
 		local.max - (local.beforeCollapse ?? beforeCollapse) - 1;
 
-	const childrendArray: JSXElement[] = Array.isArray(local.children)
-		? local.children
-		: [local.children];
+	const children =
+		typeof local.children === "function" ? local.children() : local.children;
+
+	const childrendArray: JSXElement[] = Array.isArray(children)
+		? children
+		: [children];
 
 	createEffect(
 		on(
@@ -86,14 +89,7 @@ export default function Breadcrumb(props: BreadcrumbProps) {
 			classList={{ collapsible: local.collapsed === undefined }}
 			{...others}
 		>
-			<For
-				each={renderItems()}
-				fallback={
-					<Text>
-						<Spinner size="small" />
-					</Text>
-				}
-			>
+			<For each={renderItems()}>
 				{(item, index) => {
 					if (index() + 1 < renderItems().length) {
 						return (
