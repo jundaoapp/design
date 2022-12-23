@@ -56,7 +56,6 @@ export const Colors = () => {
 							</Text>
 							<For
 								each={[...Array(color === "gray" ? 18 : 10).keys()]}
-								fallback={<div>Loading...</div>}
 							>
 								{(brightness) => (
 									<Space vertical>

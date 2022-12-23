@@ -88,11 +88,6 @@ export default function Breadcrumb(props: BreadcrumbProps) {
 		>
 			<For
 				each={renderItems()}
-				fallback={
-					<Text>
-						<Spinner size="small" />
-					</Text>
-				}
 			>
 				{(item, index) => {
 					if (index() + 1 < renderItems().length) {
