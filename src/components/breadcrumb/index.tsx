@@ -12,29 +12,36 @@ import {
 	splitProps,
 } from "solid-js";
 import { Button, Icon, Spinner, Text } from "@jundao/design";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type BreadcrumbProps = ComponentProps<"div"> & {
-	separator?: JSXElement;
-	collapsed?: boolean;
-	max?: number;
-	beforeCollapse?: number;
-	afterCollapse?: number;
-};
-
-const defaultProps = {
-	separator: "/",
-	max: 4,
-};
+export type BreadcrumbProps = IntrinsicComponentProps<
+	"div",
+	{
+		separator?: JSXElement;
+		collapsed?: boolean;
+		max?: number;
+		beforeCollapse?: number;
+		afterCollapse?: number;
+	}
+>;
 
 export default function Breadcrumb(props: BreadcrumbProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"children",
-		"separator",
-		"collapsed",
-		"max",
-		"beforeCollapse",
-		"afterCollapse",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			separator: "/",
+			max: 4,
+		},
+		keys: [
+			"children",
+			"separator",
+			"collapsed",
+			"max",
+			"beforeCollapse",
+			"afterCollapse",
+		],
+	});
 
 	const [collapsed, setCollapsed] = createSignal(true);
 	const [renderItems, setRenderItems] = createSignal<JSXElement[]>([]);

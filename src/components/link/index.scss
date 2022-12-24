@@ -82,4 +82,8 @@ a.jdd.link {
       }
     }
   }
+
+  &:has(.jdd.avatar) {
+      border-radius: 9999px;
+  }
 }

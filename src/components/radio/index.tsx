@@ -5,28 +5,28 @@ import { ComponentProps, mergeProps, splitProps, useContext } from "solid-js";
 import { Label } from "@jundao/design";
 import { RadioGroupContext } from "@jundao/design/radio/group";
 import RadioGroup from "./group";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type RadioProps = Omit<ComponentProps<"input">, "value"> & {
-	size?: "small" | "default" | "large";
-	label?: string;
-	value: string | string[] | number;
-	danger?: boolean;
-};
-
-const defaultProps = {
-	size: "default",
-	danger: false,
-};
+export type RadioProps = IntrinsicComponentProps<
+	"input",
+	{
+		size?: "small" | "default" | "large";
+		label?: string;
+		value: string | string[] | number;
+		danger?: boolean;
+	}
+>;
 
 function Radio(props: RadioProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"size",
-		"label",
-		"onChange",
-		"value",
-		"name",
-		"danger",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			size: "default",
+			danger: false,
+		},
+		keys: ["size", "label", "onChange", "value", "name", "danger"],
+	});
 
 	const context = useContext(RadioGroupContext);
 

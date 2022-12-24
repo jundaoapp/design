@@ -26,6 +26,10 @@
             background-color: var(--jdd-gray-11);
         }
 
+        &:focus-visible {
+            transform: scale(1);
+        }
+
         &:active {
             background-color: var(--jdd-blue-10);
             color: var(--jdd-blue-6);
@@ -118,9 +122,11 @@ div.button-group.jdd {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
-            &:hover:not(:disabled) {
-                position: relative;
-                z-index: 1;
+            :not(:disabled) {
+                &:hover, &:focus-visible {
+                    position: relative;
+                    z-index: 1;
+                }
             }
         }
     }

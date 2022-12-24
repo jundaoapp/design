@@ -10,27 +10,26 @@ import {
 } from "solid-js";
 import { Icon, Text, Avatar } from "@jundao/design";
 import { AvatarProps } from "@jundao/design/avatar";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type AvatarGroupProps = ComponentProps<"div"> &
+export type AvatarGroupProps = IntrinsicComponentProps<
+	"div",
 	Pick<AvatarProps, "size" | "shape"> & {
 		max?: number;
 		overlap?: boolean;
 		avatarProps?: AvatarProps;
-	};
-
-const defaultProps = {
-	overlap: true,
-};
+	}
+>;
 
 export default function AvatarGroup(props: AvatarGroupProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"max",
-		"overlap",
-		"children",
-		"size",
-		"avatarProps",
-		"shape",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			overlap: true,
+		},
+		keys: ["max", "overlap", "children", "size", "avatarProps", "shape"],
+	});
 
 	const children =
 		typeof local.children === "function" ? local.children() : local.children;
