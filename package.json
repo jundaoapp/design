@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.19.3",
+    "@babel/core": "^7.20.7",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
@@ -22,19 +22,19 @@
     "@storybook/html": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/theming": "^6.5.15",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^8.3.0",
     "cross-env": "^7.0.3",
     "rome": "^11.0.0",
-    "sass": "^1.56.1",
+    "sass": "^1.57.1",
     "sass-hsv": "^1.0.2",
     "storybook-dark-mode": "^2.0.4",
-    "typescript": "^4.9.3",
-    "vite": "^3.1.6",
-    "vite-plugin-solid": "^2.3.9"
+    "typescript": "^4.9.4",
+    "vite": "^3.2.5",
+    "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
     "remixicon": "^2.5.0",
-    "solid-js": "^1.5.1"
+    "solid-js": "^1.6.6"
   },
   "pnpm": {
     "peerDependencyRules": {

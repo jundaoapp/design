@@ -1,18 +1,21 @@
 import "./index.scss";
 import { ComponentProps, splitProps } from "solid-js";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type LinkProps = RequiredChildren<ComponentProps<"a">> & {
-	disabled?: boolean;
-	type?: "default" | "secondary" | "success" | "warning" | "danger";
-};
+export type LinkProps = IntrinsicComponentProps<
+	"a",
+	{
+		disabled?: boolean;
+		type?: "default" | "secondary" | "success" | "warning" | "danger";
+	}
+>;
 
 export default function Link(props: LinkProps) {
-	const [local, others] = splitProps(props, [
-		"children",
-		"href",
-		"disabled",
-		"type",
-	]);
+	const [local, others] = processProps({
+		props,
+		keys: ["children", "href", "disabled", "type"],
+	});
 
 	let hrefProp: { href?: string } = {};
 

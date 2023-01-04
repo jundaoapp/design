@@ -1,19 +1,24 @@
 import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type TitleProps = RequiredChildren<ComponentProps<"h1">> & {
-	level?: 1 | 2 | 3 | 4 | 5 | 6;
-};
-
-const defaultProps = {
-	level: 1,
-};
+export type TitleProps = IntrinsicComponentProps<
+	"h1",
+	{
+		level?: 1 | 2 | 3 | 4 | 5 | 6;
+	}
+>;
 
 export default function Title(props: TitleProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"level",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			level: 1,
+		},
+		keys: ["level"],
+	});
 
 	return (
 		<Dynamic

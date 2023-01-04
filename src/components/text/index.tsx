@@ -1,33 +1,40 @@
 import "./index.scss";
 import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type TextProps = ComponentProps<"span"> & {
-	type?: "default" | "secondary" | "success" | "warning" | "danger";
-	underline?: boolean;
-	delete?: boolean;
-	bold?: boolean;
-	italic?: boolean;
-	mark?: boolean;
-	code?: boolean;
-	keyboard?: boolean;
-};
-
-const defaultProps = {
-	type: "default",
-};
+export type TextProps = IntrinsicComponentProps<
+	"span",
+	{
+		type?: "default" | "secondary" | "success" | "warning" | "danger";
+		underline?: boolean;
+		delete?: boolean;
+		bold?: boolean;
+		italic?: boolean;
+		mark?: boolean;
+		code?: boolean;
+		keyboard?: boolean;
+	}
+>;
 
 export default function Text(props: TextProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"children",
-		"type",
-		"underline",
-		"delete",
-		"bold",
-		"italic",
-		"mark",
-		"code",
-		"keyboard",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			type: "default",
+		},
+		keys: [
+			"children",
+			"type",
+			"underline",
+			"delete",
+			"bold",
+			"italic",
+			"mark",
+			"code",
+			"keyboard",
+		],
+	});
 
 	let child = <>{local.children}</>;
 

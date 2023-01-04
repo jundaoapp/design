@@ -1,5 +1,5 @@
 .jdd.avatar {
-    border-radius: 99999px;
+    border-radius: 9999px;
     background: var(--jdd-gray-5);
     overflow: hidden;
     height: 3rem;
@@ -80,6 +80,20 @@
 
         &.no-overlap {
             gap: .5rem;
+        }
+    }
+
+    .jdd.link {
+        // Only required for Firefox, should be removed when css :has selector is officially enabled
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility
+        border-radius: 9999px;
+
+        .jdd.avatar {
+            transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
+
+            &:hover, &:focus-visible {
+                transform: translateY(-10%);
+            }
         }
     }
 }

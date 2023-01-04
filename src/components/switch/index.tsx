@@ -11,43 +11,47 @@ import {
 } from "solid-js";
 import { Spinner } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type SwitchProps = Omit<
-	ComponentProps<"button">,
-	"children" | "onChange"
-> & {
-	defaultChecked?: boolean;
-	onChange?: (checked: boolean) => void;
-	checked?: boolean;
-	disabled?: boolean;
-	danger?: boolean;
-	checkedChildren?: JSXElement;
-	uncheckedChildren?: JSXElement;
-	size?: "small" | "default" | "large";
-	loading?: boolean;
-};
-
-const defaultProps = {
-	defaultChecked: false,
-	disabled: false,
-	size: "default",
-	loading: false,
-	danger: false,
-};
+export type SwitchProps = IntrinsicComponentProps<
+	"button",
+	{
+		defaultChecked?: boolean;
+		onChange?: (checked: boolean) => void;
+		checked?: boolean;
+		disabled?: boolean;
+		danger?: boolean;
+		checkedChildren?: JSXElement;
+		uncheckedChildren?: JSXElement;
+		size?: "small" | "default" | "large";
+		loading?: boolean;
+	}
+>;
 
 export default function Switch(props: SwitchProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"checked",
-		"defaultChecked",
-		"disabled",
-		"checkedChildren",
-		"uncheckedChildren",
-		"onClick",
-		"onChange",
-		"size",
-		"loading",
-		"danger",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			defaultChecked: false,
+			disabled: false,
+			size: "default",
+			loading: false,
+			danger: false,
+		},
+		keys: [
+			"checked",
+			"defaultChecked",
+			"disabled",
+			"checkedChildren",
+			"uncheckedChildren",
+			"onClick",
+			"onChange",
+			"size",
+			"loading",
+			"danger",
+		],
+	});
 
 	const controlled =
 		props.checked !== undefined && local.onChange !== undefined;

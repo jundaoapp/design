@@ -1,31 +1,31 @@
 import "./index.scss";
 import { Spinner } from "@jundao/design";
-import { Show, ComponentProps, mergeProps, splitProps } from "solid-js";
+import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "@jundao/design/utilities";
+import { Show, mergeProps, splitProps } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
 
-export type ButtonProps = Omit<ComponentProps<"button">, "type"> & {
-	type?: "primary" | "default";
-	size?: "small" | "default" | "large";
-	disabled?: boolean;
-	danger?: boolean;
-	loading?: boolean;
-};
-
-const defaultProps = {
-	disabled: false,
-	danger: false,
-	loading: false,
-};
+export type ButtonProps = IntrinsicComponentProps<
+	"button",
+	{
+		type?: "primary" | "default";
+		size?: "small" | "default" | "large";
+		disabled?: boolean;
+		danger?: boolean;
+		loading?: boolean;
+	}
+>;
 
 function Button(props: ButtonProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"children",
-		"type",
-		"size",
-		"disabled",
-		"danger",
-		"loading",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			disabled: false,
+			danger: false,
+			loading: false,
+		},
+		keys: ["children", "type", "size", "disabled", "danger", "loading"],
+	});
 
 	const child =
 		typeof local.children === "string" ? (

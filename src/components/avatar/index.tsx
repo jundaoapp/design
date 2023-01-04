@@ -9,29 +9,27 @@ import {
 } from "solid-js";
 import { Icon, Text } from "@jundao/design";
 import AvatarGroup from "@jundao/design/avatar/group";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type AvatarProps = Omit<ComponentProps<"div">, "children"> &
+export type AvatarProps = IntrinsicComponentProps<
+	"div",
 	Pick<ComponentProps<"img">, "src" | "srcSet" | "alt" | "crossOrigin"> & {
 		size?: "small" | "default" | "large";
 		shape?: "circle" | "square";
 		icon?: JSXElement;
-	};
-
-const defaultProps = {
-	size: "default",
-	shape: "circle",
-};
+	}
+>;
 
 function Avatar(props: AvatarProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"size",
-		"shape",
-		"icon",
-		"src",
-		"srcSet",
-		"alt",
-		"crossOrigin",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			size: "default",
+			shape: "circle",
+		},
+		keys: ["size", "shape", "icon", "src", "srcSet", "alt", "crossOrigin"],
+	});
 
 	return (
 		<div

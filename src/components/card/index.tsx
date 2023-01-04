@@ -8,30 +8,37 @@ import {
 	splitProps,
 } from "solid-js";
 import { Icon, Text } from "@jundao/design";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type CardProps = ComponentProps<"div"> & {
-	title?: JSXElement;
-	size?: "small" | "default";
-	noPadding?: boolean;
-	collapsible?: boolean;
-	collapsed?: boolean;
-};
-
-const defaultProps = {
-	size: "default",
-	noPaddng: false,
-	collapsible: false,
-};
+export type CardProps = IntrinsicComponentProps<
+	"div",
+	{
+		title?: JSXElement;
+		size?: "small" | "default";
+		noPadding?: boolean;
+		collapsible?: boolean;
+		collapsed?: boolean;
+	}
+>;
 
 export default function Card(props: CardProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"title",
-		"size",
-		"children",
-		"noPadding",
-		"collapsible",
-		"collapsed",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			size: "default",
+			noPadding: false,
+			collapsible: false,
+		},
+		keys: [
+			"title",
+			"size",
+			"children",
+			"noPadding",
+			"collapsible",
+			"collapsed",
+		],
+	});
 
 	const [collapsed, setCollapsed] = createSignal(false);
 

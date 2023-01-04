@@ -9,36 +9,43 @@ import {
 	splitProps,
 } from "solid-js";
 import { Label } from "@jundao/design";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type CheckboxProps = Omit<ComponentProps<"input">, "onChange"> & {
-	defaultChecked?: boolean;
-	onChange?: (checked: boolean) => void;
-	size?: "small" | "default" | "large";
-	indeterminate?: boolean;
-	danger?: boolean;
-	label?: string;
-};
-
-const defaultProps = {
-	defaultChecked: false,
-	danger: false,
-	size: "default",
-	disabled: false,
-};
+export type CheckboxProps = IntrinsicComponentProps<
+	"input",
+	{
+		defaultChecked?: boolean;
+		onChange?: (checked: boolean) => void;
+		size?: "small" | "default" | "large";
+		indeterminate?: boolean;
+		danger?: boolean;
+		label?: string;
+	}
+>;
 
 export default function Checkbox(props: CheckboxProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"defaultChecked",
-		"onChange",
-		"checked",
-		"size",
-		"disabled",
-		"onClick",
-		"indeterminate",
-		"value",
-		"label",
-		"danger",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			defaultChecked: false,
+			danger: false,
+			size: "default",
+			disabled: false,
+		},
+		keys: [
+			"defaultChecked",
+			"onChange",
+			"checked",
+			"size",
+			"disabled",
+			"onClick",
+			"indeterminate",
+			"value",
+			"label",
+			"danger",
+		],
+	});
 
 	let ref!: HTMLInputElement;
 
@@ -75,7 +82,7 @@ export default function Checkbox(props: CheckboxProps) {
 			() => checked(),
 			(checked) => {
 				setTimeout(() => {
-					ref.checked = checked;
+					ref.checked = checked!;
 				});
 			},
 		),

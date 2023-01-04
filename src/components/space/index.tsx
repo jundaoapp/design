@@ -1,26 +1,28 @@
 import "./index.scss";
 import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type SpaceProps = RequiredChildren<ComponentProps<"div">> & {
-	size?: "small" | "medium" | "large";
-	vertical?: boolean;
-	wrap?: boolean;
-	align?: "start" | "center" | "end";
-};
-
-const defaultProps = {
-	size: "small",
-	vertical: false,
-	wrap: false,
-};
+export type SpaceProps = IntrinsicComponentProps<
+	"div",
+	{
+		size?: "small" | "medium" | "large";
+		vertical?: boolean;
+		wrap?: boolean;
+		align?: "start" | "center" | "end";
+	}
+>;
 
 export default function Space(props: SpaceProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"size",
-		"vertical",
-		"wrap",
-		"align",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			size: "small",
+			vertical: false,
+			wrap: false,
+		},
+		keys: ["size", "vertical", "wrap", "align"],
+	});
 
 	return (
 		<div

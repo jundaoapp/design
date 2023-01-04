@@ -1,21 +1,25 @@
 import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type SpinnerProps = Omit<ComponentProps<"svg">, "children"> & {
-	size?: "small" | "default" | "large";
-	label?: string;
-};
-
-const defaultProps = {
-	size: "default",
-	label: "Loading",
-};
+export type SpinnerProps = IntrinsicComponentProps<
+	"svg",
+	{
+		size?: "small" | "default" | "large";
+		label?: string;
+	}
+>;
 
 export default function Spinner(props: SpinnerProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"size",
-		"label",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			size: "default",
+			label: "Loading",
+		},
+		keys: ["size", "label"],
+	});
 
 	return (
 		<svg

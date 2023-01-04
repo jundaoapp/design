@@ -1,26 +1,28 @@
 import "./index.scss";
 import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 import { Text } from "@jundao/design";
+import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "@jundao/design/types";
 
-export type DividerProps = ComponentProps<"div"> & {
-	children?: JSXElement;
-	vertical?: boolean;
-	dashed?: boolean;
-	orientation?: "left" | "right";
-};
-
-const defaultProps = {
-	vertical: false,
-	dashed: false,
-};
+export type DividerProps = IntrinsicComponentProps<
+	"div",
+	{
+		children?: JSXElement;
+		vertical?: boolean;
+		dashed?: boolean;
+		orientation?: "left" | "right";
+	}
+>;
 
 export default function Divider(props: DividerProps) {
-	const [local, others] = splitProps(mergeProps(defaultProps, props), [
-		"children",
-		"vertical",
-		"dashed",
-		"orientation",
-	]);
+	const [local, others] = processProps({
+		props,
+		default: {
+			vertical: false,
+			dashed: false,
+		},
+		keys: ["children", "vertical", "dashed", "orientation"],
+	});
 
 	let child = <>{local.children}</>;
 
