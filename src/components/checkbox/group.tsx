@@ -2,7 +2,6 @@ import {
 	AriaCheckboxGroupProps,
 	createCheckboxGroup,
 } from "@solid-aria/primitives";
-import { Space, Text } from "@jundao/design";
 
 export type CheckboxGroupProps = Omit<AriaCheckboxGroupProps, "label">;
 

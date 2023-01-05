@@ -2,7 +2,7 @@ import "./index.scss";
 import { Spinner } from "@jundao/design";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { processProps } from "@jundao/design/utilities";
-import { Show, mergeProps, splitProps } from "solid-js";
+import { Show, mergeProps } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
 import { AriaButtonProps, createButton } from "@solid-aria/button";
 

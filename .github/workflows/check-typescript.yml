@@ -50,4 +50,4 @@ jobs:
         run: pnpm install
 
       - name: Check Typescript
-        run: yarn check-typescript
+        run: pnpm check-typescript
