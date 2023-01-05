@@ -1,16 +1,14 @@
 import "./index.scss";
-import { JSX } from "solid-js/types/jsx";
-import {
-	ComponentProps,
-	createEffect,
-	createSignal,
-	mergeProps,
-	on,
-	splitProps,
-} from "solid-js";
+import { createEffect, mergeProps, on, Signal, splitProps } from "solid-js";
 import { Label } from "@jundao/design";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
+import {
+	AriaCheckboxProps,
+	createCheckbox,
+	useCheckboxGroupContext,
+} from "@solid-aria/primitives";
+import CheckboxGroup from "@jundao/design/checkbox/group";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"input",
@@ -18,13 +16,19 @@ export type CheckboxProps = IntrinsicComponentProps<
 		defaultChecked?: boolean;
 		onChange?: (checked: boolean) => void;
 		size?: "small" | "default" | "large";
-		indeterminate?: boolean;
+		indeterminate?: boolean | Signal<boolean>;
 		danger?: boolean;
 		label?: string;
-	}
+	} & Omit<
+		AriaCheckboxProps,
+		| "isIndeterminate"
+		| "defaultSelected"
+		| "isSelected"
+		| "onChange"
+		| "isDisabled"
+	>
 >;
-
-export default function Checkbox(props: CheckboxProps) {
+function Checkbox(props: CheckboxProps) {
 	const [local, others] = processProps({
 		props,
 		default: {
@@ -41,7 +45,6 @@ export default function Checkbox(props: CheckboxProps) {
 			"disabled",
 			"onClick",
 			"indeterminate",
-			"value",
 			"label",
 			"danger",
 		],
@@ -49,73 +52,99 @@ export default function Checkbox(props: CheckboxProps) {
 
 	let ref!: HTMLInputElement;
 
+	let checkboxGroupProps = {};
+
+	try {
+		const context = useCheckboxGroupContext();
+		const onChange = (isSelected: boolean) => {
+			if (local.disabled || context.state.isDisabled()) {
+				return;
+			}
+
+			isSelected
+				? context.state.addValue(props.value ?? "undefined")
+				: context.state.removeValue(props.value ?? "undefined");
+
+			props.onChange?.(isSelected);
+		};
+
+		checkboxGroupProps = {
+			get isReadOnly() {
+				return props.isReadOnly || context.state.isReadOnly();
+			},
+			get isSelected() {
+				return context.state.isSelected(props.value ?? "undefined");
+			},
+			get isDisabled() {
+				return local.disabled || context.state.isDisabled();
+			},
+			get name() {
+				return props.name || context.name();
+			},
+			onChange,
+		};
+	} catch (error) {
+		if (
+			error instanceof Error &&
+			error.message !==
+				"[solid-aria]: useCheckboxGroupContext should be used in a CheckboxGroupProvider."
+		)
+			throw error;
+	}
+
+	const { inputProps, state } = createCheckbox(
+		mergeProps(
+			{
+				isIndeterminate: unwrapIndeterminate(local.indeterminate),
+				defaultSelected: local.defaultChecked,
+				isSelected: local.checked,
+				onChange: local.onChange,
+				isDisabled: local.disabled,
+			},
+			checkboxGroupProps,
+			others,
+		) as AriaCheckboxProps,
+		() => ref,
+	);
+
 	createEffect(
 		on(
-			() => props.indeterminate,
+			() => state.isSelected(),
+			(selected) => {
+				if (selected && Array.isArray(local.indeterminate))
+					local.indeterminate[1](false);
+			},
+		),
+	);
+
+	createEffect(
+		on(
+			() => unwrapIndeterminate(local.indeterminate),
 			(indeterminate) => {
 				if (indeterminate !== undefined) ref.indeterminate = indeterminate;
-				if (indeterminate === true) {
-					setChecked(false);
+				if (indeterminate) {
+					state.setSelected(false);
 				}
 			},
 		),
 	);
 
-	const controlled =
-		props.checked !== undefined && local.onChange !== undefined;
-
-	const [checked, setChecked] = createSignal(
-		controlled ? !!props.checked : !props.indeterminate && local.defaultChecked,
-	);
-
-	createEffect(
-		on(
-			() => props.checked,
-			(checked) => {
-				if (checked !== undefined) setChecked(checked);
-			},
-		),
-	);
-
-	createEffect(
-		on(
-			() => checked(),
-			(checked) => {
-				setTimeout(() => {
-					ref.checked = checked!;
-				});
-			},
-		),
-	);
-
-	const clickHandler: JSX.EventHandler<HTMLInputElement, MouseEvent> = (
-		event,
-	) => {
-		if (!local.disabled) {
-			if (typeof local.onChange === "function")
-				local.onChange(controlled ? !props.checked : !checked());
-			if (!controlled) setChecked(!checked());
-		}
-		if (controlled) event.preventDefault();
-
-		if (typeof local.onClick === "function") local.onClick(event);
-	};
+	const otherInputProps = splitProps(inputProps, ["aria-checked"])[1];
 
 	const input = (
 		<input
 			ref={ref}
 			class="jdd checkbox"
-			type="checkbox"
 			classList={{
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
 			}}
-			disabled={local.disabled}
-			checked={checked()}
-			onClick={clickHandler}
-			value={props.indeterminate === true ? "indeterminate" : local.value}
-			{...others}
+			checked={state.isSelected()}
+			aria-checked={
+				unwrapIndeterminate(local.indeterminate) ? "mixed" : state.isSelected()
+			}
+			{...otherInputProps}
 		/>
 	) as HTMLInputElement;
 
@@ -125,3 +154,15 @@ export default function Checkbox(props: CheckboxProps) {
 
 	return input;
 }
+
+function unwrapIndeterminate(
+	indeterminate?: boolean | Signal<boolean>,
+): boolean | undefined {
+	return Array.isArray(indeterminate) ? indeterminate[0]() : indeterminate;
+}
+
+const CompoundedCheckbox = Checkbox as typeof Checkbox & {
+	Group: typeof CheckboxGroup;
+};
+CompoundedCheckbox.Group = CheckboxGroup;
+export default CompoundedCheckbox;

@@ -1,5 +1,5 @@
-import { Radio, Space } from "@jundao/design";
-import { splitProps } from "solid-js";
+import { Radio, Space, Divider, Text } from "@jundao/design";
+import { createSignal, splitProps } from "solid-js";
 
 export default {
 	title: "Components/Radio",
@@ -19,7 +19,11 @@ export default {
 };
 
 const Template = (props) => {
-	return <Radio {...props} />;
+	return (
+		<Radio.Group>
+			<Radio {...props} />
+		</Radio.Group>
+	);
 };
 
 export const Default = Template.bind({});
@@ -38,29 +42,44 @@ export const Small = Template.bind({});
 Small.args = { size: "small", value: "value" };
 
 export const All = (props) => (
-	<Space vertical>
-		<Radio size="small" value="value" />
-		<Radio {...props} />
-		<Radio size="large" value="value" />
-	</Space>
+	<Radio.Group>
+		<Space vertical>
+			<Radio size="small" value="value" />
+			<Radio {...props} />
+			<Radio size="large" value="value" />
+		</Space>
+	</Radio.Group>
 );
 
 export const Label = Template.bind({});
 Label.args = { label: "Label", value: "value" };
 
-const RadioGroupTemplate = (props) => {
+const GroupTemplate = (props) => {
 	const [local, others] = splitProps(props, ["onChange"]);
+	const [value, setValue] = createSignal();
+
+	const changeHandler = (value) => {
+		setValue(value);
+
+		if (typeof local.onChange === "function") local.onChange(value);
+	};
 
 	return (
-		<Radio.Group onChange={local.onChange}>
-			<Space vertical align="start">
-				<Radio label="One" value="one" />
-				<Radio {...others} />
-				<Radio label="Three" value="three" />
-			</Space>
-		</Radio.Group>
+		<Space>
+			<Radio.Group onChange={changeHandler}>
+				<Space vertical align="start">
+					<Radio value="value 1" label="Label 1" />
+					<Radio {...others} />
+					<Radio value="value 3" label="Label 3" />
+				</Space>
+			</Radio.Group>
+			<Divider vertical />
+			<Text italic={value() === undefined}>
+				{value() === undefined ? "undefined" : value()}
+			</Text>
+		</Space>
 	);
 };
 
-export const RadioGroup = RadioGroupTemplate.bind({});
-RadioGroup.args = { label: "Two", value: "two" };
+export const RadioGroup = GroupTemplate.bind({});
+RadioGroup.args = { value: "value 2", label: "Label 2" };

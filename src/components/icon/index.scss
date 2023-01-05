@@ -2,6 +2,7 @@ i.jdd.icon {
   color: currentColor;
   text-rendering: optimizelegibility;
   font-size: 1em;
+  display: inline-block;
 
   &.spin {
     animation: jdd-icon-spin 1s infinite linear;

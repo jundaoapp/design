@@ -1,17 +1,13 @@
 import "./index.scss";
 import {
-	children,
-	ComponentProps,
 	createEffect,
 	createMemo,
 	createSignal,
 	For,
 	JSXElement,
-	mergeProps,
 	on,
-	splitProps,
 } from "solid-js";
-import { Button, Icon, Spinner, Text } from "@jundao/design";
+import { Button, Icon, Text } from "@jundao/design";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 
@@ -76,7 +72,7 @@ export default function Breadcrumb(props: BreadcrumbProps) {
 					setRenderItems(
 						createMemo(() => [
 							...childrendArray.slice(0, beforeCollapse),
-							<Button onClick={() => setCollapsed(false)} size="small">
+							<Button onPress={() => setCollapsed(false)} size="small">
 								<Icon icon="more" />
 							</Button>,
 							...[...childrendArray]
@@ -93,6 +89,7 @@ export default function Breadcrumb(props: BreadcrumbProps) {
 	return (
 		<div
 			class="jdd breadcrumb"
+			aria-label="Breadcrumbs"
 			classList={{ collapsible: local.collapsed === undefined }}
 			{...others}
 		>

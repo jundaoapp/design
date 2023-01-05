@@ -40,6 +40,7 @@ export default function Divider(props: DividerProps) {
 			}}
 			role="separator"
 			children={child}
+			aria-orientation={local.vertical ? "vertical" : undefined}
 			{...others}
 		/>
 	);

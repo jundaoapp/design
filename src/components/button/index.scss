@@ -30,7 +30,7 @@
             transform: scale(1);
         }
 
-        &:active {
+        &.pressed {
             background-color: var(--jdd-blue-10);
             color: var(--jdd-blue-6);
         }
@@ -57,7 +57,7 @@
             color: var(--jdd-red-6);
       }
 
-      &:active {
+      &.pressed {
             background-color: var(--jdd-red-2);
             color: var(--jdd-red-7);
       }
@@ -73,7 +73,7 @@
                 background-color: var(--jdd-red-10);
             }
 
-        &:active {
+        &.pressed {
                 background-color: var(--jdd-red-9);
             }
         }
@@ -85,7 +85,7 @@
       background-color: var(--jdd-gray-5);
     }
 
-    &:active {
+    &.pressed {
       color: var(--jdd-blue-6);
       background-color: var(--jdd-blue-1);
     }

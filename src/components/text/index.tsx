@@ -36,35 +36,38 @@ export default function Text(props: TextProps) {
 		],
 	});
 
-	let child = <>{local.children}</>;
+	const render = () => {
+		let child = <>{local.children}</>;
 
-	if (local.underline === true) {
-		child = <u class="jdd text">{child}</u>;
-	}
+		if (local.underline === true) {
+			child = <u class="jdd text">{child}</u>;
+		}
 
-	if (local.delete === true) {
-		child = <del class="jdd text">{child}</del>;
-	}
+		if (local.delete === true) {
+			child = <del class="jdd text">{child}</del>;
+		}
 
-	if (local.bold === true) {
-		child = <strong class="jdd text">{child}</strong>;
-	}
+		if (local.bold === true) {
+			child = <strong class="jdd text">{child}</strong>;
+		}
 
-	if (local.italic === true) {
-		child = <i class="jdd text">{child}</i>;
-	}
+		if (local.italic === true) {
+			child = <i class="jdd text">{child}</i>;
+		}
 
-	if (local.mark === true) {
-		child = <mark class="jdd text">{child}</mark>;
-	}
+		if (local.mark === true) {
+			child = <mark class="jdd text">{child}</mark>;
+		}
 
-	if (local.code === true) {
-		child = <code class="jdd text">{child}</code>;
-	}
+		if (local.code === true) {
+			child = <code class="jdd text">{child}</code>;
+		}
 
-	if (local.keyboard === true) {
-		child = <kbd class="jdd text">{child}</kbd>;
-	}
+		if (local.keyboard === true) {
+			child = <kbd class="jdd text">{child}</kbd>;
+		}
+		return child;
+	};
 
 	return (
 		<span
@@ -77,7 +80,7 @@ export default function Text(props: TextProps) {
 			}}
 			{...others}
 		>
-			{child}
+			{render()}
 		</span>
 	);
 }

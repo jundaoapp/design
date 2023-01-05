@@ -32,6 +32,7 @@ export default function Link(props: LinkProps) {
 				warning: local.type === "warning",
 				danger: local.type === "danger",
 			}}
+			aria-disabled={local.disabled}
 			{...hrefProp}
 			{...others}
 		>

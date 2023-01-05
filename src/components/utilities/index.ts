@@ -38,6 +38,6 @@ export function processProps<
 	];
 }
 
-export function mergeClasses(...classes: string[]) {
+export function mergeClasses(...classes: string[]): string {
 	return classes.join(" ");
 }

@@ -4,7 +4,6 @@ import { Space } from "../components";
 export default {
 	title: "Components/Switch",
 	argTypes: {
-		onClick: { action: "onClick" },
 		onChange: { action: "onChange" },
 		size: {
 			control: { type: "select" },

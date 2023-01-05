@@ -33,6 +33,7 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "@solid-aria/primitives": "^0.4.0",
     "remixicon": "^2.5.0",
     "solid-js": "^1.6.6"
   },

@@ -8,7 +8,7 @@
 .jdd {
   font-family: var(--jdd-font-sans);
 
-  &:focus-visible {
+  &.focus-ring, &:focus-visible {
     outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
 
     .jdd-dark & {
