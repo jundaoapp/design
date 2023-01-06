@@ -1,7 +1,7 @@
 {
   "name": "@jundao/design",
   "version": "0.1.0",
-  "description": "",
+    "description": "A simple, fast and modern SolidJS UI library.",
   "scripts": {
     "check": "rome check src/",
     "format": "rome format src/ --write",
