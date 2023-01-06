@@ -7,7 +7,7 @@
 
 <div align="center">
 
-An enterprise-class fast and modern [SolidJS](https://www.solidjs.com) UI library.
+A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 
 [![license](https://img.shields.io/badge/license-MIT-1890ff.svg)](https://github.com/jundaoapp/design/blob/main/LICENSE)
 [![checks](https://img.shields.io/github/checks-status/jundaoapp/design/main)](https://github.com/jundaoapp/design/actions)
@@ -16,13 +16,70 @@ An enterprise-class fast and modern [SolidJS](https://www.solidjs.com) UI librar
 </div>
 
 # Features
-* Built on SolidJS 
-* Fast
-* Written in Typescript
-* Modern
+* Fast - Built on [SolidJS](https://www.solidjs.com) and focuses on reactivity with minimal side effects.
+* Type Safe - Entirely coded in [Typescript](https://www.typescriptlang.org/).
+* Modern - Uses the latest available ES & CSS features with no polyfills.
+* Accessible - [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) compliant.
+* Mobile Friendly - All components tested for desktop & touch.
+* Simple - Easy to use components & APIs.
+* Low Overhead - Promotes native HTML elements and behaviour over custom ones.
+* Responsive - Designed for all screen sizes.
+* Fresh UI - Light & Dark mode with professional looking design.
 
 # Usage
 TODO
+
+# Components
+Currently implemented & planned components:
+- [ ] Accordion
+- [ ] Alert
+- [x] Avatar
+- [ ] Badge
+- [x] Breadcrumb
+- [x] Button
+- [x] Card
+- [ ] Chart
+- [x] Checkbox
+- [ ] DataGrid
+- [ ] DatePicker
+- [x] Divider
+- [ ] Drawer
+- [ ] Dropdown
+- [ ] Editor
+- [ ] Form
+- [ ] Grid
+- [x] Icon
+- [ ] Image
+- [ ] Input
+- [x] Label
+- [ ] Layout
+- [x] Link
+- [ ] Markdown
+- [ ] Message
+- [ ] Modal
+- [ ] Navigation
+- [ ] Notification
+- [ ] PaceLoader
+- [ ] Pagination
+- [ ] Popconfirm
+- [ ] Progress
+- [x] Radio
+- [ ] Select
+- [ ] Skeleton
+- [ ] Slider
+- [x] Space
+- [x] Spinner
+- [ ] Steps
+- [x] Switch
+- [ ] Table
+- [ ] Tabs
+- [ ] Tag
+- [x] Text
+- [ ] Timeline
+- [ ] TimePicker
+- [x] Title
+- [ ] Tooltip
+- [ ] Upload
 
 # Contributing
 Before contributing please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
