@@ -1,54 +1,44 @@
 import "./index.scss";
 import "@jundao/design/button/index.scss";
-import { JSX } from "solid-js/types/jsx";
-import { ComponentProps, mergeProps, splitProps, useContext } from "solid-js";
 import { Label } from "@jundao/design";
-import { RadioGroupContext } from "@jundao/design/radio/group";
 import RadioGroup from "./group";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
+import { AriaRadioProps, createRadio } from "@solid-aria/primitives";
 
 export type RadioProps = IntrinsicComponentProps<
 	"input",
 	{
 		size?: "small" | "default" | "large";
 		label?: string;
-		value: string | string[] | number;
 		danger?: boolean;
-	}
+	} & Omit<AriaRadioProps, "isDisabled">
 >;
 
 function Radio(props: RadioProps) {
+	let ref!: HTMLInputElement;
+
 	const [local, others] = processProps({
 		props,
 		default: {
 			size: "default",
 			danger: false,
 		},
-		keys: ["size", "label", "onChange", "value", "name", "danger"],
+		keys: ["size", "label", "danger"],
 	});
 
-	const context = useContext(RadioGroupContext);
-
-	const changeHandler: JSX.EventHandler<HTMLInputElement, Event> = (event) => {
-		if (context !== undefined) context[1].setValue(props.value);
-
-		if (typeof local.onChange === "function") local.onChange(event);
-	};
+	const { inputProps } = createRadio(others, () => ref);
 
 	let input = (
 		<input
+			ref={ref}
 			class="jdd radio"
-			type="radio"
 			classList={{
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
 			}}
-			checked={context !== undefined && context[0].value === local.value}
-			name={context !== undefined ? context[0].name : local.name}
-			onChange={changeHandler}
-			{...others}
+			{...inputProps}
 		/>
 	) as HTMLInputElement;
 

@@ -9,7 +9,7 @@
         background-color: var(--jdd-blue-7);
       }
 
-      &:active {
+      &.pressed {
         background-color: var(--jdd-blue-4);
       }
     }
@@ -29,7 +29,7 @@
           background-color: var(--jdd-red-7);
         }
 
-        &:active {
+        &.pressed {
           background-color: var(--jdd-red-4);
         }
       }
@@ -46,7 +46,7 @@
         color: var(--jdd-gray-1);
       }
 
-      &:active {
+      &.pressed {
         background-color: var(--jdd-red-7);
         color: var(--jdd-gray-1);
       }
@@ -64,7 +64,7 @@
       color: var(--jdd-gray-1);
     }
 
-    &:active {
+    &.pressed {
       background-color: var(--jdd-blue-7);
       color: var(--jdd-gray-1);
     }

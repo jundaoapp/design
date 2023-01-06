@@ -13,6 +13,13 @@ import { Spinner } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
+import {
+	AriaSwitchProps,
+	createFocusRing,
+	createPress,
+	createSwitch,
+	createVisuallyHidden,
+} from "@solid-aria/primitives";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"button",
@@ -26,7 +33,9 @@ export type SwitchProps = IntrinsicComponentProps<
 		uncheckedChildren?: JSXElement;
 		size?: "small" | "default" | "large";
 		loading?: boolean;
-	}
+		inputProps: JSX.InputHTMLAttributes<HTMLInputElement>;
+		onClick?: never;
+	} & Omit<AriaSwitchProps, "isSelected" | "defaultSelected">
 >;
 
 export default function Switch(props: SwitchProps) {
@@ -45,67 +54,82 @@ export default function Switch(props: SwitchProps) {
 			"disabled",
 			"checkedChildren",
 			"uncheckedChildren",
-			"onClick",
 			"onChange",
 			"size",
 			"loading",
 			"danger",
+			"inputProps",
+			"name",
+			"value",
 		],
 	});
 
-	const controlled =
-		props.checked !== undefined && local.onChange !== undefined;
+	let ref!: HTMLInputElement;
+	let buttonRef!: HTMLButtonElement;
 
-	const [checked, setChecked] = createSignal(
-		controlled ? !!props.checked : local.defaultChecked,
+	const { inputProps, state } = createSwitch(
+		{
+			onChange: local.onChange,
+			isSelected: local.checked,
+			isDisabled: local.disabled,
+			name: local.name,
+			value: local.value,
+		},
+		() => ref,
 	);
+	const { isFocusVisible, focusProps } = createFocusRing();
+	const { visuallyHiddenProps } = createVisuallyHidden();
 
-	createEffect(
-		on(
-			() => props.checked,
-			(checked) => {
-				if (checked !== undefined) setChecked(checked);
+	const { pressProps, isPressed } = createPress(
+		{
+			isDisabled: local.disabled,
+			preventFocusOnPress: true,
+			onPress: () => {
+				state.setSelected(!state.isSelected());
 			},
-		),
+		},
+		() => buttonRef,
 	);
-
-	const clickHandler: JSX.EventHandler<HTMLButtonElement, MouseEvent> = (
-		event,
-	) => {
-		if (!local.disabled) {
-			if (typeof local.onChange === "function")
-				local.onChange(controlled ? !local.checked : !checked());
-			if (!controlled) setChecked(!checked());
-		}
-
-		if (typeof local.onClick === "function") local.onClick(event);
-	};
 
 	return (
-		<button
-			type="button"
-			role="switch"
-			aria-checked={checked()}
-			onClick={clickHandler}
-			class="jdd switch"
-			disabled={local.disabled}
-			{...others}
-			classList={{
-				small: local.size === "small",
-				large: local.size === "large",
-				loading: local.loading,
-				danger: local.danger,
-			}}
-		>
-			<div class="handle">
-				<Show when={local.loading}>
-					<Spinner />
-				</Show>
+		<label>
+			<div {...visuallyHiddenProps}>
+				<input
+					{...mergeProps(inputProps, local.inputProps)}
+					{...focusProps}
+					ref={ref}
+				/>
 			</div>
-			<div class="inner">
-				<span class="checked">{local.checkedChildren}</span>
-				<span class="unchecked">{local.uncheckedChildren}</span>
-			</div>
-		</button>
+			<button
+				ref={buttonRef}
+				aria-hidden="true"
+				type="button"
+				role="switch"
+				aria-checked={state.isSelected()}
+				class="jdd switch"
+				tabindex={-1}
+				disabled={local.disabled}
+				classList={{
+					small: local.size === "small",
+					large: local.size === "large",
+					loading: local.loading,
+					danger: local.danger,
+					pressed: isPressed(),
+					"focus-ring": isFocusVisible(),
+				}}
+				{...others}
+				{...pressProps}
+			>
+				<div class="handle">
+					<Show when={local.loading}>
+						<Spinner />
+					</Show>
+				</div>
+				<div class="inner">
+					<span class="checked">{local.checkedChildren}</span>
+					<span class="unchecked">{local.uncheckedChildren}</span>
+				</div>
+			</button>
+		</label>
 	);
 }

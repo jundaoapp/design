@@ -2,8 +2,9 @@ import "./index.scss";
 import { Spinner } from "@jundao/design";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { processProps } from "@jundao/design/utilities";
-import { Show, mergeProps, splitProps } from "solid-js";
+import { Show, mergeProps } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
+import { AriaButtonProps, createButton } from "@solid-aria/button";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -13,7 +14,8 @@ export type ButtonProps = IntrinsicComponentProps<
 		disabled?: boolean;
 		danger?: boolean;
 		loading?: boolean;
-	}
+		onClick?: never;
+	} & Omit<AriaButtonProps, "isDisabled" | "onClick">
 >;
 
 function Button(props: ButtonProps) {
@@ -23,9 +25,22 @@ function Button(props: ButtonProps) {
 			disabled: false,
 			danger: false,
 			loading: false,
+			preventFocusOnPress: true,
 		},
 		keys: ["children", "type", "size", "disabled", "danger", "loading"],
 	});
+
+	let ref!: HTMLButtonElement;
+
+	const { buttonProps, isPressed } = createButton(
+		mergeProps(
+			{
+				isDisabled: local.disabled,
+			},
+			others,
+		) as AriaButtonProps,
+		() => ref,
+	);
 
 	const child =
 		typeof local.children === "string" ? (
@@ -36,6 +51,7 @@ function Button(props: ButtonProps) {
 
 	return (
 		<button
+			ref={ref}
 			class="jdd button"
 			disabled={local.disabled}
 			classList={{
@@ -44,8 +60,9 @@ function Button(props: ButtonProps) {
 				large: local.size === "large",
 				danger: local.danger,
 				loading: local.loading,
+				pressed: isPressed(),
 			}}
-			{...others}
+			{...buttonProps}
 		>
 			<Show when={local.loading}>
 				<Spinner />

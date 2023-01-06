@@ -1,4 +1,4 @@
-import { Space, Checkbox, Text, Button } from "@jundao/design";
+import { Space, Checkbox, Text, Button, Divider } from "@jundao/design";
 import { createSignal, splitProps } from "solid-js";
 
 export default {
@@ -50,35 +50,32 @@ export const Controlled = Template.bind({});
 Controlled.args = { checked: true };
 
 const IndeterminateTemplate = (props) => {
-	const [local, others] = splitProps(props, ["indeterminate", "onChange"]);
+	const [local, others] = splitProps(props, ["onChange"]);
 
-	const [indeterminate, setIndeterminate] = createSignal(local.indeterminate);
+	const [indeterminate, setIndeterminate] = createSignal(false);
 	const [checked, setChecked] = createSignal(false);
 
 	const changeHandler = (value) => {
-		setChecked(value);
-		setIndeterminate(false);
 		if (typeof local.onChange === "function") local.onChange(value);
+		setChecked(value);
 	};
 
 	return (
 		<Space vertical align="start">
 			<Space>
 				<Checkbox
-					indeterminate={indeterminate()}
+					indeterminate={[indeterminate, setIndeterminate]}
 					onChange={changeHandler}
-					checked={checked()}
 					{...others}
 				/>
 				<Button
 					type="primary"
 					size="small"
-					onClick={() => {
-						setIndeterminate(true);
-						setChecked(false);
+					onPress={() => {
+						setIndeterminate(!indeterminate());
 					}}
 				>
-					Set Indeterminate
+					Toggle Indeterminate
 				</Button>
 			</Space>
 
@@ -92,7 +89,36 @@ const IndeterminateTemplate = (props) => {
 };
 
 export const Indeterminate = IndeterminateTemplate.bind({});
-Indeterminate.args = { indeterminate: true };
 
 export const Label = Template.bind({});
 Label.args = { label: "Label" };
+
+const GroupTemplate = (props) => {
+	const [local, others] = splitProps(props, ["onChange"]);
+	const [value, setValue] = createSignal([]);
+
+	const changeHandler = (value) => {
+		setValue(value);
+
+		if (typeof local.onChange === "function") local.onChange(value);
+	};
+
+	return (
+		<Space>
+			<Checkbox.Group onChange={changeHandler}>
+				<Space vertical align="start">
+					<Checkbox value="value 1" label="Label 1" />
+					<Checkbox {...others} />
+					<Checkbox value="value 3" label="Label 3" />
+				</Space>
+			</Checkbox.Group>
+			<Divider vertical />
+			<Text italic={value().length === 0}>
+				[{value().length === 0 ? "empty" : value().join(", ")}]
+			</Text>
+		</Space>
+	);
+};
+
+export const CheckboxGroup = GroupTemplate.bind({});
+CheckboxGroup.args = { value: "value 2", label: "Label 2" };
