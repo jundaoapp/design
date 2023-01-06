@@ -9,6 +9,7 @@ import {
 	useCheckboxGroupContext,
 } from "@solid-aria/primitives";
 import CheckboxGroup from "@jundao/design/checkbox/group";
+import {mergeRefs} from "@solid-primitives/refs";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"input",
@@ -47,6 +48,7 @@ function Checkbox(props: CheckboxProps) {
 			"indeterminate",
 			"label",
 			"danger",
+            "ref",
 		],
 	});
 
@@ -133,7 +135,7 @@ function Checkbox(props: CheckboxProps) {
 
 	const input = (
 		<input
-			ref={ref}
+            ref={mergeRefs(el => (ref = el), local.ref)}
 			class="jdd checkbox"
 			classList={{
 				small: local.size === "small",

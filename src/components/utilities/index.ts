@@ -1,15 +1,12 @@
 import {
 	splitProps,
 	mergeProps,
-	SplitProps,
-	MergeProps,
-	Accessor,
 } from "solid-js";
 import { IntrinsicComponentProps } from "@jundao/design/types";
-import { ValidComponent, ComponentProps } from "solid-js";
+import { ValidComponent } from "solid-js";
 
 export function processProps<
-	T extends IntrinsicComponentProps<ValidComponent, {}>,
+	T extends IntrinsicComponentProps<ValidComponent>,
 	D extends Readonly<Partial<T>>,
 	K extends Exclude<keyof T, "intrinsic">,
 >(options: {
@@ -36,8 +33,4 @@ export function processProps<
 			(nestedIntrinsic as unknown as NestedIntrinsic).intrinsic,
 		) as Omit<Omit<T & D, K>, "intrinsic"> & T["intrinsic"],
 	];
-}
-
-export function mergeClasses(...classes: string[]): string {
-	return classes.join(" ");
 }

@@ -26,7 +26,7 @@ pnpm storybook
 ```
 
 ## Components
-All Jundao Design components should accept their underlying component's props by extending its [intrinsic element attributes](https://github.com/adamhaile/surplus/blob/master/index.d.ts#L42-L216).
+All Jundao Design components should accept their underlying component's props by extending its [intrinsic element attributes](hhttps://github.com/solidjs/solid/blob/04fdd3088c978bfe6e6cb98e61473ce9543327de/packages/solid/src/render/component.ts#L78).
 
 Each component should also follow the [Web Accessibility Initiative - Accessible Rich Internet Applications (WAI-ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/). A storybook tab is accessible in the component addons panel.
 
@@ -39,6 +39,7 @@ You can find more information on this process [here](https://help.github.com/en/
 ## Checks
 
 - `pnpm check` is script that runs [Rome](https://rome.tools/) under the hood;
+- `pnpm format` also runs Rome.
 - `pnpm check-typescript` is script that runs the [Typescript](https://www.typescriptlang.org/) compiler;
 
 ## Commit messages
