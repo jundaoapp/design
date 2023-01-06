@@ -5,7 +5,7 @@ import RadioGroup from "./group";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { AriaRadioProps, createRadio } from "@solid-aria/primitives";
-import {mergeRefs} from "@solid-primitives/refs";
+import { mergeRefs } from "@solid-primitives/refs";
 
 export type RadioProps = IntrinsicComponentProps<
 	"input",
@@ -32,7 +32,7 @@ function Radio(props: RadioProps) {
 
 	let input = (
 		<input
-            ref={mergeRefs(el => (ref = el), local.ref)}
+			ref={mergeRefs((el) => (ref = el), local.ref)}
 			class="jdd radio"
 			classList={{
 				small: local.size === "small",

@@ -5,7 +5,7 @@ import { processProps } from "@jundao/design/utilities";
 import { Show, mergeProps } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
 import { AriaButtonProps, createButton } from "@solid-aria/primitives";
-import {mergeRefs} from "@solid-primitives/refs";
+import { mergeRefs } from "@solid-primitives/refs";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -52,7 +52,7 @@ function Button(props: ButtonProps) {
 
 	return (
 		<button
-            ref={mergeRefs(el => (ref = el), local.ref)}
+			ref={mergeRefs((el) => (ref = el), local.ref)}
 			class="jdd button"
 			disabled={local.disabled}
 			classList={{

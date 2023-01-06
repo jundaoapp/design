@@ -20,7 +20,7 @@ import {
 	createSwitch,
 	createVisuallyHidden,
 } from "@solid-aria/primitives";
-import {mergeRefs} from "@solid-primitives/refs";
+import { mergeRefs } from "@solid-primitives/refs";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"button",
@@ -62,7 +62,7 @@ export default function Switch(props: SwitchProps) {
 			"inputProps",
 			"name",
 			"value",
-            "ref",
+			"ref",
 		],
 	});
 
@@ -103,7 +103,7 @@ export default function Switch(props: SwitchProps) {
 				/>
 			</div>
 			<button
-                ref={mergeRefs(el => (buttonRef = el), local.ref)}
+				ref={mergeRefs((el) => (buttonRef = el), local.ref)}
 				aria-hidden="true"
 				type="button"
 				role="switch"
