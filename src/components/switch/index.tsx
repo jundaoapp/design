@@ -72,7 +72,7 @@ export default function Switch(props: SwitchProps) {
 	const { inputProps, state } = createSwitch(
 		{
 			onChange: local.onChange,
-			isSelected: local.checked,
+			isSelected: () => local.checked,
 			isDisabled: local.disabled,
 			name: local.name,
 			value: local.value,

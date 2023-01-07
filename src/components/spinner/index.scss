@@ -6,6 +6,7 @@
     animation-iteration-count: infinite;
     animation-duration: .8s;
     animation-name: jdd-spinner-spin;
+    overflow: visible;
 
     > circle {
       stroke: currentColor;

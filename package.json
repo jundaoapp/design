@@ -37,7 +37,8 @@
     "@solid-primitives/props": "^3.0.1",
     "@solid-primitives/refs": "^0.3.4",
     "remixicon": "^2.5.0",
-    "solid-js": "^1.6.6"
+    "solid-js": "^1.6.6",
+    "solid-transition-group": "^0.0.12"
   },
   "pnpm": {
     "peerDependencyRules": {
