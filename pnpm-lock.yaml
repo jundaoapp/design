@@ -22,6 +22,7 @@ specifiers:
   sass: ^1.57.1
   sass-hsv: ^1.0.2
   solid-js: ^1.6.6
+  solid-transition-group: ^0.0.12
   storybook-dark-mode: ^2.0.4
   typescript: ^4.9.4
   vite: ^3.2.5
@@ -33,6 +34,7 @@ dependencies:
   '@solid-primitives/refs': 0.3.4_solid-js@1.6.6
   remixicon: 2.5.0
   solid-js: 1.6.6
+  solid-transition-group: 0.0.12_solid-js@1.6.6
 
 devDependencies:
   '@babel/core': 7.20.7
@@ -10914,6 +10916,14 @@ packages:
       '@babel/types': 7.20.7
       solid-js: 1.6.6
     dev: true
+
+  /solid-transition-group/0.0.12_solid-js@1.6.6:
+    resolution: {integrity: sha512-Eu4MfNZSSxM67C+4EXaoDiWr4BFbDLg3j30JQJgQEIH9UDOfgNPfZlsFDhT/PxwJqhe6sn85W+dbmYJzBmjpAA==}
+    peerDependencies:
+      solid-js: ^1.0.0
+    dependencies:
+      solid-js: 1.6.6
+    dev: false
 
   /source-list-map/2.0.1:
     resolution: {integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==}

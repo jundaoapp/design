@@ -34,7 +34,7 @@ Currently implemented & planned components:
 - [ ] Accordion
 - [ ] Alert
 - [x] Avatar
-- [ ] Badge
+- [x] Badge
 - [x] Breadcrumb
 - [x] Button
 - [x] Card

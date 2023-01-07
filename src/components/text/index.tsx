@@ -33,6 +33,7 @@ export default function Text(props: TextProps) {
 			"mark",
 			"code",
 			"keyboard",
+			"class",
 		],
 	});
 
@@ -71,7 +72,7 @@ export default function Text(props: TextProps) {
 
 	return (
 		<span
-			class="jdd text jdd-typography"
+			class={["jdd text jdd-typography", local.class].join(" ")}
 			classList={{
 				secondary: local.type === "secondary",
 				success: local.type === "success",
