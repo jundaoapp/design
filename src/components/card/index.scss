@@ -24,7 +24,7 @@ div.jdd.card {
 
     > .content {
         transition: max-height var(--jdd-transition-duration) var(--jdd-transition-function), padding var(--jdd-transition-duration) var(--jdd-transition-function);
-        max-height: 100vh;
+        max-height: 999vh;
     }
 
     &.collapsed {

@@ -20,6 +20,7 @@ export default function Space(props: SpaceProps) {
 			size: "small",
 			vertical: false,
 			wrap: false,
+			align: "start",
 		},
 		keys: ["size", "vertical", "wrap", "align"],
 	});

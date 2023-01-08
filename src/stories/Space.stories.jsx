@@ -47,11 +47,11 @@ Medium.args = { size: "medium" };
 export const Large = Template.bind({});
 Large.args = { size: "large" };
 
-export const Left = Template.bind({});
-Left.args = { vertical: true, align: "left" };
+export const Center = Template.bind({});
+Center.args = { vertical: true, align: "center" };
 
-export const Right = Template.bind({});
-Right.args = { vertical: true, align: "right" };
+export const End = Template.bind({});
+End.args = { vertical: true, align: "end" };
 
 const WrapTemplate = (props) => {
 	return (

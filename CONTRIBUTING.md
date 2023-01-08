@@ -26,7 +26,11 @@ pnpm storybook
 ```
 
 ## Components
-All Jundao Design components should accept their underlying component's props by extending its [intrinsic element attributes](hhttps://github.com/solidjs/solid/blob/04fdd3088c978bfe6e6cb98e61473ce9543327de/packages/solid/src/render/component.ts#L78).
+All Jundao Design components should accept their underlying component's props by extending its [intrinsic element attributes](https://github.com/solidjs/solid/blob/04fdd3088c978bfe6e6cb98e61473ce9543327de/packages/solid/src/render/component.ts#L78).
+
+The visual design is based off a mix of the [Atlassian Design System](https://atlassian.design/) and [Ant Design](https://ant.design/).
+
+Component style should be made in SCSS and all components should be made accessible using [solid-aria](https://github.com/solidjs-community/solid-aria) for their ARIA props (when available, see below) and [interactions](https://github.com/solidjs-community/solid-aria/tree/main/packages/interactions).
 
 Each component should also follow the [Web Accessibility Initiative - Accessible Rich Internet Applications (WAI-ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/). A storybook tab is accessible in the component addons panel.
 
@@ -38,9 +42,11 @@ You can find more information on this process [here](https://help.github.com/en/
 
 ## Checks
 
-- `pnpm check` is script that runs [Rome](https://rome.tools/) under the hood;
-- `pnpm format` also runs Rome.
+- `pnpm format` is script that runs [Rome](https://rome.tools/) under the hood;
+- `pnpm check` also runs Rome.
 - `pnpm check-typescript` is script that runs the [Typescript](https://www.typescriptlang.org/) compiler;
+
+> **Tip:** use `pnpm ci` to run all of them.
 
 ## Commit messages
 

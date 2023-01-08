@@ -15,6 +15,10 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 
 </div>
 
+> **Warning** 
+> Jundao Design is in early stage and **not ready** for production.<br/>
+> Automated unit, integration and visual tests are missing.
+
 # Features
 * Fast - Built on [SolidJS](https://www.solidjs.com) and focuses on reactivity with minimal side effects.
 * Type Safe - Entirely coded in [Typescript](https://www.typescriptlang.org/).
@@ -32,7 +36,7 @@ TODO
 # Components
 Currently implemented & planned components:
 - [ ] Accordion
-- [ ] Alert
+- [x] Alert
 - [x] Avatar
 - [x] Badge
 - [x] Breadcrumb

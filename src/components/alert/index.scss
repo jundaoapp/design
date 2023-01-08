@@ -1,0 +1,114 @@
+.jdd.alert {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.25rem 2rem;
+    border-radius: var(--jdd-border-radius);
+    position: relative;
+    transition: max-height var(--jdd-transition-duration) var(--jdd-transition-function), padding var(--jdd-transition-duration) var(--jdd-transition-function), opacity var(--jdd-transition-duration) var(--jdd-transition-function);
+    overflow: hidden;
+
+    &.info {
+        background: var(--jdd-blue-6);
+    }
+
+    &.error {
+        background: var(--jdd-red-6);
+    }
+
+    &.success {
+        background: var(--jdd-green-6);
+    }
+
+    &.warning {
+        background: var(--jdd-orange-6);
+    }
+
+    &.icon {
+        padding-left: 3rem;
+    }
+
+    &.closable {
+        padding-right: 3rem;
+    }
+
+   &.banner {
+        border-radius: 0;
+    }
+
+    .alert-icon {
+        font-size: 1.5rem;
+        position: absolute;
+        left: 1rem;
+    }
+
+    &:not(.description) {
+        .alert-icon, button.close {
+            top: 0;
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+    }
+
+    &.description {
+        &.icon {
+            padding-left: 3.75rem;
+        }
+
+        .alert-icon {
+            font-size: 2rem;
+            line-height: 2rem;
+            top: 1.25rem;
+        }
+    }
+
+    .jdd.text {
+        color: var(--jdd-gray-1)
+    }
+
+    .alert-description {
+        font-size: .95rem;
+        display: block;
+        padding-top: .75rem;
+    }
+
+    button.close {
+        background: none;
+        border: none;
+        position: absolute;
+        right: 1rem;
+        top: 1.25rem;
+        font-size: 2rem;
+        cursor: pointer;
+
+        .jdd.text {
+            height: 2rem;
+        }
+    }
+
+    &.alert-animation-enter {
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &.alert-animation-enter-to {
+        max-height: 999vh;
+        opacity: 1;
+    }
+
+    &.alert-animation-exit {
+        max-height: 999vh;
+        opacity: 1;
+    }
+
+    &.alert-animation-exit-to {
+        max-height: 0;
+        opacity: 0;
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
