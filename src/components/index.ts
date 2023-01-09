@@ -1,3 +1,4 @@
+export { default as Alert } from "@jundao/design/alert";
 export { default as Avatar } from "@jundao/design/avatar";
 export { default as Badge } from "@jundao/design/badge";
 export { default as Button } from "@jundao/design/button";
