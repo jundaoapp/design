@@ -1,5 +1,4 @@
 import "./index.scss";
-import "@jundao/design/button/index.scss";
 import { Label } from "@jundao/design";
 import RadioGroup from "./group";
 import { processProps } from "@jundao/design/utilities";
@@ -30,7 +29,7 @@ function Radio(props: RadioProps) {
 
 	const { inputProps } = createRadio(others, () => ref);
 
-	let input = (
+	const input = (
 		<input
 			ref={mergeRefs((el) => (ref = el), local.ref)}
 			class="jdd radio"

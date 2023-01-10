@@ -1,5 +1,4 @@
-import { Switch, Icon as IconComp } from "@jundao/design";
-import { Space } from "../components";
+import { Switch, Icon as IconComp, Space } from "@jundao/design";
 
 export default {
 	title: "Components/Switch",
@@ -16,6 +15,7 @@ export default {
 		checkedChildren: { control: "text" },
 		uncheckedChildren: { control: "text" },
 		loading: { control: "boolean" },
+		label: { control: "text" },
 	},
 };
 
@@ -25,6 +25,9 @@ const Template = (props) => {
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const Label = Template.bind({});
+Label.args = { label: "Label" };
 
 export const Danger = Template.bind({});
 Danger.args = { danger: true };

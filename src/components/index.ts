@@ -10,6 +10,7 @@ export { default as Icon } from "@jundao/design/icon";
 export { default as Label } from "@jundao/design/label";
 export { default as Link } from "@jundao/design/link";
 export { default as Radio } from "@jundao/design/radio";
+export { default as Slider } from "@jundao/design/slider";
 export { default as Space } from "@jundao/design/space";
 export { default as Spinner } from "@jundao/design/spinner";
 export { default as Switch } from "@jundao/design/switch";
