@@ -1,4 +1,5 @@
 import "./index.scss";
+import "@jundao/design/label/index.scss";
 import {
 	ComponentProps,
 	createEffect,
@@ -9,7 +10,7 @@ import {
 	Show,
 	splitProps,
 } from "solid-js";
-import { Spinner } from "@jundao/design";
+import { Spinner, Text } from "@jundao/design";
 import { JSX } from "solid-js/types/jsx";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
@@ -35,6 +36,7 @@ export type SwitchProps = IntrinsicComponentProps<
 		size?: "small" | "default" | "large";
 		loading?: boolean;
 		inputProps: JSX.InputHTMLAttributes<HTMLInputElement>;
+		label?: string;
 		onClick?: never;
 	} & Omit<AriaSwitchProps, "isSelected" | "defaultSelected">
 >;
@@ -63,6 +65,7 @@ export default function Switch(props: SwitchProps) {
 			"name",
 			"value",
 			"ref",
+			"label",
 		],
 	});
 
@@ -94,7 +97,7 @@ export default function Switch(props: SwitchProps) {
 	);
 
 	return (
-		<label>
+		<label class="jdd label">
 			<div {...visuallyHiddenProps}>
 				<input
 					{...mergeProps(inputProps, local.inputProps)}
@@ -132,6 +135,9 @@ export default function Switch(props: SwitchProps) {
 					<span class="unchecked">{local.uncheckedChildren}</span>
 				</div>
 			</button>
+			<Show when={local.label}>
+				<Text>{local.label}</Text>
+			</Show>
 		</label>
 	);
 }

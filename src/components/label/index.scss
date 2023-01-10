@@ -1,4 +1,9 @@
 .jdd.label {
     display: flex;
     gap: .5rem;
+    align-items: center;
+
+    &[dir="ltr"] {
+        flex-direction: row-reverse;
+    }
 }

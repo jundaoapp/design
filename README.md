@@ -70,7 +70,7 @@ Currently implemented & planned components:
 - [x] Radio
 - [ ] Select
 - [ ] Skeleton
-- [ ] Slider
+- [x] Slider
 - [x] Space
 - [x] Spinner
 - [ ] Steps
