@@ -1,98 +1,102 @@
-input.jdd.radio {
-  height: 1.25rem;
-  width: 1.25rem;
-  border-radius: 9999px;
-  appearance: none;
-  border: 1px solid var(--jdd-gray-5);
-  cursor: pointer;
-  transition: var(--jdd-transition-colors);
+.jdd.radio {
+   height: max-content;
+   width: max-content;
+    
+  .radio-control {
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 9999px;
+    appearance: none;
+    border: 1px solid var(--jdd-gray-5);
+    cursor: pointer;
+    transition: var(--jdd-transition-colors);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .jdd-dark & {
-    color: var(--jdd-gray-1);
-    border-color: var(--jdd-gray-9);
-
-    &:disabled {
-      color: var(--jdd-gray-8);
-      border-color: var(--jdd-gray-8);
-      background-color: var(--jdd-gray-10);
-    }
-    &:not(:disabled) {
-      &:checked {
-        &:hover,
-        &:focus-visible {
-          background-color: var(--jdd-blue-7);
-          border-color: var(--jdd-blue-7);
-        }
-      }
-      &:hover,
-      &:focus-visible {
-        background-color: var(--jdd-gray-11);
-      }
-    }
-  }
-
-  &:checked {
-    background-color: var(--jdd-blue-6);
-    border-color: var(--jdd-blue-6);
-
-    &.danger {
-        background-color: var(--jdd-red-6);
-        border-color: var(--jdd-red-6);
-    }
-
-    &::before {
-        content: "";
-        display: block;
+    .radio-indicator {
         width: 45%;
         height: 45%;
         border-radius: 50%;
-        box-shadow: inset 9999px 9999px var(--jdd-gray-1);
-        position: relative;
-        left: 27.5%;
-        top: 27.5%;
+        background: var(--jdd-gray-1);
     }
-  }
 
-  &:disabled {
-    cursor: not-allowed;
-    border-color: var(--jdd-gray-6);
-    background-color: var(--jdd-gray-3);
+    .jdd-dark & {
+      color: var(--jdd-gray-1);
+      border-color: var(--jdd-gray-9);
 
-    &:checked::before {
-        box-shadow: inset 9999px 9999px var(--jdd-gray-6);
-    }
-  }
-
-  &:not(:disabled) {
-    &:checked {
-      &:hover,
-      &:focus-visible {
-        background-color: var(--jdd-blue-5);
-        border-color: var(--jdd-blue-5);
-
-        &.danger {
-            background-color: var(--jdd-red-5);
-            border-color: var(--jdd-red-5);
+      &[data-disabled] {
+        color: var(--jdd-gray-8);
+        border-color: var(--jdd-gray-8);
+        background-color: var(--jdd-gray-10);
+      }
+      &:not([data-disabled]) {
+        &[data-checked] {
+          &[data-hover],
+          &[data-focus-visible] {
+            background-color: var(--jdd-blue-7);
+            border-color: var(--jdd-blue-7);
+          }
+        }
+        &[data-hover],
+        &[data-focus-visible] {
+          background-color: var(--jdd-gray-11);
         }
       }
     }
-    &:hover,
-    &:focus-visible {
-      background-color: var(--jdd-gray-2);
+
+    &[data-checked] {
+      background-color: var(--jdd-blue-6);
       border-color: var(--jdd-blue-6);
 
-      &.danger {
+      .jdd.radio.danger & {
+        background-color: var(--jdd-red-6);
+        border-color: var(--jdd-red-6);
+      }
+    }
+
+    &[data-disabled] {
+      cursor: not-allowed;
+      border-color: var(--jdd-gray-6);
+      background-color: var(--jdd-gray-3);
+
+      &.radio-indicator {
+        background: var(--jdd-gray-6);
+      }
+    }
+
+    &:not([data-disabled]) {
+      &[data-checked] {
+        &[data-hover],
+        &[data-focus-visible] {
+          background-color: var(--jdd-blue-5);
+          border-color: var(--jdd-blue-5);
+
+          .jdd.radio.danger &  {
+            background-color: var(--jdd-red-5);
+            border-color: var(--jdd-red-5);
+          }
+        }
+      }
+
+      &[data-hover],
+      &[data-focus-visible] {
+        background-color: var(--jdd-gray-2);
+        border-color: var(--jdd-blue-6);
+
+        .jdd.radio.danger & {
           border-color: var(--jdd-red-6);
+        }
       }
     }
   }
 
-  &.small {
+  &.small .radio-control {
     height: 1rem;
     width: 1rem;
   }
 
-  &.large {
+  &.large .radio-control {
     height: 1.5rem;
     width: 1.5rem;
   }

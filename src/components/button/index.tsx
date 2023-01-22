@@ -2,10 +2,10 @@ import "./index.scss";
 import { Spinner } from "@jundao/design";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { processProps } from "@jundao/design/utilities";
-import { Show, mergeProps } from "solid-js";
+import { Show, createMemo, JSX } from "solid-js";
 import ButtonGroup from "@jundao/design/button/group";
-import { AriaButtonProps, createButton } from "@solid-aria/primitives";
-import { mergeRefs } from "@solid-primitives/refs";
+import { Button as KobalteButton } from "@kobalte/core";
+import { ButtonRootOptions } from "@kobalte/core/dist/types/button";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -15,8 +15,9 @@ export type ButtonProps = IntrinsicComponentProps<
 		disabled?: boolean;
 		danger?: boolean;
 		loading?: boolean;
+		href?: string;
 		onClick?: never;
-	} & Omit<AriaButtonProps, "isDisabled" | "onClick">
+	} & Omit<ButtonRootOptions, "isDisabled" | "children">
 >;
 
 function Button(props: ButtonProps) {
@@ -28,48 +29,30 @@ function Button(props: ButtonProps) {
 			loading: false,
 			preventFocusOnPress: true,
 		},
-		keys: ["children", "type", "size", "disabled", "danger", "loading", "ref"],
+		keys: ["children", "type", "size", "disabled", "danger", "loading"],
 	});
 
-	let ref!: HTMLButtonElement;
-
-	const { buttonProps, isPressed } = createButton(
-		mergeProps(
-			{
-				isDisabled: local.disabled,
-			},
-			others,
-		) as AriaButtonProps,
-		() => ref,
-	);
-
-	const child =
-		typeof local.children === "string" ? (
-			<span>{local.children}</span>
-		) : (
-			local.children
-		);
-
 	return (
-		<button
-			ref={mergeRefs((el) => (ref = el), local.ref)}
+		<KobalteButton.Root
 			class="jdd button"
-			disabled={local.disabled}
+			isDisabled={local.disabled}
 			classList={{
 				primary: local.type === "primary",
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
 				loading: local.loading,
-				pressed: isPressed(),
 			}}
-			{...buttonProps}
+			as={props.href !== undefined ? "a" : "button"}
+			{...others}
 		>
 			<Show when={local.loading}>
 				<Spinner />
 			</Show>
-			{child}
-		</button>
+			<Show when={typeof local.children === "string"} fallback={local.children}>
+				<span class="button-text">{local.children}</span>
+			</Show>
+		</KobalteButton.Root>
 	);
 }
 

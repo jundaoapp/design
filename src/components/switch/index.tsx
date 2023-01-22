@@ -1,30 +1,14 @@
 import "./index.scss";
 import "@jundao/design/label/index.scss";
-import {
-	ComponentProps,
-	createEffect,
-	createSignal,
-	JSXElement,
-	mergeProps,
-	on,
-	Show,
-	splitProps,
-} from "solid-js";
-import { Spinner, Text } from "@jundao/design";
-import { JSX } from "solid-js/types/jsx";
+import { JSXElement, Match, Show, Switch as SolidSwitch } from "solid-js";
+import { Space, Spinner, Text } from "@jundao/design";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
-import {
-	AriaSwitchProps,
-	createFocusRing,
-	createPress,
-	createSwitch,
-	createVisuallyHidden,
-} from "@solid-aria/primitives";
-import { mergeRefs } from "@solid-primitives/refs";
+import { Switch as KobalteSwitch } from "@kobalte/core";
+import { SwitchRootOptions } from "@kobalte/core/dist/types/switch";
 
 export type SwitchProps = IntrinsicComponentProps<
-	"button",
+	"label",
 	{
 		defaultChecked?: boolean;
 		onChange?: (checked: boolean) => void;
@@ -35,10 +19,16 @@ export type SwitchProps = IntrinsicComponentProps<
 		uncheckedChildren?: JSXElement;
 		size?: "small" | "default" | "large";
 		loading?: boolean;
-		inputProps: JSX.InputHTMLAttributes<HTMLInputElement>;
 		label?: string;
-		onClick?: never;
-	} & Omit<AriaSwitchProps, "isSelected" | "defaultSelected">
+		readonly?: boolean;
+	} & Omit<
+		SwitchRootOptions,
+		| "defaultIsChecked"
+		| "isChecked"
+		| "isDisabled"
+		| "isReadOnly"
+		| "onCheckedChange"
+	>
 >;
 
 export default function Switch(props: SwitchProps) {
@@ -61,83 +51,58 @@ export default function Switch(props: SwitchProps) {
 			"size",
 			"loading",
 			"danger",
-			"inputProps",
-			"name",
-			"value",
-			"ref",
+			"readonly",
 			"label",
 		],
 	});
 
-	let ref!: HTMLInputElement;
-	let buttonRef!: HTMLButtonElement;
-
-	const { inputProps, state } = createSwitch(
-		{
-			onChange: local.onChange,
-			isSelected: () => local.checked,
-			isDisabled: local.disabled,
-			name: local.name,
-			value: local.value,
-		},
-		() => ref,
-	);
-	const { isFocusVisible, focusProps } = createFocusRing();
-	const { visuallyHiddenProps } = createVisuallyHidden();
-
-	const { pressProps, isPressed } = createPress(
-		{
-			isDisabled: local.disabled,
-			preventFocusOnPress: true,
-			onPress: () => {
-				state.setSelected(!state.isSelected());
-			},
-		},
-		() => buttonRef,
-	);
-
 	return (
-		<label class="jdd label">
-			<div {...visuallyHiddenProps}>
-				<input
-					{...mergeProps(inputProps, local.inputProps)}
-					{...focusProps}
-					ref={ref}
-				/>
-			</div>
-			<button
-				ref={mergeRefs((el) => (buttonRef = el), local.ref)}
-				aria-hidden="true"
-				type="button"
-				role="switch"
-				aria-checked={state.isSelected()}
-				class="jdd switch"
-				tabindex={-1}
-				disabled={local.disabled}
-				classList={{
-					small: local.size === "small",
-					large: local.size === "large",
-					loading: local.loading,
-					danger: local.danger,
-					pressed: isPressed(),
-					"focus-ring": isFocusVisible(),
-				}}
-				{...others}
-				{...pressProps}
-			>
-				<div class="handle">
-					<Show when={local.loading}>
-						<Spinner />
-					</Show>
-				</div>
-				<div class="inner">
-					<span class="checked">{local.checkedChildren}</span>
-					<span class="unchecked">{local.uncheckedChildren}</span>
-				</div>
-			</button>
-			<Show when={local.label}>
-				<Text>{local.label}</Text>
-			</Show>
-		</label>
+		<KobalteSwitch.Root
+			class="jdd switch"
+			defaultIsChecked={local.defaultChecked}
+			isChecked={local.checked}
+			isDisabled={local.disabled}
+			isReadOnly={local.readonly}
+			onCheckedChange={local.onChange}
+			{...others}
+		>
+			<KobalteSwitch.Input />
+			<Space>
+				<KobalteSwitch.Control
+					class="switch-control"
+					classList={{
+						small: local.size === "small",
+						large: local.size === "large",
+						loading: local.loading,
+						danger: local.danger,
+					}}
+				>
+					<KobalteSwitch.Thumb class="switch-thumb">
+						<Show when={local.loading}>
+							<Spinner />
+						</Show>
+					</KobalteSwitch.Thumb>
+					<div class="switch-inner">
+						<span class="switch-checked">{local.checkedChildren}</span>
+						<span class="switch-unchecked">{local.uncheckedChildren}</span>
+					</div>
+				</KobalteSwitch.Control>
+
+				<SolidSwitch>
+					<Match when={typeof local.label === "string"}>
+						<KobalteSwitch.Label>
+							<Text>{local.label}</Text>
+						</KobalteSwitch.Label>
+					</Match>
+					<Match
+						when={local.label !== undefined && typeof local.label !== "string"}
+					>
+						<KobalteSwitch.Label>
+							<Text>{local.label}</Text>
+						</KobalteSwitch.Label>
+					</Match>
+				</SolidSwitch>
+			</Space>
+		</KobalteSwitch.Root>
 	);
 }

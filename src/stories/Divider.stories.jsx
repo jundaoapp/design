@@ -7,7 +7,10 @@ export default {
 		children: { control: "text" },
 		vertical: { control: "boolean" },
 		dashed: { control: "boolean" },
-		orientation: { control: { type: "select" }, options: ["left", "right"] },
+		textPosition: {
+			control: { type: "select" },
+			options: ["left", "center", "right"],
+		},
 	},
 };
 
@@ -39,10 +42,10 @@ export const WithText = Template.bind({});
 WithText.args = { children: "Text" };
 
 export const WithTextLeft = Template.bind({});
-WithTextLeft.args = { children: "Text", orientation: "left" };
+WithTextLeft.args = { children: "Text", textPosition: "left" };
 
 export const WithTextRight = Template.bind({});
-WithTextRight.args = { children: "Text", orientation: "right" };
+WithTextRight.args = { children: "Text", textPosition: "right" };
 
 const VerticalTemplate = (props) => {
 	return (

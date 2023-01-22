@@ -1,12 +1,11 @@
 import { Space, Alert, Text, Button } from "@jundao/design";
-import { mergeProps } from "solid-js";
 
 export default {
 	title: "Components/Alert",
 	argTypes: {
 		type: {
 			control: { type: "select" },
-			options: ["success", "info", "error", "warning"],
+			options: ["default", "success", "info", "error", "warning"],
 		},
 		message: { control: "text" },
 		description: { control: "text" },
@@ -21,12 +20,16 @@ export default {
 const Template = (props) => (
 	<Space vertical style={{ width: "100%" }}>
 		<Alert {...props} />
+		<Text>Banner:</Text>
 		<Alert {...props} banner />
 	</Space>
 );
 
+export const Default = Template.bind({});
+Default.args = { message: "This is an alert." };
+
 export const Info = Template.bind({});
-Info.args = { message: "This is an alert." };
+Info.args = { type: "info", message: "This is an alert." };
 
 export const Success = Template.bind({});
 Success.args = { type: "success", message: "This is an alert." };
@@ -63,6 +66,7 @@ const CustomTemplate = (props) => (
 				</Space>
 			}
 		/>
+		<Text>Banner:</Text>
 		<Alert
 			{...props}
 			message={

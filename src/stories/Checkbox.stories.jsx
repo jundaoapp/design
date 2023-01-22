@@ -64,7 +64,8 @@ const IndeterminateTemplate = (props) => {
 		<Space vertical align="start">
 			<Space>
 				<Checkbox
-					indeterminate={[indeterminate, setIndeterminate]}
+					indeterminate={indeterminate()}
+					onIndeterminateChange={setIndeterminate}
 					onChange={changeHandler}
 					{...others}
 				/>
@@ -92,33 +93,3 @@ export const Indeterminate = IndeterminateTemplate.bind({});
 
 export const Label = Template.bind({});
 Label.args = { label: "Label" };
-
-const GroupTemplate = (props) => {
-	const [local, others] = splitProps(props, ["onChange"]);
-	const [value, setValue] = createSignal([]);
-
-	const changeHandler = (value) => {
-		setValue(value);
-
-		if (typeof local.onChange === "function") local.onChange(value);
-	};
-
-	return (
-		<Space>
-			<Checkbox.Group onChange={changeHandler}>
-				<Space vertical align="start">
-					<Checkbox value="value 1" label="Label 1" />
-					<Checkbox {...others} />
-					<Checkbox value="value 3" label="Label 3" />
-				</Space>
-			</Checkbox.Group>
-			<Divider vertical />
-			<Text italic={value().length === 0}>
-				[{value().length === 0 ? "empty" : value().join(", ")}]
-			</Text>
-		</Space>
-	);
-};
-
-export const CheckboxGroup = GroupTemplate.bind({});
-CheckboxGroup.args = { value: "value 2", label: "Label 2" };

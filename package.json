@@ -34,7 +34,7 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
-    "@solid-aria/primitives": "^0.4.0",
+    "@kobalte/core": "^0.4.0",
     "@solid-primitives/props": "^3.0.1",
     "@solid-primitives/refs": "^0.3.4",
     "remixicon": "^2.5.0",

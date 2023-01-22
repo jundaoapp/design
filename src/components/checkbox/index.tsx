@@ -1,35 +1,50 @@
 import "./index.scss";
-import { createEffect, mergeProps, on, Signal, splitProps } from "solid-js";
-import { Label } from "@jundao/design";
+import {
+	Accessor,
+	createEffect,
+	createSignal,
+	JSX,
+	mergeProps,
+	on,
+	Show,
+	Signal,
+	splitProps,
+} from "solid-js";
+import { Icon, Space, Text } from "@jundao/design";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
-import {
-	AriaCheckboxProps,
-	createCheckbox,
-	useCheckboxGroupContext,
-} from "@solid-aria/primitives";
-import CheckboxGroup from "@jundao/design/checkbox/group";
-import { mergeRefs } from "@solid-primitives/refs";
+import { Checkbox as KobalteCheckbox } from "@kobalte/core";
+import { CheckboxRootOptions } from "@kobalte/core/dist/types/checkbox";
+import "@jundao/design/label/index.scss";
 
 export type CheckboxProps = IntrinsicComponentProps<
-	"input",
+	"label",
 	{
+		checked?: boolean;
 		defaultChecked?: boolean;
 		onChange?: (checked: boolean) => void;
 		size?: "small" | "default" | "large";
-		indeterminate?: boolean | Signal<boolean>;
+		indeterminate?: boolean;
+		onIndeterminateChange?: (indeterminate: boolean) => void;
 		danger?: boolean;
-		label?: string;
+		label?: JSX.Element;
+		required?: boolean;
+		disabled?: boolean;
+		readonly?: boolean;
+		children: never;
 	} & Omit<
-		AriaCheckboxProps,
+		CheckboxRootOptions,
+		| "isChecked"
+		| "defaultIsChecked"
+		| "onCheckedChange"
 		| "isIndeterminate"
-		| "defaultSelected"
-		| "isSelected"
-		| "onChange"
+		| "isRequired"
 		| "isDisabled"
+		| "isReadOnly"
+		| "children"
 	>
 >;
-function Checkbox(props: CheckboxProps) {
+export default function Checkbox(props: CheckboxProps) {
 	const [local, others] = processProps({
 		props,
 		default: {
@@ -42,129 +57,59 @@ function Checkbox(props: CheckboxProps) {
 			"defaultChecked",
 			"onChange",
 			"checked",
+			"required",
+			"readonly",
 			"size",
 			"disabled",
 			"onClick",
 			"indeterminate",
+			"onIndeterminateChange",
 			"label",
 			"danger",
-			"ref",
 		],
 	});
 
-	let ref!: HTMLInputElement;
+	const [checked, setChecked] = createSignal(local.defaultChecked);
 
-	let checkboxGroupProps = {};
+	const changeHandler = (value: boolean) => {
+		setChecked(value);
+		local.onChange?.(value);
+		local.onIndeterminateChange?.(false);
+	};
 
-	try {
-		const context = useCheckboxGroupContext();
-		const onChange = (isSelected: boolean) => {
-			if (local.disabled || context.state.isDisabled()) {
-				return;
-			}
-
-			isSelected
-				? context.state.addValue(props.value ?? "undefined")
-				: context.state.removeValue(props.value ?? "undefined");
-
-			props.onChange?.(isSelected);
-		};
-
-		checkboxGroupProps = {
-			get isReadOnly() {
-				return props.isReadOnly || context.state.isReadOnly();
-			},
-			get isSelected() {
-				return context.state.isSelected(props.value ?? "undefined");
-			},
-			get isDisabled() {
-				return local.disabled || context.state.isDisabled();
-			},
-			get name() {
-				return props.name || context.name();
-			},
-			onChange,
-		};
-	} catch (error) {
-		if (
-			error instanceof Error &&
-			error.message !==
-				"[solid-aria]: useCheckboxGroupContext should be used in a CheckboxGroupProvider."
-		)
-			throw error;
-	}
-
-	const { inputProps, state } = createCheckbox(
-		mergeProps(
-			{
-				isIndeterminate: unwrapIndeterminate(local.indeterminate),
-				defaultSelected: local.defaultChecked,
-				isSelected: local.checked,
-				onChange: local.onChange,
-				isDisabled: local.disabled,
-			},
-			checkboxGroupProps,
-			others,
-		) as AriaCheckboxProps,
-		() => ref,
-	);
-
-	createEffect(
-		on(
-			() => state.isSelected(),
-			(selected) => {
-				if (selected && Array.isArray(local.indeterminate))
-					local.indeterminate[1](false);
-			},
-		),
-	);
-
-	createEffect(
-		on(
-			() => unwrapIndeterminate(local.indeterminate),
-			(indeterminate) => {
-				if (indeterminate !== undefined) ref.indeterminate = indeterminate;
-				if (indeterminate) {
-					state.setSelected(false);
-				}
-			},
-		),
-	);
-
-	const otherInputProps = splitProps(inputProps, ["aria-checked"])[1];
-
-	const input = (
-		<input
-			ref={mergeRefs((el) => (ref = el), local.ref)}
+	return (
+		<KobalteCheckbox.Root
 			class="jdd checkbox"
 			classList={{
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
 			}}
-			checked={state.isSelected()}
-			aria-checked={
-				unwrapIndeterminate(local.indeterminate) ? "mixed" : state.isSelected()
-			}
-			{...otherInputProps}
-		/>
-	) as HTMLInputElement;
+			isChecked={local.checked ?? checked()}
+			defaultIsChecked={local.defaultChecked}
+			isIndeterminate={local.indeterminate}
+			isRequired={local.required}
+			isDisabled={local.disabled}
+			onCheckedChange={changeHandler}
+			{...others}
+		>
+			<KobalteCheckbox.Input />
 
-	if (local.label !== undefined) {
-		return <Label for={input}>{local.label}</Label>;
-	}
-
-	return input;
+			<Space align="center">
+				<KobalteCheckbox.Control class="checkbox-control">
+					<KobalteCheckbox.Indicator>
+						<Icon icon="check" class="checkbox-check" />
+						<Icon icon="subtract" class="checkbox-indeterminate" />
+					</KobalteCheckbox.Indicator>
+				</KobalteCheckbox.Control>
+				<Show when={local.label}>
+					<KobalteCheckbox.Label>
+						<Show when={typeof local.label === "string"} fallback={local.label}>
+							<Text>{local.label}</Text>
+						</Show>
+					</KobalteCheckbox.Label>
+				</Show>
+			</Space>
+		</KobalteCheckbox.Root>
+	);
 }
-
-function unwrapIndeterminate(
-	indeterminate?: boolean | Signal<boolean>,
-): boolean | undefined {
-	return Array.isArray(indeterminate) ? indeterminate[0]() : indeterminate;
-}
-
-const CompoundedCheckbox = Checkbox as typeof Checkbox & {
-	Group: typeof CheckboxGroup;
-};
-CompoundedCheckbox.Group = CheckboxGroup;
-export default CompoundedCheckbox;
