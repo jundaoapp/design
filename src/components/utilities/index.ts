@@ -1,4 +1,4 @@
-import { splitProps, mergeProps } from "solid-js";
+import { splitProps, mergeProps, Accessor } from "solid-js";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { ValidComponent } from "solid-js";
 

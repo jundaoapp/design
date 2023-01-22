@@ -34,6 +34,8 @@ const Template = (props) => {
 			<Text mark>Jundao Design (mark)</Text>
 			<Text code>Jundao Design (code)</Text>
 			<Text keyboard>Jundao Design (keyboard)</Text>
+			<Text size="small">Jundao Design (small)</Text>
+			<Text size="large">Jundao Design (large)</Text>
 		</Space>
 	);
 };

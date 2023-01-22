@@ -1,109 +1,120 @@
-input.jdd.checkbox {
-  height: 1.25rem;
-  width: 1.25rem;
-  border-radius: var(--jdd-border-radius-small);
-  appearance: none;
-  border: 1px solid var(--jdd-gray-5);
-  cursor: pointer;
-  transition: var(--jdd-transition-colors);
-  background-size: contain;
+.jdd.checkbox {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
 
-  .jdd-dark & {
-    color: var(--jdd-gray-1);
-    border-color: var(--jdd-gray-9);
+    .checkbox-control {
+        height: 1.25rem;
+        width: 1.25rem;
+        border-radius: var(--jdd-border-radius-small);
+        appearance: none;
+        border: 1px solid var(--jdd-gray-5);
+        cursor: pointer;
+        transition: var(--jdd-transition-colors);
+        background-size: contain;
+        font-size: 1.25rem;
 
-    &:disabled {
-      color: var(--jdd-gray-8);
-      border-color: var(--jdd-gray-8);
-      background-color: var(--jdd-gray-10);
-    }
-    &:not(:disabled) {
-      &:checked,
-      &[aria-checked="mixed"] {
-        &:hover,
-        &:focus-visible {
-          background-color: var(--jdd-blue-7);
-          border-color: var(--jdd-blue-7);
+        .jdd-dark & {
+            color: var(--jdd-gray-1);
+            border-color: var(--jdd-gray-9);
 
-          &.danger {
-              background-color: var(--jdd-red-7);
-              border-color: var(--jdd-red-7);
-          }
+            &[data-disabled] {
+                color: var(--jdd-gray-8);
+                border-color: var(--jdd-gray-8);
+                background-color: var(--jdd-gray-10);
+            }
+            &:not([data-disabled]) {
+                &[data-checked],
+                &[data-indeterminate] {
+                    &[data-hover],
+                    &[data-focus-visible] {
+                        background-color: var(--jdd-blue-7);
+                        border-color: var(--jdd-blue-7);
+
+                        .jdd.checkbox-control.danger & {
+                            background-color: var(--jdd-red-7);
+                            border-color: var(--jdd-red-7);
+                        }
+                    }
+                }
+                &[data-hover],
+                &[data-focus-visible] {
+                    background-color: var(--jdd-gray-11);
+                }
+            }
         }
-      }
-      &:hover,
-      &:focus-visible {
-        background-color: var(--jdd-gray-11);
-      }
-    }
-  }
 
-  &:checked,
-  &[aria-checked="mixed"] {
-    background-color: var(--jdd-blue-6);
-    border-color: var(--jdd-blue-6);
-    color: var(--jdd-gray-1);
+        &[data-checked],
+        &[data-indeterminate] {
+            background-color: var(--jdd-blue-6);
+            border-color: var(--jdd-blue-6);
+            color: var(--jdd-gray-1);
 
-    &.danger {
-        background-color: var(--jdd-red-6);
-        border-color: var(--jdd-red-6);
-    }
-  }
-
-  &:checked {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath fill='white' d='M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z'/%3E%3C/svg%3E");
-  }
-
-  &[aria-checked="mixed"]:not(:checked) {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath fill='white' d='M5 11h14v2H5z'/%3E%3C/svg%3E");
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    border-color: var(--jdd-gray-6);
-    background-color: var(--jdd-gray-3);
-
-    &:checked {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath fill='%23b3b9bf' d='M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z'/%3E%3C/svg%3E");
-    }
-
-    &[aria-checked="mixed"]:not(:checked) {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath fill='%23b3b9bf' d='M5 11h14v2H5z'/%3E%3C/svg%3E");
-    }
-  }
-
-  &:not(:disabled) {
-    &:checked,
-    &[aria-checked="mixed"] {
-      &:hover,
-      &:focus-visible {
-        background-color: var(--jdd-blue-5);
-        border-color: var(--jdd-blue-5);
-
-        &.danger {
-            background-color: var(--jdd-red-5);
-            border-color: var(--jdd-red-5);
+            .jdd.checkbox-control.danger & {
+                background-color: var(--jdd-red-6);
+                border-color: var(--jdd-red-6);
+            }
         }
-      }
+
+        &:not([data-checked]), &[data-indeterminate] {
+            .checkbox-check {
+                display: none;
+            }
+        }
+
+        &:not([data-indeterminate]) .checkbox-indeterminate {
+            display: none;
+        }
+
+        &[data-disabled] {
+            cursor: not-allowed;
+            border-color: var(--jdd-gray-6);
+            background-color: var(--jdd-gray-3);
+        }
+
+        &:not([data-disabled]) {
+            &[data-checked],
+            &[data-indeterminate] {
+                &[data-hover],
+                &[data-focus-visible] {
+                    background-color: var(--jdd-blue-5);
+                    border-color: var(--jdd-blue-5);
+
+                    .jdd.checkbox-control.danger & {
+                        background-color: var(--jdd-red-5);
+                        border-color: var(--jdd-red-5);
+                    }
+                }
+            }
+
+            &[data-hover],
+            &[data-focus-visible] {
+                background-color: var(--jdd-gray-2);
+                border-color: var(--jdd-blue-6);
+
+                .jdd.checkbox-control.danger & {
+                    border-color: var(--jdd-red-6);
+                }
+            }
+        }
+
+
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
-    &:hover,
-    &:focus-visible {
-      background-color: var(--jdd-gray-2);
-      border-color: var(--jdd-blue-6);
 
-      &.danger {
-          border-color: var(--jdd-red-6);
-      }
+    &.small .checkbox-control {
+        height: 1rem;
+        width: 1rem;
+        font-size: 1rem;
     }
-  }
 
-  &.small {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  &.large {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
+    &.large .checkbox-control {
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: 1.5rem;
+    }
 }

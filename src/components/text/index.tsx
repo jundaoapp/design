@@ -14,6 +14,7 @@ export type TextProps = IntrinsicComponentProps<
 		mark?: boolean;
 		code?: boolean;
 		keyboard?: boolean;
+		size?: "small" | "default" | "large";
 	}
 >;
 
@@ -22,6 +23,7 @@ export default function Text(props: TextProps) {
 		props,
 		default: {
 			type: "default",
+			size: "default",
 		},
 		keys: [
 			"children",
@@ -34,6 +36,7 @@ export default function Text(props: TextProps) {
 			"code",
 			"keyboard",
 			"class",
+			"size",
 		],
 	});
 
@@ -78,6 +81,8 @@ export default function Text(props: TextProps) {
 				success: local.type === "success",
 				warning: local.type === "warning",
 				danger: local.type === "danger",
+				small: local.size === "small",
+				large: local.size === "large",
 			}}
 			{...others}
 		>

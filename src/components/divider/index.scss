@@ -1,11 +1,12 @@
-div.jdd.divider {
+.jdd.divider {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-size: 14px;
   line-height: 1.5715;
   border-top: 1px;
-  border-style: solid;
+  border-bottom: none;
+  border-top-style: solid;
   color: var(--jdd-gray-5);
   border-color: var(--jdd-gray-5);
 
@@ -14,7 +15,7 @@ div.jdd.divider {
     border-color: var(--jdd-gray-10);
   }
 
-  &:not(.with-text):not(.vertical) {
+  &:not(.with-text):not([data-orientation='vertical']) {
     display: flex;
     clear: both;
     width: 100%;
@@ -22,16 +23,17 @@ div.jdd.divider {
     margin: 24px 0;
   }
 
-  &:not(.with-text).vertical {
+  &:not(.with-text)[data-orientation='vertical'] {
     position: relative;
     top: -.06em;
     display: inline-block;
     height: .9em;
     margin: 0 8px;
     vertical-align: middle;
-    border-top: 0;
+    border-top: none;
     border-left: 1px;
     border-left-style: solid;
+    border-right: none;
 
     &.dashed {
       border-left-style: dashed;
@@ -39,7 +41,7 @@ div.jdd.divider {
   }
 
   &.dashed {
-    border-style: dashed;
+    border-top-style: dashed;
 
     &.with-text {
       &:after, &:before {
@@ -73,7 +75,7 @@ div.jdd.divider {
       content: "";
     }
 
-    &.left {
+    &.text-left {
       &:before {
         width: 5%;
       }
@@ -82,7 +84,7 @@ div.jdd.divider {
       }
     }
 
-    &.right {
+    &.text-right {
       &:before {
         width: 95%;
       }

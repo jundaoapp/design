@@ -1,8 +1,15 @@
 import "./index.scss";
-import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
+import {
+	ComponentProps,
+	JSXElement,
+	mergeProps,
+	Show,
+	splitProps,
+} from "solid-js";
 import { Text } from "@jundao/design";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Separator } from "@kobalte/core";
 
 export type DividerProps = IntrinsicComponentProps<
 	"div",
@@ -10,7 +17,7 @@ export type DividerProps = IntrinsicComponentProps<
 		children?: JSXElement;
 		vertical?: boolean;
 		dashed?: boolean;
-		orientation?: "left" | "right";
+		textPosition?: "left" | "center" | "right";
 	}
 >;
 
@@ -20,28 +27,27 @@ export default function Divider(props: DividerProps) {
 		default: {
 			vertical: false,
 			dashed: false,
+			textPosition: "center",
 		},
-		keys: ["children", "vertical", "dashed", "orientation"],
+		keys: ["children", "vertical", "dashed", "textPosition"],
 	});
 
-	let child = <>{local.children}</>;
-
-	if (local.children) {
-		child = <Text>{child}</Text>;
-	}
-
 	return (
-		<div
-			class={`jdd divider ${local.orientation ?? ""}`}
+		<Separator.Root
+			as={local.children === undefined ? "hr" : "div"}
+			class="jdd divider"
 			classList={{
-				vertical: local.vertical,
 				dashed: local.dashed,
 				"with-text": !!local.children,
+				"text-left": local.textPosition === "left",
+				"text-right": local.textPosition === "right",
 			}}
-			role="separator"
-			children={child}
-			aria-orientation={local.vertical ? "vertical" : undefined}
+			orientation={local.vertical ? "vertical" : "horizontal"}
 			{...others}
-		/>
+		>
+			<Show when={local.children}>
+				<Text>{local.children}</Text>
+			</Show>
+		</Separator.Root>
 	);
 }

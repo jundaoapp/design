@@ -30,7 +30,7 @@ All Jundao Design components should accept their underlying component's props by
 
 The visual design is based off a mix of the [Atlassian Design System](https://atlassian.design/) and [Ant Design](https://ant.design/).
 
-Component style should be made in SCSS and all components should be made accessible using [solid-aria](https://github.com/solidjs-community/solid-aria) for their ARIA props (when available, see below) and [interactions](https://github.com/solidjs-community/solid-aria/tree/main/packages/interactions).
+Component style should be made in SCSS and all components should be made accessible using [Kobalte](https://kobalte.dev) (when available, else see below).
 
 Each component should also follow the [Web Accessibility Initiative - Accessible Rich Internet Applications (WAI-ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/). A storybook tab is accessible in the component addons panel.
 

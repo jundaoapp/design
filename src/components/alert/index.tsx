@@ -1,18 +1,18 @@
 import "./index.scss";
-import { createSignal, JSXElement, Show } from "solid-js";
+import { createSignal, JSXElement, Match, Show, Switch } from "solid-js";
 import { processProps } from "@jundao/design/utilities";
 import { IntrinsicComponentProps } from "@jundao/design/types";
 import { Transition } from "solid-transition-group";
-import { Dynamic } from "solid-js/web";
-import { Icon, Spinner, Text } from "@jundao/design";
-import { createPress } from "@solid-aria/primitives";
+import { Icon, Text } from "@jundao/design";
+import { Alert as KobalteAlert } from "@kobalte/core";
+import { Button } from "@kobalte/core";
 
 export type AlertProps = IntrinsicComponentProps<
 	"div",
 	{
 		message: JSXElement;
 		description?: JSXElement;
-		type?: "success" | "info" | "error" | "warning";
+		type?: "default" | "success" | "info" | "error" | "warning";
 		closable?: boolean;
 		showIcon?: boolean;
 		banner?: boolean;
@@ -25,7 +25,7 @@ export default function Alert(props: AlertProps) {
 	const [local, others] = processProps({
 		props,
 		default: {
-			type: "info",
+			type: "default",
 			closable: false,
 			showIcon: true,
 			banner: false,
@@ -43,77 +43,73 @@ export default function Alert(props: AlertProps) {
 
 	const [show, setShow] = createSignal(true);
 
-	let buttonRef!: HTMLButtonElement;
-
-	const { pressProps } = createPress(
-		{
-			preventFocusOnPress: true,
-			onPress: () => {
-				setShow(false);
-			},
-		},
-		() => buttonRef,
-	);
-
 	return (
 		<Transition name="alert-animation" appear>
 			<Show when={show()}>
-				<div
-					class={`jdd alert ${local.type}`}
+				<KobalteAlert.Root
+					class="jdd alert"
 					classList={{
 						banner: local.banner,
 						closable: local.closable,
 						icon: local.showIcon,
 						description: local.description !== undefined,
+						info: local.type === "info",
+						success: local.type === "success",
+						warning: local.type === "warning",
+						error: local.type === "error",
 					}}
-					role="alert"
 					{...others}
 				>
 					<Show when={local.showIcon}>
-						<Text aria-hidden="true" class="alert-icon">
-							<Icon
-								icon={
-									{
-										success: "checkbox-circle",
-										info: "information",
-										error: "error-warning",
-										warning: "alert",
-									}[local.type!]
-								}
-							/>
-						</Text>
+						<Icon
+							class="alert-icon"
+							aria-hidden="true"
+							icon={
+								{
+									default: "loader",
+									success: "checkbox-circle",
+									info: "information",
+									error: "error-warning",
+									warning: "alert",
+								}[local.type!]
+							}
+						/>
 					</Show>
 
-					{typeof local.message === "string" ? (
+					<Show
+						when={typeof local.message === "string"}
+						fallback={local.message}
+					>
 						<Text class="alert-message" bold={local.description !== undefined}>
 							{local.message}
 						</Text>
-					) : (
-						local.message
-					)}
-					<Show when={local.description}>
-						{" "}
-						{typeof local.description === "string" ? (
-							<Text class="alert-description">{local.description}</Text>
-						) : (
-							local.description!
-						)}
 					</Show>
 
+					<Switch>
+						<Match when={typeof local.description === "string"}>
+							<Text class="alert-description">{local.description}</Text>
+						</Match>
+						<Match
+							when={
+								local.description !== undefined &&
+								typeof local.description !== "string"
+							}
+						>
+							{local.description}
+						</Match>
+					</Switch>
+
 					<Show when={local.closable}>
-						<button
-							ref={buttonRef}
-							class="close"
+						<Button.Root
+							class="jdd alert-close"
 							data-dismiss="alert"
 							aria-label="Close"
-							{...pressProps}
+							onPress={() => setShow(false)}
 						>
-							<Text aria-hidden="true">
-								<Icon icon="close" />
-							</Text>
-						</button>
+							<Icon aria-hidden={true} icon="close" />
+						</Button.Root>
 					</Show>
-				</div>
+				</KobalteAlert.Root>
 			</Show>
 		</Transition>
 	);

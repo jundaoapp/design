@@ -16,21 +16,21 @@
     color: var(--jdd-gray-1);
     background-color: var(--jdd-gray-12);
 
-    &:disabled {
+    &[data-disabled] {
       color: var(--jdd-gray-5);
       background-color: var(--jdd-gray-10);
     }
 
-    &:not(:disabled) {
-        &:hover, &:focus-visible, &.loading {
+    &:not([data-disabled]) {
+        &[data-hover], &[data-focus], &.loading {
             background-color: var(--jdd-gray-11);
         }
 
-        &:focus-visible {
+        &[data-focus] {
             transform: scale(1);
         }
 
-        &.pressed {
+        &[data-active] {
             background-color: var(--jdd-blue-10);
             color: var(--jdd-blue-6);
         }
@@ -51,47 +51,47 @@
   }
 
   &.danger {
-    &:not(:disabled) {
-        &:hover, &:focus-visible, &.loading {
+    &:not([data-disabled]) {
+        &[data-hover], &[data-focus], &.loading {
             background-color: var(--jdd-red-1);
             color: var(--jdd-red-6);
       }
 
-      &.pressed {
+      &[data-active] {
             background-color: var(--jdd-red-2);
             color: var(--jdd-red-7);
       }
     }
 
     .jdd-dark & {
-        &:disabled {
+        &[data-disabled] {
             color: var(--jdd-gray-5);
         }
 
-        &:not(:disabled) {
-            &:hover, &:focus-visible, &.loading {
+        &:not([data-disabled]) {
+            &[data-hover], &[data-focus], &.loading {
                 background-color: var(--jdd-red-10);
             }
 
-        &.pressed {
+            &[data-active] {
                 background-color: var(--jdd-red-9);
             }
         }
     }
   }
 
-  &:not(:disabled) {
-    &:hover, &:focus-visible, &.loading {
+  &:not([data-disabled]) {
+    &[data-hover], &[data-focus], &.loading {
       background-color: var(--jdd-gray-5);
     }
 
-    &.pressed {
+    &[data-active] {
       color: var(--jdd-blue-6);
       background-color: var(--jdd-blue-1);
     }
   }
 
-  &:disabled {
+  &[data-disabled] {
     cursor: not-allowed;
     color: var(--jdd-gray-10);
     background-color: var(--jdd-gray-5);
@@ -103,7 +103,7 @@
       position: absolute;
   }
 
-  .jdd.spinner + span {
+  &.loading > span.button-text {
       visibility: hidden;
   }
 }
@@ -118,12 +118,12 @@ div.button-group.jdd {
         }
 
         &:not(:last-child) {
-            margin-right: 0;
+            margin-right: 2px;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
-            :not(:disabled) {
-                &:hover, &:focus-visible {
+            :not([data-disabled]) {
+                &[data-hover], &[data-focus] {
                     position: relative;
                     z-index: 1;
                 }
