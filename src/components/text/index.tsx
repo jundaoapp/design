@@ -1,5 +1,4 @@
 import "./index.scss";
-import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 
