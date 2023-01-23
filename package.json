@@ -88,10 +88,5 @@
         "react-dom"
       ]
     }
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public",
-    "tag": "alpha"
   }
 }
