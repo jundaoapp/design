@@ -6,9 +6,9 @@ import {
 	Show,
 	splitProps,
 } from "solid-js";
-import { Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Separator } from "@kobalte/core";
 
 export type DividerProps = IntrinsicComponentProps<
@@ -21,7 +21,7 @@ export type DividerProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Divider(props: DividerProps) {
+export function Divider(props: DividerProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

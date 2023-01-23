@@ -1,9 +1,9 @@
 import "./index.scss";
 import { createSignal, JSXElement, Match, Show, Switch } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Transition } from "solid-transition-group";
-import { Icon, Text } from "@jundao/design";
+import { Icon, Text } from "..";
 import { Alert as KobalteAlert } from "@kobalte/core";
 import { Button } from "@kobalte/core";
 
@@ -21,7 +21,7 @@ export type AlertProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Alert(props: AlertProps) {
+export function Alert(props: AlertProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

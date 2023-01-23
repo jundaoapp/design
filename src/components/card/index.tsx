@@ -7,9 +7,9 @@ import {
 	Show,
 	splitProps,
 } from "solid-js";
-import { Icon, Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Icon, Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type CardProps = IntrinsicComponentProps<
 	"div",
@@ -22,7 +22,7 @@ export type CardProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Card(props: CardProps) {
+export function Card(props: CardProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

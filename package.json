@@ -1,6 +1,7 @@
 {
   "name": "@jundao/design",
-  "version": "0.1.0",
+  "type": "module",
+  "version": "0.0.0-development",
   "description": "A simple, fast and modern SolidJS UI library.",
   "scripts": {
     "check": "rome check src/",
@@ -8,38 +9,75 @@
     "check-typescript": "tsc --noEmit",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
-    "ci": "pnpm format && pnpm check && pnpm check-typescript"
+    "ci": "pnpm format && pnpm check && pnpm check-typescript",
+    "build": "rollup -c"
+  },
+  "homepage": "https://github.com/jundaoapp/design",
+  "bugs": {
+    "url": "https://github.com/jundaoapp/design/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jundaoapp/design.git"
   },
   "license": "MIT",
+  "source": "src/components/index.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
+    }
+  },
   "devDependencies": {
-    "@babel/core": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/github": "^8.0.7",
+    "@semantic-release/release-notes-generator": "^10.0.3",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
     "@storybook/addon-links": "^6.5.15",
     "@storybook/addons": "^6.5.15",
-    "@storybook/builder-vite": "^0.2.6",
+    "@storybook/builder-vite": "^0.2.7",
     "@storybook/html": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/theming": "^6.5.15",
     "babel-loader": "^8.3.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.3",
+    "rollup": "^3.10.1",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-preset-solid": "^2.0.1",
     "rome": "^11.0.0",
     "sass": "^1.57.1",
     "sass-hsv": "^1.0.2",
-    "storybook-dark-mode": "^2.0.4",
+    "semantic-release": "^20.0.2",
+    "semantic-release-pnpm": "^1.0.2",
+    "solid-js": "^1.6.9",
+    "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4",
     "vite": "^3.2.5",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
     "@kobalte/core": "^0.4.0",
-    "@solid-primitives/props": "^3.0.1",
-    "@solid-primitives/refs": "^0.3.4",
+    "@solid-primitives/props": "^3.0.2",
+    "@solid-primitives/refs": "^0.3.5",
     "remixicon": "^2.5.0",
-    "solid-js": "^1.6.6",
     "solid-transition-group": "^0.0.12"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.6"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -50,5 +88,10 @@
         "react-dom"
       ]
     }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "tag": "alpha"
   }
 }

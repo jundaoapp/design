@@ -1,8 +1,8 @@
 import "./index.scss";
 import { splitProps, ComponentProps } from "solid-js";
-import { Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type LabelProps = IntrinsicComponentProps<
 	"label",
@@ -12,7 +12,7 @@ export type LabelProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Label(props: LabelProps) {
+export function Label(props: LabelProps) {
 	const [local, others] = processProps({
 		props,
 		keys: ["for", "children", "position"],

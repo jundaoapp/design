@@ -1,7 +1,7 @@
 import "./index.scss";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
-import { Label, Spinner, Text } from "@jundao/design";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
+import { Label, Spinner, Text } from "..";
 import { JSX } from "solid-js/types/jsx";
 import { createEffect, createSignal } from "solid-js";
 import { mergeRefs } from "@solid-primitives/refs";
@@ -19,7 +19,7 @@ export type SliderProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Slider(props: SliderProps) {
+export function Slider(props: SliderProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

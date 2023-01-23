@@ -1,10 +1,10 @@
 import "./index.scss";
 import { createEffect, on, Show } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Transition } from "solid-transition-group";
 import { Dynamic } from "solid-js/web";
-import { Spinner, Text } from "@jundao/design";
+import { Spinner, Text } from "..";
 
 export type BadgeProps = IntrinsicComponentProps<
 	"div",
@@ -21,7 +21,7 @@ export type BadgeProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Badge(props: BadgeProps) {
+export function Badge(props: BadgeProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

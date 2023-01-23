@@ -10,12 +10,12 @@ import {
 	Signal,
 	splitProps,
 } from "solid-js";
-import { Icon, Space, Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Icon, Space, Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { CheckboxRootOptions } from "@kobalte/core/dist/types/checkbox";
-import "@jundao/design/label/index.scss";
+import "../label/index.scss";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"label",
@@ -44,7 +44,7 @@ export type CheckboxProps = IntrinsicComponentProps<
 		| "children"
 	>
 >;
-export default function Checkbox(props: CheckboxProps) {
+export function Checkbox(props: CheckboxProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

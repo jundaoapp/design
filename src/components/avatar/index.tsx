@@ -7,10 +7,9 @@ import {
 	Show,
 	splitProps,
 } from "solid-js";
-import { Icon, Text } from "@jundao/design";
-import AvatarGroup from "@jundao/design/avatar/group";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import AvatarGroup from "../avatar/group";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",
@@ -58,4 +57,4 @@ const CompoundedAvatar = Avatar as typeof Avatar & {
 	Group: typeof AvatarGroup;
 };
 CompoundedAvatar.Group = AvatarGroup;
-export default CompoundedAvatar;
+export { CompoundedAvatar as Avatar };

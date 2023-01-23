@@ -1,7 +1,7 @@
 import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type SpinnerProps = IntrinsicComponentProps<
 	"svg",
@@ -11,7 +11,7 @@ export type SpinnerProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Spinner(props: SpinnerProps) {
+export function Spinner(props: SpinnerProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

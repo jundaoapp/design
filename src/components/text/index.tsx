@@ -1,7 +1,6 @@
 import "./index.scss";
-import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type TextProps = IntrinsicComponentProps<
 	"span",
@@ -18,7 +17,7 @@ export type TextProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Text(props: TextProps) {
+export function Text(props: TextProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

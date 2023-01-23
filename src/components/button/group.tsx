@@ -1,8 +1,7 @@
 import "./index.scss";
-import { Button } from "@jundao/design";
-import { ComponentProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Button } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type ButtonGroupProps = IntrinsicComponentProps<
 	"div",
