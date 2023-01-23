@@ -17,7 +17,7 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 
 > **Warning** 
 > Jundao Design is in early stage and **not ready** for production.<br/>
-> Automated unit, integration and visual tests are missing.
+> Unstable API, [Versioning](#versioning)
 
 # Features
 * Fast - Built on [SolidJS](https://www.solidjs.com) and focuses on reactivity with minimal side effects.
@@ -84,6 +84,12 @@ Currently implemented & planned components:
 - [x] Title
 - [ ] Tooltip
 - [ ] Upload
+
+# Versioning
+Versions `1.x.x` should all be considered unstabled and all minor updates may include BREAKING CHANGES even without explicit mention.
+This direct (contradiction to the Semantic Versioning)[https://semver.org/spec/v2.0.0.html#spec-item-4] is due to a (bad implementation and limitation in semantic-release)[https://github.com/semantic-release/semantic-release/issues/1507#issuecomment-605079708].
+
+Versions `2.x.x` and onwards will be considered stable and adhere to the (Semantic Versioning 2.0.0)[https://semver.org/spec/v2.0.0.html].
 
 # Contributing
 Before contributing please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).

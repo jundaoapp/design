@@ -1,9 +1,9 @@
 import "./index.scss";
-import "@jundao/design/label/index.scss";
+import "../label/index.scss";
 import { JSXElement, Match, Show, Switch as SolidSwitch } from "solid-js";
-import { Space, Spinner, Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Space, Spinner, Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Switch as KobalteSwitch } from "@kobalte/core";
 import { SwitchRootOptions } from "@kobalte/core/dist/types/switch";
 

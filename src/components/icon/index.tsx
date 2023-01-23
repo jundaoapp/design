@@ -1,7 +1,7 @@
 import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type IconProps = IntrinsicComponentProps<
 	"i",
@@ -13,7 +13,7 @@ export type IconProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Icon(props: IconProps) {
+export function Icon(props: IconProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

@@ -1,7 +1,7 @@
 import "./index.scss";
 import { ComponentProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { Link as KobalteLink } from "@kobalte/core";
 import { LinkRootOptions } from "@kobalte/core/dist/types/link";
 
@@ -13,7 +13,7 @@ export type LinkProps = IntrinsicComponentProps<
 	} & Omit<LinkRootOptions, "isDisabled">
 >;
 
-export default function Link(props: LinkProps) {
+export function Link(props: LinkProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

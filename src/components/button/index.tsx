@@ -1,9 +1,9 @@
 import "./index.scss";
-import { Spinner } from "@jundao/design";
-import { IntrinsicComponentProps } from "@jundao/design/types";
-import { processProps } from "@jundao/design/utilities";
+import { Spinner } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
 import { Show, createMemo, JSX } from "solid-js";
-import ButtonGroup from "@jundao/design/button/group";
+import ButtonGroup from "../button/group";
 import { Button as KobalteButton } from "@kobalte/core";
 import { ButtonRootOptions } from "@kobalte/core/dist/types/button";
 
@@ -60,4 +60,4 @@ const CompoundedButton = Button as typeof Button & {
 	Group: typeof ButtonGroup;
 };
 CompoundedButton.Group = ButtonGroup;
-export default CompoundedButton;
+export { CompoundedButton as Button };

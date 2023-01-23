@@ -1,8 +1,8 @@
 import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type TitleProps = IntrinsicComponentProps<
 	"h1",
@@ -11,7 +11,7 @@ export type TitleProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Title(props: TitleProps) {
+export function Title(props: TitleProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

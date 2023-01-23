@@ -8,10 +8,10 @@ import {
 	splitProps,
 	For,
 } from "solid-js";
-import { Icon, Text, Avatar } from "@jundao/design";
-import { AvatarProps } from "@jundao/design/avatar";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Icon, Text, Avatar } from "..";
+import { AvatarProps } from ".";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",

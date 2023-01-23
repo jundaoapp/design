@@ -7,9 +7,9 @@ import {
 	JSXElement,
 	on,
 } from "solid-js";
-import { Button, Icon, Text } from "@jundao/design";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { Button, Icon, Text } from "..";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type BreadcrumbProps = IntrinsicComponentProps<
 	"div",
@@ -22,7 +22,7 @@ export type BreadcrumbProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Breadcrumb(props: BreadcrumbProps) {
+export function Breadcrumb(props: BreadcrumbProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@jundao/design": ["src/components/index.ts"],
-      "@jundao/design/*": ["src/components/*"]
-    },
+    "baseUrl": "./src",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "strict": true,

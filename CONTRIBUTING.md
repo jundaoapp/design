@@ -65,6 +65,8 @@ The following commit prefixes are supported:
 - `style:`, changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - `ci:`, changes to CI configuration files and scripts
 
+To skip automatic releases include `[skip release]` in the commit message.
+
 Below are examples of well-formatted commits:
 
 ```
@@ -74,7 +76,7 @@ docs: fix link to website page
 test(input): add more cases to handle keyboard events
 ```
 
-Feature `feat:` prefixes should only be scoped for existing components.
+Feature `feat:` prefixes should not be scoped for new components.
 
 ## Creating pull requests
 
@@ -84,4 +86,4 @@ When creating a new pull request, it's preferable to use a conventional commit-f
 
 We follow the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-New releases should be managed by the Jundao Design team.
+New releases are automatically managed by [semantic-release](https://semantic-release.gitbook.io/semantic-release/).

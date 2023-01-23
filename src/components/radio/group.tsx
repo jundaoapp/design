@@ -1,9 +1,9 @@
 import { JSX, Show } from "solid-js";
-import { IntrinsicComponentProps } from "@jundao/design/types";
-import { processProps } from "@jundao/design/utilities";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { RadioGroupRootOptions } from "@kobalte/core/dist/types/radio-group";
-import { Space, Text } from "@jundao/design";
+import { Space, Text } from "..";
 
 export type RadioGroupProps = IntrinsicComponentProps<
 	"div",

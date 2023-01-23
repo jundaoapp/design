@@ -1,7 +1,7 @@
 import "./index.scss";
 import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 
 export type SpaceProps = IntrinsicComponentProps<
 	"div",
@@ -13,7 +13,7 @@ export type SpaceProps = IntrinsicComponentProps<
 	}
 >;
 
-export default function Space(props: SpaceProps) {
+export function Space(props: SpaceProps) {
 	const [local, others] = processProps({
 		props,
 		default: {

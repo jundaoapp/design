@@ -1,5 +1,5 @@
 import { splitProps, mergeProps, Accessor } from "solid-js";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { IntrinsicComponentProps } from "../types";
 import { ValidComponent } from "solid-js";
 
 export function processProps<

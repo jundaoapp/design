@@ -1,8 +1,8 @@
 import "./index.scss";
-import { Space, Text } from "@jundao/design";
+import { Space, Text } from "..";
 import RadioGroup from "./group";
-import { processProps } from "@jundao/design/utilities";
-import { IntrinsicComponentProps } from "@jundao/design/types";
+import { processProps } from "../utilities";
+import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { Show } from "solid-js";
 import { RadioGroupItemOptions } from "@kobalte/core/dist/types/radio-group";
@@ -60,4 +60,4 @@ const CompoundedRadio = Radio as typeof Radio & {
 	Group: typeof RadioGroup;
 };
 CompoundedRadio.Group = RadioGroup;
-export default CompoundedRadio;
+export { CompoundedRadio as Radio };
