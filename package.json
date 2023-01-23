@@ -20,7 +20,6 @@
     "type": "git",
     "url": "git+https://github.com/jundaoapp/design.git"
   },
-  "sideEffects": false,
   "license": "MIT",
   "source": "src/components/index.ts",
   "files": [
