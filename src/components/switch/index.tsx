@@ -31,7 +31,7 @@ export type SwitchProps = IntrinsicComponentProps<
 	>
 >;
 
-export default function Switch(props: SwitchProps) {
+export function Switch(props: SwitchProps) {
 	const [local, others] = processProps({
 		props,
 		default: {
