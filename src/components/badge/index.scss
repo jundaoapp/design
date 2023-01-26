@@ -87,8 +87,10 @@
             width: .5rem;
 
             * + & {
-                right: .1rem;
-                top: .1rem;
+                right: 0;
+                top: 0;
+                height: .7rem;
+                width: .7rem;
 
                 &.loading.loading {
                     height: calc(.4rem + 1px);

@@ -7,7 +7,6 @@
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
-    "emitDeclarationOnly": true,
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "dist",
