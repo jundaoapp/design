@@ -10,7 +10,7 @@
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ci": "pnpm format && pnpm check && pnpm check-typescript",
-    "build": "rollup -c"
+    "build": "rollup -c && node finishBuild.js"
   },
   "homepage": "https://github.com/jundaoapp/design",
   "bugs": {
@@ -21,7 +21,6 @@
     "url": "git+https://github.com/jundaoapp/design.git"
   },
   "license": "MIT",
-  "source": "src/components/index.ts",
   "files": [
     "dist"
   ],
@@ -37,8 +36,14 @@
       "node": "./dist/cjs/index.js"
     }
   },
+  "sideEffect": [
+    "dist/**/style/*",
+    "*.css"
+  ],
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
@@ -56,8 +61,16 @@
     "babel-loader": "^8.3.0",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.17.4",
+    "glob": "^8.1.0",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
     "rollup": "^3.10.1",
+    "rollup-plugin-dts": "^5.1.1",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-styles": "^4.0.0",
     "rollup-preset-solid": "^2.0.1",
     "rome": "^11.0.0",
     "sass": "^1.57.1",
@@ -67,6 +80,7 @@
     "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4",
     "vite": "^3.2.5",
+    "vite-plugin-dts": "^1.7.1",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {

@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "strict": true,
     "module": "esnext",
     "target": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
   },
   "include": [
-    "src/**/*",
+    "src/components/**/*",
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
