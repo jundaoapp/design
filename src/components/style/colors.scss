@@ -1,4 +1,4 @@
-@use "sass-hsv/hsv" as *;
+@use "hsv" as *;
 
 @mixin color($name, $color) {
     --jdd-#{$name}: #{$color};

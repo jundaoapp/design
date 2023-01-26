@@ -10,7 +10,7 @@
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ci": "pnpm format && pnpm check && pnpm check-typescript",
-    "build": "rollup -c"
+    "build": "rollup -c && node finishBuild.js"
   },
   "homepage": "https://github.com/jundaoapp/design",
   "bugs": {
@@ -21,7 +21,6 @@
     "url": "git+https://github.com/jundaoapp/design.git"
   },
   "license": "MIT",
-  "source": "src/components/index.ts",
   "files": [
     "dist"
   ],
@@ -37,36 +36,44 @@
       "node": "./dist/cjs/index.js"
     }
   },
+  "sideEffect": [
+    "dist/**/style/*",
+    "*.css"
+  ],
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "@storybook/addon-a11y": "^6.5.15",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-interactions": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/addons": "^6.5.15",
-    "@storybook/builder-vite": "^0.2.7",
-    "@storybook/html": "^6.5.15",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addons": "^6.5.16",
+    "@storybook/builder-vite": "^0.3.0",
+    "@storybook/html": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
-    "@storybook/theming": "^6.5.15",
+    "@storybook/theming": "^6.5.16",
     "babel-loader": "^8.3.0",
+    "babel-preset-solid": "^1.6.9",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.17.4",
+    "glob": "^8.1.0",
     "rollup": "^3.10.1",
-    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-styles": "^4.0.0",
     "rollup-preset-solid": "^2.0.1",
     "rome": "^11.0.0",
     "sass": "^1.57.1",
-    "sass-hsv": "^1.0.2",
     "semantic-release": "^20.0.2",
     "solid-js": "^1.6.9",
     "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4",
-    "vite": "^3.2.5",
+    "vite": "4",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
@@ -86,7 +93,11 @@
         "webpack",
         "react",
         "react-dom"
-      ]
+      ],
+      "allowedVersions": {
+        "rollup": "3",
+        "vite": "4"
+      }
     }
   },
   "publishConfig": {
