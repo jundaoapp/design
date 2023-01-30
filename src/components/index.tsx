@@ -9,6 +9,7 @@ export * from "./card";
 export * from "./checkbox";
 export * from "./divider";
 export * from "./icon";
+export * from "./image";
 export * from "./label";
 export * from "./link";
 export * from "./radio";

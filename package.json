@@ -10,7 +10,7 @@
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ci": "pnpm format && pnpm check && pnpm check-typescript",
-    "build": "rollup -c && node finishBuild.js"
+    "build": "rollup -c && node patchBuild.js"
   },
   "homepage": "https://github.com/jundaoapp/design",
   "bugs": {
@@ -73,11 +73,11 @@
     "solid-js": "^1.6.9",
     "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4",
-    "vite": "4",
+    "vite": "^4.0.4",
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
-    "@kobalte/core": "^0.4.0",
+    "@kobalte/core": "^0.5.0",
     "@solid-primitives/props": "^3.0.2",
     "@solid-primitives/refs": "^0.3.5",
     "remixicon": "^2.5.0",

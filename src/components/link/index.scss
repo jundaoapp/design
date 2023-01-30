@@ -22,17 +22,17 @@ a.jdd.link {
     }
 
     &.secondary {
-      color: var(--jdd-gray-8);
+      color: var(--jdd-gray-11);
 
       .jdd-dark & {
-        color: var(--jdd-gray-5);
+        color: var(--jdd-gray-1);
       }
 
       &[data-hover], &[data-focus-visible] {
-        color: var(--jdd-gray-7);
+        color: var(--jdd-gray-10);
 
         .jdd-dark & {
-          color: var(--jdd-gray-6);
+          color: var(--jdd-gray-2);
         }
       }
     }

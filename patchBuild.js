@@ -5,7 +5,7 @@ import fs from "fs";
 
 const startTime = performance.now();
 
-console.log("\x1b[36mFinishing build...\x1b[0m");
+console.log("\x1b[36mPatching build...\x1b[0m");
 
 glob
 	.sync("dist_temp/source/assets/components/**/index-*.css")
@@ -48,7 +48,7 @@ glob
 		console.log(
 			`\x1b[34mUpdated\x1b[0m ./${/dist\/source\/.+/.exec(
 				filepath,
-			)} import scss -> css`,
+                )} \x1b[35mimport scss\x1b[0m -> \x1b[35mcss\x1b[0m`,
 		);
 	});
 
@@ -61,7 +61,7 @@ glob
 		console.log(
 			`\x1b[34mUpdated\x1b[0m ./${/dist\/types\/.+/.exec(
 				filepath,
-			)} import scss -> X`,
+                )} \x1b[35mimport scss\x1b[0m -> \x1b[31m✗\x1b[0m`,
 		);
 	});
 
@@ -70,4 +70,4 @@ console.log("\x1b[34mDeleted\x1b[0m ./dist_temp/");
 
 const endTime = performance.now();
 
-console.log(`\x1b[36mFinished in ${Math.round(endTime - startTime)}ms\x1b[0m`);
+console.log(`\x1b[36mPatched in ${Math.round(endTime - startTime)}ms\x1b[0m`);

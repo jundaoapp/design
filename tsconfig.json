@@ -13,6 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["solid-js"]
   },
   "include": [
     "src/components/**/*",

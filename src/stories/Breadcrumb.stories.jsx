@@ -12,9 +12,9 @@ export default {
 
 const Template = (props) => (
 	<Breadcrumb {...props}>
-		<Link href="#">Home</Link>
-		<Text>Account</Text>
-		<Text>Profile</Text>
+		<Breadcrumb.Link href="#">Home</Breadcrumb.Link>
+		<Breadcrumb.Link>Account</Breadcrumb.Link>
+		<Breadcrumb.Link current>Profile</Breadcrumb.Link>
 	</Breadcrumb>
 );
 
@@ -27,13 +27,13 @@ Separator.args = { separator: ">" };
 const AutoCollapseTemplate = (props) => {
 	return (
 		<Breadcrumb {...props}>
-			<Link href="#">Home</Link>
-			<Text>Account</Text>
-			<Text>Profile</Text>
-			<Text>Option 1</Text>
-			<Text>Option 2</Text>
-			<Text>Option 3</Text>
-			<Text>Option 4</Text>
+			<Breadcrumb.Link href="#">Home</Breadcrumb.Link>
+			<Breadcrumb.Link>Account</Breadcrumb.Link>
+			<Breadcrumb.Link>Profile</Breadcrumb.Link>
+			<Breadcrumb.Link>Option 1</Breadcrumb.Link>
+			<Breadcrumb.Link>Option 2</Breadcrumb.Link>
+			<Breadcrumb.Link>Option 3</Breadcrumb.Link>
+			<Breadcrumb.Link current>Option 4</Breadcrumb.Link>
 		</Breadcrumb>
 	);
 };
@@ -47,13 +47,13 @@ const CollapsedTemplate = (props) => {
 	return (
 		<Space vertical align="start">
 			<Breadcrumb {...props} collapsed={collapsed()}>
-				<Link href="#">Home</Link>
-				<Text>Account</Text>
-				<Text>Profile</Text>
-				<Text>Option 1</Text>
-				<Text>Option 2</Text>
-				<Text>Option 3</Text>
-				<Text>Option 4</Text>
+				<Breadcrumb.Link href="#">Home</Breadcrumb.Link>
+				<Breadcrumb.Link>Account</Breadcrumb.Link>
+				<Breadcrumb.Link>Profile</Breadcrumb.Link>
+				<Breadcrumb.Link>Option 1</Breadcrumb.Link>
+				<Breadcrumb.Link>Option 2</Breadcrumb.Link>
+				<Breadcrumb.Link>Option 3</Breadcrumb.Link>
+				<Breadcrumb.Link current>Option 4</Breadcrumb.Link>
 			</Breadcrumb>
 			<Switch
 				defaultChecked
