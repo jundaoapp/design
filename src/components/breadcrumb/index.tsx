@@ -1,4 +1,5 @@
 import "./index.scss";
+import "../link/index.scss";
 import {
 	createEffect,
 	createMemo,
@@ -10,9 +11,11 @@ import {
 import { Button, Icon, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
+import { BreadcrumbLink } from "./link";
 
 export type BreadcrumbProps = IntrinsicComponentProps<
-	"div",
+	"nav",
 	{
 		separator?: JSXElement;
 		collapsed?: boolean;
@@ -22,7 +25,7 @@ export type BreadcrumbProps = IntrinsicComponentProps<
 	}
 >;
 
-export function Breadcrumb(props: BreadcrumbProps) {
+function Breadcrumb(props: BreadcrumbProps) {
 	const [local, others] = processProps({
 		props,
 		default: {
@@ -87,30 +90,41 @@ export function Breadcrumb(props: BreadcrumbProps) {
 	);
 
 	return (
-		<div
+		<KobalteBreadcrumbs.Root
 			class="jdd breadcrumb"
 			aria-label="Breadcrumbs"
 			classList={{ collapsible: local.collapsed === undefined }}
+			separator={
+				typeof local.separator === "string" ? (
+					<Text>{local.separator}</Text>
+				) : (
+					local.separator
+				)
+			}
 			{...others}
 		>
-			<For each={renderItems()}>
-				{(item, index) => {
-					if (index() + 1 < renderItems().length) {
-						return (
-							<>
-								{item}
-								{typeof local.separator === "string" ? (
-									<Text>{local.separator}</Text>
-								) : (
-									local.separator
-								)}
-							</>
-						);
-					}
+			<ol>
+				<For each={renderItems()}>
+					{(item, index) => {
+						if (index() + 1 < renderItems().length) {
+							return (
+								<li>
+									{item}
+									<KobalteBreadcrumbs.Separator />
+								</li>
+							);
+						}
 
-					return item;
-				}}
-			</For>
-		</div>
+						return item;
+					}}
+				</For>
+			</ol>
+		</KobalteBreadcrumbs.Root>
 	);
 }
+
+const CompoundedBreadcrumb = Breadcrumb as typeof Breadcrumb & {
+	Link: typeof BreadcrumbLink;
+};
+CompoundedBreadcrumb.Link = BreadcrumbLink;
+export { CompoundedBreadcrumb as Breadcrumb };

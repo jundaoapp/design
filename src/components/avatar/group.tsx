@@ -7,11 +7,14 @@ import {
 	Show,
 	splitProps,
 	For,
+	Switch,
+	Match,
 } from "solid-js";
-import { Icon, Text, Avatar } from "..";
+import { Icon, Text, Avatar, Link } from "..";
 import { AvatarProps } from ".";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { Button, PressEvent } from "@kobalte/core";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",
@@ -19,6 +22,8 @@ export type AvatarGroupProps = IntrinsicComponentProps<
 		max?: number;
 		overlap?: boolean;
 		avatarProps?: AvatarProps;
+		moreSrc?: string;
+		moreOnPress?: (event: PressEvent) => void;
 	}
 >;
 
@@ -28,7 +33,16 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 		default: {
 			overlap: true,
 		},
-		keys: ["max", "overlap", "children", "size", "avatarProps", "shape"],
+		keys: [
+			"max",
+			"overlap",
+			"children",
+			"size",
+			"avatarProps",
+			"shape",
+			"moreSrc",
+			"moreOnPress",
+		],
 	});
 
 	const children =
@@ -37,6 +51,20 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 	const childrendArray: JSXElement[] = Array.isArray(children)
 		? children
 		: [children];
+
+	const moreAvatar = (
+		<Avatar
+			size={local.size}
+			shape={local.shape}
+			icon={
+				<Text style={{ "font-size": ".75em" }}>
+					+{childrendArray.length + 1 - local.max!}
+				</Text>
+			}
+			alt={`+${childrendArray.length + 1 - local.max!}`}
+			{...local.avatarProps}
+		/>
+	);
 
 	return (
 		<div
@@ -51,17 +79,16 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 			<Show
 				when={local.max !== undefined && childrendArray.length >= local.max}
 			>
-				<Avatar
-					size={local.size}
-					shape={local.shape}
-					icon={
-						<Text style={{ "font-size": ".75em" }}>{`+${
-							childrendArray.length + 1 - local.max!
-						}`}</Text>
-					}
-					alt={`+${childrendArray.length + 1 - local.max!}`}
-					{...local.avatarProps}
-				/>
+				<Switch fallback={moreAvatar}>
+					<Match when={local.moreSrc}>
+						<Link href={local.moreSrc}>{moreAvatar}</Link>
+					</Match>
+					<Match when={local.moreOnPress}>
+						<Button.Root class="jdd" onPress={local.moreOnPress}>
+							{moreAvatar}
+						</Button.Root>
+					</Match>
+				</Switch>
 			</Show>
 
 			<For each={childrendArray}>

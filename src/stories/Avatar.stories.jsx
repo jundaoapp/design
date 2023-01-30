@@ -5,7 +5,7 @@ import {
 	Space,
 	Link as LinkComp,
 } from "@jundao/design";
-import { createSignal } from "solid-js";
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Components/Avatar",
@@ -87,3 +87,50 @@ const LinkTemplate = (props) => (
 
 export const Link = LinkTemplate.bind({});
 Link.args = { alt: "U" };
+
+const MoreTemplate = (props) => (
+	<Space vertical align="start" size="large">
+		<LinkComp href="#">
+			<Avatar {...props} />
+		</LinkComp>
+
+		<Avatar.Group max={4} size={props.size} shape={props.shape} moreSrc="#">
+			<For each={[...Array(10).keys()]}>
+				{() => (
+					<LinkComp href="#">
+						<Avatar {...props} />
+					</LinkComp>
+				)}
+			</For>
+		</Avatar.Group>
+	</Space>
+);
+
+export const MoreLink = MoreTemplate.bind({});
+MoreLink.args = { alt: "U" };
+
+const MorePressTemplate = (props) => (
+	<Space vertical align="start" size="large">
+		<LinkComp href="#">
+			<Avatar {...props} />
+		</LinkComp>
+
+		<Avatar.Group
+			max={4}
+			size={props.size}
+			shape={props.shape}
+			moreOnPress={action("onPress")}
+		>
+			<For each={[...Array(10).keys()]}>
+				{() => (
+					<LinkComp href="#">
+						<Avatar {...props} />
+					</LinkComp>
+				)}
+			</For>
+		</Avatar.Group>
+	</Space>
+);
+
+export const MoreOnPress = MorePressTemplate.bind({});
+MoreOnPress.args = { alt: "U" };

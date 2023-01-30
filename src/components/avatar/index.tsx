@@ -10,13 +10,17 @@ import {
 import AvatarGroup from "../avatar/group";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { Image } from "..";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",
-	Pick<ComponentProps<"img">, "src" | "srcSet" | "alt" | "crossOrigin"> & {
+	{
 		size?: "small" | "default" | "large";
 		shape?: "circle" | "square";
 		icon?: JSXElement;
+		src?: string;
+		srcset?: string;
+		alt?: string;
 	}
 >;
 
@@ -27,7 +31,7 @@ function Avatar(props: AvatarProps) {
 			size: "default",
 			shape: "circle",
 		},
-		keys: ["size", "shape", "icon", "src", "srcSet", "alt", "crossOrigin"],
+		keys: ["size", "shape", "icon", "src", "srcset", "alt"],
 	});
 
 	return (
@@ -36,19 +40,16 @@ function Avatar(props: AvatarProps) {
 			classList={{
 				small: local.size === "small",
 				large: local.size === "large",
-				square: local.shape === "square",
 			}}
 			{...others}
 		>
-			<Show when={local.src !== undefined} fallback={local.icon ?? local.alt}>
-				<img
-					src={local.src}
-					srcSet={local.srcSet}
-					alt={local.alt}
-					crossOrigin={local.crossOrigin}
-					draggable={false}
-				/>
-			</Show>
+			<Image
+				src={local.src}
+				srcset={local.srcset}
+				alt={local.alt}
+				fallback={local.icon ?? local.alt}
+				shape={local.shape === "square" ? "rounded" : "circle"}
+			/>
 		</div>
 	);
 }

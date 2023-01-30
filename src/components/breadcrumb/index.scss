@@ -1,12 +1,31 @@
-div.jdd.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    align-items: center;
+.jdd.breadcrumb {
+    cursor: default;
 
     &:not(.collapsible) {
         > .jdd.button {
             pointer-events: none;
+        }
+    }
+
+    ol {
+        &, li {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .25rem;
+            align-items: center;
+        }
+
+        .jdd.link:not([data-current])[href] {
+            font-weight: 600;
+        }
+
+        .jdd.link:not([href]), .jdd.link[data-current] {
+            pointer-events: none;
+            color: var(--jdd-gray-15);
+
+            .jdd-dark & {
+                color: var(--jdd-gray-1);
+            }
         }
     }
 }
