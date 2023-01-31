@@ -84,15 +84,17 @@
             color: var(--jdd-gray-1);
         }
 
-        button.alert-close {
-            color: var(--jdd-gray-1);
+        &.info, &.success, &.warning, &.error {
+            button.alert-close {
+                color: var(--jdd-gray-1);
 
-            &.focus-ring, &:focus-visible {
-                outline: solid var(--jdd-gray-1) var(--jdd-accessibility-outline-width);
-            }
+                &.focus-ring, &:focus-visible {
+                    outline: solid var(--jdd-gray-1) var(--jdd-accessibility-outline-width);
+                }
 
-            &:hover, &:focus {
-                color: var(--jdd-gray-5);
+                &[data-hover], &[data-focus] {
+                    color: var(--jdd-gray-5);
+                }
             }
         }
     }
@@ -145,7 +147,7 @@
         margin: .3rem 0;
         color: var(--jdd-gray-9);
 
-        &:hover, &:focus {
+        &[data-hover], &[data-focus] {
             color: var(--jdd-gray-7);
         }
     }
@@ -160,7 +162,7 @@
         &:not(.banner) button.alert-close {
             color: var(--jdd-gray-5);
 
-            &:hover, &:focus {
+            &[data-hover], &[data-focus] {
                 color: var(--jdd-gray-7);
             }
         }
