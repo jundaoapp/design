@@ -10,7 +10,8 @@
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ci": "pnpm format && pnpm check && pnpm check-typescript",
-    "build": "rollup -c && node patchBuild.js"
+    "build": "rollup -c && node patchBuild.js",
+    "clean": "rimraf dist/ storybook-static/"
   },
   "homepage": "https://github.com/jundaoapp/design",
   "bugs": {
@@ -64,6 +65,7 @@
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.4",
     "glob": "^8.1.0",
+    "rimraf": "^4.1.2",
     "rollup": "^3.10.1",
     "rollup-plugin-styles": "^4.0.0",
     "rollup-preset-solid": "^2.0.1",

@@ -1,0 +1,133 @@
+.jdd.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(var(--jdd-gray-15-rgb), 0.2);
+
+    .jdd-dark & {
+        background: rgba(var(--jdd-gray-1-rgb), 0.15);
+    }
+}
+
+.jdd.modal {
+    top: 0;
+    left: 0;
+    position: fixed;
+    max-width: min(90vw, 40rem);
+    transition-property: var(--jdd-modal-transition-property);
+    transition-duration: var(--jdd-transition-duration);
+    transition-timing-function: var(--jdd-transition-function);
+    transform: translate(var(--jdd-modal-position));
+
+    --jdd-modal-transition-property: transform;
+
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .title {
+            margin-bottom: 0;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        margin-top: 1rem;
+        gap: .75rem;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-size: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: var(--jdd-gray-9);
+        margin: 0 -.5rem 0 1rem;
+
+      &[data-hover], &[data-focus] {
+            color: var(--jdd-gray-7);
+        }
+
+        .jdd-dark & {
+            color: var(--jdd-gray-1);
+
+            &[data-hover], &[data-focus] {
+                color: var(--jdd-gray-5);
+            }
+        }
+    }
+}
+
+.jdd.modal-wrapper {
+    --jdd-overlay-zindex-increment: 0;
+    z-index: 100 + var(--jdd-overlay-zindex-increment);
+
+    &.modal-animation-enter {
+        opacity: 0;
+
+        .jdd.modal > .card {
+            transform: scale(0);
+        }
+    }
+
+    &.modal-animation-enter-to {
+        animation: jdd-modal-enter;
+        animation-timing-function: var(--jdd-transition-function);
+        animation-duration: var(--jdd-transition-duration);
+
+        .jdd.modal > .card {
+            animation: jdd-modal-modal-enter;
+            animation-timing-function: var(--jdd-transition-function);
+            animation-duration: var(--jdd-transition-duration);
+        }
+    }
+
+    &.modal-animation-exit-to {
+        animation: jdd-modal-exit;
+        animation-timing-function: var(--jdd-transition-function);
+        animation-duration: var(--jdd-transition-duration);
+
+        .jdd.modal > .card {
+            animation: jdd-modal-modal-exit;
+            animation-timing-function: var(--jdd-transition-function);
+            animation-duration: var(--jdd-transition-duration);
+        }
+    }
+}
+
+@keyframes jdd-modal-enter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes jdd-modal-exit {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes jdd-modal-modal-enter {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes jdd-modal-modal-exit {
+    to {
+        transform: scale(0);
+    }
+}

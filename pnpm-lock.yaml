@@ -28,6 +28,7 @@ specifiers:
   esbuild: ^0.17.4
   glob: ^8.1.0
   remixicon: ^2.5.0
+  rimraf: ^4.1.2
   rollup: ^3.10.1
   rollup-plugin-styles: ^4.0.0
   rollup-preset-solid: ^2.0.1
@@ -72,6 +73,7 @@ devDependencies:
   cross-env: 7.0.3
   esbuild: 0.17.4
   glob: 8.1.0
+  rimraf: 4.1.2
   rollup: 3.10.1
   rollup-plugin-styles: 4.0.0_rollup@3.10.1
   rollup-preset-solid: 2.0.1
@@ -12505,6 +12507,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf/4.1.2:
+    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /ripemd160/2.0.2:

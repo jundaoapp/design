@@ -12,6 +12,7 @@ export * from "./icon";
 export * from "./image";
 export * from "./label";
 export * from "./link";
+export * from "./modal";
 export * from "./radio";
 export * from "./slider";
 export * from "./space";
