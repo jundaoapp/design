@@ -10,8 +10,7 @@
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ci": "pnpm format && pnpm check && pnpm check-typescript",
-    "build": "rollup -c && node patchBuild.js",
-    "clean": "rimraf dist/ storybook-static/"
+    "build": "tsup"
   },
   "homepage": "https://github.com/jundaoapp/design",
   "bugs": {
@@ -25,22 +24,21 @@
   "files": [
     "dist"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "solid": "./dist/source/index.jsx",
-      "import": "./dist/esm/index.js",
-      "browser": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "node": "./dist/cjs/index.js"
-    }
+      "solid": "./dist/index.jsx",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": "./dist/index.cjs"
+    },
+    "./index.css": "./dist/index.css"
   },
-  "sideEffect": [
-    "dist/**/style/*",
-    "*.css"
-  ],
+  "sideEffect": false,
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
@@ -64,16 +62,14 @@
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.4",
-    "glob": "^8.1.0",
-    "rimraf": "^4.1.2",
-    "rollup": "^3.10.1",
-    "rollup-plugin-styles": "^4.0.0",
-    "rollup-preset-solid": "^2.0.1",
+    "esbuild-sass-plugin": "^2.4.5",
     "rome": "^11.0.0",
     "sass": "^1.57.1",
     "semantic-release": "^20.0.2",
     "solid-js": "^1.6.9",
     "storybook-dark-mode": "^2.0.5",
+    "tsup": "^6.5.0",
+    "tsup-preset-solid": "^0.1.5",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-plugin-solid": "^2.5.0"
@@ -106,5 +102,7 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public",
     "tag": "alpha"
-  }
+  },
+  "browser": {},
+  "typesVersions": {}
 }
