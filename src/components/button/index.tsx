@@ -2,10 +2,9 @@ import "./index.scss";
 import { Spinner } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { Show, createMemo, JSX } from "solid-js";
+import { Show } from "solid-js";
 import ButtonGroup from "../button/group";
 import { Button as KobalteButton } from "@kobalte/core";
-import { ButtonRootOptions } from "@kobalte/core/dist/types/button";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -16,8 +15,7 @@ export type ButtonProps = IntrinsicComponentProps<
 		danger?: boolean;
 		loading?: boolean;
 		href?: string;
-		onClick?: never;
-	} & Omit<ButtonRootOptions, "isDisabled" | "children">
+	}
 >;
 
 function Button(props: ButtonProps) {
@@ -27,7 +25,6 @@ function Button(props: ButtonProps) {
 			disabled: false,
 			danger: false,
 			loading: false,
-			preventFocusOnPress: true,
 		},
 		keys: ["children", "type", "size", "disabled", "danger", "loading"],
 	});

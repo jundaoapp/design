@@ -2,9 +2,17 @@
     position: fixed;
     inset: 0;
     background: rgba(var(--jdd-gray-15-rgb), 0.2);
+    animation: jdd-modal-exit;
+    animation-timing-function: var(--jdd-transition-function);
+    animation-duration: var(--jdd-transition-duration);
+    animation-fill-mode: forwards;
 
     .jdd-dark & {
         background: rgba(var(--jdd-gray-1-rgb), 0.15);
+    }
+
+    &[data-expanded] {
+        animation: jdd-modal-enter;
     }
 }
 
@@ -17,6 +25,10 @@
     transition-duration: var(--jdd-transition-duration);
     transition-timing-function: var(--jdd-transition-function);
     transform: translate(var(--jdd-modal-position));
+    animation-name: jdd-modal-exit;
+    animation-timing-function: var(--jdd-transition-function);
+    animation-duration: var(--jdd-transition-duration);
+    animation-fill-mode: forwards;
 
     --jdd-modal-transition-property: transform;
 
@@ -50,17 +62,32 @@
         color: var(--jdd-gray-9);
         margin: 0 -.5rem 0 1rem;
 
-      &[data-hover], &[data-focus] {
+      &:hover, &:focus {
             color: var(--jdd-gray-7);
         }
 
         .jdd-dark & {
             color: var(--jdd-gray-1);
 
-            &[data-hover], &[data-focus] {
+            &:hover, &:focus {
                 color: var(--jdd-gray-5);
             }
         }
+    }
+
+    &[data-expanded] {
+        animation-name: jdd-modal-enter;
+
+        > .card {
+            animation-name: jdd-modal-modal-enter;
+        }
+    }
+
+    > .card {
+        animation-name: jdd-modal-modal-exit;
+        animation-timing-function: var(--jdd-transition-function);
+        animation-duration: var(--jdd-transition-duration);
+        animation-fill-mode: forwards;
     }
 }
 
@@ -68,37 +95,6 @@
     --jdd-overlay-zindex-increment: 0;
     z-index: 100 + var(--jdd-overlay-zindex-increment);
 
-    &.modal-animation-enter {
-        opacity: 0;
-
-        .jdd.modal > .card {
-            transform: scale(0);
-        }
-    }
-
-    &.modal-animation-enter-to {
-        animation: jdd-modal-enter;
-        animation-timing-function: var(--jdd-transition-function);
-        animation-duration: var(--jdd-transition-duration);
-
-        .jdd.modal > .card {
-            animation: jdd-modal-modal-enter;
-            animation-timing-function: var(--jdd-transition-function);
-            animation-duration: var(--jdd-transition-duration);
-        }
-    }
-
-    &.modal-animation-exit-to {
-        animation: jdd-modal-exit;
-        animation-timing-function: var(--jdd-transition-function);
-        animation-duration: var(--jdd-transition-duration);
-
-        .jdd.modal > .card {
-            animation: jdd-modal-modal-exit;
-            animation-timing-function: var(--jdd-transition-function);
-            animation-duration: var(--jdd-transition-duration);
-        }
-    }
 }
 
 @keyframes jdd-modal-enter {

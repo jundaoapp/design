@@ -12,7 +12,7 @@ a.jdd.link {
     color: var(--jdd-blue-6);
     transition: text-decoration var(--jdd-transition-function) var(--jdd-transition-duration), var(--jdd-transition-colors);
 
-    &[data-hover], &[data-focus-visible] {
+    &:hover, &:focus-visible {
       color: var(--jdd-blue-5);
       text-decoration: underline solid Currentcolor;
 
@@ -28,7 +28,7 @@ a.jdd.link {
         color: var(--jdd-gray-1);
       }
 
-      &[data-hover], &[data-focus-visible] {
+      &:hover, &:focus-visible {
         color: var(--jdd-gray-10);
 
         .jdd-dark & {
@@ -40,7 +40,7 @@ a.jdd.link {
     &.success {
       color: var(--jdd-green-6);
 
-      &[data-hover], &[data-focus-visible] {
+      &:hover, &:focus-visible {
         color: var(--jdd-green-5);
 
         .jdd-dark & {
@@ -52,7 +52,7 @@ a.jdd.link {
     &.warning {
       color: var(--jdd-orange-6);
 
-      &[data-hover], &[data-focus-visible] {
+      &:hover, &:focus-visible {
         color: var(--jdd-orange-5);
 
         .jdd-dark & {
@@ -64,7 +64,7 @@ a.jdd.link {
     &.danger {
       color: var(--jdd-red-6);
 
-      &[data-hover], &[data-focus-visible] {
+      &:hover, &:focus-visible {
         color: var(--jdd-red-5);
 
         .jdd-dark & {
@@ -77,7 +77,7 @@ a.jdd.link {
       display: inline-block;
       transition: var(--jdd-transition-colors), transform var(--jdd-transition-duration) var(--jdd-transition-function);
 
-      &[data-hover], &[data-focus-visible] {
+      &:hover, &:focus-visible {
         transform: translateY(-1px) translateX(1px);
       }
     }

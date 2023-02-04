@@ -49,35 +49,39 @@ export function Modal(props: ModalProps) {
 
 	let ref: HTMLDivElement | undefined;
 
+	const handleRef = (element: HTMLDivElement) => {
+		mergeRefs((el) => (ref = el), local.ref)(element);
+
+		if (local.open === true) {
+			if (ref !== undefined) {
+				setSourceElement(document.activeElement ?? document.body);
+				const rect = sourceElement()!.getBoundingClientRect();
+				const x = Math.round(rect.x + rect.width / 2);
+				const y = Math.round(rect.y + rect.height / 2);
+
+				ref!.style.setProperty("--jdd-modal-transition-property", "none");
+				ref.style.setProperty(
+					"--jdd-modal-position",
+					`calc(${x}px - 50%), calc(${y}px - 50%)`,
+				);
+				setTimeout(() => {
+					ref!.style.removeProperty("--jdd-modal-transition-property");
+					ref!.style.setProperty(
+						"--jdd-modal-position",
+						`calc(${window.innerWidth / 2}px - 50%), calc(${
+							window.innerHeight / 2
+						}px - 50%)`,
+					);
+				}, 0);
+			}
+		}
+	};
+
 	createEffect(
 		on(
 			() => local.open,
 			(open) => {
-				if (open === true) {
-					setForceMount(true);
-
-					if (ref !== undefined) {
-						setSourceElement(document.activeElement ?? document.body);
-						const rect = sourceElement()!.getBoundingClientRect();
-						const x = Math.round(rect.x + rect.width / 2);
-						const y = Math.round(rect.y + rect.height / 2);
-
-						ref!.style.setProperty("--jdd-modal-transition-property", "none");
-						ref.style.setProperty(
-							"--jdd-modal-position",
-							`calc(${x}px - 50%), calc(${y}px - 50%)`,
-						);
-						setTimeout(() => {
-							ref!.style.removeProperty("--jdd-modal-transition-property");
-							ref!.style.setProperty(
-								"--jdd-modal-position",
-								`calc(${window.innerWidth / 2}px - 50%), calc(${
-									window.innerHeight / 2
-								}px - 50%)`,
-							);
-						}, 0);
-					}
-				} else {
+				if (open === false) {
 					if (ref !== undefined) {
 						const rect = sourceElement()!.getBoundingClientRect();
 						const x = Math.round(rect.x + rect.width / 2);
@@ -99,54 +103,41 @@ export function Modal(props: ModalProps) {
 				isModal={true}
 				isOpen={local.open}
 				onOpenChange={local.onOpenChange}
-				forceMount={forceMount()}
 			>
 				<Dialog.Portal>
-					<Transition
-						name="modal-animation"
-						appear
-						onAfterExit={() => setForceMount(false)}
+					<div
+						class="jdd modal-wrapper"
+						style={{ "--jdd-overlay-zindex-increment": level }}
 					>
-						<Show when={local.open === true}>
-							<div
-								class="jdd modal-wrapper"
-								style={{ "--jdd-overlay-zindex-increment": level }}
-							>
-								<Dialog.Overlay class="jdd modal-overlay" />
-								<Dialog.Content
-									ref={mergeRefs((el) => (ref = el), local.ref)}
-									class="jdd modal"
-									{...others}
-								>
-									<Card>
-										<div class="modal-header">
-											<Show when={local.title}>
-												<Dialog.Title class="jdd title jdd-typography">
-													{local.title}
-												</Dialog.Title>
-											</Show>
+						<Dialog.Overlay class="jdd modal-overlay" />
+						<Dialog.Content ref={handleRef} class="jdd modal" {...others}>
+							<Card>
+								<div class="modal-header">
+									<Show when={local.title}>
+										<Dialog.Title class="jdd title jdd-typography">
+											{local.title}
+										</Dialog.Title>
+									</Show>
 
-											<Dialog.CloseButton class="jdd modal-close">
-												<Icon icon="close" />
-											</Dialog.CloseButton>
-										</div>
-										<Dialog.Description class="modal-description">
-											<Show
-												when={typeof local.children === "string"}
-												fallback={local.children}
-											>
-												<Text>{local.children}</Text>
-											</Show>
+									<Dialog.CloseButton class="jdd modal-close">
+										<Icon icon="close" />
+									</Dialog.CloseButton>
+								</div>
+								<Dialog.Description class="modal-description">
+									<Show
+										when={typeof local.children === "string"}
+										fallback={local.children}
+									>
+										<Text>{local.children}</Text>
+									</Show>
 
-											<Show when={local.footer}>
-												<div class="modal-footer">{local.footer}</div>
-											</Show>
-										</Dialog.Description>
-									</Card>
-								</Dialog.Content>
-							</div>
-						</Show>
-					</Transition>
+									<Show when={local.footer}>
+										<div class="modal-footer">{local.footer}</div>
+									</Show>
+								</Dialog.Description>
+							</Card>
+						</Dialog.Content>
+					</div>
 				</Dialog.Portal>
 			</Dialog.Root>
 		</OverlayContextProvider>

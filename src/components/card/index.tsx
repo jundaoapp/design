@@ -64,10 +64,7 @@ export function Card(props: CardProps) {
 					)}
 
 					<Show when={local.collapsible || local.defaultCollapsed}>
-						<Collapsible.Trigger
-							class="jdd collapse-toggle"
-							preventFocusOnPress
-						>
+						<Collapsible.Trigger class="jdd collapse-toggle">
 							<Text>
 								<Icon icon="arrow-down-s" line />
 							</Text>

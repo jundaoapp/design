@@ -72,7 +72,7 @@ const IndeterminateTemplate = (props) => {
 				<Button
 					type="primary"
 					size="small"
-					onPress={() => {
+					onClick={() => {
 						setIndeterminate(!indeterminate());
 					}}
 				>

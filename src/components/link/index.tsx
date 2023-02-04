@@ -10,15 +10,12 @@ export type LinkProps = IntrinsicComponentProps<
 	{
 		disabled?: boolean;
 		type?: "default" | "secondary" | "success" | "warning" | "danger";
-	} & Omit<LinkRootOptions, "isDisabled">
+	}
 >;
 
 export function Link(props: LinkProps) {
 	const [local, others] = processProps({
 		props,
-		default: {
-			preventFocusOnPress: true,
-		},
 		keys: ["children", "disabled", "type"],
 	});
 

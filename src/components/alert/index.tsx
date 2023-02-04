@@ -104,7 +104,7 @@ export function Alert(props: AlertProps) {
 							class="jdd alert-close"
 							data-dismiss="alert"
 							aria-label="Close"
-							onPress={() => setShow(false)}
+							onClick={() => setShow(false)}
 						>
 							<Icon aria-hidden={true} icon="close" />
 						</Button.Root>

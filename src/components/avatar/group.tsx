@@ -9,12 +9,13 @@ import {
 	For,
 	Switch,
 	Match,
+	JSX,
 } from "solid-js";
 import { Icon, Text, Avatar, Link } from "..";
 import { AvatarProps } from ".";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
-import { Button, PressEvent } from "@kobalte/core";
+import { Button } from "@kobalte/core";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",
@@ -23,7 +24,7 @@ export type AvatarGroupProps = IntrinsicComponentProps<
 		overlap?: boolean;
 		avatarProps?: AvatarProps;
 		moreSrc?: string;
-		moreOnPress?: (event: PressEvent) => void;
+		moreOnClick?: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
 	}
 >;
 
@@ -41,7 +42,7 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 			"avatarProps",
 			"shape",
 			"moreSrc",
-			"moreOnPress",
+			"moreOnClick",
 		],
 	});
 
@@ -83,8 +84,8 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 					<Match when={local.moreSrc}>
 						<Link href={local.moreSrc}>{moreAvatar}</Link>
 					</Match>
-					<Match when={local.moreOnPress}>
-						<Button.Root class="jdd" onPress={local.moreOnPress}>
+					<Match when={local.moreOnClick}>
+						<Button.Root class="jdd" onClick={local.moreOnClick}>
 							{moreAvatar}
 						</Button.Root>
 					</Match>

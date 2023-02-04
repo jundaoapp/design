@@ -75,7 +75,7 @@ function Breadcrumb(props: BreadcrumbProps) {
 					setRenderItems(
 						createMemo(() => [
 							...childrendArray.slice(0, beforeCollapse),
-							<Button onPress={() => setCollapsed(false)} size="small">
+							<Button onClick={() => setCollapsed(false)} size="small">
 								<Icon icon="more" />
 							</Button>,
 							...[...childrendArray]
