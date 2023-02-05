@@ -26,8 +26,8 @@
             &:not([data-disabled]) {
                 &[data-checked],
                 &[data-indeterminate] {
-                    &[data-hover],
-                    &[data-focus-visible] {
+                    &:hover,
+                    &:focus-visible {
                         background-color: var(--jdd-blue-7);
                         border-color: var(--jdd-blue-7);
 
@@ -37,8 +37,8 @@
                         }
                     }
                 }
-                &[data-hover],
-                &[data-focus-visible] {
+                &:hover,
+                &:focus-visible {
                     background-color: var(--jdd-gray-11);
                 }
             }
@@ -75,8 +75,8 @@
         &:not([data-disabled]) {
             &[data-checked],
             &[data-indeterminate] {
-                &[data-hover],
-                &[data-focus-visible] {
+                &:hover,
+                &:focus-visible {
                     background-color: var(--jdd-blue-5);
                     border-color: var(--jdd-blue-5);
 
@@ -87,8 +87,8 @@
                 }
             }
 
-            &[data-hover],
-            &[data-focus-visible] {
+            &:hover,
+            &:focus-visible {
                 background-color: var(--jdd-gray-2);
                 border-color: var(--jdd-blue-6);
 

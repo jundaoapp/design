@@ -17,7 +17,7 @@ const Template = (props) => {
 
 	return (
 		<>
-			<Button onPress={() => setOpen(true)} loading={open()}>
+			<Button onClick={() => setOpen(true)} loading={open()}>
 				Open Modal
 			</Button>
 			<Modal open={open()} onOpenChange={setOpen} {...props} />
@@ -33,7 +33,7 @@ const FooterTemplate = (props) => {
 
 	return (
 		<>
-			<Button onPress={() => setOpen(true)} loading={open()}>
+			<Button onClick={() => setOpen(true)} loading={open()}>
 				Open Modal
 			</Button>
 			<Modal
@@ -41,10 +41,10 @@ const FooterTemplate = (props) => {
 				onOpenChange={setOpen}
 				footer={
 					<>
-						<Button autofocus onPress={() => setOpen(false)}>
+						<Button autofocus onClick={() => setOpen(false)}>
 							Cancel
 						</Button>
-						<Button type="primary" danger onPress={() => setOpen(false)}>
+						<Button type="primary" danger onClick={() => setOpen(false)}>
 							Delete
 						</Button>
 					</>
@@ -66,18 +66,18 @@ const MultpileTriggersTemplate = (props) => {
 
 	return (
 		<>
-			<Button onPress={() => setOpen(true)} loading={open()}>
+			<Button onClick={() => setOpen(true)} loading={open()}>
 				Open Modal
 			</Button>
 
 			<div style={{ "margin-left": "40rem" }}>
-				<Button onPress={() => setOpen(true)} loading={open()}>
+				<Button onClick={() => setOpen(true)} loading={open()}>
 					Open Modal
 				</Button>
 			</div>
 
 			<div style={{ margin: "30rem 0 0 25rem" }}>
-				<Button onPress={() => setOpen(true)} loading={open()}>
+				<Button onClick={() => setOpen(true)} loading={open()}>
 					Open Modal
 				</Button>
 			</div>
@@ -100,7 +100,7 @@ const NestedTemplate = (props) => {
 
 	return (
 		<>
-			<Button onPress={() => setOpen(true)} loading={open()}>
+			<Button onClick={() => setOpen(true)} loading={open()}>
 				Open Modal
 			</Button>
 			<Modal
@@ -109,7 +109,7 @@ const NestedTemplate = (props) => {
 				{...props}
 				title="Modal Title"
 				footer={
-					<Button onPress={() => setOpen1(true)} loading={open1()}>
+					<Button onClick={() => setOpen1(true)} loading={open1()}>
 						Open Modal
 					</Button>
 				}
@@ -120,7 +120,7 @@ const NestedTemplate = (props) => {
 					{...props}
 					title="Modal Title"
 					footer={
-						<Button onPress={() => setOpen2(true)} loading={open2()}>
+						<Button onClick={() => setOpen2(true)} loading={open2()}>
 							Open Modal
 						</Button>
 					}

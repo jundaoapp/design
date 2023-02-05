@@ -109,7 +109,7 @@ const MoreTemplate = (props) => (
 export const MoreLink = MoreTemplate.bind({});
 MoreLink.args = { alt: "U" };
 
-const MorePressTemplate = (props) => (
+const MoreClickTemplate = (props) => (
 	<Space vertical align="start" size="large">
 		<LinkComp href="#">
 			<Avatar {...props} />
@@ -119,7 +119,7 @@ const MorePressTemplate = (props) => (
 			max={4}
 			size={props.size}
 			shape={props.shape}
-			moreOnPress={action("onPress")}
+			moreOnClick={action("onClick")}
 		>
 			<For each={[...Array(10).keys()]}>
 				{() => (
@@ -132,5 +132,5 @@ const MorePressTemplate = (props) => (
 	</Space>
 );
 
-export const MoreOnPress = MorePressTemplate.bind({});
-MoreOnPress.args = { alt: "U" };
+export const MoreOnClick = MoreClickTemplate.bind({});
+MoreOnClick.args = { alt: "U" };

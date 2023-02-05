@@ -22,15 +22,15 @@
     }
 
     &:not([data-disabled]) {
-        &[data-hover], &[data-focus], &.loading {
+        &:hover, &:focus, &.loading {
             background-color: var(--jdd-gray-11);
         }
 
-        &[data-focus] {
+        &:focus {
             transform: scale(1);
         }
 
-        &[data-active] {
+        &:active {
             background-color: var(--jdd-blue-10);
             color: var(--jdd-blue-6);
         }
@@ -52,12 +52,12 @@
 
   &.danger {
     &:not([data-disabled]) {
-        &[data-hover], &[data-focus], &.loading {
+        &:hover, &:focus, &.loading {
             background-color: var(--jdd-red-1);
             color: var(--jdd-red-6);
       }
 
-      &[data-active] {
+      &:active {
             background-color: var(--jdd-red-2);
             color: var(--jdd-red-7);
       }
@@ -69,11 +69,11 @@
         }
 
         &:not([data-disabled]) {
-            &[data-hover], &[data-focus], &.loading {
+            &:hover, &:focus, &.loading {
                 background-color: var(--jdd-red-10);
             }
 
-            &[data-active] {
+            &:active {
                 background-color: var(--jdd-red-9);
             }
         }
@@ -81,11 +81,11 @@
   }
 
   &:not([data-disabled]) {
-    &[data-hover], &[data-focus], &.loading {
+    &:hover, &:focus, &.loading {
       background-color: var(--jdd-gray-5);
     }
 
-    &[data-active] {
+    &:active {
       color: var(--jdd-blue-6);
       background-color: var(--jdd-blue-1);
     }
@@ -123,7 +123,7 @@ div.button-group.jdd {
             border-bottom-right-radius: 0;
 
             :not([data-disabled]) {
-                &[data-hover], &[data-focus] {
+                &:hover, &:focus {
                     position: relative;
                     z-index: 1;
                 }

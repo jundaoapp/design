@@ -92,7 +92,7 @@
                     outline: solid var(--jdd-gray-1) var(--jdd-accessibility-outline-width);
                 }
 
-                &[data-hover], &[data-focus] {
+                &:hover, &:focus {
                     color: var(--jdd-gray-5);
                 }
             }
@@ -147,7 +147,7 @@
         margin: .3rem 0;
         color: var(--jdd-gray-9);
 
-        &[data-hover], &[data-focus] {
+        &:hover, &:focus {
             color: var(--jdd-gray-7);
         }
     }
@@ -162,7 +162,7 @@
         &:not(.banner) button.alert-close {
             color: var(--jdd-gray-5);
 
-            &[data-hover], &[data-focus] {
+            &:hover, &:focus {
                 color: var(--jdd-gray-7);
             }
         }

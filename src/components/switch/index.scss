@@ -119,8 +119,8 @@ $large-multiplier: 1.35;
     }
 
     &:not([data-disabled]) {
-      &[data-hover],
-      &[data-focus-visible],
+      &:hover,
+      &:focus-visible,
       &.loading {
         background: var(--jdd-gray-4);
 

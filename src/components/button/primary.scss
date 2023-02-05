@@ -5,11 +5,11 @@
 
   .jdd-dark & {
     &:not([data-disabled]) {
-      &[data-hover], &[data-focus], &.loading {
+      &:hover, &:focus, &.loading {
         background-color: var(--jdd-blue-7);
       }
 
-      &[data-active] {
+      &:active {
         background-color: var(--jdd-blue-4);
       }
     }
@@ -25,11 +25,11 @@
 
     .jdd-dark & {
       &:not([data-disabled]) {
-        &[data-hover], &[data-focus], &.loading {
+        &:hover, &:focus, &.loading {
           background-color: var(--jdd-red-7);
         }
 
-        &[data-active] {
+        &:active {
           background-color: var(--jdd-red-4);
         }
       }
@@ -41,12 +41,12 @@
     }
 
     &:not([data-disabled]) {
-      &[data-hover], &[data-focus], &.loading {
+      &:hover, &:focus, &.loading {
         background-color: var(--jdd-red-4);
         color: var(--jdd-gray-1);
       }
 
-      &[data-active] {
+      &:active {
         background-color: var(--jdd-red-7);
         color: var(--jdd-gray-1);
       }
@@ -59,12 +59,12 @@
   }
 
   &:not([data-disabled]) {
-    &[data-hover], &[data-focus], &.loading {
+    &:hover, &:focus, &.loading {
       background-color: var(--jdd-blue-5);
       color: var(--jdd-gray-1);
     }
 
-    &[data-active] {
+    &:active {
       background-color: var(--jdd-blue-7);
       color: var(--jdd-gray-1);
     }

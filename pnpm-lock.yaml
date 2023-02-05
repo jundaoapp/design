@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.20.12
   '@babel/preset-env': ^7.20.2
   '@babel/preset-typescript': ^7.18.6
-  '@kobalte/core': ^0.5.0
+  '@kobalte/core': ^0.6.0
   '@semantic-release/commit-analyzer': ^9.0.2
   '@semantic-release/github': ^8.0.7
   '@semantic-release/npm': ^9.0.2
@@ -41,7 +41,7 @@ specifiers:
   vite-plugin-solid: ^2.5.0
 
 dependencies:
-  '@kobalte/core': 0.5.0_solid-js@1.6.9
+  '@kobalte/core': 0.6.0_solid-js@1.6.9
   '@solid-primitives/props': 3.0.2_solid-js@1.6.9
   '@solid-primitives/refs': 0.3.5_solid-js@1.6.9
   remixicon: 2.5.0
@@ -2221,8 +2221,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kobalte/core/0.5.0_solid-js@1.6.9:
-    resolution: {integrity: sha512-A5P3pjCRQm5GuLaL6yUwMYxChErNXh2zZujY54jlpopvf+Q93RcsFyL1wUZftaEn1Dkcum9xlq9rIZHuLxVFaQ==}
+  /@kobalte/core/0.6.0_solid-js@1.6.9:
+    resolution: {integrity: sha512-EhmaG6Fxg4PdZhXa6wViRj2MaQBmx050F6Kodot4WuxGzHo5oX1AdhYtMgVuLRs4AzqRUOPNt3gaHW29W1Azbw==}
     peerDependencies:
       solid-js: ^1.6.1
     dependencies:
@@ -2230,12 +2230,12 @@ packages:
       '@internationalized/date': 3.0.2
       '@internationalized/number': 3.1.2
       '@internationalized/string': 3.0.1
-      '@kobalte/utils': 0.4.0_solid-js@1.6.9
+      '@kobalte/utils': 0.5.0_solid-js@1.6.9
       solid-js: 1.6.9
     dev: false
 
-  /@kobalte/utils/0.4.0_solid-js@1.6.9:
-    resolution: {integrity: sha512-04Mv/0F9XSuXc5vr4Q88Nqb/YLSDE7xS1ZyJEyS8cDv/mihIp2B8DR5BFlPAIRQgTSonaynsfdavsCOcfZQ0Yw==}
+  /@kobalte/utils/0.5.0_solid-js@1.6.9:
+    resolution: {integrity: sha512-cOF3aK+ndqD56I/f9yiX4g7eYvGSDycQ2XylgCAOb/jme8lhcPQbsuibhmGe5BV3LaAWevqnIrpFiCVqz292UQ==}
     peerDependencies:
       solid-js: ^1.6.1
     dependencies:
