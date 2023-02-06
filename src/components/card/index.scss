@@ -29,14 +29,23 @@ div.jdd.card {
         }
     }
 
-    &[data-expanded] {
+    &:not(.collapsible) {
+        display: flex;
+        flex-direction: column;
+
+        > .content {
+            flex-grow: 1;
+        }
+    }
+
+    &.collapsible[data-expanded] {
         > .content {
             overflow: hidden;
             animation: jdd-card-open var(--jdd-transition-duration) var(--jdd-transition-function);
         }
     }
 
-    &:not([data-expanded]) {
+    &.collapsible:not([data-expanded]) {
 
         > .title {
             .collapse-toggle {

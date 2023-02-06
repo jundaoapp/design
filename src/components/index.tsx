@@ -8,6 +8,7 @@ export * from "./breadcrumb";
 export * from "./card";
 export * from "./checkbox";
 export * from "./divider";
+export * from "./drawer";
 export * from "./icon";
 export * from "./image";
 export * from "./label";

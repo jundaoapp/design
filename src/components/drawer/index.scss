@@ -1,0 +1,236 @@
+.jdd.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(var(--jdd-gray-15-rgb), 0.2);
+    animation: jdd-drawer-background-exit;
+    animation-timing-function: var(--jdd-transition-function);
+    animation-duration: var(--jdd-transition-duration);
+    animation-fill-mode: forwards;
+
+    .jdd-dark & {
+        background: rgba(var(--jdd-gray-1-rgb), 0.15);
+    }
+
+    &[data-expanded] {
+        animation: jdd-drawer-background-enter;
+    }
+}
+
+.jdd.drawer {
+    position: fixed;
+    max-width: 90vw;
+    min-width: 30vw;
+    animation-timing-function: var(--jdd-transition-function);
+    animation-duration: var(--jdd-transition-duration);
+    animation-fill-mode: forwards;
+
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .title {
+            margin-bottom: 0;
+        }
+    }
+
+    .drawer-footer {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        margin-top: 1rem;
+        gap: .75rem;
+    }
+
+    .drawer-close {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-size: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: var(--jdd-gray-9);
+        margin: 0 -.5rem 0 1rem;
+
+        &:hover, &:focus {
+            color: var(--jdd-gray-7);
+        }
+
+        .jdd-dark & {
+            color: var(--jdd-gray-1);
+
+            &:hover, &:focus {
+                color: var(--jdd-gray-5);
+            }
+        }
+    }
+
+    > .card {
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            .drawer-description {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    &.top, &.bottom {
+        left: 0;
+
+        &, > .card {
+            width: 100vw;
+        }
+    }
+
+    &.top {
+        top: 0;
+        animation-name: jdd-drawer-top-exit;
+
+        > .card {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        &[data-expanded] {
+            animation-name: jdd-drawer-top-enter;
+        }
+    }
+
+    &.bottom {
+        bottom: 0;
+        animation-name: jdd-drawer-bottom-exit;
+
+        > .card {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &[data-expanded] {
+            animation-name: jdd-drawer-bottom-enter;
+        }
+    }
+
+    &.right, &.left {
+        top: 0;
+
+        &, > .card {
+            height: 100vh;
+        }
+    }
+
+    &.right {
+        right: 0;
+        animation-name: jdd-drawer-right-exit;
+
+        > .card {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &[data-expanded] {
+            animation-name: jdd-drawer-right-enter;
+        }
+    }
+
+    &.left {
+        left: 0;
+        animation-name: jdd-drawer-left-exit;
+
+        > .card {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &[data-expanded] {
+            animation-name: jdd-drawer-left-enter;
+        }
+    }
+}
+
+.jdd.drawer-wrapper {
+    --jdd-overlay-zindex-increment: 0;
+    z-index: 100 + var(--jdd-overlay-zindex-increment);
+}
+
+@keyframes jdd-drawer-background-enter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes jdd-drawer-background-exit {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes jdd-drawer-top-enter {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes jdd-drawer-top-exit {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes jdd-drawer-bottom-enter {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes jdd-drawer-bottom-exit {
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes jdd-drawer-right-enter {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes jdd-drawer-right-exit {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes jdd-drawer-left-enter {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes jdd-drawer-left-exit {
+    to {
+        transform: translateX(-100%);
+    }
+}

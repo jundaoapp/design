@@ -10,44 +10,42 @@
     border-left-width: .4rem;
     border-left-style: solid;
 
-    &:not(.info):not(.success):not(.warning):not(.error) {
-        &:not(.banner) {
-            border-left-color: var(--jdd-gray-6);
-        }
+    &:not(.banner) {
+        border-left-color: var(--jdd-gray-6);
+    }
 
-        .alert-icon, .jdd.text.text {
-            color: var(--jdd-gray-15);
+    .alert-icon, .jdd.text.text {
+        color: var(--jdd-gray-15);
 
-            .jdd-dark & {
-                color: var(--jdd-gray-1);
-            }
+        .jdd-dark & {
+            color: var(--jdd-gray-1);
         }
     }
 
     &.info {
         border-left-color: var(--jdd-blue-6);
-        .alert-icon, .alert-message.jdd.text {
+        .alert-icon {
             color: var(--jdd-blue-6);
         }
     }
 
     &.error {
         border-left-color: var(--jdd-red-6);
-        .alert-icon, .alert-message.jdd.text {
+        .alert-icon {
             color: var(--jdd-red-6);
         }
     }
 
     &.success {
         border-left-color: var(--jdd-green-6);
-        .alert-icon, .alert-message.jdd.text {
+        .alert-icon {
             color: var(--jdd-green-6);
         }
     }
 
     &.warning {
         border-left-color: var(--jdd-orange-6);
-        .alert-icon, .alert-message.jdd.text {
+        .alert-icon {
             color: var(--jdd-orange-6);
         }
     }
@@ -63,6 +61,14 @@
     &.banner {
         border-radius: 0;
         border-left-color: transparent;
+
+        .alert-icon, .jdd.text.text {
+            color: var(--jdd-gray-15);
+
+            .jdd-dark & {
+                color: var(--jdd-gray-1);
+            }
+        }
 
         &.info {
             background: var(--jdd-blue-6);
@@ -80,11 +86,11 @@
             background: var(--jdd-orange-6);
         }
 
-        .alert-icon, .jdd.text.text {
-            color: var(--jdd-gray-1);
-        }
-
         &.info, &.success, &.warning, &.error {
+            .alert-icon, .jdd.text.text {
+                color: var(--jdd-gray-1);
+            }
+
             button.alert-close {
                 color: var(--jdd-gray-1);
 
