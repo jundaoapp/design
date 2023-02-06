@@ -7,7 +7,6 @@ import { IntrinsicComponentProps } from "../types";
 import { Dialog } from "@kobalte/core";
 import { DialogContentOptions } from "@kobalte/core/dist/types/dialog";
 import { mergeRefs } from "@solid-primitives/refs";
-import { Transition } from "solid-transition-group";
 import { useOverlayContext } from "../utilities/overlay";
 
 export type ModalProps = IntrinsicComponentProps<
@@ -37,12 +36,7 @@ export function Modal(props: ModalProps) {
 
 	const [OverlayContextProvider, context] = useOverlayContext();
 
-	const level =
-		local.level !== undefined
-			? local.level
-			: context !== undefined
-			? context.level
-			: 0;
+	const level = local.level !== undefined ? local.level : context.level;
 
 	const [forceMount, setForceMount] = createSignal(false);
 	const [sourceElement, setSourceElement] = createSignal<Element>();
@@ -113,7 +107,7 @@ export function Modal(props: ModalProps) {
 						<Dialog.Content ref={handleRef} class="jdd modal" {...others}>
 							<Card>
 								<div class="modal-header">
-									<Show when={local.title}>
+									<Show when={local.title} fallback={<div />}>
 										<Dialog.Title class="jdd title jdd-typography">
 											{local.title}
 										</Dialog.Title>

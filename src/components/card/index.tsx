@@ -44,9 +44,33 @@ export function Card(props: CardProps) {
 		],
 	});
 
+	if (!(local.collapsible || local.collapsed || local.defaultCollapsed)) {
+		return (
+			<div
+				class="jdd card"
+				classList={{
+					small: local.size === "small",
+					"no-padding": local.noPadding,
+				}}
+				{...others}
+			>
+				<Show when={local.title}>
+					<div class="title">
+						{typeof local.title === "string" ? (
+							<Text>{local.title}</Text>
+						) : (
+							local.title
+						)}
+					</div>
+				</Show>
+				<div class="content">{local.children}</div>
+			</div>
+		);
+	}
+
 	return (
 		<Collapsible.Root
-			class="jdd card"
+			class="jdd card collapsible"
 			classList={{
 				small: local.size === "small",
 				"no-padding": local.noPadding,
@@ -55,7 +79,14 @@ export function Card(props: CardProps) {
 			defaultIsOpen={!local.defaultCollapsed}
 			{...others}
 		>
-			<Show when={local.title || local.collapsible || local.defaultCollapsed}>
+			<Show
+				when={
+					local.title ||
+					local.collapsible ||
+					local.collapsed ||
+					local.defaultCollapsed
+				}
+			>
 				<div class="title">
 					{typeof local.title === "string" ? (
 						<Text>{local.title}</Text>
