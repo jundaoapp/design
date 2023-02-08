@@ -4,7 +4,6 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Components/Popconfirm",
 	argTypes: {
-		onClick: { action: "onClick" },
 		type: {
 			control: { type: "select" },
 			options: ["info", "danger", "warning"],
