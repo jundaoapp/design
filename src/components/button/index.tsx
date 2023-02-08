@@ -26,7 +26,15 @@ function Button(props: ButtonProps) {
 			danger: false,
 			loading: false,
 		},
-		keys: ["children", "type", "size", "disabled", "danger", "loading"],
+		keys: [
+			"children",
+			"type",
+			"size",
+			"disabled",
+			"danger",
+			"loading",
+			"onClick",
+		],
 	});
 
 	return (
@@ -41,6 +49,7 @@ function Button(props: ButtonProps) {
 				loading: local.loading,
 			}}
 			as={props.href !== undefined ? "a" : "button"}
+			onClick={local.loading ? undefined : local.onClick}
 			{...others}
 		>
 			<Show when={local.loading}>

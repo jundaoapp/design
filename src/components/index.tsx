@@ -14,6 +14,7 @@ export * from "./image";
 export * from "./label";
 export * from "./link";
 export * from "./modal";
+export * from "./popconfirm";
 export * from "./radio";
 export * from "./slider";
 export * from "./space";

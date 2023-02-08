@@ -2,7 +2,7 @@
     position: fixed;
     inset: 0;
     background: rgba(var(--jdd-gray-15-rgb), 0.2);
-    animation: jdd-modal-exit;
+    animation-name: jdd-modal-exit;
     animation-timing-function: var(--jdd-transition-function);
     animation-duration: var(--jdd-transition-duration);
     animation-fill-mode: forwards;
@@ -12,7 +12,7 @@
     }
 
     &[data-expanded] {
-        animation: jdd-modal-enter;
+        animation-name: jdd-modal-enter;
     }
 }
 

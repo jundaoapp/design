@@ -47,7 +47,7 @@ Currently implemented & planned components:
 - [ ] DataGrid
 - [ ] DatePicker
 - [x] Divider
-- [ ] Drawer
+- [x] Drawer
 - [ ] Dropdown
 - [ ] Editor
 - [ ] Form
@@ -65,7 +65,7 @@ Currently implemented & planned components:
 - [ ] Notification
 - [ ] PaceLoader
 - [ ] Pagination
-- [ ] Popconfirm
+- [x] Popconfirm
 - [ ] Progress
 - [x] Radio
 - [ ] Select
