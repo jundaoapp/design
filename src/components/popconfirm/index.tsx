@@ -3,7 +3,14 @@ import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
 import { Popover } from "@kobalte/core";
 import { processProps } from "../utilities";
-import { createEffect, createSignal, JSXElement, Setter, Show } from "solid-js";
+import {
+	createEffect,
+	createSignal,
+	JSXElement,
+	on,
+	Setter,
+	Show,
+} from "solid-js";
 import { Icon, Button, Card, Text } from "..";
 import { Ref } from "@solid-primitives/refs";
 import { PopoverContentOptions } from "@kobalte/core/dist/types/popover";
@@ -48,6 +55,8 @@ export function Popconfirm(props: PopconfirmProps) {
 	});
 
 	let ref!: HTMLDivElement;
+	let cancelRef!: HTMLButtonElement;
+	let confirmRef!: HTMLButtonElement;
 
 	const [open, setOpen] = createSignal(false);
 	const [cancelLoading, setCancelLoading] = createSignal(false);
@@ -60,6 +69,16 @@ export function Popconfirm(props: PopconfirmProps) {
 	const handleInteraction = (event: MouseEvent | KeyboardEvent) => {
 		if (local.disabled || confirmLoading()) return;
 
+		if (event.type === "keypress" || event.type === "keyup") {
+			if (
+				!(
+					(event as KeyboardEvent).key === "Enter" ||
+					(event as KeyboardEvent).key === " "
+				)
+			)
+				return;
+		}
+
 		// @ts-ignore: Typescript doesn't understand constructor function
 		setCapturedEvent(new event.constructor(event.type, event));
 
@@ -69,18 +88,20 @@ export function Popconfirm(props: PopconfirmProps) {
 		setOpen(true);
 	};
 
-	const handleOutcome = async (
+	const handleOutcome = (
 		setter: Setter<boolean>,
 		fn: (() => void | Promise<void>) | undefined,
 		callback?: () => void,
 	) => {
 		setter(true);
 
-		await fn?.();
+		setTimeout(async () => {
+			await fn?.();
 
-		callback?.();
-		setter(false);
-		setOpen(false);
+			callback?.();
+			setter(false);
+			setOpen(false);
+		}, 1);
 	};
 
 	const handleCancel = () => {

@@ -70,6 +70,19 @@ CustomText.args = {
 	cancelText: "No",
 };
 
+const delay = () => {
+	const now = new Date().getTime();
+	while (new Date().getTime() < now + 3000) {}
+};
+
+export const Delayed = Template.bind({});
+Delayed.args = {
+	title: "Popconfirm",
+	description: "Are you sure you want to complete this action?",
+	onConfirm: delay,
+	onCancel: delay,
+};
+
 const promise = () =>
 	new Promise((resolve) => {
 		setTimeout(() => resolve(), 3000);
