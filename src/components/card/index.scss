@@ -72,6 +72,12 @@ div.jdd.card {
         }
     }
 
+    &.contrast-background {
+        .jdd-dark & {
+            background: var(--jdd-gray-12);
+        }
+    }
+
     .jdd-dark & {
         background: var(--jdd-gray-14);
         box-shadow: none;

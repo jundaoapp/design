@@ -16,6 +16,7 @@ export default {
 		disabled: { control: "boolean" },
 		danger: { control: "boolean" },
 		loading: { control: "boolean" },
+		autofocus: { control: "boolean" },
 	},
 };
 
@@ -62,3 +63,6 @@ const GroupTemplate = (props) => (
 
 export const Group = GroupTemplate.bind({});
 Group.args = { children: "Button", type: "primary" };
+
+export const Autofocus = Template.bind({});
+Autofocus.args = { children: "Button", autofocus: true };

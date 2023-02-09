@@ -21,6 +21,7 @@ export type CardProps = IntrinsicComponentProps<
 		collapsible?: boolean;
 		collapsed?: boolean;
 		defaultCollapsed?: boolean;
+		contrastBackground?: boolean;
 	}
 >;
 
@@ -32,6 +33,7 @@ export function Card(props: CardProps) {
 			noPadding: false,
 			collapsible: false,
 			defaultCollapsed: false,
+			contrastBackground: false,
 		},
 		keys: [
 			"title",
@@ -41,6 +43,7 @@ export function Card(props: CardProps) {
 			"collapsible",
 			"collapsed",
 			"defaultCollapsed",
+			"contrastBackground",
 		],
 	});
 
@@ -51,6 +54,7 @@ export function Card(props: CardProps) {
 				classList={{
 					small: local.size === "small",
 					"no-padding": local.noPadding,
+					"contrast-background": local.contrastBackground,
 				}}
 				{...others}
 			>

@@ -2,9 +2,10 @@ import "./index.scss";
 import { Spinner } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { Show } from "solid-js";
+import { createEffect, Show } from "solid-js";
 import ButtonGroup from "../button/group";
 import { Button as KobalteButton } from "@kobalte/core";
+import { mergeRefs } from "@solid-primitives/refs";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -26,11 +27,28 @@ function Button(props: ButtonProps) {
 			danger: false,
 			loading: false,
 		},
-		keys: ["children", "type", "size", "disabled", "danger", "loading"],
+		keys: [
+			"children",
+			"type",
+			"size",
+			"disabled",
+			"danger",
+			"loading",
+			"onClick",
+			"ref",
+			"autofocus",
+		],
+	});
+
+	let ref!: HTMLButtonElement;
+
+	createEffect(() => {
+		if (local.autofocus) setTimeout(() => ref.focus(), 1);
 	});
 
 	return (
 		<KobalteButton.Root
+			ref={mergeRefs((el) => (ref = el), local.ref)}
 			class="jdd button"
 			isDisabled={local.disabled}
 			classList={{
@@ -41,6 +59,7 @@ function Button(props: ButtonProps) {
 				loading: local.loading,
 			}}
 			as={props.href !== undefined ? "a" : "button"}
+			onClick={local.loading ? undefined : local.onClick}
 			{...others}
 		>
 			<Show when={local.loading}>
