@@ -1,0 +1,177 @@
+.jdd.progress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+
+    &.circle {
+        height: 100%;
+        position: relative;
+        justify-content: center;
+
+        &[aria-valuenow="0"] circle.progress-fill {
+            opacity: 0;
+        }
+
+        .progress-info {
+            position: absolute;
+            min-width: max-content;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .jdd.icon {
+            font-size: 2rem;
+        }
+    }
+
+    div.progress-track {
+        background: var(--jdd-gray-4);
+        flex-grow: 1;
+        position: relative;
+        height: .5rem;
+        border-radius: 999px;
+        overflow: hidden;
+
+        .jdd-dark & {
+            background: var(--jdd-gray-10);
+        }
+
+        &:not(.completed)[data-indeterminate].current {
+            .progress-fill {
+                width: 25%;
+                animation: jdd-progress-indeterminate calc(var(--jdd-transition-duration) * 4) var(--jdd-transition-function) infinite;
+            }
+        }
+    }
+
+    svg.progress-track {
+        aspect-ratio: 1 / 1;
+
+        circle.progress-track {
+            stroke: var(--jdd-gray-4);
+
+            .jdd-dark & {
+                stroke: var(--jdd-gray-10);
+            }
+        }
+
+        circle {
+            r: 45%;
+            cx: 50%;
+            cy: 50%;
+            stroke-linecap: round;
+            stroke-width: 8;
+            fill: none;
+            transform-origin: center;
+            transform: rotate(-90deg);
+            flex-grow: 1;
+        }
+
+        circle.progress-fill {
+            stroke-dasharray: calc(3.14 * .9 * var(--kb-progress-fill-width)) 99999px;
+            transition: stroke var(--jdd-transition-duration) var(--jdd-transition-function), stroke-dasharray var(--jdd-transition-duration) var(--jdd-transition-function), opacity var(--jdd-transition-duration) var(--jdd-transition-function);
+        }
+    }
+
+    .progress-fill {
+        --jdd-progress-fill-background: var(--jdd-blue-6);
+
+        position: absolute;
+        background: var(--jdd-progress-fill-background);
+        height: 100%;
+        width: var(--kb-progress-fill-width);
+        left: var(--jd-progress-fill-previous);
+        border-radius: 999px;
+
+        transition: var(--jdd-transition-colors), width var(--jdd-transition-duration) var(--jdd-transition-function);
+    }
+
+    circle.progress-fill {
+        stroke: var(--jdd-progress-fill-background);
+    }
+
+    &.mini {
+        div.progress-track {
+            height: .25rem;
+        }
+
+        svg.progress-track {
+            circle {
+                stroke-width: 3;
+                r: 40%;
+
+                &.progress-fill {
+                    stroke-dasharray: calc(3.14 * .8 * var(--kb-progress-fill-width)) 99999px;
+                }
+            }
+        }
+    }
+
+    &.steps .progress-track {
+        .progress-fill {
+            width: 0;
+        }
+
+        &.completed .progress-fill {
+            width: 100%;
+        }
+    }
+
+    .progress-info {
+        min-width: 4ch;
+        .jdd.icon {
+            line-height: 1;
+        }
+    }
+
+    &.success .progress-fill {
+        --jdd-progress-fill-background: var(--jdd-green-6);
+    }
+
+    &.fail .progress-fill {
+        --jdd-progress-fill-background: var(--jdd-red-6);
+    }
+
+    &.active .progress-fill::before {
+        position: absolute;
+        inset: 0;
+        background-color: var(--jdd-gray-1);
+        border-radius: 999px;
+        opacity: 0;
+        width: 100%;
+        animation-name: jdd-progress-active;
+        animation-duration: calc(var(--jdd-transition-duration) * 5);
+        animation-timing-function: var(--jdd-transition-function);
+        animation-iteration-count: infinite;
+        content: "";
+    }
+}
+
+@keyframes jdd-progress-active {
+    0% {
+        transform: translateX(-100%) scaleX(0);
+        opacity: 0.1;
+    }
+    20% {
+        transform: translateX(-100%) scaleX(0);
+        opacity: 0.8;
+    }
+    85% {
+        transform: translateX(0px) scaleX(1);
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes jdd-progress-indeterminate {
+  from {
+      transform: translateX(-100%);
+  }
+  to {
+      transform: translateX(400%);
+  }
+}
