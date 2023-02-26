@@ -66,7 +66,7 @@ Currently implemented & planned components:
 - [ ] PaceLoader
 - [ ] Pagination
 - [x] Popconfirm
-- [ ] Progress
+- [x] Progress
 - [x] Radio
 - [ ] Select
 - [ ] Skeleton
