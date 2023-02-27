@@ -76,6 +76,7 @@
   },
   "dependencies": {
     "@kobalte/core": "^0.6.1",
+    "@solid-primitives/autofocus": "^0.0.100",
     "@solid-primitives/props": "^3.0.6",
     "@solid-primitives/refs": "^0.3.6",
     "remixicon": "^2.5.0",

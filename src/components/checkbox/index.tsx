@@ -15,6 +15,7 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { CheckboxRootOptions } from "@kobalte/core/dist/types/checkbox";
+import { createAutofocus } from "@solid-primitives/autofocus";
 import "../label/index.scss";
 
 export type CheckboxProps = IntrinsicComponentProps<
@@ -31,7 +32,8 @@ export type CheckboxProps = IntrinsicComponentProps<
 		required?: boolean;
 		disabled?: boolean;
 		readonly?: boolean;
-		children: never;
+		autofocus?: boolean;
+		children?: never;
 	} & Omit<
 		CheckboxRootOptions,
 		| "isChecked"
@@ -66,6 +68,7 @@ export function Checkbox(props: CheckboxProps) {
 			"onIndeterminateChange",
 			"label",
 			"danger",
+			"autofocus",
 		],
 	});
 
@@ -76,6 +79,9 @@ export function Checkbox(props: CheckboxProps) {
 		local.onChange?.(value);
 		local.onIndeterminateChange?.(false);
 	};
+
+	let ref!: HTMLInputElement;
+	if (local.autofocus) createAutofocus(() => ref);
 
 	return (
 		<KobalteCheckbox.Root
@@ -93,7 +99,7 @@ export function Checkbox(props: CheckboxProps) {
 			onCheckedChange={changeHandler}
 			{...others}
 		>
-			<KobalteCheckbox.Input />
+			<KobalteCheckbox.Input ref={ref} />
 
 			<Space align="center">
 				<KobalteCheckbox.Control class="checkbox-control">

@@ -6,6 +6,7 @@ import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { Show } from "solid-js";
 import { RadioGroupItemOptions } from "@kobalte/core/dist/types/radio-group";
+import { createAutofocus } from "@solid-primitives/autofocus";
 
 export type RadioProps = IntrinsicComponentProps<
 	"label",
@@ -14,6 +15,7 @@ export type RadioProps = IntrinsicComponentProps<
 		label?: string;
 		danger?: boolean;
 		disabled?: boolean;
+		autofocus?: boolean;
 	} & Omit<RadioGroupItemOptions, "isDisabled">
 >;
 
@@ -24,8 +26,11 @@ function Radio(props: RadioProps) {
 			size: "default",
 			danger: false,
 		},
-		keys: ["size", "label", "danger", "disabled"],
+		keys: ["size", "label", "danger", "disabled", "autofocus"],
 	});
+
+	let ref!: HTMLInputElement;
+	if (local.autofocus) createAutofocus(() => ref);
 
 	return (
 		<KobalteRadioGroup.Item
@@ -38,7 +43,7 @@ function Radio(props: RadioProps) {
 			isDisabled={local.disabled}
 			{...others}
 		>
-			<KobalteRadioGroup.ItemInput />
+			<KobalteRadioGroup.ItemInput ref={ref} />
 
 			<Space align="center">
 				<KobalteRadioGroup.ItemControl class="radio-control">

@@ -6,6 +6,7 @@ import { createEffect, Show } from "solid-js";
 import ButtonGroup from "../button/group";
 import { Button as KobalteButton } from "@kobalte/core";
 import { mergeRefs } from "@solid-primitives/refs";
+import { createAutofocus } from "@solid-primitives/autofocus";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -41,10 +42,7 @@ function Button(props: ButtonProps) {
 	});
 
 	let ref!: HTMLButtonElement;
-
-	createEffect(() => {
-		if (local.autofocus) setTimeout(() => ref.focus(), 1);
-	});
+	if (local.autofocus) createAutofocus(() => ref);
 
 	return (
 		<KobalteButton.Root
