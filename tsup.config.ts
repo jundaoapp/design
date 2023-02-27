@@ -11,5 +11,10 @@ export default defineConfig(
 		dropConsole: true,
 		cjs: true,
 		esbuildPlugins: [sassPlugin()],
+		esbuildOptions(options) {
+			options.logOverride = {
+				"ignored-bare-import": "silent",
+			};
+		},
 	},
 );
