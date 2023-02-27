@@ -117,4 +117,14 @@
         width: 1.5rem;
         font-size: 1.5rem;
     }
+
+    input:focus-visible + .jdd.space {
+        .checkbox-control {
+            outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
+
+            .jdd-dark & {
+                outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
+            }
+        }
+    }
 }

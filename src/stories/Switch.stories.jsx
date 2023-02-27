@@ -16,6 +16,7 @@ export default {
 		uncheckedChildren: { control: "text" },
 		loading: { control: "boolean" },
 		label: { control: "text" },
+		autofocus: { control: "boolean" },
 	},
 };
 
@@ -63,3 +64,6 @@ Controlled.args = { checked: true };
 
 export const Loading = Template.bind({});
 Loading.args = { loading: true };
+
+export const Autofocus = Template.bind({});
+Autofocus.args = { autofocus: true };

@@ -1,11 +1,18 @@
 import "./index.scss";
 import "../label/index.scss";
-import { JSXElement, Match, Show, Switch as SolidSwitch } from "solid-js";
+import {
+	JSXElement,
+	Match,
+	Show,
+	Switch as SolidSwitch,
+	createSignal,
+} from "solid-js";
 import { Space, Spinner, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Switch as KobalteSwitch } from "@kobalte/core";
 import { SwitchRootOptions } from "@kobalte/core/dist/types/switch";
+import { createAutofocus } from "@solid-primitives/autofocus";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"label",
@@ -21,6 +28,7 @@ export type SwitchProps = IntrinsicComponentProps<
 		loading?: boolean;
 		label?: string;
 		readonly?: boolean;
+		autofocus?: boolean;
 	} & Omit<
 		SwitchRootOptions,
 		| "defaultIsChecked"
@@ -53,8 +61,12 @@ export function Switch(props: SwitchProps) {
 			"danger",
 			"readonly",
 			"label",
+			"autofocus",
 		],
 	});
+
+	let ref!: HTMLInputElement;
+	if (local.autofocus) createAutofocus(() => ref);
 
 	return (
 		<KobalteSwitch.Root
@@ -66,7 +78,7 @@ export function Switch(props: SwitchProps) {
 			onCheckedChange={local.onChange}
 			{...others}
 		>
-			<KobalteSwitch.Input />
+			<KobalteSwitch.Input ref={ref} />
 			<Space>
 				<KobalteSwitch.Control
 					class="switch-control"

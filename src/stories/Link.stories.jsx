@@ -14,6 +14,7 @@ export default {
 			control: { type: "select" },
 			options: ["default", "secondary", "success", "warning", "danger"],
 		},
+		autofocus: { control: "boolean" },
 	},
 };
 
@@ -34,4 +35,11 @@ Blank.args = {
 	children: "Jundao Design (link)",
 	href: "https://jundao.app",
 	target: "_blank",
+};
+
+export const Autofocus = Template.bind({});
+Autofocus.args = {
+	children: "Jundao Design (link)",
+	href: "https://jundao.app",
+	autofocus: true,
 };

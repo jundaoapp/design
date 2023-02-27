@@ -290,4 +290,14 @@ $large-multiplier: 1.35;
       }
     }
   }
+
+  input:focus-visible + .jdd.space {
+      .switch-control {
+          outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
+
+          .jdd-dark & {
+              outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
+          }
+      }
+  }
 }

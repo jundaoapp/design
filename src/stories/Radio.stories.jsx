@@ -15,6 +15,7 @@ export default {
 		danger: { control: "boolean" },
 		label: { control: "text" },
 		value: { control: "text" },
+		autofocus: { control: "boolean" },
 	},
 };
 
@@ -53,6 +54,9 @@ export const All = (props) => (
 
 export const Label = Template.bind({});
 Label.args = { label: "Label", value: "value" };
+
+export const Autofocus = Template.bind({});
+Autofocus.args = { autofocus: true };
 
 const GroupPropsTemplate = (props) => {
 	return (

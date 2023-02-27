@@ -16,6 +16,7 @@ export default {
 		danger: { control: "boolean" },
 		defaultChecked: { control: "boolean" },
 		label: { control: "text" },
+		autofocus: { control: "boolean" },
 	},
 };
 
@@ -93,3 +94,6 @@ export const Indeterminate = IndeterminateTemplate.bind({});
 
 export const Label = Template.bind({});
 Label.args = { label: "Label" };
+
+export const Autofocus = Template.bind({});
+Autofocus.args = { autofocus: true };
