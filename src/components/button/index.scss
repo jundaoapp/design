@@ -89,6 +89,10 @@
       color: var(--jdd-blue-6);
       background-color: var(--jdd-blue-1);
     }
+
+    &.loading {
+        cursor: wait;
+    }
   }
 
   &[data-disabled] {
