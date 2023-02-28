@@ -25,7 +25,19 @@ module.exports = {
 
 		config.resolve.alias = {
 			"@jundao/design": path.resolve(__dirname, "../src/components"),
-		};
+        };
+
+
+        config.plugins.push(
+                {
+                    name: 'disable-treeshake',
+                    transform(src, id) {
+                        if (id.endsWith('src/components/index.tsx')) {
+                            return { moduleSideEffects: 'no-treeshake' };
+                        }
+                    },
+                },
+        );
 
 		return config;
 	},
