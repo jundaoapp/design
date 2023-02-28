@@ -1,6 +1,7 @@
 import "./index.scss";
 import {
 	ComponentProps,
+	createMemo,
 	createSignal,
 	JSXElement,
 	mergeProps,
@@ -47,6 +48,8 @@ export function Card(props: CardProps) {
 		],
 	});
 
+	const title = createMemo(() => local.title);
+
 	if (!(local.collapsible || local.collapsed || local.defaultCollapsed)) {
 		return (
 			<div
@@ -58,13 +61,11 @@ export function Card(props: CardProps) {
 				}}
 				{...others}
 			>
-				<Show when={local.title}>
+				<Show when={title()}>
 					<div class="title">
-						{typeof local.title === "string" ? (
-							<Text>{local.title}</Text>
-						) : (
-							local.title
-						)}
+						<Show when={typeof title() === "string"} fallback={title()}>
+							<Text>{title()}</Text>
+						</Show>
 					</div>
 				</Show>
 				<div class="content">{local.children}</div>
@@ -85,18 +86,16 @@ export function Card(props: CardProps) {
 		>
 			<Show
 				when={
-					local.title ||
+					title() ||
 					local.collapsible ||
 					local.collapsed ||
 					local.defaultCollapsed
 				}
 			>
 				<div class="title">
-					{typeof local.title === "string" ? (
-						<Text>{local.title}</Text>
-					) : (
-						local.title
-					)}
+					<Show when={typeof title() === "string"} fallback={title()}>
+						<Text>{title()}</Text>
+					</Show>
 
 					<Show when={local.collapsible || local.defaultCollapsed}>
 						<Collapsible.Trigger class="jdd collapse-toggle">

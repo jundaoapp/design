@@ -5,6 +5,7 @@ import { Popover } from "@kobalte/core";
 import { processProps } from "../utilities";
 import {
 	createEffect,
+	createMemo,
 	createSignal,
 	JSXElement,
 	on,
@@ -55,8 +56,6 @@ export function Popconfirm(props: PopconfirmProps) {
 	});
 
 	let ref!: HTMLDivElement;
-	let cancelRef!: HTMLButtonElement;
-	let confirmRef!: HTMLButtonElement;
 
 	const [open, setOpen] = createSignal(false);
 	const [cancelLoading, setCancelLoading] = createSignal(false);
@@ -120,6 +119,8 @@ export function Popconfirm(props: PopconfirmProps) {
 		ref.addEventListener("keyup", handleInteraction, true);
 	});
 
+	const description = createMemo(() => local.description);
+
 	return (
 		<Popover.Root isOpen={open()} onOpenChange={setOpen}>
 			<Popover.Anchor ref={ref}>
@@ -141,18 +142,20 @@ export function Popconfirm(props: PopconfirmProps) {
 								}
 								aria-hidden={true}
 							/>
-							<Show when={local.title} fallback={<div />}>
-								<Popover.Title class="jdd title jdd-typography">
-									{local.title}
-								</Popover.Title>
+							<Show when={local.title} fallback={<div />} keyed>
+								{(title) => (
+									<Popover.Title class="jdd title jdd-typography">
+										{title}
+									</Popover.Title>
+								)}
 							</Show>
 						</div>
 						<Popover.Description class="popconfirm-description">
 							<Show
-								when={typeof local.description === "string"}
-								fallback={local.description}
+								when={typeof description() === "string"}
+								fallback={description()}
 							>
-								<Text>{local.description}</Text>
+								<Text>{description()}</Text>
 							</Show>
 
 							<div class="popconfirm-footer">

@@ -1,6 +1,13 @@
 import "./index.scss";
 import "../title/index.scss";
-import { createEffect, createSignal, JSXElement, on, Show } from "solid-js";
+import {
+	createEffect,
+	createMemo,
+	createSignal,
+	JSXElement,
+	on,
+	Show,
+} from "solid-js";
 import { Card, Icon, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
@@ -38,7 +45,6 @@ export function Modal(props: ModalProps) {
 
 	const level = local.level !== undefined ? local.level : context.level;
 
-	const [forceMount, setForceMount] = createSignal(false);
 	const [sourceElement, setSourceElement] = createSignal<Element>();
 
 	let ref: HTMLDivElement | undefined;
@@ -91,6 +97,8 @@ export function Modal(props: ModalProps) {
 		),
 	);
 
+	const children = createMemo(() => local.children);
+
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
 			<Dialog.Root
@@ -107,10 +115,12 @@ export function Modal(props: ModalProps) {
 						<Dialog.Content ref={handleRef} class="jdd modal" {...others}>
 							<Card>
 								<div class="modal-header">
-									<Show when={local.title} fallback={<div />}>
-										<Dialog.Title class="jdd title jdd-typography">
-											{local.title}
-										</Dialog.Title>
+									<Show when={local.title} fallback={<div />} keyed>
+										{(title) => (
+											<Dialog.Title class="jdd title jdd-typography">
+												{title}
+											</Dialog.Title>
+										)}
 									</Show>
 
 									<Dialog.CloseButton class="jdd modal-close">
@@ -119,14 +129,14 @@ export function Modal(props: ModalProps) {
 								</div>
 								<Dialog.Description class="modal-description">
 									<Show
-										when={typeof local.children === "string"}
-										fallback={local.children}
+										when={typeof children() === "string"}
+										fallback={children()}
 									>
-										<Text>{local.children}</Text>
+										<Text>{children()}</Text>
 									</Show>
 
-									<Show when={local.footer}>
-										<div class="modal-footer">{local.footer}</div>
+									<Show when={local.footer} keyed>
+										{(footer) => <div class="modal-footer">{footer}</div>}
 									</Show>
 								</Dialog.Description>
 							</Card>

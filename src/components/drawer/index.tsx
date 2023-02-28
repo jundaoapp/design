@@ -2,7 +2,7 @@ import "./index.scss";
 import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { JSXElement, Show } from "solid-js";
+import { createMemo, JSXElement, Show } from "solid-js";
 import { DialogContentOptions } from "@kobalte/core/dist/types/dialog";
 import { useOverlayContext } from "../utilities/overlay";
 import { Dialog } from "@kobalte/core";
@@ -42,6 +42,8 @@ export function Drawer(props: DrawerProps) {
 
 	const level = local.level !== undefined ? local.level : context.level;
 
+	const children = createMemo(() => local.children);
+
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
 			<Dialog.Root
@@ -58,10 +60,12 @@ export function Drawer(props: DrawerProps) {
 						<Dialog.Content class={`jdd drawer ${local.position}`} {...others}>
 							<Card>
 								<div class="drawer-header">
-									<Show when={local.title} fallback={<div />}>
-										<Dialog.Title class="jdd title jdd-typography">
-											{local.title}
-										</Dialog.Title>
+									<Show when={local.title} fallback={<div />} keyed>
+										{(title) => (
+											<Dialog.Title class="jdd title jdd-typography">
+												{title}
+											</Dialog.Title>
+										)}
 									</Show>
 
 									<Dialog.CloseButton class="jdd drawer-close">
@@ -71,15 +75,15 @@ export function Drawer(props: DrawerProps) {
 								<Dialog.Description class="drawer-description">
 									<div>
 										<Show
-											when={typeof local.children === "string"}
-											fallback={local.children}
+											when={typeof children() === "string"}
+											fallback={children()}
 										>
-											<Text>{local.children}</Text>
+											<Text>{children()}</Text>
 										</Show>
 									</div>
 
-									<Show when={local.footer}>
-										<div class="drawer-footer">{local.footer}</div>
+									<Show when={local.footer} keyed>
+										{(footer) => <div class="drawer-footer">{footer}</div>}
 									</Show>
 								</Dialog.Description>
 							</Card>

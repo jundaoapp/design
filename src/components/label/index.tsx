@@ -1,5 +1,5 @@
 import "./index.scss";
-import { splitProps, ComponentProps } from "solid-js";
+import { splitProps, ComponentProps, createMemo } from "solid-js";
 import { Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
@@ -18,14 +18,16 @@ export function Label(props: LabelProps) {
 		keys: ["for", "children", "position"],
 	});
 
+	const input = createMemo(() => local.for);
+
 	return (
 		<label
 			class="jdd label"
 			dir={local.position === "before" ? "ltr" : "rtl"}
-			for={local.for.id || undefined}
+			for={input().id || undefined}
 			{...others}
 		>
-			{local.for}
+			{input()}
 			<Text>{local.children}</Text>
 		</label>
 	);
