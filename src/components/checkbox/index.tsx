@@ -1,15 +1,5 @@
 import "./index.scss";
-import {
-	Accessor,
-	createEffect,
-	createSignal,
-	JSX,
-	mergeProps,
-	on,
-	Show,
-	Signal,
-	splitProps,
-} from "solid-js";
+import { createMemo, createSignal, JSX, Show } from "solid-js";
 import { Icon, Space, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
@@ -83,6 +73,8 @@ export function Checkbox(props: CheckboxProps) {
 	let ref!: HTMLInputElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
+	const label = createMemo(() => local.label);
+
 	return (
 		<KobalteCheckbox.Root
 			class="jdd checkbox"
@@ -108,10 +100,10 @@ export function Checkbox(props: CheckboxProps) {
 						<Icon icon="subtract" class="checkbox-indeterminate" />
 					</KobalteCheckbox.Indicator>
 				</KobalteCheckbox.Control>
-				<Show when={local.label}>
+				<Show when={label()}>
 					<KobalteCheckbox.Label>
-						<Show when={typeof local.label === "string"} fallback={local.label}>
-							<Text>{local.label}</Text>
+						<Show when={typeof label() === "string"} fallback={label()}>
+							<Text>{label()}</Text>
 						</Show>
 					</KobalteCheckbox.Label>
 				</Show>

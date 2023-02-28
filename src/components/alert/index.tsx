@@ -1,5 +1,12 @@
 import "./index.scss";
-import { createSignal, JSXElement, Match, Show, Switch } from "solid-js";
+import {
+	createMemo,
+	createSignal,
+	JSXElement,
+	Match,
+	Show,
+	Switch,
+} from "solid-js";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Transition } from "solid-transition-group";
@@ -43,6 +50,9 @@ export function Alert(props: AlertProps) {
 
 	const [show, setShow] = createSignal(true);
 
+	const message = createMemo(() => local.message);
+	const description = createMemo(() => local.description);
+
 	return (
 		<Transition name="alert-animation" appear>
 			<Show when={show()}>
@@ -76,26 +86,22 @@ export function Alert(props: AlertProps) {
 						/>
 					</Show>
 
-					<Show
-						when={typeof local.message === "string"}
-						fallback={local.message}
-					>
-						<Text class="alert-message" bold={local.description !== undefined}>
-							{local.message}
+					<Show when={typeof message() === "string"} fallback={message()}>
+						<Text class="alert-message" bold={description() !== undefined}>
+							{message()}
 						</Text>
 					</Show>
 
 					<Switch>
-						<Match when={typeof local.description === "string"}>
-							<Text class="alert-description">{local.description}</Text>
+						<Match when={typeof description() === "string"}>
+							<Text class="alert-description">{description()}</Text>
 						</Match>
 						<Match
 							when={
-								local.description !== undefined &&
-								typeof local.description !== "string"
+								description() !== undefined && typeof description() !== "string"
 							}
 						>
-							{local.description}
+							{description()}
 						</Match>
 					</Switch>
 

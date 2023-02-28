@@ -6,6 +6,7 @@ import {
 	Show,
 	Switch as SolidSwitch,
 	createSignal,
+	createMemo,
 } from "solid-js";
 import { Space, Spinner, Text } from "..";
 import { processProps } from "../utilities";
@@ -68,6 +69,8 @@ export function Switch(props: SwitchProps) {
 	let ref!: HTMLInputElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
+	const label = createMemo(() => local.label);
+
 	return (
 		<KobalteSwitch.Root
 			class="jdd switch"
@@ -101,16 +104,14 @@ export function Switch(props: SwitchProps) {
 				</KobalteSwitch.Control>
 
 				<SolidSwitch>
-					<Match when={typeof local.label === "string"}>
+					<Match when={typeof label() === "string"}>
 						<KobalteSwitch.Label>
-							<Text>{local.label}</Text>
+							<Text>{label()}</Text>
 						</KobalteSwitch.Label>
 					</Match>
-					<Match
-						when={local.label !== undefined && typeof local.label !== "string"}
-					>
+					<Match when={label() !== undefined && typeof label() !== "string"}>
 						<KobalteSwitch.Label>
-							<Text>{local.label}</Text>
+							<Text>{label()}</Text>
 						</KobalteSwitch.Label>
 					</Match>
 				</SolidSwitch>

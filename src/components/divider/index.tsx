@@ -45,8 +45,8 @@ export function Divider(props: DividerProps) {
 			orientation={local.vertical ? "vertical" : "horizontal"}
 			{...others}
 		>
-			<Show when={local.children}>
-				<Text>{local.children}</Text>
+			<Show when={local.children} keyed>
+				{(children) => <Text>{children}</Text>}
 			</Show>
 		</Separator.Root>
 	);

@@ -53,8 +53,10 @@ function Breadcrumb(props: BreadcrumbProps) {
 		local.afterCollapse ??
 		local.max - (local.beforeCollapse ?? beforeCollapse) - 1;
 
-	const children =
-		typeof local.children === "function" ? local.children() : local.children;
+	const memoChildren = createMemo(() => local.children);
+
+	const children = // @ts-ignore: memoChildren()() is a function
+		typeof memoChildren() === "function" ? memoChildren()() : memoChildren();
 
 	const childrendArray: JSXElement[] = Array.isArray(children)
 		? children
@@ -89,16 +91,18 @@ function Breadcrumb(props: BreadcrumbProps) {
 		),
 	);
 
+	const separator = createMemo(() => local.separator);
+
 	return (
 		<KobalteBreadcrumbs.Root
 			class="jdd breadcrumb"
 			aria-label="Breadcrumbs"
 			classList={{ collapsible: local.collapsed === undefined }}
 			separator={
-				typeof local.separator === "string" ? (
-					<Text>{local.separator}</Text>
+				typeof separator() === "string" ? (
+					<Text>{separator()}</Text>
 				) : (
-					local.separator
+					separator()
 				)
 			}
 			{...others}

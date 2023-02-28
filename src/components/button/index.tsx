@@ -2,7 +2,7 @@ import "./index.scss";
 import { Spinner } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { createEffect, Show } from "solid-js";
+import { createEffect, createMemo, Show } from "solid-js";
 import ButtonGroup from "../button/group";
 import { Button as KobalteButton } from "@kobalte/core";
 import { mergeRefs } from "@solid-primitives/refs";
@@ -44,6 +44,8 @@ function Button(props: ButtonProps) {
 	let ref!: HTMLButtonElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
+	const children = createMemo(() => local.children);
+
 	return (
 		<KobalteButton.Root
 			ref={mergeRefs((el) => (ref = el), local.ref)}
@@ -63,8 +65,8 @@ function Button(props: ButtonProps) {
 			<Show when={local.loading}>
 				<Spinner />
 			</Show>
-			<Show when={typeof local.children === "string"} fallback={local.children}>
-				<span class="button-text">{local.children}</span>
+			<Show when={typeof children() === "string"} fallback={children()}>
+				<span class="button-text">{children()}</span>
 			</Show>
 		</KobalteButton.Root>
 	);

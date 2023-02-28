@@ -1,17 +1,14 @@
 import "./index.scss";
 import {
-	ComponentProps,
-	createSignal,
 	JSXElement,
-	mergeProps,
 	Show,
-	splitProps,
 	For,
 	Switch,
 	Match,
 	JSX,
+	createMemo,
 } from "solid-js";
-import { Icon, Text, Avatar, Link } from "..";
+import { Text, Avatar, Link } from "..";
 import { AvatarProps } from ".";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
@@ -46,8 +43,10 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 		],
 	});
 
-	const children =
-		typeof local.children === "function" ? local.children() : local.children;
+	const memoChildren = createMemo(() => local.children);
+
+	const children = // @ts-ignore: memoChildren()() is a function
+		typeof memoChildren() === "function" ? memoChildren()() : memoChildren();
 
 	const childrendArray: JSXElement[] = Array.isArray(children)
 		? children

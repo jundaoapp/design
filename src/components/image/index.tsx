@@ -3,7 +3,7 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Image as KobalteImage } from "@kobalte/core";
 import { AvatarRootOptions } from "@kobalte/core/dist/types/image";
-import { JSX, Show } from "solid-js";
+import { createMemo, JSX, Show } from "solid-js";
 
 export type ImageProps = IntrinsicComponentProps<
 	"span",
@@ -27,6 +27,8 @@ export function Image(props: ImageProps) {
 		keys: ["shape", "src", "alt", "fallback", "srcset", "loading"],
 	});
 
+	const fallback = createMemo(() => local.fallback);
+
 	return (
 		<KobalteImage.Root
 			class="jdd image"
@@ -39,17 +41,17 @@ export function Image(props: ImageProps) {
 			<KobalteImage.Img
 				src={local.src}
 				alt={
-					local.alt ?? typeof local.fallback === "string"
-						? (local.fallback as string)
+					local.alt ?? typeof fallback() === "string"
+						? (fallback() as string)
 						: undefined
 				}
 				srcset={local.srcset}
 				loading={local.loading}
 				class="image-image"
 			/>
-			<Show when={local.fallback}>
+			<Show when={fallback()}>
 				<KobalteImage.Fallback class="image-fallback">
-					{local.fallback}
+					{fallback()}
 				</KobalteImage.Fallback>
 			</Show>
 		</KobalteImage.Root>

@@ -4,7 +4,7 @@ import RadioGroup from "./group";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
-import { Show } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import { RadioGroupItemOptions } from "@kobalte/core/dist/types/radio-group";
 import { createAutofocus } from "@solid-primitives/autofocus";
 
@@ -32,6 +32,8 @@ function Radio(props: RadioProps) {
 	let ref!: HTMLInputElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
+	const label = createMemo(() => local.label);
+
 	return (
 		<KobalteRadioGroup.Item
 			class="jdd radio"
@@ -49,10 +51,10 @@ function Radio(props: RadioProps) {
 				<KobalteRadioGroup.ItemControl class="radio-control">
 					<KobalteRadioGroup.ItemIndicator class="radio-indicator" />
 				</KobalteRadioGroup.ItemControl>
-				<Show when={local.label}>
+				<Show when={label()}>
 					<KobalteRadioGroup.Label>
-						<Show when={typeof local.label === "string"} fallback={local.label}>
-							<Text>{local.label}</Text>
+						<Show when={typeof label() === "string"} fallback={label()}>
+							<Text>{label()}</Text>
 						</Show>
 					</KobalteRadioGroup.Label>
 				</Show>

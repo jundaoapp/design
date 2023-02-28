@@ -1,7 +1,7 @@
 import "./index.scss";
 import { Progress as KobalteProgress } from "@kobalte/core";
 import { IntrinsicComponentProps } from "../types";
-import { JSXElement, Show, For, Switch, Match } from "solid-js";
+import { JSXElement, Show, For, Switch, Match, createMemo } from "solid-js";
 import { processProps } from "../utilities";
 import { Text, Icon } from "..";
 
@@ -55,6 +55,8 @@ export function Progress(props: ProgressProps) {
 		],
 	});
 
+	const label = createMemo(() => local.label);
+
 	return (
 		<KobalteProgress.Root
 			class="jdd progress"
@@ -83,10 +85,10 @@ export function Progress(props: ProgressProps) {
 			}
 			{...others}
 		>
-			<Show when={local.label}>
+			<Show when={label()}>
 				<KobalteProgress.Label>
-					<Show when={typeof local.label === "string"} fallback={local.label}>
-						<Text>{local.label}</Text>
+					<Show when={typeof label() === "string"} fallback={label()}>
+						<Text>{label()}</Text>
 					</Show>
 				</KobalteProgress.Label>
 			</Show>
