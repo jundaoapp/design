@@ -95,7 +95,7 @@ export function Popconfirm(props: PopconfirmProps) {
 		fn: (() => void | Promise<void>) | undefined,
 		callback?: () => void,
 	) => {
-		setter(true);
+		if (fn !== undefined) setter(true);
 
 		setTimeout(async () => {
 			await fn?.();
