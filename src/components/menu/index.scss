@@ -1,0 +1,65 @@
+.jdd.menu {
+    z-index: 101 + var(--jdd-overlay-zindex-increment);
+    animation-name: jdd-menu-exit;
+    animation-timing-function: var(--jdd-transition-function);
+    animation-duration: var(--jdd-transition-duration);
+    animation-fill-mode: forwards;
+    transform-origin: var(--kb-menu-content-transform-origin);
+    border-radius: var(--jdd-border-radius);
+    outline: none !important;
+    user-select: none;
+
+    &[data-expanded] {
+        animation-name: jdd-menu-enter;
+    }
+
+    .dropdown-arrow {
+        fill: var(--jdd-gray-1) !important;
+        stroke: var(--jdd-gray-2) !important;
+        stroke-width: 2px !important;
+        margin-bottom: -1px;
+
+        .jdd-dark & {
+            fill: var(--jdd-gray-12) !important;
+            stroke: var(--jdd-gray-11) !important;
+        }
+    }
+
+    .jdd.card > .content {
+        padding: .25rem;
+
+        > .jdd.divider {
+            width: 90%;
+            min-width: 90%;
+            margin: .25rem 0 .25rem 5%;
+        }
+    }
+
+    .group {
+
+        > .label {
+            padding: .25rem 1rem;
+            font-size: .85rem;
+        }
+    }
+
+    @import "./item";
+}
+
+@keyframes jdd-menu-enter {
+    from {
+        opacity: 0;
+        transform: scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes jdd-menu-exit {
+    to {
+        opacity: 0;
+        transform: scale(.96);
+    }
+}

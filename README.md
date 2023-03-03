@@ -70,7 +70,7 @@ Currently implemented & planned components:
 - [ ] Chart
 - [x] Checkbox
 - [ ] CodeBlock
-- [ ] ContextMenu
+- [x] ContextMenu
 - [ ] DataGrid
 - [ ] DatePicker
 - [x] Divider
