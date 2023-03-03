@@ -22,10 +22,10 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 # Features
 * Fast - Built on [SolidJS](https://www.solidjs.com).
 * Type Safe - Entirely coded in [Typescript](https://www.typescriptlang.org/).
-* Modern - Uses the latest available ES & CSS features with no polyfills.
+* Modern - Uses the latest available ES & CSS features.
 * Accessible - [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) compliant.
 * Mobile Friendly - All components tested for desktop & touch.
-* Simple - Easy to use components & APIs with a focus on minimal boilerplate.
+* Simple - Straightforward and consistent DX.
 * Consistant - Style and behaviour tested across all modern browsers.
 * Responsive - Designed for all screen sizes.
 * Fresh UI - Light & Dark mode with professional looking design.
@@ -44,14 +44,17 @@ Currently implemented & planned components:
 - [x] Card
 - [ ] Chart
 - [x] Checkbox
+- [ ] CodeBlock
+- [ ] ContextMenu
 - [ ] DataGrid
 - [ ] DatePicker
 - [x] Divider
 - [x] Drawer
-- [ ] Dropdown
+- [x] Dropdown
 - [ ] Editor
 - [ ] Form
 - [ ] Grid
+- [ ] HoverCard
 - [x] Icon
 - [x] Image
 - [ ] Input

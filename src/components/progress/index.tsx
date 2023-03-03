@@ -155,6 +155,7 @@ export function Progress(props: ProgressProps) {
 						when={
 							local.status === "success" ||
 							(!Array.isArray(local.value) &&
+								local.status !== "fail" &&
 								local.successOnComplete &&
 								local.value === local.max)
 						}
