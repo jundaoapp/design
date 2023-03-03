@@ -31,7 +31,32 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 * Fresh UI - Light & Dark mode with professional looking design.
 
 # Usage
-TODO
+Install `@jundao/design` and peer dependency fonts:
+```bash
+npm install @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+# or
+yarn add @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+# or
+pnpm add @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+```
+
+Import in entrypoint:
+```ts
+import "@jundao/design/index.css";
+
+// Fonts
+import "@fontsource/inter/variable-full.css";
+import "@fontsource/jetbrains-mono/variable.css";
+import "@fontsource/jetbrains-mono/variable-italic.css";
+```
+
+Import components:
+```ts
+import { Button } from "@jundao/design";
+
+<Button>Click Me</Button>
+```
+:sparkles: All done!
 
 # Components
 Currently implemented & planned components:
