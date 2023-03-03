@@ -15,6 +15,7 @@ import {
 import { Icon, Button, Card, Text } from "..";
 import { Ref } from "@solid-primitives/refs";
 import { PopoverContentOptions } from "@kobalte/core/dist/types/popover";
+import { Placement } from "@kobalte/core/dist/types/popper/utils";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",
@@ -28,6 +29,7 @@ export type PopconfirmProps = IntrinsicComponentProps<
 		showCancel?: boolean;
 		onConfirm?: () => void | Promise<void>;
 		onCancel?: () => void | Promise<void>;
+		placement?: Placement;
 	} & Pick<PopoverContentOptions, "style">
 >;
 
@@ -52,6 +54,7 @@ export function Popconfirm(props: PopconfirmProps) {
 			"showCancel",
 			"onConfirm",
 			"onCancel",
+			"placement",
 		],
 	});
 
@@ -122,7 +125,11 @@ export function Popconfirm(props: PopconfirmProps) {
 	const description = createMemo(() => local.description);
 
 	return (
-		<Popover.Root isOpen={open()} onOpenChange={setOpen}>
+		<Popover.Root
+			isOpen={open()}
+			onOpenChange={setOpen}
+			placement={local.placement}
+		>
 			<Popover.Anchor ref={ref}>
 				<Ref ref={setChildRef}>{local.children}</Ref>
 			</Popover.Anchor>
