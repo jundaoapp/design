@@ -31,7 +31,7 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 * Fresh UI - Light & Dark mode with professional looking design.
 
 # Usage
-Install `@jundao/design` and peer dependent fonts:
+Install `@jundao/design` and peer dependency fonts:
 ```bash
 npm install @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
 # or
