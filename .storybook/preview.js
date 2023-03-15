@@ -3,6 +3,9 @@ import bannerLight from "./banner-light.svg";
 import bannerDark from "./banner-dark.svg";
 import { render } from "solid-js/web";
 import "../src/components/style";
+import { attachDevtoolsOverlay } from '@solid-devtools/overlay';
+
+attachDevtoolsOverlay();
 
 export const parameters = {
 	actions: { argTypesRegex: "^on[A-Z].*" },

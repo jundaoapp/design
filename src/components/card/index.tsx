@@ -1,13 +1,5 @@
 import "./index.scss";
-import {
-	ComponentProps,
-	createMemo,
-	createSignal,
-	JSXElement,
-	mergeProps,
-	Show,
-	splitProps,
-} from "solid-js";
+import { createMemo, JSXElement, Show } from "solid-js";
 import { Icon, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
@@ -37,6 +29,7 @@ export function Card(props: CardProps) {
 			contrastBackground: false,
 		},
 		keys: [
+			"class",
 			"title",
 			"size",
 			"children",
@@ -53,7 +46,7 @@ export function Card(props: CardProps) {
 	if (!(local.collapsible || local.collapsed || local.defaultCollapsed)) {
 		return (
 			<div
-				class="jdd card"
+				class={["jdd card", local.class].join(" ")}
 				classList={{
 					small: local.size === "small",
 					"no-padding": local.noPadding,
@@ -75,7 +68,7 @@ export function Card(props: CardProps) {
 
 	return (
 		<Collapsible.Root
-			class="jdd card collapsible"
+			class={["jdd card collapsible", local.class].join(" ")}
 			classList={{
 				small: local.size === "small",
 				"no-padding": local.noPadding,

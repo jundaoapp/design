@@ -1,8 +1,7 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { JSXElement, createMemo, Show } from "solid-js";
-import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { MenuSubContentOptions } from "@kobalte/core/dist/types/menu";
+import { ContextMenu, DropdownMenu, As } from "@kobalte/core";
 import { Card, Icon, Text } from "..";
 import { Dynamic } from "solid-js/web";
 
@@ -13,13 +12,14 @@ export type MenuSubmenuProps = IntrinsicComponentProps<
 		label?: JSXElement;
 		description?: JSXElement;
 		disabled?: boolean;
-	} & MenuSubContentOptions
+		icon?: JSXElement;
+	} & DropdownMenu.DropdownMenuSubContentProps
 >;
 
 export function MenuSubmenu(props: MenuSubmenuProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["disabled", "children", "description", "label", "type"],
+		keys: ["disabled", "children", "description", "label", "type", "icon"],
 	});
 
 	const label = createMemo(() => local.label);
@@ -43,7 +43,11 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 					}[local.type]
 				}
 				isDisabled={local.disabled}
-				class="item submenu"
+				class="jdd item submenu"
+				classList={{
+					"with-icon": local.icon !== undefined,
+					"no-icon": local.icon === undefined,
+				}}
 			>
 				<div class="indicator">
 					<Text>
@@ -52,6 +56,9 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 				</div>
 
 				<div class="label">
+					<Show when={local.icon} keyed>
+						{(icon) => <Text>{icon}</Text>}
+					</Show>
 					<Show when={typeof label() === "string"} fallback={label()}>
 						<Text>{label()}</Text>
 					</Show>
@@ -81,12 +88,18 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 							dropdown: DropdownMenu.SubContent,
 						}[local.type]
 					}
-					class="jdd menu"
+					asChild
 					{...others}
 				>
-					<Card contrastBackground noPadding size="small">
+					<As
+						component={Card}
+						class="menu"
+						contrastBackground
+						noPadding
+						size="small"
+					>
 						{local.children}
-					</Card>
+					</As>
 				</Dynamic>
 			</Dynamic>
 		</Dynamic>

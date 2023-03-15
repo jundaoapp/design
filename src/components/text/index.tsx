@@ -14,6 +14,7 @@ export type TextProps = IntrinsicComponentProps<
 		code?: boolean;
 		keyboard?: boolean;
 		size?: "small" | "default" | "large";
+		font?: "sans" | "mono" | "serif";
 	}
 >;
 
@@ -36,6 +37,7 @@ export function Text(props: TextProps) {
 			"keyboard",
 			"class",
 			"size",
+			"font",
 		],
 	});
 
@@ -82,6 +84,9 @@ export function Text(props: TextProps) {
 				danger: local.type === "danger",
 				small: local.size === "small",
 				large: local.size === "large",
+				sans: local.font === "sans",
+				mono: local.font === "mono",
+				serif: local.font === "serif",
 			}}
 			{...others}
 		>

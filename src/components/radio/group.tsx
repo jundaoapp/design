@@ -1,8 +1,7 @@
-import { JSX, Show } from "solid-js";
+import { createMemo, JSX, Show } from "solid-js";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
-import { RadioGroupRootOptions } from "@kobalte/core/dist/types/radio-group";
 import { Space, Text } from "..";
 
 export type RadioGroupProps = IntrinsicComponentProps<
@@ -15,15 +14,23 @@ export type RadioGroupProps = IntrinsicComponentProps<
 		onChange?: (value: string) => void;
 		errorMessage?: JSX.Element;
 		description?: JSX.Element;
+		invalid?: boolean;
 	} & Omit<
-		RadioGroupRootOptions,
-		"isDisabled" | "isReadOnly" | "isRequired" | "onValueChange"
+		KobalteRadioGroup.RadioGroupRootProps,
+		| "isDisabled"
+		| "isReadOnly"
+		| "isRequired"
+		| "onValueChange"
+		| "validationState"
 	>
 >;
 
 export default function RadioGroup(props: RadioGroupProps) {
 	const [local, others] = processProps({
 		props,
+		default: {
+			invalid: false,
+		},
 		keys: [
 			"label",
 			"disabled",
@@ -32,8 +39,13 @@ export default function RadioGroup(props: RadioGroupProps) {
 			"onChange",
 			"errorMessage",
 			"description",
+			"invalid",
 		],
 	});
+
+	const label = createMemo(() => local.label);
+	const description = createMemo(() => local.description);
+	const errorMessage = createMemo(() => local.errorMessage);
 
 	return (
 		<KobalteRadioGroup.Root
@@ -41,13 +53,14 @@ export default function RadioGroup(props: RadioGroupProps) {
 			isReadOnly={local.readonly}
 			isRequired={local.required}
 			onValueChange={local.onChange}
+			validationState={local.invalid ? "invalid" : "valid"}
 			{...others}
 		>
 			<Space vertical>
-				<Show when={local.label}>
+				<Show when={label()}>
 					<KobalteRadioGroup.Label>
-						<Show when={typeof local.label === "string"} fallback={local.label}>
-							<Text>{local.label}</Text>
+						<Show when={typeof label() === "string"} fallback={label()}>
+							<Text>{label()}</Text>
 						</Show>
 					</KobalteRadioGroup.Label>
 				</Show>
@@ -56,27 +69,27 @@ export default function RadioGroup(props: RadioGroupProps) {
 					{props.children}
 				</Space>
 
-				<Show when={local.description}>
+				<Show when={description()}>
 					<KobalteRadioGroup.Description>
 						<Show
-							when={typeof local.description === "string"}
-							fallback={local.description}
+							when={typeof description() === "string"}
+							fallback={description()}
 						>
 							<Text type="secondary" size="small">
-								{local.description}
+								{description()}
 							</Text>
 						</Show>
 					</KobalteRadioGroup.Description>
 				</Show>
 
-				<Show when={local.errorMessage}>
+				<Show when={errorMessage()}>
 					<KobalteRadioGroup.ErrorMessage>
 						<Show
-							when={typeof local.errorMessage === "string"}
-							fallback={local.errorMessage}
+							when={typeof errorMessage() === "string"}
+							fallback={errorMessage()}
 						>
 							<Text type="danger" size="small">
-								{local.errorMessage}
+								{errorMessage()}
 							</Text>
 						</Show>
 					</KobalteRadioGroup.ErrorMessage>

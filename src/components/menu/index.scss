@@ -5,9 +5,7 @@
     animation-duration: var(--jdd-transition-duration);
     animation-fill-mode: forwards;
     transform-origin: var(--kb-menu-content-transform-origin);
-    border-radius: var(--jdd-border-radius);
-    outline: none !important;
-    user-select: none;
+    overflow: visible;
 
     &[data-expanded] {
         animation-name: jdd-menu-enter;
@@ -25,7 +23,7 @@
         }
     }
 
-    .jdd.card > .content {
+    > .content {
         padding: .25rem;
 
         > .jdd.divider {
@@ -36,7 +34,6 @@
     }
 
     .group {
-
         > .label {
             padding: .25rem 1rem;
             font-size: .85rem;

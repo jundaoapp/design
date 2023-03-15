@@ -1,21 +1,17 @@
 import "./index.scss";
-import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
-import { Popover } from "@kobalte/core";
+import { Popover, As } from "@kobalte/core";
 import { processProps } from "../utilities";
 import {
 	createEffect,
 	createMemo,
 	createSignal,
 	JSXElement,
-	on,
 	Setter,
 	Show,
 } from "solid-js";
-import { Icon, Button, Card, Text } from "..";
+import { Icon, Button, Card, Text, Title } from "..";
 import { Ref } from "@solid-primitives/refs";
-import { PopoverContentOptions } from "@kobalte/core/dist/types/popover";
-import { Placement } from "@kobalte/core/dist/types/popper/utils";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",
@@ -29,8 +25,8 @@ export type PopconfirmProps = IntrinsicComponentProps<
 		showCancel?: boolean;
 		onConfirm?: () => void | Promise<void>;
 		onCancel?: () => void | Promise<void>;
-		placement?: Placement;
-	} & Pick<PopoverContentOptions, "style">
+	} & Pick<Popover.PopoverContentProps, "style"> &
+		Pick<Popover.PopoverRootProps, "placement">
 >;
 
 export function Popconfirm(props: PopconfirmProps) {
@@ -151,8 +147,8 @@ export function Popconfirm(props: PopconfirmProps) {
 							/>
 							<Show when={local.title} fallback={<div />} keyed>
 								{(title) => (
-									<Popover.Title class="jdd title jdd-typography">
-										{title}
+									<Popover.Title asChild>
+										<As component={Title}>{title}</As>
 									</Popover.Title>
 								)}
 							</Show>

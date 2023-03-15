@@ -1,7 +1,6 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { MenuItemOptions } from "@kobalte/core/dist/types/menu";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Text } from "..";
 import { Dynamic } from "solid-js/web";
@@ -12,13 +11,15 @@ export type MenuItemProps = IntrinsicComponentProps<
 		type: "contextmenu" | "dropdown";
 		disabled?: boolean;
 		description?: JSXElement;
-	} & Omit<MenuItemOptions, "isDisabled">
+		icon?: JSXElement;
+		shortcut?: string;
+	} & Omit<DropdownMenu.DropdownMenuItemProps, "isDisabled">
 >;
 
 export function MenuItem(props: MenuItemProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["disabled", "children", "description", "type"],
+		keys: ["disabled", "children", "description", "type", "icon", "shortcut"],
 	});
 
 	const children = createMemo(() => local.children);
@@ -34,6 +35,10 @@ export function MenuItem(props: MenuItemProps) {
 			}
 			isDisabled={local.disabled}
 			class="item"
+			classList={{
+				"with-icon": local.icon !== undefined,
+				"no-icon": local.icon === undefined,
+			}}
 			{...others}
 		>
 			<Dynamic
@@ -45,8 +50,19 @@ export function MenuItem(props: MenuItemProps) {
 				}
 				class="label"
 			>
+				<Show when={local.icon} keyed>
+					{(icon) => <Text>{icon}</Text>}
+				</Show>
 				<Show when={typeof children() === "string"} fallback={children()}>
 					<Text>{children()}</Text>
+				</Show>
+
+				<Show when={local.shortcut} keyed>
+					{(shortcut) => (
+						<Text class="shortcut" font="mono" type="secondary">
+							{shortcut}
+						</Text>
+					)}
 				</Show>
 			</Dynamic>
 			<Dynamic

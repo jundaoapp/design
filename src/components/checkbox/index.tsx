@@ -4,7 +4,6 @@ import { Icon, Space, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
-import { CheckboxRootOptions } from "@kobalte/core/dist/types/checkbox";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import "../label/index.scss";
 
@@ -25,7 +24,7 @@ export type CheckboxProps = IntrinsicComponentProps<
 		autofocus?: boolean;
 		children?: never;
 	} & Omit<
-		CheckboxRootOptions,
+		KobalteCheckbox.CheckboxRootProps,
 		| "isChecked"
 		| "defaultIsChecked"
 		| "onCheckedChange"

@@ -1,0 +1,85 @@
+.jdd.select {
+  justify-content: space-between;
+
+  > .value {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  > .jdd.icon {
+    display: inline-block;
+    transform: rotate(-90deg);
+    margin: 0 -.25rem 0 .25rem;
+  }
+
+  &[data-invalid] {
+    color: var(--jdd-red-6);
+
+    &:not(:focus-visible) {
+      outline: solid var(--jdd-red-6) calc(var(--jdd-accessibility-outline-width) / 2);
+    }
+  }
+}
+
+.jdd.select-content {
+  z-index: 101 + var(--jdd-overlay-zindex-increment);
+  animation-name: jdd-select-exit;
+  animation-timing-function: var(--jdd-transition-function);
+  animation-duration: var(--jdd-transition-duration);
+  animation-fill-mode: forwards;
+  transform-origin: var(--kb-select-menu-content-transform-origin);
+
+  &[data-expanded] {
+    animation-name: jdd-select-enter;
+  }
+
+  .content {
+    padding: .25rem;
+  }
+
+  .item {
+    padding: .25rem .75rem;
+    border-radius: var(--jdd-border-radius);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+
+    > .indicator {
+      line-height: 1;
+
+      > .icon {
+        vertical-align: middle;
+      }
+    }
+
+    &[data-highlighted] {
+      outline: none;
+      background: var(--jdd-blue-6);
+
+      > .label, > .indicator {
+        color: var(--jdd-gray-1);
+      }
+    }
+  }
+}
+
+@keyframes jdd-select-enter {
+  from {
+    opacity: 0;
+    transform: scale(.96) translateY(-8px);
+  }
+    to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes jdd-select-exit {
+  to {
+    opacity: 0;
+    transform: scale(.96) translateY(-8px);
+  }
+}
