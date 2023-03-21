@@ -2,7 +2,6 @@ import "./index.scss";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Image as KobalteImage } from "@kobalte/core";
-import { AvatarRootOptions } from "@kobalte/core/dist/types/image";
 import { createMemo, JSX, Show } from "solid-js";
 
 export type ImageProps = IntrinsicComponentProps<
@@ -15,7 +14,7 @@ export type ImageProps = IntrinsicComponentProps<
 		loading?: "eager" | "lazy";
 		shape?: "circle" | "rounded" | "square";
 		children?: never;
-	} & AvatarRootOptions
+	} & KobalteImage.ImageRootProps
 >;
 
 export function Image(props: ImageProps) {

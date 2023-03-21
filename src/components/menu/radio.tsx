@@ -1,7 +1,6 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { MenuRadioItemOptions } from "@kobalte/core/dist/types/menu";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Icon, Text } from "..";
 import { Dynamic } from "solid-js/web";
@@ -12,13 +11,14 @@ export type MenuRadioProps = IntrinsicComponentProps<
 		type: "contextmenu" | "dropdown";
 		disabled?: boolean;
 		description?: JSXElement;
-	} & Omit<MenuRadioItemOptions, "isDisabled">
+		shortcut?: string;
+	} & Omit<DropdownMenu.DropdownMenuRadioItemProps, "isDisabled">
 >;
 
 export function MenuRadio(props: MenuRadioProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["disabled", "children", "description", "type"],
+		keys: ["disabled", "children", "description", "type", "shortcut"],
 	});
 
 	const children = createMemo(() => local.children);
@@ -61,6 +61,14 @@ export function MenuRadio(props: MenuRadioProps) {
 			>
 				<Show when={typeof children() === "string"} fallback={children()}>
 					<Text>{children()}</Text>
+				</Show>
+
+				<Show when={local.shortcut} keyed>
+					{(shortcut) => (
+						<Text class="shortcut" font="mono" type="secondary">
+							{shortcut}
+						</Text>
+					)}
 				</Show>
 			</Dynamic>
 			<Dynamic

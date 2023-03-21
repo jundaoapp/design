@@ -1,15 +1,9 @@
 import "./index.scss";
-import {
-	ComponentProps,
-	JSXElement,
-	mergeProps,
-	Show,
-	splitProps,
-} from "solid-js";
+import { JSXElement, Show } from "solid-js";
 import { Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
-import { Separator } from "@kobalte/core";
+import { Separator, As } from "@kobalte/core";
 
 export type DividerProps = IntrinsicComponentProps<
 	"div",
@@ -34,20 +28,24 @@ export function Divider(props: DividerProps) {
 
 	return (
 		<Separator.Root
-			as={local.children === undefined ? "hr" : "div"}
-			class="jdd divider"
-			classList={{
-				dashed: local.dashed,
-				"with-text": !!local.children,
-				"text-left": local.textPosition === "left",
-				"text-right": local.textPosition === "right",
-			}}
+			asChild
 			orientation={local.vertical ? "vertical" : "horizontal"}
-			{...others}
 		>
-			<Show when={local.children} keyed>
-				{(children) => <Text>{children}</Text>}
-			</Show>
+			<As
+				component={local.children === undefined ? "hr" : "div"}
+				class="jdd divider"
+				classList={{
+					dashed: local.dashed,
+					"with-text": !!local.children,
+					"text-left": local.textPosition === "left",
+					"text-right": local.textPosition === "right",
+				}}
+				{...others}
+			>
+				<Show when={local.children} keyed>
+					{(children) => <Text>{children}</Text>}
+				</Show>
+			</As>
 		</Separator.Root>
 	);
 }

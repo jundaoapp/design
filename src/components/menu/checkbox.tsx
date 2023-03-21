@@ -1,7 +1,6 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { DropdownMenu, ContextMenu } from "@kobalte/core";
-import { MenuCheckboxItemOptions } from "@kobalte/core/dist/types/menu";
+import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Icon, Text } from "..";
 import { Dynamic } from "solid-js/web";
@@ -14,8 +13,9 @@ export type MenuCheckboxProps = IntrinsicComponentProps<
 		checked?: boolean;
 		description?: JSXElement;
 		onChange?: (checked: boolean) => void;
+		shortcut?: string;
 	} & Omit<
-		MenuCheckboxItemOptions,
+		DropdownMenu.DropdownMenuCheckboxItemProps,
 		"isDisabled" | "isChecked" | "isIndeterminate" | "onCheckedChange"
 	>
 >;
@@ -30,6 +30,7 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 			"description",
 			"onChange",
 			"type",
+			"shortcut",
 		],
 	});
 
@@ -57,11 +58,11 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 						dropdown: DropdownMenu.ItemIndicator,
 					}[local.type]
 				}
-				class="indicator"
+				asChild
 			>
-				<Text>
+				<As component={Text} class="indicator">
 					<Icon icon="check" />
-				</Text>
+				</As>
 			</Dynamic>
 
 			<Dynamic
@@ -75,6 +76,14 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 			>
 				<Show when={typeof children() === "string"} fallback={children()}>
 					<Text>{children()}</Text>
+				</Show>
+
+				<Show when={local.shortcut} keyed>
+					{(shortcut) => (
+						<Text class="shortcut" font="mono" type="secondary">
+							{shortcut}
+						</Text>
+					)}
 				</Show>
 			</Dynamic>
 			<Dynamic

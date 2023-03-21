@@ -1,5 +1,5 @@
 import "./index.scss";
-import { Progress as KobalteProgress } from "@kobalte/core";
+import { Progress as KobalteProgress, As } from "@kobalte/core";
 import { IntrinsicComponentProps } from "../types";
 import { JSXElement, Show, For, Switch, Match, createMemo } from "solid-js";
 import { processProps } from "../utilities";
@@ -95,48 +95,52 @@ export function Progress(props: ProgressProps) {
 
 			<For each={[...Array(local.steps ? local.max! - local.min! : 1).keys()]}>
 				{(index) => (
-					<KobalteProgress.Track
-						as={local.type === "circle" ? "svg" : "div"}
-						class="progress-track"
-						classList={{
-							completed: local.steps
-								? index < local.value!
-								: local.value === local.max,
-							current: local.steps ? index === local.value : true,
-						}}
-					>
-						<Show when={local.type === "circle"}>
-							<circle class="progress-track" />
-						</Show>
-
-						<For
-							each={[
-								...Array(
-									Array.isArray(local.value) ? local.value.length : 1,
-								).keys(),
-							].reverse()}
+					<KobalteProgress.Track asChild>
+						<As
+							component={local.type === "circle" ? "svg" : "div"}
+							class="progress-track"
+							classList={{
+								completed: local.steps
+									? index < local.value!
+									: local.value === local.max,
+								current: local.steps ? index === local.value : true,
+							}}
 						>
-							{(fillIndex) => (
-								<KobalteProgress.Fill
-									as={local.type === "circle" ? "circle" : "div"}
-									class="progress-fill"
-									style={{
-										"--jdd-progress-fill-background": Array.isArray(
-											local.customColor,
-										)
-											? local.customColor.length > index
-												? local.customColor[local.steps ? index : fillIndex]
-												: local.customColor[local.customColor.length - 1]
-											: local.customColor,
-										"--kb-progress-fill-width": `${
-											Array.isArray(local.value)
-												? getCurrentValue(fillIndex, local.value)
-												: local.value
-										}%`,
-									}}
-								/>
-							)}
-						</For>
+							<Show when={local.type === "circle"}>
+								<circle class="progress-track" />
+							</Show>
+
+							<For
+								each={[
+									...Array(
+										Array.isArray(local.value) ? local.value.length : 1,
+									).keys(),
+								].reverse()}
+							>
+								{(fillIndex) => (
+									<KobalteProgress.Fill>
+										<As
+											component={local.type === "circle" ? "circle" : "div"}
+											class="progress-fill"
+											style={{
+												"--jdd-progress-fill-background": Array.isArray(
+													local.customColor,
+												)
+													? local.customColor.length > index
+														? local.customColor[local.steps ? index : fillIndex]
+														: local.customColor[local.customColor.length - 1]
+													: local.customColor,
+												"--kb-progress-fill-width": `${
+													Array.isArray(local.value)
+														? getCurrentValue(fillIndex, local.value)
+														: local.value
+												}%`,
+											}}
+										/>
+									</KobalteProgress.Fill>
+								)}
+							</For>
+						</As>
 					</KobalteProgress.Track>
 				)}
 			</For>
@@ -147,7 +151,9 @@ export function Progress(props: ProgressProps) {
 				<Switch
 					fallback={
 						<Text class="progress-info">
-							<KobalteProgress.ValueLabel as="span" />
+							<KobalteProgress.ValueLabel>
+								<As component="span" />
+							</KobalteProgress.ValueLabel>
 						</Text>
 					}
 				>

@@ -19,6 +19,7 @@ export * from "./modal";
 export * from "./popconfirm";
 export * from "./progress";
 export * from "./radio";
+export * from "./select";
 export * from "./slider";
 export * from "./space";
 export * from "./spinner";

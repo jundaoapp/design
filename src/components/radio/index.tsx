@@ -5,7 +5,6 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { createMemo, Show } from "solid-js";
-import { RadioGroupItemOptions } from "@kobalte/core/dist/types/radio-group";
 import { createAutofocus } from "@solid-primitives/autofocus";
 
 export type RadioProps = IntrinsicComponentProps<
@@ -16,7 +15,7 @@ export type RadioProps = IntrinsicComponentProps<
 		danger?: boolean;
 		disabled?: boolean;
 		autofocus?: boolean;
-	} & Omit<RadioGroupItemOptions, "isDisabled">
+	} & Omit<KobalteRadioGroup.RadioGroupItemProps, "isDisabled">
 >;
 
 function Radio(props: RadioProps) {

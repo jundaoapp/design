@@ -7,6 +7,7 @@ export type IconProps = IntrinsicComponentProps<
 	{
 		icon: string;
 		line?: boolean;
+		fill?: boolean;
 		spin?: boolean;
 		label?: string;
 	}
@@ -18,12 +19,13 @@ export function Icon(props: IconProps) {
 		default: {
 			line: false,
 			spin: false,
+			fill: true,
 			label: "",
 		},
-		keys: ["icon", "line", "spin", "label", "class", "classList"],
+		keys: ["icon", "line", "spin", "label", "class", "classList", "fill"],
 	});
 
-	const suffix = local.line ? "-line" : "-fill";
+	const suffix = local.line ? "-line" : local.fill ? "-fill" : "";
 
 	return (
 		<i

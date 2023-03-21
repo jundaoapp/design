@@ -1,9 +1,10 @@
 .jdd.dropdown-trigger {
-    height: max-content;
-    width: max-content;
-    border-radius: var(--jdd-border-radius);
+    &:is(div) {
+        height: max-content;
+        width: max-content;
+    }
 
-    > .jdd.button {
+    &.jdd.button {
         gap: .5rem;
     }
 
@@ -11,18 +12,13 @@
         transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
         display: flex;
         align-items: center;
+        margin: 0 -.5rem;
+        pointer-events: none;
+        line-height: 1.25rem;
+        font-size: 1.25rem;
+    }
 
-        &:only-child {
-            margin: 0 -.5rem;
-        }
-
-        .icon {
-            line-height: 1.25rem;
-            font-size: 1.25rem;
-        }
-
-        &[data-expanded] {
-            transform: rotateX(180deg);
-        }
+    &[data-expanded] .dropdown-trigger-icon {
+        transform: rotateX(180deg);
     }
 }

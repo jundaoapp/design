@@ -1,6 +1,6 @@
 import "./index.scss";
 import { processProps } from "../utilities";
-import { DropdownMenu } from "@kobalte/core";
+import { DropdownMenu, As } from "@kobalte/core";
 import { Button, Icon } from "..";
 import { DropdownItem } from "./item";
 import { DropdownGroup } from "./group";
@@ -30,31 +30,33 @@ function Dropdown(props: DropdownProps) {
 		<Menu
 			type="dropdown"
 			trigger={
-				<DropdownMenu.Trigger
-					as="div"
-					class="jdd dropdown-trigger"
-					isDisabled={local.disabled}
-				>
-					<Show
-						when={local.customTrigger}
-						keyed
-						fallback={
-							<Button
+				<Show
+					when={local.customTrigger}
+					keyed
+					fallback={
+						<DropdownMenu.Trigger asChild isDisabled={local.disabled}>
+							<As
+								component={Button}
+								class="dropdown-trigger"
 								type={local.type}
 								size={local.size}
 								disabled={local.disabled}
 								danger={local.danger}
 							>
-								{local.label}{" "}
-								<DropdownMenu.Icon class="dropdown-trigger-icon">
-									<Icon icon="arrow-down-s" line />
-								</DropdownMenu.Icon>
-							</Button>
-						}
-					>
-						{(customTrigger) => customTrigger}
-					</Show>
-				</DropdownMenu.Trigger>
+								{local.label}
+								<Icon icon="arrow-down-s" line class="dropdown-trigger-icon" />
+							</As>
+						</DropdownMenu.Trigger>
+					}
+				>
+					{(customTrigger) => (
+						<DropdownMenu.Trigger asChild isDisabled={local.disabled}>
+							<As component="div" class="jdd dropdown-trigger">
+								{customTrigger}
+							</As>
+						</DropdownMenu.Trigger>
+					)}
+				</Show>
 			}
 			{...others}
 		/>

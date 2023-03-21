@@ -1,10 +1,8 @@
 import "./index.scss";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
-import { Placement } from "@kobalte/core/dist/types/popper/utils";
-import { ContextMenu, DropdownMenu } from "@kobalte/core";
+import { ContextMenu, DropdownMenu, As } from "@kobalte/core";
 import { Card } from "..";
-import { MenuContentOptions } from "@kobalte/core/dist/types/menu";
 import { MenuItem } from "./item";
 import { MenuGroup } from "./group";
 import { MenuCheckbox } from "./checkbox";
@@ -21,9 +19,9 @@ export type MenuProps = IntrinsicComponentProps<
 		trigger: JSXElement;
 		open?: boolean;
 		onOpenChange?: (open: boolean) => void;
-		placement?: Placement;
 		modal?: boolean;
-	} & MenuContentOptions
+	} & DropdownMenu.DropdownMenuContentProps &
+		Pick<DropdownMenu.DropdownMenuRootProps, "placement">
 >;
 
 function Menu(props: MenuProps) {
@@ -73,16 +71,22 @@ function Menu(props: MenuProps) {
 							dropdown: DropdownMenu.Content,
 						}[local.type]
 					}
-					class="jdd menu"
 					{...others}
+					asChild
 				>
-					<Show when={local.type === "dropdown"}>
-						<DropdownMenu.Arrow class="dropdown-arrow" />
-					</Show>
+					<As
+						component={Card}
+						class="menu"
+						contrastBackground
+						noPadding
+						size="small"
+					>
+						<Show when={local.type === "dropdown"}>
+							<DropdownMenu.Arrow class="dropdown-arrow" />
+						</Show>
 
-					<Card contrastBackground noPadding size="small">
 						{local.children}
-					</Card>
+					</As>
 				</Dynamic>
 			</Dynamic>
 		</Dynamic>

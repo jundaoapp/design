@@ -12,7 +12,6 @@ import { Card, Icon, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Dialog } from "@kobalte/core";
-import { DialogContentOptions } from "@kobalte/core/dist/types/dialog";
 import { mergeRefs } from "@solid-primitives/refs";
 import { useOverlayContext } from "../utilities/overlay";
 
@@ -24,7 +23,7 @@ export type ModalProps = IntrinsicComponentProps<
 		onOpenChange?: (open: boolean) => void;
 		footer?: JSXElement;
 		level?: number;
-	} & DialogContentOptions
+	} & Dialog.DialogContentProps
 >;
 
 export function Modal(props: ModalProps) {

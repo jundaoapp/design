@@ -3,7 +3,6 @@ import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { createMemo, JSXElement, Show } from "solid-js";
-import { DialogContentOptions } from "@kobalte/core/dist/types/dialog";
 import { useOverlayContext } from "../utilities/overlay";
 import { Dialog } from "@kobalte/core";
 import { Card, Icon, Text } from "..";
@@ -17,7 +16,7 @@ export type DrawerProps = IntrinsicComponentProps<
 		onOpenChange?: (open: boolean) => void;
 		footer?: JSXElement;
 		level?: number;
-	} & DialogContentOptions
+	} & Dialog.DialogContentProps
 >;
 
 export function Drawer(props: DrawerProps) {

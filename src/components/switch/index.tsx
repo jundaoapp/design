@@ -5,14 +5,12 @@ import {
 	Match,
 	Show,
 	Switch as SolidSwitch,
-	createSignal,
 	createMemo,
 } from "solid-js";
 import { Space, Spinner, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Switch as KobalteSwitch } from "@kobalte/core";
-import { SwitchRootOptions } from "@kobalte/core/dist/types/switch";
 import { createAutofocus } from "@solid-primitives/autofocus";
 
 export type SwitchProps = IntrinsicComponentProps<
@@ -31,7 +29,7 @@ export type SwitchProps = IntrinsicComponentProps<
 		readonly?: boolean;
 		autofocus?: boolean;
 	} & Omit<
-		SwitchRootOptions,
+		KobalteSwitch.SwitchRootProps,
 		| "defaultIsChecked"
 		| "isChecked"
 		| "isDisabled"

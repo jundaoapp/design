@@ -1,6 +1,6 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { DropdownMenu, ContextMenu } from "@kobalte/core";
+import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Text } from "..";
@@ -33,18 +33,20 @@ export function MenuGroup(props: MenuGroupProps) {
 			{...others}
 		>
 			<Dynamic
+				asChild
 				component={
 					{
 						contextmenu: ContextMenu.GroupLabel,
 						dropdown: DropdownMenu.GroupLabel,
 					}[local.type]
 				}
-				as="div"
 				class="label"
 			>
-				<Show when={typeof label() === "string"} fallback={label()}>
-					<Text type="secondary">{label()}</Text>
-				</Show>
+				<As component="div">
+					<Show when={typeof label() === "string"} fallback={label()}>
+						<Text type="secondary">{label()}</Text>
+					</Show>
+				</As>
 			</Dynamic>
 
 			{local.children}

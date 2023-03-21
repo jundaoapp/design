@@ -1,7 +1,6 @@
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { MenuRadioGroupOptions } from "@kobalte/core/dist/types/menu";
 import { Dynamic } from "solid-js/web";
 
 export type MenuRadioGroupProps = IntrinsicComponentProps<
@@ -10,7 +9,10 @@ export type MenuRadioGroupProps = IntrinsicComponentProps<
 		type: "contextmenu" | "dropdown";
 		disabled?: boolean;
 		onChange?: (value: string) => void;
-	} & Omit<MenuRadioGroupOptions, "isDisabled" | "onValueChange">
+	} & Omit<
+		DropdownMenu.DropdownMenuRadioGroupProps,
+		"isDisabled" | "onValueChange"
+	>
 >;
 
 export function MenuRadioGroup(props: MenuRadioGroupProps) {
