@@ -13,6 +13,7 @@ export * from "./drawer";
 export * from "./dropdown";
 export * from "./icon";
 export * from "./image";
+export * from "./input";
 export * from "./label";
 export * from "./link";
 export * from "./modal";
