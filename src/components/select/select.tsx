@@ -48,7 +48,7 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 		],
 	});
 
-	let ref!: HTMLInputElement;
+	let ref!: HTMLButtonElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
 	const label = createMemo(() => local.label);
@@ -63,12 +63,14 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 					multi: KobalteMultiSelect.Root,
 				}[local.selectType]
 			}
+			ref={ref}
 			placeholder={local.placeholder}
 			options={local.options}
 			isDisabled={local.disabled}
 			isRequired={local.required}
 			isReadOnly={local.readonly}
 			isOpen={local.open}
+			onValueChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
 			// @ts-ignore: TS Can't infer dynamic component and this prop as compatible
 			renderValue={

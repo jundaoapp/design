@@ -82,7 +82,7 @@ Currently implemented & planned components:
 - [ ] HoverCard
 - [x] Icon
 - [x] Image
-- [ ] Input
+- [x] Input
 - [x] Label
 - [ ] Layout
 - [x] Link
@@ -96,7 +96,7 @@ Currently implemented & planned components:
 - [x] Popconfirm
 - [x] Progress
 - [x] Radio
-- [ ] Select
+- [x] Select
 - [ ] Skeleton
 - [x] Slider
 - [x] Space

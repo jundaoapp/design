@@ -118,7 +118,7 @@ export function Progress(props: ProgressProps) {
 								].reverse()}
 							>
 								{(fillIndex) => (
-									<KobalteProgress.Fill>
+									<KobalteProgress.Fill asChild>
 										<As
 											component={local.type === "circle" ? "circle" : "div"}
 											class="progress-fill"
@@ -151,7 +151,7 @@ export function Progress(props: ProgressProps) {
 				<Switch
 					fallback={
 						<Text class="progress-info">
-							<KobalteProgress.ValueLabel>
+							<KobalteProgress.ValueLabel asChild>
 								<As component="span" />
 							</KobalteProgress.ValueLabel>
 						</Text>
