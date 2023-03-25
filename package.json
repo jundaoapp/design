@@ -47,6 +47,7 @@
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
+    "@solid-devtools/overlay": "^0.6.0",
     "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.8.0",
     "@storybook/addon-a11y": "^6.5.16",
@@ -79,8 +80,7 @@
     "vite-plugin-solid": "^2.6.1"
   },
   "dependencies": {
-    "@kobalte/core": "^0.7.4",
-    "@solid-devtools/overlay": "^0.6.0",
+    "@kobalte/core": "^0.8.0",
     "@solid-primitives/autofocus": "^0.0.100",
     "@solid-primitives/props": "^3.1.1",
     "@solid-primitives/refs": "^0.3.7",
