@@ -11,6 +11,8 @@ import { Button, Icon, Card, Text, Space } from "..";
 import { SelectProps, MultiSelectProps } from ".";
 import { Dynamic } from "solid-js/web";
 import { Accessor, createMemo, JSXElement, Show } from "solid-js";
+import { SelectValueComponentProps } from "@kobalte/core/dist/types/select";
+import { MultiSelectValueComponentProps } from "@kobalte/core/dist/types/multi-select";
 
 type AnySelect<Option> =
 	| (SelectProps<Option> & {
@@ -45,6 +47,9 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 			"errorMessage",
 			"description",
 			"invalid",
+			"value",
+			"defaultValue",
+			"valueComponent",
 		],
 	});
 
@@ -70,18 +75,26 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 			isRequired={local.required}
 			isReadOnly={local.readonly}
 			isOpen={local.open}
+			value={local.value}
+			defaultValue={local.defaultValue}
 			onValueChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
 			// @ts-ignore: TS Can't infer dynamic component and this prop as compatible
-			renderValue={
-				{
-					select: (selectedOption: Accessor<Option>) => selectedOption(),
-					multi: (selectedOptions: Accessor<Option[]>) =>
-						selectedOptions().sort().join(", "),
-				}[local.selectType]
+			valueComponent={
+				local.valueComponent === undefined
+					? {
+							select: (props: SelectValueComponentProps<Option>) =>
+								props.item.rawValue,
+							multi: (props: MultiSelectValueComponentProps<Option>) =>
+								props.items
+									.map((i) => i.rawValue)
+									.sort()
+									.join(", "),
+					  }[local.selectType]
+					: local.valueComponent
 			}
 			// @ts-ignore: TS Can't infer dynamic component and this prop as compatible
-			renderItem={(item: Accessor<CollectionNode<Option>>) => (
+			itemComponent={(props: SelectValueComponentProps<Option>) => (
 				<Dynamic
 					component={
 						{
@@ -89,7 +102,7 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 							multi: KobalteMultiSelect.Item,
 						}[local.selectType]
 					}
-					item={item()}
+					item={props.item}
 					class="item"
 				>
 					<Dynamic
@@ -102,7 +115,7 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 						asChild
 					>
 						<As component={Text} class="label">
-							{item().rawValue as JSXElement}
+							{props.item.rawValue as JSXElement}
 						</As>
 					</Dynamic>
 					<Dynamic
@@ -120,8 +133,10 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 					</Dynamic>
 				</Dynamic>
 			)}
+			asChild
 		>
-			<Space
+			<As
+				component={Space}
 				align={
 					description() === undefined && errorMessage() === undefined
 						? "center"
@@ -218,7 +233,7 @@ export function AnySelect<Option>(props: AnySelect<Option>) {
 						</Dynamic>
 					</Show>
 				</Space>
-			</Space>
+			</As>
 
 			<Dynamic
 				component={
