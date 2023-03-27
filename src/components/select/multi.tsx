@@ -1,23 +1,17 @@
+import "./index.scss";
 import { processProps } from "../utilities";
-import {
-	Select as KobalteSelect,
-	MultiSelect as KobalteMultiSelect,
-	As,
-	CollectionNode,
-} from "@kobalte/core";
+import { MultiSelect as KobalteMultiSelect, As } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { Button, Icon, Card, Text, Space, Tag } from "..";
-import { SelectProps, MultiSelectProps } from ".";
-import { Dynamic } from "solid-js/web";
-import { Accessor, createMemo, For, JSXElement, Show } from "solid-js";
+import { MultiSelectProps } from ".";
+import { createMemo, For, JSXElement, onMount, Show } from "solid-js";
+import { SelectValueComponentProps } from "@kobalte/core/dist/types/select";
 import {
-	SelectItemComponentProps,
-	SelectValueComponentProps,
-} from "@kobalte/core/dist/types/select";
-import { MultiSelectValueComponentProps } from "@kobalte/core/dist/types/multi-select";
-import { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/select-base";
+	MultiSelectItemComponentProps,
+	MultiSelectValueComponentProps,
+} from "@kobalte/core/dist/types/multi-select";
 
-export function Select<Option>(props: SelectProps<Option>) {
+export function MultiSelect<Option>(props: MultiSelectProps<Option>) {
 	const [local, others] = processProps({
 		props,
 		default: {
@@ -43,6 +37,7 @@ export function Select<Option>(props: SelectProps<Option>) {
 			"value",
 			"defaultValue",
 			"valueComponent",
+			"tags",
 		],
 	});
 
@@ -53,8 +48,18 @@ export function Select<Option>(props: SelectProps<Option>) {
 	const description = createMemo(() => local.description);
 	const errorMessage = createMemo(() => local.errorMessage);
 
+	const valueComponent =
+		local.valueComponent ??
+		(local.tags
+			? TagValueComponent
+			: (props: MultiSelectValueComponentProps<Option>) =>
+					props.items
+						.map((i) => i.rawValue)
+						.sort()
+						.join(", "));
+
 	return (
-		<KobalteSelect.Root
+		<KobalteMultiSelect.Root
 			ref={ref}
 			placeholder={local.placeholder}
 			options={local.options}
@@ -66,50 +71,50 @@ export function Select<Option>(props: SelectProps<Option>) {
 			defaultValue={local.defaultValue}
 			onValueChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
-			valueComponent={
-				local.valueComponent ??
-				((props: SelectValueComponentProps<Option>) =>
-					props.item.rawValue as JSXElement)
-			}
-			itemComponent={(props: SelectItemComponentProps<Option>) =>
+			valueComponent={valueComponent}
+			itemComponent={(props: MultiSelectItemComponentProps<Option>) =>
 				(
-					<KobalteSelect.Item item={props.item} class="item">
-						<KobalteSelect.ItemLabel asChild>
+					<KobalteMultiSelect.Item item={props.item} class="item">
+						<KobalteMultiSelect.ItemLabel asChild>
 							<As component={Text} class="label">
 								{props.item.rawValue as JSXElement}
 							</As>
-						</KobalteSelect.ItemLabel>
+						</KobalteMultiSelect.ItemLabel>
 						<KobalteMultiSelect.ItemIndicator asChild>
 							<As component={Text} class="indicator">
 								<Icon icon="check" />
 							</As>
 						</KobalteMultiSelect.ItemIndicator>
-					</KobalteSelect.Item>
+					</KobalteMultiSelect.Item>
 				) as JSXElement
 			}
 			asChild
 		>
 			<As component={Space} class="select-wrapper">
 				<Show when={label()}>
-					<KobalteSelect.Label class="select-label">
+					<KobalteMultiSelect.Label class="select-label">
 						<Show when={typeof label() === "string"} fallback={label()}>
 							<Text>{label()}</Text>
 						</Show>
-					</KobalteSelect.Label>
+					</KobalteMultiSelect.Label>
 				</Show>
 
 				<Space vertical>
-					<KobalteSelect.Trigger asChild {...others}>
-						<As component={Button} class="select" size={local.size}>
-							<KobalteSelect.Value class="value" />
-							<KobalteSelect.Icon asChild>
+					<KobalteMultiSelect.Trigger asChild {...others}>
+						<As
+							component={Button}
+							class={local.tags ? "select tags" : "select"}
+							size={local.size}
+						>
+							<KobalteMultiSelect.Value class="value" />
+							<KobalteMultiSelect.Icon asChild>
 								<As component={Icon} icon="code" />
-							</KobalteSelect.Icon>
+							</KobalteMultiSelect.Icon>
 						</As>
-					</KobalteSelect.Trigger>
+					</KobalteMultiSelect.Trigger>
 
 					<Show when={description()}>
-						<KobalteSelect.Description>
+						<KobalteMultiSelect.Description>
 							<Show
 								when={typeof description() === "string"}
 								fallback={description()}
@@ -118,11 +123,11 @@ export function Select<Option>(props: SelectProps<Option>) {
 									{description()}
 								</Text>
 							</Show>
-						</KobalteSelect.Description>
+						</KobalteMultiSelect.Description>
 					</Show>
 
 					<Show when={errorMessage()}>
-						<KobalteSelect.ErrorMessage>
+						<KobalteMultiSelect.ErrorMessage>
 							<Show
 								when={typeof errorMessage() === "string"}
 								fallback={errorMessage()}
@@ -131,12 +136,12 @@ export function Select<Option>(props: SelectProps<Option>) {
 									{errorMessage()}
 								</Text>
 							</Show>
-						</KobalteSelect.ErrorMessage>
+						</KobalteMultiSelect.ErrorMessage>
 					</Show>
 				</Space>
 
-				<KobalteSelect.Portal>
-					<KobalteSelect.Content asChild>
+				<KobalteMultiSelect.Portal>
+					<KobalteMultiSelect.Content asChild>
 						<As
 							component={Card}
 							contrastBackground
@@ -144,11 +149,35 @@ export function Select<Option>(props: SelectProps<Option>) {
 							size="small"
 							class="jdd select-content"
 						>
-							<KobalteSelect.Listbox class="select-list" />
+							<KobalteMultiSelect.Listbox class="select-list" />
 						</As>
-					</KobalteSelect.Content>
-				</KobalteSelect.Portal>
+					</KobalteMultiSelect.Content>
+				</KobalteMultiSelect.Portal>
 			</As>
-		</KobalteSelect.Root>
+		</KobalteMultiSelect.Root>
+	);
+}
+
+function TagValueComponent<Option>(
+	props: MultiSelectValueComponentProps<Option>,
+) {
+	return (
+		<For
+			each={props.items.sort(
+				(a, b) =>
+					((a.rawValue > b.rawValue) as unknown as number) -
+					((a.rawValue < b.rawValue) as unknown as number),
+			)}
+		>
+			{(item) => (
+				<Tag
+					closeable
+					onClose={() => props.remove(item)}
+					onPointerDown={(event: PointerEvent) => event.stopPropagation()}
+				>
+					{item.rawValue as JSXElement}
+				</Tag>
+			)}
+		</For>
 	);
 }

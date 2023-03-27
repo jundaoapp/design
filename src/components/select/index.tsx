@@ -4,7 +4,8 @@ import {
 	Select as KobalteSelect,
 	MultiSelect as KobalteMultiSelect,
 } from "@kobalte/core";
-import { AnySelect } from "./select";
+import { Select } from "./select";
+import { MultiSelect } from "./multi";
 import { JSXElement } from "solid-js";
 
 type CommonSelectProps = {
@@ -35,6 +36,7 @@ export type SelectProps<Option> = IntrinsicComponentProps<
 			| "isReadOnly"
 			| "isRequired"
 			| "validationState"
+			| "itemComponent"
 		>
 >;
 
@@ -42,6 +44,7 @@ export type MultiSelectProps<Option> = IntrinsicComponentProps<
 	"button",
 	CommonSelectProps & {
 		onChange?: (value: Set<string>) => void;
+		tags?: boolean;
 	} & Omit<
 			KobalteMultiSelect.MultiSelectRootProps<Option>,
 			| "onValueChange"
@@ -50,16 +53,9 @@ export type MultiSelectProps<Option> = IntrinsicComponentProps<
 			| "isReadOnly"
 			| "isRequired"
 			| "validationState"
+			| "itemComponent"
 		>
 >;
-
-function Select<Option>(props: SelectProps<Option>) {
-	return <AnySelect selectType="select" {...props} />;
-}
-
-function MultiSelect<Option>(props: MultiSelectProps<Option>) {
-	return <AnySelect selectType="multi" {...props} />;
-}
 
 const CompoundedSelect = Select as typeof Select & {
 	Multi: typeof MultiSelect;

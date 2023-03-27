@@ -18,6 +18,7 @@ export type BadgeProps = IntrinsicComponentProps<
 		text?: string;
 		title?: string;
 		show?: boolean;
+		target?: string;
 	}
 >;
 
@@ -41,6 +42,7 @@ export function Badge(props: BadgeProps) {
 			"children",
 			"loading",
 			"show",
+			"target",
 		],
 	});
 
@@ -60,6 +62,7 @@ export function Badge(props: BadgeProps) {
 							dot: local.count === undefined,
 						}}
 						title={local.title}
+						target={local.target}
 					>
 						{(local.count ?? 0) > (local.max ?? 0)
 							? `${local.max}+`

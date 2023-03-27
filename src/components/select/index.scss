@@ -1,5 +1,6 @@
 .jdd.select {
   justify-content: space-between;
+  transition: var(--jdd-transition-colors), height var(--jdd-transition-duration) var(--jdd-transition-function), width var(--jdd-transition-duration) var(--jdd-transition-function);
 
   > .value {
     white-space: nowrap;
@@ -13,6 +14,28 @@
     margin: 0 -.25rem 0 .25rem;
   }
 
+  &.tags {
+    > .value {
+      display: flex;
+      gap: .25rem;
+      width: 100%;
+      flex-wrap: wrap;
+      text-overflow: initial;
+      overflow: visible;
+
+      z-index: 2 + var(--jdd-overlay-zindex-increment);
+    }
+
+    .jdd.tag {
+      background: var(--jdd-gray-3);
+      animation-duration: 0s;
+
+      .jdd-dark & {
+        background: var(--jdd-gray-11);
+      }
+    }
+  }
+
   &[data-invalid] {
     color: var(--jdd-red-6);
 
@@ -20,6 +43,10 @@
       outline: solid var(--jdd-red-6) calc(var(--jdd-accessibility-outline-width) / 2);
     }
   }
+}
+
+.jdd.select-wrapper .select-label {
+  margin-top: .2rem;
 }
 
 .jdd.select-content {
@@ -36,6 +63,10 @@
 
   .content {
     padding: .25rem;
+
+    .select-list {
+      outline: none !important;
+    }
   }
 
   .item {
@@ -49,6 +80,7 @@
 
     > .indicator {
       line-height: 1;
+      margin-left: .5rem;
 
       > .icon {
         vertical-align: middle;

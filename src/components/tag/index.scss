@@ -1,0 +1,109 @@
+.jdd.tag {
+  color: var(--jdd-gray-11);
+  background: var(--jdd-gray-4);
+  border-radius: var(--jdd-border-radius-small);
+  display: flex;
+  align-items: center;
+  gap: .1rem;
+  transition: var(--jdd-transition-colors);
+  font-size: .8rem;
+  padding: .2rem .4rem;
+  text-decoration: none;
+
+  .tag-close {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: .8rem;
+    color: currentColor;
+    height: .8rem;
+    margin-right: -.15rem;
+
+    &:hover, &:focus {
+      opacity: .75;
+    }
+  }
+
+  &[href]:hover {
+    background: var(--jdd-gray-5);
+
+    .jdd-dark & {
+      background: var(--jdd-gray-10);
+    }
+  }
+
+  &.error.error {
+    background: var(--jdd-red-6);
+    color: var(--jdd-gray-1);
+
+    &[href]:hover {
+      background: var(--jdd-red-5);
+
+      .jdd-dark & {
+        background: var(--jdd-red-7);
+      }
+    }
+  }
+
+  &.success.success {
+    background: var(--jdd-green-6);
+    color: var(--jdd-gray-1);
+
+    &[href]:hover {
+      background: var(--jdd-green-5);
+
+      .jdd-dark & {
+        background: var(--jdd-green-7);
+      }
+    }
+  }
+
+  &.warning.warning {
+    background: var(--jdd-orange-6);
+    color: var(--jdd-gray-1);
+
+    &[href]:hover {
+      background: var(--jdd-orange-5);
+
+      .jdd-dark & {
+        background: var(--jdd-orange-7);
+      }
+    }
+  }
+
+  .jdd-dark & {
+    color: var(--jdd-gray-1);
+    background: var(--jdd-gray-11);
+  }
+
+
+  &.tag-animation-enter {
+    max-width: 0;
+    opacity: 0;
+  }
+
+  &.tag-animation-enter-to {
+    animation: jdd-tag-enter var(--jdd-transition-duration) var(--jdd-transition-function);
+  }
+
+  &.tag-animation-exit-to {
+    animation: jdd-tag-exit var(--jdd-transition-duration) var(--jdd-transition-function);
+  }
+}
+
+@keyframes jdd-tag-enter {
+  from {
+    max-width: 0;
+    margin: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes jdd-tag-exit {
+  to {
+    max-width: 0;
+    margin: 0;
+    opacity: 0;
+  }
+}

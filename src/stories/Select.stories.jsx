@@ -8,6 +8,7 @@ export default {
 		description: { control: "text" },
 		errorMessage: { control: "text" },
 		invalid: { control: "boolean" },
+		tags: { control: "boolean" },
 	},
 };
 
@@ -54,11 +55,18 @@ Full.args = {
 };
 
 const MultiTemplate = (props) => {
-	return <Select.Multi style={{ width: "10rem" }} {...props} />;
+	return <Select.Multi {...props} />;
 };
 
 export const Multi = MultiTemplate.bind({});
 Multi.args = {
 	placeholder: "Select items",
 	options: ["Item 1", "Item 2", "Item 3"],
+};
+
+export const Tags = MultiTemplate.bind({});
+Tags.args = {
+	placeholder: "Select items",
+	options: ["Item 1", "Item 2", "Item 3"],
+	tags: true,
 };

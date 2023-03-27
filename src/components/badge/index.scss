@@ -29,7 +29,7 @@
         &[href]:hover {
             background: var(--jdd-blue-5);
 
-            .jdd-dark {
+            .jdd-dark & {
                 background: var(--jdd-blue-7);
             }
         }
@@ -44,7 +44,7 @@
             &[href]:hover {
                 background: var(--jdd-red-5);
 
-                .jdd-dark {
+                .jdd-dark & {
                     background: var(--jdd-red-7);
                 }
             }
@@ -60,7 +60,7 @@
             &[href]:hover {
                 background: var(--jdd-green-5);
 
-                .jdd-dark {
+                .jdd-dark & {
                     background: var(--jdd-green-7);
                 }
             }
@@ -76,7 +76,7 @@
             &[href]:hover {
                 background: var(--jdd-orange-5);
 
-                .jdd-dark {
+                .jdd-dark & {
                     background: var(--jdd-orange-7);
                 }
             }

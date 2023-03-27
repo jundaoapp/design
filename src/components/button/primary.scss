@@ -5,7 +5,7 @@
 
   .jdd-dark & {
     &:not([data-disabled]) {
-      &:hover, &:focus, &.loading {
+      &:hover, &.loading {
         background-color: var(--jdd-blue-7);
       }
 
@@ -25,7 +25,7 @@
 
     .jdd-dark & {
       &:not([data-disabled]) {
-        &:hover, &:focus, &.loading {
+        &:hover, &.loading {
           background-color: var(--jdd-red-7);
         }
 
@@ -41,7 +41,7 @@
     }
 
     &:not([data-disabled]) {
-      &:hover, &:focus, &.loading {
+      &:hover, &.loading {
         background-color: var(--jdd-red-4);
         color: var(--jdd-gray-1);
       }
@@ -59,7 +59,7 @@
   }
 
   &:not([data-disabled]) {
-    &:hover, &:focus, &.loading {
+    &:hover, &.loading {
       background-color: var(--jdd-blue-5);
       color: var(--jdd-gray-1);
     }
