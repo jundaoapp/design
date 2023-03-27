@@ -105,7 +105,7 @@ Currently implemented & planned components:
 - [x] Switch
 - [ ] Table
 - [ ] Tabs
-- [ ] Tag
+- [x] Tag
 - [x] Text
 - [ ] Timeline
 - [ ] TimePicker

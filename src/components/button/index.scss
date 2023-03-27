@@ -22,7 +22,7 @@
     }
 
     &:not([data-disabled]) {
-        &:hover, &:focus, &.loading {
+        &:hover, &.loading {
             background-color: var(--jdd-gray-11);
         }
 
@@ -52,7 +52,7 @@
 
   &.danger {
     &:not([data-disabled]) {
-        &:hover, &:focus, &.loading {
+        &:hover, &.loading {
             background-color: var(--jdd-red-1);
             color: var(--jdd-red-6);
       }
@@ -69,7 +69,7 @@
         }
 
         &:not([data-disabled]) {
-            &:hover, &:focus, &.loading {
+            &:hover, &.loading {
                 background-color: var(--jdd-red-10);
             }
 
@@ -81,7 +81,7 @@
   }
 
   &:not([data-disabled]) {
-    &:hover, &:focus, &.loading {
+    &:hover, &.loading {
       background-color: var(--jdd-gray-5);
     }
 

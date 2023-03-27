@@ -1,5 +1,4 @@
 import "./index.scss";
-import { ComponentProps, JSXElement, mergeProps, splitProps } from "solid-js";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 
@@ -22,12 +21,12 @@ export function Space(props: SpaceProps) {
 			wrap: false,
 			align: "start",
 		},
-		keys: ["size", "vertical", "wrap", "align"],
+		keys: ["size", "vertical", "wrap", "align", "class"],
 	});
 
 	return (
 		<div
-			class="jdd space"
+			class={["jdd space", local.class].join(" ")}
 			classList={{
 				vertical: local.vertical,
 				medium: local.size === "medium",
