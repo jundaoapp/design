@@ -13,6 +13,7 @@ import { AvatarProps } from ".";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Button } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",
@@ -66,16 +67,19 @@ export default function AvatarGroup(props: AvatarGroupProps) {
 		/>
 	);
 
-	return (
-		<div
-			class="jdd avatar-group"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd avatar-group",
+		get classList() {
+			return {
 				"no-overlap": !local.overlap,
 				small: local.size === "small",
 				large: local.size === "large",
-			}}
-			{...others}
-		>
+			};
+		},
+	});
+
+	return (
+		<div {...combinedProps}>
 			<Show
 				when={local.max !== undefined && childrendArray.length >= local.max}
 			>

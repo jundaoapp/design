@@ -4,6 +4,7 @@ import { Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Separator, As } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
 
 export type DividerProps = IntrinsicComponentProps<
 	"div",
@@ -26,6 +27,18 @@ export function Divider(props: DividerProps) {
 		keys: ["children", "vertical", "dashed", "textPosition"],
 	});
 
+	const combinedProps = combineProps(others, {
+		class: "jdd divider",
+		get classList() {
+			return {
+				dashed: local.dashed,
+				"with-text": !!local.children,
+				"text-left": local.textPosition === "left",
+				"text-right": local.textPosition === "right",
+			};
+		},
+	});
+
 	return (
 		<Separator.Root
 			asChild
@@ -33,14 +46,7 @@ export function Divider(props: DividerProps) {
 		>
 			<As
 				component={local.children === undefined ? "hr" : "div"}
-				class="jdd divider"
-				classList={{
-					dashed: local.dashed,
-					"with-text": !!local.children,
-					"text-left": local.textPosition === "left",
-					"text-right": local.textPosition === "right",
-				}}
-				{...others}
+				{...combinedProps}
 			>
 				<Show when={local.children} keyed>
 					{(children) => <Text>{children}</Text>}

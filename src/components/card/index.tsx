@@ -4,6 +4,7 @@ import { Icon, Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Collapsible } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
 
 export type CardProps = IntrinsicComponentProps<
 	"div",
@@ -29,7 +30,6 @@ export function Card(props: CardProps) {
 			contrastBackground: false,
 		},
 		keys: [
-			"class",
 			"title",
 			"size",
 			"children",
@@ -43,17 +43,22 @@ export function Card(props: CardProps) {
 
 	const title = createMemo(() => local.title);
 
+	const combinedProps = combineProps(others, {
+		class: !(local.collapsible || local.collapsed || local.defaultCollapsed)
+			? "jdd card"
+			: "jdd card collapsible",
+		get classList() {
+			return {
+				small: local.size === "small",
+				"no-padding": local.noPadding,
+				"contrast-background": local.contrastBackground,
+			};
+		},
+	});
+
 	if (!(local.collapsible || local.collapsed || local.defaultCollapsed)) {
 		return (
-			<div
-				class={["jdd card", local.class].join(" ")}
-				classList={{
-					small: local.size === "small",
-					"no-padding": local.noPadding,
-					"contrast-background": local.contrastBackground,
-				}}
-				{...others}
-			>
+			<div {...combinedProps}>
 				<Show when={title()}>
 					<div class="title">
 						<Show when={typeof title() === "string"} fallback={title()}>
@@ -68,14 +73,9 @@ export function Card(props: CardProps) {
 
 	return (
 		<Collapsible.Root
-			class={["jdd card collapsible", local.class].join(" ")}
-			classList={{
-				small: local.size === "small",
-				"no-padding": local.noPadding,
-			}}
 			isOpen={local.collapsed === undefined ? undefined : !local.collapsed}
 			defaultIsOpen={!local.defaultCollapsed}
-			{...others}
+			{...combinedProps}
 		>
 			<Show
 				when={

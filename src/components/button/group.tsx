@@ -1,7 +1,7 @@
 import "./index.scss";
 import { Button } from "..";
-import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type ButtonGroupProps = IntrinsicComponentProps<
 	"div",
@@ -11,11 +11,9 @@ export type ButtonGroupProps = IntrinsicComponentProps<
 >;
 
 export default function ButtonGroup(props: ButtonGroupProps) {
-	const [local, others] = processProps({ props, keys: ["children"] });
+	const combinedProps = combineProps(props, {
+		class: "jdd button-group",
+	});
 
-	return (
-		<div class="jdd button-group" role="group" {...others}>
-			{local.children}
-		</div>
-	);
+	return <div role="group" {...combinedProps} />;
 }

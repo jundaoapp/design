@@ -4,6 +4,7 @@ import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Text } from "..";
+import { combineProps } from "@solid-primitives/props";
 
 export type MenuGroupProps = IntrinsicComponentProps<
 	"div",
@@ -21,6 +22,10 @@ export function MenuGroup(props: MenuGroupProps) {
 
 	const label = createMemo(() => local.label);
 
+	const combinedProps = combineProps(others, {
+		class: "group",
+	});
+
 	return (
 		<Dynamic
 			component={
@@ -29,8 +34,7 @@ export function MenuGroup(props: MenuGroupProps) {
 					dropdown: DropdownMenu.Group,
 				}[local.type]
 			}
-			class="group"
-			{...others}
+			{...combinedProps}
 		>
 			<Dynamic
 				asChild

@@ -4,6 +4,7 @@ import { JSXElement, createMemo, Show } from "solid-js";
 import { ContextMenu, DropdownMenu, As } from "@kobalte/core";
 import { Card, Icon, Text } from "..";
 import { Dynamic } from "solid-js/web";
+import { combineProps } from "@solid-primitives/props";
 
 export type MenuSubmenuProps = IntrinsicComponentProps<
 	"div",
@@ -24,6 +25,10 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 
 	const label = createMemo(() => local.label);
 	const description = createMemo(() => local.description);
+
+	const combinedProps = combineProps(others, {
+		class: "menu",
+	});
 
 	return (
 		<Dynamic
@@ -89,14 +94,13 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 						}[local.type]
 					}
 					asChild
-					{...others}
 				>
 					<As
 						component={Card}
-						class="menu"
 						contrastBackground
 						noPadding
 						size="small"
+						{...combinedProps}
 					>
 						{local.children}
 					</As>

@@ -1,10 +1,11 @@
 import "./index.scss";
-import { createEffect, on, Show } from "solid-js";
+import { Show } from "solid-js";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Transition } from "solid-transition-group";
 import { Dynamic } from "solid-js/web";
 import { Spinner, Text } from "..";
+import { combineProps } from "@solid-primitives/props";
 
 export type BadgeProps = IntrinsicComponentProps<
 	"div",
@@ -46,8 +47,12 @@ export function Badge(props: BadgeProps) {
 		],
 	});
 
+	const combinedProps = combineProps(others, {
+		class: "jdd badge-wrapper",
+	});
+
 	return (
-		<div class="jdd badge-wrapper" {...others}>
+		<div {...combinedProps}>
 			{local.children}
 
 			<Transition name="badge-animation" appear>

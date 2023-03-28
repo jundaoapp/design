@@ -6,6 +6,7 @@ import { createMemo, JSXElement, Show } from "solid-js";
 import { useOverlayContext } from "../utilities/overlay";
 import { Dialog } from "@kobalte/core";
 import { Card, Icon, Text } from "..";
+import { combineProps } from "@solid-primitives/props";
 
 export type DrawerProps = IntrinsicComponentProps<
 	"div",
@@ -43,6 +44,10 @@ export function Drawer(props: DrawerProps) {
 
 	const children = createMemo(() => local.children);
 
+	const combinedProps = combineProps(others, {
+		class: `jdd drawer ${local.position}`,
+	});
+
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
 			<Dialog.Root
@@ -56,7 +61,7 @@ export function Drawer(props: DrawerProps) {
 						style={{ "--jdd-overlay-zindex-increment": level }}
 					>
 						<Dialog.Overlay class="jdd drawer-overlay" />
-						<Dialog.Content class={`jdd drawer ${local.position}`} {...others}>
+						<Dialog.Content {...combinedProps}>
 							<Card>
 								<div class="drawer-header">
 									<Show when={local.title} fallback={<div />} keyed>

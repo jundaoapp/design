@@ -12,6 +12,7 @@ import {
 } from "solid-js";
 import { Icon, Button, Card, Text, Title } from "..";
 import { Ref } from "@solid-primitives/refs";
+import { combineProps } from "@solid-primitives/props";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",
@@ -120,6 +121,10 @@ export function Popconfirm(props: PopconfirmProps) {
 
 	const description = createMemo(() => local.description);
 
+	const combinedProps = combineProps(others, {
+		class: `jdd popconfirm ${local.type}`,
+	});
+
 	return (
 		<Popover.Root
 			isOpen={open()}
@@ -130,7 +135,7 @@ export function Popconfirm(props: PopconfirmProps) {
 				<Ref ref={setChildRef}>{local.children}</Ref>
 			</Popover.Anchor>
 			<Popover.Portal>
-				<Popover.Content class={`jdd popconfirm ${local.type}`} {...others}>
+				<Popover.Content {...combinedProps}>
 					<Popover.Arrow class="popconfirm-arrow" />
 					<Card contrastBackground size="small">
 						<div class="popconfirm-header">

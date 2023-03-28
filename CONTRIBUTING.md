@@ -27,8 +27,9 @@ pnpm storybook
 
 ## Components
 All Jundao Design components should accept their underlying component's props by extending its [intrinsic element attributes](https://github.com/solidjs/solid/blob/04fdd3088c978bfe6e6cb98e61473ce9543327de/packages/solid/src/render/component.ts#L78).
+They should also combine provided props with their own (see [here](https://github.com/solidjs-community/solid-primitives/tree/main/packages/props#combineprops)). 
 
-The visual design is based off a mix of the [Atlassian Design System](https://atlassian.design/) and [Ant Design](https://ant.design/).
+The visual design is based off a mix of the [Atlassian Design System](https://atlassian.design/) and [Ant Design](https://ant.design/) and Android UI.
 
 Component style should be made in SCSS and all components should be made accessible using [Kobalte](https://kobalte.dev) (when available, else see below).
 

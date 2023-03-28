@@ -13,6 +13,7 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
 import { BreadcrumbLink } from "./link";
+import { combineProps } from "@solid-primitives/props";
 
 export type BreadcrumbProps = IntrinsicComponentProps<
 	"nav",
@@ -93,11 +94,18 @@ function Breadcrumb(props: BreadcrumbProps) {
 
 	const separator = createMemo(() => local.separator);
 
+	const combinedProps = combineProps(others, {
+		class: "jdd breadcrumb",
+		get classList() {
+			return {
+				collapsible: local.collapsed === undefined,
+			};
+		},
+	});
+
 	return (
 		<KobalteBreadcrumbs.Root
-			class="jdd breadcrumb"
 			aria-label="Breadcrumbs"
-			classList={{ collapsible: local.collapsed === undefined }}
 			separator={
 				typeof separator() === "string" ? (
 					<Text>{separator()}</Text>
@@ -105,7 +113,7 @@ function Breadcrumb(props: BreadcrumbProps) {
 					separator()
 				)
 			}
-			{...others}
+			{...combinedProps}
 		>
 			<ol>
 				<For each={renderItems()}>

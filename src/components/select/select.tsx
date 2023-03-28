@@ -16,6 +16,7 @@ import {
 } from "@kobalte/core/dist/types/select";
 import { MultiSelectValueComponentProps } from "@kobalte/core/dist/types/multi-select";
 import { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/select-base";
+import { combineProps } from "@solid-primitives/props";
 
 export function Select<Option>(props: SelectProps<Option>) {
 	const [local, others] = processProps({
@@ -52,6 +53,10 @@ export function Select<Option>(props: SelectProps<Option>) {
 	const label = createMemo(() => local.label);
 	const description = createMemo(() => local.description);
 	const errorMessage = createMemo(() => local.errorMessage);
+
+	const combinedProps = combineProps(others, {
+		class: "select",
+	});
 
 	return (
 		<KobalteSelect.Root
@@ -99,8 +104,8 @@ export function Select<Option>(props: SelectProps<Option>) {
 				</Show>
 
 				<Space vertical>
-					<KobalteSelect.Trigger asChild {...others}>
-						<As component={Button} class="select" size={local.size}>
+					<KobalteSelect.Trigger asChild>
+						<As component={Button} size={local.size} {...combinedProps}>
 							<KobalteSelect.Value class="value" />
 							<KobalteSelect.Icon asChild>
 								<As component={Icon} icon="code" />

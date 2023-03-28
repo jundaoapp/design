@@ -2,11 +2,11 @@ import "./index.scss";
 import { Spinner } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { createMemo, onMount, Show } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import ButtonGroup from "../button/group";
 import { Button as KobalteButton, As } from "@kobalte/core";
-import { mergeRefs } from "@solid-primitives/refs";
 import { createAutofocus } from "@solid-primitives/autofocus";
+import { combineProps } from "@solid-primitives/props";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
@@ -36,9 +36,7 @@ function Button(props: ButtonProps) {
 			"danger",
 			"loading",
 			"onClick",
-			"ref",
 			"autofocus",
-			"class",
 		],
 	});
 
@@ -47,21 +45,26 @@ function Button(props: ButtonProps) {
 
 	const children = createMemo(() => local.children);
 
+	const combinedProps = combineProps(others, {
+		ref: (el) => (ref = el),
+		class: "jdd button",
+		get classList() {
+			return {
+				primary: local.type === "primary",
+				small: local.size === "small",
+				large: local.size === "large",
+				danger: local.danger,
+				loading: local.loading,
+			};
+		},
+	});
+
 	return (
 		<KobalteButton.Root asChild isDisabled={local.disabled}>
 			<As
 				component={props.href !== undefined ? "a" : "button"}
 				onClick={local.loading ? undefined : local.onClick}
-				ref={mergeRefs((el) => (ref = el), local.ref)}
-				class={["jdd button", local.class].join(" ")}
-				classList={{
-					primary: local.type === "primary",
-					small: local.size === "small",
-					large: local.size === "large",
-					danger: local.danger,
-					loading: local.loading,
-				}}
-				{...others}
+				{...combinedProps}
 			>
 				<Show when={local.loading}>
 					<Spinner />

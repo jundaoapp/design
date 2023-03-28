@@ -37,6 +37,7 @@ export function Modal(props: ModalProps) {
 			"footer",
 			"ref",
 			"level",
+			"class",
 		],
 	});
 
@@ -111,7 +112,11 @@ export function Modal(props: ModalProps) {
 						style={{ "--jdd-overlay-zindex-increment": level }}
 					>
 						<Dialog.Overlay class="jdd modal-overlay" />
-						<Dialog.Content ref={handleRef} class="jdd modal" {...others}>
+						<Dialog.Content
+							ref={handleRef}
+							class={["jdd modal", local.class].join(" ")}
+							{...others}
+						>
 							<Card>
 								<div class="modal-header">
 									<Show when={local.title} fallback={<div />} keyed>

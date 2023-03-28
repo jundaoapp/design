@@ -1,6 +1,7 @@
 import "./index.scss";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type TextProps = IntrinsicComponentProps<
 	"span",
@@ -35,7 +36,6 @@ export function Text(props: TextProps) {
 			"mark",
 			"code",
 			"keyboard",
-			"class",
 			"size",
 			"font",
 		],
@@ -74,10 +74,10 @@ export function Text(props: TextProps) {
 		return child;
 	};
 
-	return (
-		<span
-			class={["jdd text jdd-typography", local.class].join(" ")}
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd text jdd-typography",
+		get classList() {
+			return {
 				secondary: local.type === "secondary",
 				success: local.type === "success",
 				warning: local.type === "warning",
@@ -87,10 +87,9 @@ export function Text(props: TextProps) {
 				sans: local.font === "sans",
 				mono: local.font === "mono",
 				serif: local.font === "serif",
-			}}
-			{...others}
-		>
-			{render()}
-		</span>
-	);
+			};
+		},
+	});
+
+	return <span {...combinedProps}>{render()}</span>;
 }

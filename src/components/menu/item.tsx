@@ -4,6 +4,7 @@ import { ContextMenu, DropdownMenu } from "@kobalte/core";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Text } from "..";
 import { Dynamic } from "solid-js/web";
+import { combineProps } from "@solid-primitives/props";
 
 export type MenuItemProps = IntrinsicComponentProps<
 	"div",
@@ -25,6 +26,16 @@ export function MenuItem(props: MenuItemProps) {
 	const children = createMemo(() => local.children);
 	const description = createMemo(() => local.description);
 
+	const combinedProps = combineProps(others, {
+		class: "item",
+		get classList() {
+			return {
+				"with-icon": local.icon !== undefined,
+				"no-icon": local.icon === undefined,
+			};
+		},
+	});
+
 	return (
 		<Dynamic
 			component={
@@ -34,12 +45,7 @@ export function MenuItem(props: MenuItemProps) {
 				}[local.type]
 			}
 			isDisabled={local.disabled}
-			class="item"
-			classList={{
-				"with-icon": local.icon !== undefined,
-				"no-icon": local.icon === undefined,
-			}}
-			{...others}
+			{...combinedProps}
 		>
 			<Dynamic
 				component={
@@ -59,7 +65,7 @@ export function MenuItem(props: MenuItemProps) {
 
 				<Show when={local.shortcut} keyed>
 					{(shortcut) => (
-						<Text class="shortcut" font="mono" type="secondary">
+						<Text class="shortcut" keyboard>
 							{shortcut}
 						</Text>
 					)}

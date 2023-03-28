@@ -4,6 +4,7 @@ import { IntrinsicComponentProps } from "../types";
 import { Link as KobalteLink } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { mergeRefs } from "@solid-primitives/refs";
+import { combineProps } from "@solid-primitives/props";
 
 export type LinkProps = IntrinsicComponentProps<
 	"a",
@@ -17,26 +18,24 @@ export type LinkProps = IntrinsicComponentProps<
 export function Link(props: LinkProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["children", "disabled", "type", "ref", "autofocus"],
+		keys: ["disabled", "type", "autofocus"],
 	});
 
 	let ref!: HTMLAnchorElement;
 	if (local.autofocus) createAutofocus(() => ref);
 
-	return (
-		<KobalteLink.Root
-			ref={mergeRefs((el) => (ref = el), local.ref)}
-			class="jdd link"
-			classList={{
+	const combinedProps = combineProps(others, {
+		ref: (el) => (ref = el),
+		class: "jdd link",
+		get classList() {
+			return {
 				secondary: local.type === "secondary",
 				success: local.type === "success",
 				warning: local.type === "warning",
 				danger: local.type === "danger",
-			}}
-			isDisabled={local.disabled}
-			{...others}
-		>
-			{local.children}
-		</KobalteLink.Root>
-	);
+			};
+		},
+	});
+
+	return <KobalteLink.Root isDisabled={local.disabled} {...combinedProps} />;
 }

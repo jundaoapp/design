@@ -6,6 +6,7 @@ import { IntrinsicComponentProps } from "../types";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import "../label/index.scss";
+import { combineProps } from "@solid-primitives/props";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"label",
@@ -74,21 +75,26 @@ export function Checkbox(props: CheckboxProps) {
 
 	const label = createMemo(() => local.label);
 
-	return (
-		<KobalteCheckbox.Root
-			class="jdd checkbox"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd checkbox",
+		get classList() {
+			return {
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
-			}}
+			};
+		},
+	});
+
+	return (
+		<KobalteCheckbox.Root
 			isChecked={local.checked ?? checked()}
 			defaultIsChecked={local.defaultChecked}
 			isIndeterminate={local.indeterminate}
 			isRequired={local.required}
 			isDisabled={local.disabled}
 			onCheckedChange={changeHandler}
-			{...others}
+			{...combinedProps}
 		>
 			<KobalteCheckbox.Input ref={ref} />
 
