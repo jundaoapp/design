@@ -3,6 +3,7 @@ import { splitProps, ComponentProps, createMemo } from "solid-js";
 import { Text } from "..";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type LabelProps = IntrinsicComponentProps<
 	"label",
@@ -20,12 +21,15 @@ export function Label(props: LabelProps) {
 
 	const input = createMemo(() => local.for);
 
+	const combinedProps = combineProps(others, {
+		class: "jdd label",
+	});
+
 	return (
 		<label
-			class="jdd label"
 			dir={local.position === "before" ? "ltr" : "rtl"}
 			for={input().id || undefined}
-			{...others}
+			{...combinedProps}
 		>
 			{input()}
 			<Text>{local.children}</Text>

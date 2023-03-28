@@ -6,6 +6,7 @@ import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { createMemo, Show } from "solid-js";
 import { createAutofocus } from "@solid-primitives/autofocus";
+import { combineProps } from "@solid-primitives/props";
 
 export type RadioProps = IntrinsicComponentProps<
 	"label",
@@ -33,17 +34,19 @@ function Radio(props: RadioProps) {
 
 	const label = createMemo(() => local.label);
 
-	return (
-		<KobalteRadioGroup.Item
-			class="jdd radio"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd radio",
+		get classList() {
+			return {
 				small: local.size === "small",
 				large: local.size === "large",
 				danger: local.danger,
-			}}
-			isDisabled={local.disabled}
-			{...others}
-		>
+			};
+		},
+	});
+
+	return (
+		<KobalteRadioGroup.Item isDisabled={local.disabled} {...combinedProps}>
 			<KobalteRadioGroup.ItemInput ref={ref} />
 
 			<Space align="center">

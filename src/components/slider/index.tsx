@@ -5,6 +5,7 @@ import { Label, Spinner, Text } from "..";
 import { JSX } from "solid-js/types/jsx";
 import { createEffect, createSignal } from "solid-js";
 import { mergeRefs } from "@solid-primitives/refs";
+import { combineProps } from "@solid-primitives/props";
 
 export type SliderProps = IntrinsicComponentProps<
 	"input",
@@ -36,7 +37,6 @@ export function Slider(props: SliderProps) {
 			"onInput",
 			"disabled",
 			"label",
-			"ref",
 		],
 	});
 
@@ -80,10 +80,20 @@ export function Slider(props: SliderProps) {
 		setLiveValue(Number(ref.value));
 	});
 
+	const combinedProps = combineProps(others, {
+		ref: (el) => (ref = el),
+		class: "jdd slider",
+		get style() {
+			return {
+				"--jdd-inline-track-width": `${
+					((liveValue() ?? 0) / local.max) * 100
+				}%`,
+			};
+		},
+	});
+
 	const input = (
 		<input
-			ref={mergeRefs((el) => (ref = el), local.ref)}
-			class="jdd slider"
 			type="range"
 			min={local.min}
 			max={local.max}
@@ -92,12 +102,7 @@ export function Slider(props: SliderProps) {
 			aria-disabled={local.disabled}
 			onChange={changeHandler}
 			onInput={inputHandler}
-			style={{
-				"--jdd-inline-track-width": `${
-					((liveValue() ?? 0) / local.max) * 100
-				}%`,
-			}}
-			{...others}
+			{...combinedProps}
 		/>
 	) as HTMLInputElement;
 

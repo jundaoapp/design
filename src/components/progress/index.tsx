@@ -4,6 +4,7 @@ import { IntrinsicComponentProps } from "../types";
 import { JSXElement, Show, For, Switch, Match, createMemo } from "solid-js";
 import { processProps } from "../utilities";
 import { Text, Icon } from "..";
+import { combineProps } from "@solid-primitives/props";
 
 export type ProgressProps = IntrinsicComponentProps<
 	"div",
@@ -57,10 +58,10 @@ export function Progress(props: ProgressProps) {
 
 	const label = createMemo(() => local.label);
 
-	return (
-		<KobalteProgress.Root
-			class="jdd progress"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd progress",
+		get classList() {
+			return {
 				active: local.status === "active",
 				success:
 					local.status === "success" ||
@@ -71,7 +72,12 @@ export function Progress(props: ProgressProps) {
 				steps: local.steps,
 				circle: local.type === "circle",
 				mini: local.mini,
-			}}
+			};
+		},
+	});
+
+	return (
+		<KobalteProgress.Root
 			isIndeterminate={local.status === "indeterminate"}
 			getValueLabel={
 				local.steps ? (params) => `${params.value} / ${params.max}` : undefined
@@ -83,7 +89,7 @@ export function Progress(props: ProgressProps) {
 					? local.value.reduce((sum, a) => sum + a, 0)
 					: local.value
 			}
-			{...others}
+			{...combinedProps}
 		>
 			<Show when={label()}>
 				<KobalteProgress.Label>
@@ -151,9 +157,7 @@ export function Progress(props: ProgressProps) {
 				<Switch
 					fallback={
 						<Text class="progress-info">
-							<KobalteProgress.ValueLabel asChild>
-								<As component="span" />
-							</KobalteProgress.ValueLabel>
+							<KobalteProgress.ValueLabel />
 						</Text>
 					}
 				>

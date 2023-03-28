@@ -2,6 +2,7 @@ import "./index.scss";
 import { Dynamic } from "solid-js/web";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type TitleProps = IntrinsicComponentProps<
 	"h1",
@@ -19,11 +20,9 @@ export function Title(props: TitleProps) {
 		keys: ["level"],
 	});
 
-	return (
-		<Dynamic
-			component={`h${local.level}`}
-			class="jdd title jdd-typography"
-			{...others}
-		/>
-	);
+	const combinedProps = combineProps(others, {
+		class: "jdd title jdd-typography",
+	});
+
+	return <Dynamic component={`h${local.level}`} {...combinedProps} />;
 }

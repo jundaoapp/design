@@ -13,6 +13,7 @@ import { Transition } from "solid-transition-group";
 import { Icon, Text } from "..";
 import { Alert as KobalteAlert } from "@kobalte/core";
 import { Button } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
 
 export type AlertProps = IntrinsicComponentProps<
 	"div",
@@ -53,23 +54,26 @@ export function Alert(props: AlertProps) {
 	const message = createMemo(() => local.message);
 	const description = createMemo(() => local.description);
 
+	const combinedProps = combineProps(others, {
+		class: "jdd alert",
+		get classList() {
+			return {
+				banner: local.banner,
+				closable: local.closable,
+				icon: local.showIcon,
+				description: local.description !== undefined,
+				info: local.type === "info",
+				success: local.type === "success",
+				warning: local.type === "warning",
+				error: local.type === "error",
+			};
+		},
+	});
+
 	return (
 		<Transition name="alert-animation" appear>
 			<Show when={show()}>
-				<KobalteAlert.Root
-					class="jdd alert"
-					classList={{
-						banner: local.banner,
-						closable: local.closable,
-						icon: local.showIcon,
-						description: local.description !== undefined,
-						info: local.type === "info",
-						success: local.type === "success",
-						warning: local.type === "warning",
-						error: local.type === "error",
-					}}
-					{...others}
-				>
+				<KobalteAlert.Root {...combinedProps}>
 					<Show when={local.showIcon}>
 						<Icon
 							class="alert-icon"

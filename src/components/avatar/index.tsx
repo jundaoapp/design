@@ -1,16 +1,10 @@
 import "./index.scss";
-import {
-	ComponentProps,
-	createSignal,
-	JSXElement,
-	mergeProps,
-	Show,
-	splitProps,
-} from "solid-js";
+import { JSXElement } from "solid-js";
 import AvatarGroup from "../avatar/group";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Image } from "..";
+import { combineProps } from "@solid-primitives/props";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",
@@ -34,15 +28,18 @@ function Avatar(props: AvatarProps) {
 		keys: ["size", "shape", "icon", "src", "srcset", "alt"],
 	});
 
-	return (
-		<div
-			class="jdd avatar"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd avatar",
+		get classList() {
+			return {
 				small: local.size === "small",
 				large: local.size === "large",
-			}}
-			{...others}
-		>
+			};
+		},
+	});
+
+	return (
+		<div {...combinedProps}>
 			<Image
 				src={local.src}
 				srcset={local.srcset}

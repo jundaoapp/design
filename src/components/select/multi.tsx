@@ -10,6 +10,7 @@ import {
 	MultiSelectItemComponentProps,
 	MultiSelectValueComponentProps,
 } from "@kobalte/core/dist/types/multi-select";
+import { combineProps } from "@solid-primitives/props";
 
 export function MultiSelect<Option>(props: MultiSelectProps<Option>) {
 	const [local, others] = processProps({
@@ -58,6 +59,10 @@ export function MultiSelect<Option>(props: MultiSelectProps<Option>) {
 						.sort()
 						.join(", "));
 
+	const combinedProps = combineProps(others, {
+		class: local.tags ? "select tags" : "select",
+	});
+
 	return (
 		<KobalteMultiSelect.Root
 			ref={ref}
@@ -100,12 +105,8 @@ export function MultiSelect<Option>(props: MultiSelectProps<Option>) {
 				</Show>
 
 				<Space vertical>
-					<KobalteMultiSelect.Trigger asChild {...others}>
-						<As
-							component={Button}
-							class={local.tags ? "select tags" : "select"}
-							size={local.size}
-						>
+					<KobalteMultiSelect.Trigger asChild>
+						<As component={Button} size={local.size} {...combinedProps}>
 							<KobalteMultiSelect.Value class="value" />
 							<KobalteMultiSelect.Icon asChild>
 								<As component={Icon} icon="code" />

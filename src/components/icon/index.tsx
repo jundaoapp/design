@@ -1,6 +1,7 @@
 import "./index.scss";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type IconProps = IntrinsicComponentProps<
 	"i",
@@ -22,21 +23,19 @@ export function Icon(props: IconProps) {
 			fill: true,
 			label: "",
 		},
-		keys: ["icon", "line", "spin", "label", "class", "classList", "fill"],
+		keys: ["icon", "line", "spin", "label", "fill"],
 	});
 
 	const suffix = local.line ? "-line" : local.fill ? "-fill" : "";
 
-	return (
-		<i
-			class={`jdd icon ri-${local.icon}${suffix} ${local.class ?? ""}`}
-			role="img"
-			aria-label={local.label}
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: `jdd icon ri-${local.icon}${suffix}`,
+		get classList() {
+			return {
 				spin: local.spin,
-				...local.classList,
-			}}
-			{...others}
-		/>
-	);
+			};
+		},
+	});
+
+	return <i role="img" aria-label={local.label} {...combinedProps} />;
 }

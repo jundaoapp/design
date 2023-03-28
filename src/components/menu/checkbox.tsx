@@ -4,6 +4,7 @@ import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
 import { createMemo, JSXElement, Show } from "solid-js";
 import { Icon, Text } from "..";
 import { Dynamic } from "solid-js/web";
+import { combineProps } from "@solid-primitives/props";
 
 export type MenuCheckboxProps = IntrinsicComponentProps<
 	"div",
@@ -37,6 +38,10 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 	const children = createMemo(() => local.children);
 	const description = createMemo(() => local.description);
 
+	const combinedProps = combineProps(others, {
+		class: "item checkbox",
+	});
+
 	return (
 		<Dynamic
 			component={
@@ -45,11 +50,10 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 					dropdown: DropdownMenu.CheckboxItem,
 				}[local.type]
 			}
-			class="item checkbox"
 			isDisabled={local.disabled}
 			isChecked={local.checked}
 			onCheckedChange={local.onChange}
-			{...others}
+			{...combinedProps}
 		>
 			<Dynamic
 				component={
@@ -80,7 +84,7 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 
 				<Show when={local.shortcut} keyed>
 					{(shortcut) => (
-						<Text class="shortcut" font="mono" type="secondary">
+						<Text class="shortcut" keyboard>
 							{shortcut}
 						</Text>
 					)}

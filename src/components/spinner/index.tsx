@@ -2,6 +2,7 @@ import "./index.scss";
 import { ComponentProps, mergeProps, splitProps } from "solid-js";
 import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
+import { combineProps } from "@solid-primitives/props";
 
 export type SpinnerProps = IntrinsicComponentProps<
 	"svg",
@@ -21,15 +22,18 @@ export function Spinner(props: SpinnerProps) {
 		keys: ["size", "label"],
 	});
 
-	return (
-		<svg
-			class="jdd spinner"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd spinner",
+		get classList() {
+			return {
 				small: local.size === "small",
 				large: local.size === "large",
-			}}
-			{...others}
-		>
+			};
+		},
+	});
+
+	return (
+		<svg {...combinedProps}>
 			<title>{local.label}</title>
 			<circle />
 		</svg>

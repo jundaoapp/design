@@ -165,7 +165,7 @@
             border-left-color: var(--jdd-gray-8);
         }
 
-        &:not(.banner) button.alert-close {
+        button.alert-close {
             color: var(--jdd-gray-5);
 
             &:hover, &:focus {

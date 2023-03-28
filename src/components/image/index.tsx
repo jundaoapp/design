@@ -3,6 +3,7 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Image as KobalteImage } from "@kobalte/core";
 import { createMemo, JSX, Show } from "solid-js";
+import { combineProps } from "@solid-primitives/props";
 
 export type ImageProps = IntrinsicComponentProps<
 	"span",
@@ -28,15 +29,18 @@ export function Image(props: ImageProps) {
 
 	const fallback = createMemo(() => local.fallback);
 
-	return (
-		<KobalteImage.Root
-			class="jdd image"
-			classList={{
+	const combinedProps = combineProps(others, {
+		class: "jdd image",
+		get classList() {
+			return {
 				circle: local.shape === "circle",
 				rounded: local.shape === "rounded",
-			}}
-			{...others}
-		>
+			};
+		},
+	});
+
+	return (
+		<KobalteImage.Root {...combinedProps}>
 			<KobalteImage.Img
 				src={local.src}
 				alt={

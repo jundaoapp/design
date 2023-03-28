@@ -12,6 +12,7 @@ import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
 import { Switch as KobalteSwitch } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
+import { combineProps } from "@solid-primitives/props";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"label",
@@ -69,15 +70,18 @@ export function Switch(props: SwitchProps) {
 
 	const label = createMemo(() => local.label);
 
+	const combinedProps = combineProps(others, {
+		class: "jdd switch",
+	});
+
 	return (
 		<KobalteSwitch.Root
-			class="jdd switch"
 			defaultIsChecked={local.defaultChecked}
 			isChecked={local.checked}
 			isDisabled={local.disabled}
 			isReadOnly={local.readonly}
 			onCheckedChange={local.onChange}
-			{...others}
+			{...combinedProps}
 		>
 			<KobalteSwitch.Input ref={ref} />
 			<Space>

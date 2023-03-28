@@ -1,19 +1,12 @@
 import "./index.scss";
 import { TextField, As } from "@kobalte/core";
 import { IntrinsicComponentProps } from "../types";
-import {
-	JSXElement,
-	Show,
-	For,
-	Switch,
-	Match,
-	createMemo,
-	createSignal,
-} from "solid-js";
+import { JSXElement, Show, createMemo, createSignal } from "solid-js";
 import { processProps } from "../utilities";
-import { Text, Icon, Space } from "..";
+import { Text, Space } from "..";
 import { Dynamic } from "solid-js/web";
 import { createAutofocus } from "@solid-primitives/autofocus";
+import { combineProps } from "@solid-primitives/props";
 
 export type InputProps = IntrinsicComponentProps<
 	"input" | "textarea",
@@ -74,6 +67,22 @@ export function Input(props: InputProps) {
 	const description = createMemo(() => local.description);
 	const errorMessage = createMemo(() => local.errorMessage);
 
+	const combinedProps = combineProps(others, {
+		ref: (el) => (ref = el),
+		class: "jdd input",
+		get classList() {
+			return {
+				danger: local.danger,
+				small: local.size === "small",
+				large: local.size === "large",
+				"focus-visible": focusVisible(),
+			};
+		},
+		onFocus: (event: FocusEvent) => {
+			setFocusVisible(event.relatedTarget !== null);
+		},
+	});
+
 	return (
 		<TextField.Root
 			isDisabled={local.disabled}
@@ -103,6 +112,7 @@ export function Input(props: InputProps) {
 				</Show>
 
 				<Space vertical>
+					{/* @ts-ignore: TS Can't infer type */}
 					<Dynamic
 						component={
 							{
@@ -110,19 +120,7 @@ export function Input(props: InputProps) {
 								textarea: TextField.TextArea,
 							}[local.type!]
 						}
-						// @ts-ignore: TS Can't infer type
-						ref={ref}
-						class="jdd input"
-						classList={{
-							danger: local.danger,
-							small: local.size === "small",
-							large: local.size === "large",
-							"focus-visible": focusVisible(),
-						}}
-						onFocus={(event: FocusEvent) => {
-							setFocusVisible(event.relatedTarget !== null);
-						}}
-						{...others}
+						{...combinedProps}
 					/>
 
 					<Show when={description()}>
