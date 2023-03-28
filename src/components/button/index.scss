@@ -135,7 +135,7 @@ div.button-group.jdd {
                 :not([data-disabled]) {
                     &:hover, &:focus {
                         position: relative;
-                        z-index: 1;
+                        z-index: calc(101 + var(--jdd-overlay-zindex-increment));
                     }
                 }
             }

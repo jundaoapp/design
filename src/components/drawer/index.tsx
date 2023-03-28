@@ -2,11 +2,12 @@ import "./index.scss";
 import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { createMemo, JSXElement, Show } from "solid-js";
+import { createMemo, createSignal, JSXElement, Show } from "solid-js";
 import { useOverlayContext } from "../utilities/overlay";
 import { Dialog } from "@kobalte/core";
 import { Card, Icon, Text } from "..";
 import { combineProps } from "@solid-primitives/props";
+import { createDraggable } from "@neodrag/solid";
 
 export type DrawerProps = IntrinsicComponentProps<
 	"div",
@@ -38,6 +39,8 @@ export function Drawer(props: DrawerProps) {
 		],
 	});
 
+	const { draggable } = createDraggable();
+
 	const [OverlayContextProvider, context] = useOverlayContext();
 
 	const level = local.level !== undefined ? local.level : context.level;
@@ -47,6 +50,10 @@ export function Drawer(props: DrawerProps) {
 	const combinedProps = combineProps(others, {
 		class: `jdd drawer ${local.position}`,
 	});
+
+	const [position, setPosition] = createSignal({ x: 0, y: 0 });
+	let handleRef!: HTMLDivElement;
+	let closeRef!: HTMLButtonElement;
 
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
@@ -61,40 +68,84 @@ export function Drawer(props: DrawerProps) {
 						style={{ "--jdd-overlay-zindex-increment": level }}
 					>
 						<Dialog.Overlay class="jdd drawer-overlay" />
-						<Dialog.Content {...combinedProps}>
-							<Card>
-								<div class="drawer-header">
-									<Show when={local.title} fallback={<div />} keyed>
-										{(title) => (
-											<Dialog.Title class="jdd title jdd-typography">
-												{title}
-											</Dialog.Title>
-										)}
-									</Show>
+						<div
+							use:draggable={{
+								axis: "y",
+								handle: handleRef,
+								position: position(),
+								onDrag: ({ offsetX, offsetY }) =>
+									setPosition({ x: offsetX, y: offsetY }),
+								transform: ({ offsetY }) =>
+									`translate3d(0, ${customOffset(offsetY)}px, 0)`,
+								onDragEnd: ({ currentNode }) => {
+									if (
+										position().y > 100 ||
+										(handleRef.parentElement &&
+											position().y > handleRef.parentElement.offsetHeight / 4)
+									) {
+										closeRef.click();
+										setTimeout(() => {
+											setPosition({ x: 0, y: 0 });
+										}, 500);
+										return;
+									}
 
-									<Dialog.CloseButton class="jdd drawer-close">
-										<Icon icon="close" />
-									</Dialog.CloseButton>
-								</div>
-								<Dialog.Description class="drawer-description">
-									<div>
-										<Show
-											when={typeof children() === "string"}
-											fallback={children()}
-										>
-											<Text>{children()}</Text>
+									setPosition({ x: 0, y: 0 });
+									currentNode.style.transition =
+										"transform 0.3s var(--jdd-transition-function)";
+									setTimeout(() => {
+										currentNode.style.transform = "translate3d(0, 0, 0)";
+									});
+									setTimeout(() => {
+										currentNode.style.transition = "";
+									}, 300);
+								},
+							}}
+							class="drawer-drag"
+						>
+							<Dialog.Content {...combinedProps}>
+								<Card>
+									<Show when={local.position === "bottom"}>
+										<div class="drawer-handle" ref={handleRef} />
+									</Show>
+									<div class="drawer-header">
+										<Show when={local.title} fallback={<div />} keyed>
+											{(title) => (
+												<Dialog.Title class="jdd title jdd-typography">
+													{title}
+												</Dialog.Title>
+											)}
 										</Show>
-									</div>
 
-									<Show when={local.footer} keyed>
-										{(footer) => <div class="drawer-footer">{footer}</div>}
-									</Show>
-								</Dialog.Description>
-							</Card>
-						</Dialog.Content>
+										<Dialog.CloseButton class="jdd drawer-close" ref={closeRef}>
+											<Icon icon="close" />
+										</Dialog.CloseButton>
+									</div>
+									<Dialog.Description class="drawer-description">
+										<div>
+											<Show
+												when={typeof children() === "string"}
+												fallback={children()}
+											>
+												<Text>{children()}</Text>
+											</Show>
+										</div>
+
+										<Show when={local.footer} keyed>
+											{(footer) => <div class="drawer-footer">{footer}</div>}
+										</Show>
+									</Dialog.Description>
+								</Card>
+							</Dialog.Content>
+						</div>
 					</div>
 				</Dialog.Portal>
 			</Dialog.Root>
 		</OverlayContextProvider>
 	);
+}
+
+function customOffset(offsetY: number): number {
+	if (offsetY >= 0) return offsetY;
+	return -(4 * Math.sqrt(Math.abs(offsetY)));
 }

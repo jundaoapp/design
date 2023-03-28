@@ -5,6 +5,7 @@ specifiers:
   '@babel/preset-env': ^7.20.2
   '@babel/preset-typescript': ^7.21.0
   '@kobalte/core': ^0.8.0
+  '@neodrag/solid': ^2.0.3
   '@semantic-release/commit-analyzer': ^9.0.2
   '@semantic-release/github': ^8.0.7
   '@semantic-release/npm': ^9.0.2
@@ -48,6 +49,7 @@ specifiers:
 
 dependencies:
   '@kobalte/core': 0.8.0_solid-js@1.6.15
+  '@neodrag/solid': 2.0.3_solid-js@1.6.15
   '@solid-primitives/autofocus': 0.0.100_solid-js@1.6.15
   '@solid-primitives/props': 3.1.1_solid-js@1.6.15
   '@solid-primitives/refs': 0.3.7_solid-js@1.6.15
@@ -2323,6 +2325,14 @@ packages:
       call-me-maybe: 1.0.2
       glob-to-regexp: 0.3.0
     dev: true
+
+  /@neodrag/solid/2.0.3_solid-js@1.6.15:
+    resolution: {integrity: sha512-cURoAbxN3Q9tf2/XsY8LzktGcjIPNP5PUej6JO0K2eT2Nils7g0zzemSs6Wozbo2J8gvBKuXXWRZcwhP7GCN4Q==}
+    peerDependencies:
+      solid-js: ^1.0.0
+    dependencies:
+      solid-js: 1.6.15
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
