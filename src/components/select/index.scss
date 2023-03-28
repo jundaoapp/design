@@ -22,8 +22,8 @@
       flex-wrap: wrap;
       text-overflow: initial;
       overflow: visible;
-
-      z-index: 2 + var(--jdd-overlay-zindex-increment);
+      position: relative;
+      z-index: calc(2 + var(--jdd-overlay-zindex-increment));
     }
 
     .jdd.tag {
@@ -50,7 +50,8 @@
 }
 
 .jdd.select-content {
-  z-index: 101 + var(--jdd-overlay-zindex-increment);
+  position: relative;
+  z-index: calc(101 + var(--jdd-overlay-zindex-increment));
   animation-name: jdd-select-exit;
   animation-timing-function: var(--jdd-transition-function);
   animation-duration: var(--jdd-transition-duration);

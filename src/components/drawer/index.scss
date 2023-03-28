@@ -67,7 +67,39 @@
         }
     }
 
+    .drawer-handle {
+        width: 100%;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -1.25rem;
+
+        &::before {
+            content: "";
+            border-radius: 9999px;
+            width: 4rem;
+            height: .25rem;
+            background: var(--jdd-gray-9);
+            cursor: s-resize;
+
+            &:hover, &:focus {
+                color: var(--jdd-gray-7);
+            }
+
+            .jdd-dark & {
+                color: var(--jdd-gray-1);
+
+                &:hover, &:focus {
+                    color: var(--jdd-gray-5);
+                }
+            }
+        }
+    }
+
     > .card {
+        border-radius: calc(var(--jdd-border-radius-large) * 2);
+
         .content {
             display: flex;
             flex-direction: column;
@@ -110,10 +142,17 @@
         > .card {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            padding-bottom: 100vh;
+            margin-bottom: -100vh;
         }
 
         &[data-expanded] {
             animation-name: jdd-drawer-bottom-enter;
+        }
+
+        .drawer-close {
+            position: relative;
+            top: -.25rem;
         }
     }
 
@@ -155,8 +194,14 @@
 }
 
 .jdd.drawer-wrapper {
+    position: relative;
     --jdd-overlay-zindex-increment: 0;
-    z-index: 100 + var(--jdd-overlay-zindex-increment);
+    z-index: calc(100 + var(--jdd-overlay-zindex-increment));
+
+    .drawer-drag {
+        position: fixed;
+        inset: 0;
+    }
 }
 
 @keyframes jdd-drawer-background-enter {
@@ -232,5 +277,13 @@
 @keyframes jdd-drawer-left-exit {
     to {
         transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 600px) {
+    .jdd.drawer.bottom {
+        .drawer-close {
+            display: none;
+        }
     }
 }

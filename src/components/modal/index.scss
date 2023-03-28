@@ -92,8 +92,9 @@
 }
 
 .jdd.modal-wrapper {
+    position: relative;
     --jdd-overlay-zindex-increment: 0;
-    z-index: 100 + var(--jdd-overlay-zindex-increment);
+    z-index: calc(100 + var(--jdd-overlay-zindex-increment));
 
 }
 

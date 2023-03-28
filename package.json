@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "@kobalte/core": "^0.8.0",
+    "@neodrag/solid": "^2.0.3",
     "@solid-primitives/autofocus": "^0.0.100",
     "@solid-primitives/props": "^3.1.1",
     "@solid-primitives/refs": "^0.3.7",

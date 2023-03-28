@@ -1,5 +1,6 @@
 .jdd.popconfirm {
-    z-index: 101 + var(--jdd-overlay-zindex-increment);
+    position: relative;
+    z-index: calc(101 + var(--jdd-overlay-zindex-increment));
     animation-name: jdd-popconfirm-exit;
     animation-timing-function: var(--jdd-transition-function);
     animation-duration: var(--jdd-transition-duration);
