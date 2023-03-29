@@ -44,11 +44,11 @@ export function Card(props: CardProps) {
 	const title = createMemo(() => local.title);
 
 	const combinedProps = combineProps(others, {
-		class: !(local.collapsible || local.collapsed || local.defaultCollapsed)
-			? "jdd card"
-			: "jdd card collapsible",
+		class: "jdd card",
 		get classList() {
 			return {
+				collapsible:
+					local.collapsible || local.collapsed || local.defaultCollapsed,
 				small: local.size === "small",
 				"no-padding": local.noPadding,
 				"contrast-background": local.contrastBackground,
