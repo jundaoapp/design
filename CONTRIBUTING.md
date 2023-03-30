@@ -47,7 +47,7 @@ You can find more information on this process [here](https://help.github.com/en/
 - `pnpm check` also runs Rome.
 - `pnpm check-typescript` is script that runs the [Typescript](https://www.typescriptlang.org/) compiler;
 
-> **Tip:** use `pnpm ci` to run all of them.
+> **Tip:** use `pnpm ca` to run all of them.
 
 ## Commit messages
 

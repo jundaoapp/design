@@ -27,11 +27,7 @@ export default function LayoutSidebar(props: LayoutSidebarProps) {
 	});
 
 	const [_, set] =
-		context[
-			`sidebar${local
-				.position!.charAt(0)
-				.toUpperCase()}${local.position!.substring(1)}`
-		];
+		local.position === "left" ? context.sidebarLeft : context.sidebarRight;
 
 	set(<div {...combinedProps} />);
 }

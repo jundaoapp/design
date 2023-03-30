@@ -1,5 +1,4 @@
 import {
-	Accessor,
 	createContext,
 	createSignal,
 	JSXElement,
@@ -18,7 +17,10 @@ const LayoutContext = createContext<LayoutContextData>({
 	sidebarRight: createSignal<JSXElement>(),
 });
 
-export const LayoutContextProvider = LayoutContext.Provider;
+export const LayoutContextProvider = LayoutContext.Provider as (props: {
+	value?: Partial<LayoutContextData>;
+	children: JSXElement;
+}) => JSXElement;
 
 export function useLayoutContext() {
 	return useContext(LayoutContext);

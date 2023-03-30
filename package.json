@@ -9,7 +9,7 @@
     "check-typescript": "tsc --noEmit",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
-    "ci": "pnpm format && pnpm check && pnpm check-typescript",
+    "ca": "pnpm format && pnpm check && pnpm check-typescript",
     "build": "tsup"
   },
   "homepage": "https://github.com/jundaoapp/design",
