@@ -41,14 +41,26 @@ function InnerLayout(props: LayoutProps) {
 
 	let ref!: HTMLDivElement;
 
+	const context = useLayoutContext();
+
+	const [getContent] = context.content;
+	const [getSidebarLeft] = context.sidebarLeft;
+	const [getSidebarRight] = context.sidebarRight;
+	const [leftSidebarOpen, setLeftSidebarOpen] = context.sidebarLeftOpen;
+	const [rightSidebarOpen, setRightSidebarOpen] = context.sidebarRightOpen;
+
 	const [swipeStart, setSwipeStart] = createSignal({ x: 0, y: 0 });
 	const [leftSidebarOffset, setLeftSidebarOffset] = createSignal(0);
 	const [rightSidebarOffset, setRightSidebarOffset] = createSignal(0);
 	const [sidebarTransition, setSidebarTransition] = createSignal(false);
-	const [leftSidebarOpen, setLeftSidebarOpen] = createSignal(false);
-	const [rightSidebarOpen, setRightSidebarOpen] = createSignal(false);
 
 	createEffect(() => {
+		setSidebarTransition(true);
+
+		setTimeout(() => {
+			setSidebarTransition(false);
+		}, 300);
+
 		if (leftSidebarOpen() || rightSidebarOpen())
 			document.body.classList.add("jdd-sidebar-open");
 		else document.body.classList.remove("jdd-sidebar-open");
@@ -95,12 +107,6 @@ function InnerLayout(props: LayoutProps) {
 			};
 		},
 	});
-
-	const context = useLayoutContext();
-
-	const [getContent] = context.content;
-	const [getSidebarLeft] = context.sidebarLeft;
-	const [getSidebarRight] = context.sidebarRight;
 
 	const toucheMoveHandler = (e: TouchEvent) => {
 		const swipeEnd = {
@@ -162,12 +168,6 @@ function InnerLayout(props: LayoutProps) {
 	};
 
 	const touchEndHandler = () => {
-		console.log(
-			leftSidebarOpen(),
-			leftSidebarOffset(),
-			rightSidebarOpen(),
-			rightSidebarOffset(),
-		);
 		if (leftSidebarOffset() + rightSidebarOffset() > 0) {
 			setSidebarTransition(true);
 		}
@@ -222,16 +222,8 @@ function InnerLayout(props: LayoutProps) {
 				<div
 					class="layout-backdrop"
 					onclick={() => {
-						setSidebarTransition(true);
-
-						setTimeout(() => {
-							setLeftSidebarOpen(false);
-							setRightSidebarOpen(false);
-						});
-
-						setTimeout(() => {
-							setSidebarTransition(false);
-						}, 300);
+						setLeftSidebarOpen(false);
+						setRightSidebarOpen(false);
 					}}
 				/>
 
@@ -261,3 +253,4 @@ CompoundedLayout.Sidebar = LayoutSidebar;
 CompoundedLayout.Content = LayoutContent;
 CompoundedLayout.Footer = LayoutFooter;
 export { CompoundedLayout as Layout };
+export { useLayoutContext };

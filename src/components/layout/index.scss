@@ -24,17 +24,11 @@
       position: sticky;
       top: 0;
       height: 100vh;
-    }
-
-    .layout-sidebar:first-child {
+      overflow: scroll;
     }
 
     .layout-content {
       flex-grow: 1;
-    }
-
-    .layout-sidebar:last-child {
-
     }
   }
 
@@ -49,6 +43,7 @@
         top: 0;
         transition: var(--jdd-sidebar-transition);
         z-index: 50;
+        max-width: 90vw;
       }
 
       .layout-sidebar:first-child {
