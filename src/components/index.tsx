@@ -15,6 +15,7 @@ export * from "./icon";
 export * from "./image";
 export * from "./input";
 export * from "./label";
+export * from "./layout";
 export * from "./link";
 export * from "./modal";
 export * from "./popconfirm";

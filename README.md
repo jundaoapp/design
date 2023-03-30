@@ -25,7 +25,7 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 * Modern - Uses the latest available ES & CSS features.
 * Accessible - [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) compliant.
 * Mobile Friendly - All components tested for desktop & touch.
-* Simple - Straightforward and consistent DX.
+* Fun - Amazing and friendly DX.
 * Consistant - Style and behaviour tested across all modern browsers.
 * Responsive - Designed for all screen sizes.
 * Fresh UI - Light & Dark mode with professional looking design.
