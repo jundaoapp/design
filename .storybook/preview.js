@@ -25,7 +25,7 @@ export const parameters = {
 
 			// UI
 			appBg: "#0d0e0f",
-			appContentBg: "#0a0b0b",
+			appContentBg: "black",
 			appBorderColor: "#262626",
 			appBorderRadius: "1rem",
 

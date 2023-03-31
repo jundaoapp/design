@@ -6,13 +6,13 @@
     animation-duration: var(--jdd-transition-duration);
     animation-fill-mode: forwards;
     transform-origin: var(--kb-menu-content-transform-origin);
-    overflow: visible;
+    overflow: visible !important;
 
     &[data-expanded] {
         animation-name: jdd-menu-enter;
     }
 
-    .dropdown-arrow {
+    .dropdown-menu-arrow {
         fill: var(--jdd-gray-1) !important;
         stroke: var(--jdd-gray-2) !important;
         stroke-width: 2px !important;

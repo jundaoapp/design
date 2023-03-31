@@ -75,7 +75,8 @@ Currently implemented & planned components:
 - [ ] DatePicker
 - [x] Divider
 - [x] Drawer
-- [x] Dropdown
+- [ ] Dropdown
+- [x] DropdownMenu
 - [ ] Editor
 - [ ] Form
 - [ ] Grid
@@ -95,6 +96,7 @@ Currently implemented & planned components:
 - [ ] Pagination
 - [x] Popconfirm
 - [x] Progress
+- [ ] QRCode
 - [x] Radio
 - [x] Select
 - [ ] Skeleton

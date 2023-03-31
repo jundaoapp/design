@@ -82,7 +82,7 @@ function Menu(props: MenuProps) {
 						size="small"
 					>
 						<Show when={local.type === "dropdown"}>
-							<DropdownMenu.Arrow class="dropdown-arrow" />
+							<DropdownMenu.Arrow class="dropdown-menu-arrow" />
 						</Show>
 
 						{local.children}
