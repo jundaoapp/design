@@ -23,7 +23,10 @@ const Template = (props) => {
 				Item 2
 			</DropdownMenu.Item>
 
-			<DropdownMenu.Item icon={<Icon icon="file-edit" line />} shortcut="Ctrl+S">
+			<DropdownMenu.Item
+				icon={<Icon icon="file-edit" line />}
+				shortcut="Ctrl+S"
+			>
 				Item 3
 			</DropdownMenu.Item>
 			<DropdownMenu.Item
@@ -42,9 +45,15 @@ const Template = (props) => {
 
 			<DropdownMenu.Submenu label="Item 6" description="Description of item 6">
 				<DropdownMenu.Group label="Group">
-					<DropdownMenu.RadioGroup value={radioValue1()} onChange={setRadioValue1}>
+					<DropdownMenu.RadioGroup
+						value={radioValue1()}
+						onChange={setRadioValue1}
+					>
 						<DropdownMenu.Radio value="6.1">Item 6.1</DropdownMenu.Radio>
-						<DropdownMenu.Radio value="6.2" description="Description of item 6.2">
+						<DropdownMenu.Radio
+							value="6.2"
+							description="Description of item 6.2"
+						>
 							Item 6.2
 						</DropdownMenu.Radio>
 					</DropdownMenu.RadioGroup>

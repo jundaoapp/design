@@ -44,7 +44,11 @@ function DropdownMenu(props: DropdownMenuProps) {
 								danger={local.danger}
 							>
 								{local.label}
-								<Icon icon="arrow-down-s" line class="dropdown-menu-trigger-icon" />
+								<Icon
+									icon="arrow-down-s"
+									line
+									class="dropdown-menu-trigger-icon"
+								/>
 							</As>
 						</KobalteDropdownMenu.Trigger>
 					}
