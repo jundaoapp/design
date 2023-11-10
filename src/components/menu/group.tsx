@@ -1,10 +1,10 @@
-import { IntrinsicComponentProps } from "../types";
-import { processProps } from "../utilities";
-import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
-import { createMemo, JSXElement, Show } from "solid-js";
+import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { JSXElement, Show, createMemo } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Text } from "..";
-import { combineProps } from "@solid-primitives/props";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
 
 export type MenuGroupProps = IntrinsicComponentProps<
 	"div",

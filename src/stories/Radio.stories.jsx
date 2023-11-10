@@ -1,4 +1,4 @@
-import { Radio, Space, Divider, Text } from "@jundao/design";
+import { Divider, Radio, Space, Text } from "@jundao/design";
 import { createSignal, splitProps } from "solid-js";
 
 export default {

@@ -1,19 +1,20 @@
-import "./index.scss";
-import "../link/index.scss";
+import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { RiSystemMoreFill } from "solid-icons/ri";
 import {
+	For,
+	JSXElement,
 	createEffect,
 	createMemo,
 	createSignal,
-	For,
-	JSXElement,
 	on,
 } from "solid-js";
-import { Button, Icon, Text } from "..";
-import { processProps } from "../utilities";
+import { Button, Text } from "..";
+import "../link/index.scss";
 import { IntrinsicComponentProps } from "../types";
-import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
+import { processProps } from "../utilities";
+import "./index.scss";
 import { BreadcrumbLink } from "./link";
-import { combineProps } from "@solid-primitives/props";
 
 export type BreadcrumbProps = IntrinsicComponentProps<
 	"nav",
@@ -79,7 +80,7 @@ function Breadcrumb(props: BreadcrumbProps) {
 						createMemo(() => [
 							...childrendArray.slice(0, beforeCollapse),
 							<Button onClick={() => setCollapsed(false)} size="small">
-								<Icon icon="more" />
+								<RiSystemMoreFill />
 							</Button>,
 							...[...childrendArray]
 								.reverse()

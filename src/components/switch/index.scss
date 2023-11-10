@@ -68,6 +68,10 @@ $large-multiplier: 1.35;
         margin-inline-end: calc(
           $inline-margin-max + 100% - $inline-margin-offset
         );
+
+        svg {
+          vertical-align: middle;
+        }
       }
 
       > .switch-unchecked {
@@ -78,6 +82,10 @@ $large-multiplier: 1.35;
 
         .jdd-dark & {
           color: var(--jdd-gray-1);
+        }
+
+        svg {
+          vertical-align: middle;
         }
       }
     }

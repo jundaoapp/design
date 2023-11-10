@@ -23,7 +23,7 @@
     > .label > .jdd.text:first-child {
       line-height: 1;
 
-      > .jdd.icon {
+      > svg {
         vertical-align: bottom;
         margin-left: -.75rem;
         width: 1.5rem;
@@ -97,12 +97,12 @@
         background: var(--jdd-blue-9);
       }
     }
-  }
 
-  &.submenu > .indicator {
-    position: absolute;
-    font-size: 1.5rem;
-    right: .15rem;
-    top: -.125rem;
+    > .indicator {
+      position: absolute;
+      font-size: 1.5rem;
+      right: .15rem;
+      top: 0;
+    }
   }
 }

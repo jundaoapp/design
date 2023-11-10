@@ -14,8 +14,7 @@ div.jdd.card {
             float: right;
             cursor: pointer;
             margin-bottom: -100%;
-            margin-top: -.25rem;
-            transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
+            margin-top: 0;
             margin-right: -.5rem;
             background: none;
             border: none;
@@ -23,8 +22,10 @@ div.jdd.card {
             width: 2rem;
             display: block;
 
-            .icon {
+            svg {
+                transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
                 font-size: 1.5rem;
+                margin: auto;
             }
         }
     }
@@ -48,7 +49,7 @@ div.jdd.card {
     &.collapsible:not([data-expanded]) {
 
         > .title {
-            .collapse-toggle {
+            .collapse-toggle svg {
                 transform: rotateX(180deg);
             }
         }

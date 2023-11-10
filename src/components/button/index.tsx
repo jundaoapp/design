@@ -1,19 +1,18 @@
-import "./index.scss";
-import { Spinner } from "..";
-import { IntrinsicComponentProps } from "../types";
-import { processProps } from "../utilities";
-import { createMemo, Show } from "solid-js";
-import ButtonGroup from "../button/group";
-import { Button as KobalteButton, As } from "@kobalte/core";
+import { As, Button as KobalteButton } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
+import { Show, createMemo } from "solid-js";
+import { Spinner } from "..";
+import ButtonGroup from "../button/group";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",
 	{
 		type?: "primary" | "default";
 		size?: "small" | "default" | "large";
-		disabled?: boolean;
 		danger?: boolean;
 		loading?: boolean;
 		href?: string;
@@ -32,7 +31,6 @@ function Button(props: ButtonProps) {
 			"children",
 			"type",
 			"size",
-			"disabled",
 			"danger",
 			"loading",
 			"onClick",
@@ -46,7 +44,9 @@ function Button(props: ButtonProps) {
 	const children = createMemo(() => local.children);
 
 	const combinedProps = combineProps(others, {
-		ref: (el) => (ref = el),
+		ref: (el) => {
+			ref = el;
+		},
 		class: "jdd button",
 		get classList() {
 			return {
@@ -60,7 +60,7 @@ function Button(props: ButtonProps) {
 	});
 
 	return (
-		<KobalteButton.Root asChild isDisabled={local.disabled}>
+		<KobalteButton.Root asChild>
 			<As
 				component={props.href !== undefined ? "a" : "button"}
 				onClick={local.loading ? undefined : local.onClick}

@@ -1,13 +1,14 @@
-import "./index.scss";
+import { Dialog } from "@kobalte/core";
+import { createDraggable } from "@neodrag/solid";
+import { combineProps } from "@solid-primitives/props";
+import { RiSystemCloseFill } from "solid-icons/ri";
+import { JSXElement, Show, createMemo, createSignal } from "solid-js";
+import { Card, Text } from "..";
 import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { createMemo, createSignal, JSXElement, Show } from "solid-js";
 import { useOverlayContext } from "../utilities/overlay";
-import { Dialog } from "@kobalte/core";
-import { Card, Icon, Text } from "..";
-import { combineProps } from "@solid-primitives/props";
-import { createDraggable } from "@neodrag/solid";
+import "./index.scss";
 
 export type DrawerProps = IntrinsicComponentProps<
 	"div",
@@ -58,8 +59,8 @@ export function Drawer(props: DrawerProps) {
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
 			<Dialog.Root
-				isModal={true}
-				isOpen={local.open}
+				modal={true}
+				open={local.open}
 				onOpenChange={local.onOpenChange}
 			>
 				<Dialog.Portal>
@@ -118,7 +119,7 @@ export function Drawer(props: DrawerProps) {
 										</Show>
 
 										<Dialog.CloseButton class="jdd drawer-close" ref={closeRef}>
-											<Icon icon="close" />
+											<RiSystemCloseFill />
 										</Dialog.CloseButton>
 									</div>
 									<Dialog.Description class="drawer-description">

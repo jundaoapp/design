@@ -1,18 +1,25 @@
-import "./index.scss";
-import { IntrinsicComponentProps } from "../types";
-import { Popover, As } from "@kobalte/core";
-import { processProps } from "../utilities";
+import { As, Popover } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { Ref } from "@solid-primitives/refs";
 import {
+	RiSystemAlertFill,
+	RiSystemErrorWarningFill,
+	RiSystemInformationFill,
+} from "solid-icons/ri";
+import {
+	JSXElement,
+	Match,
+	Setter,
+	Show,
+	Switch,
 	createEffect,
 	createMemo,
 	createSignal,
-	JSXElement,
-	Setter,
-	Show,
 } from "solid-js";
-import { Icon, Button, Card, Text, Title } from "..";
-import { Ref } from "@solid-primitives/refs";
-import { combineProps } from "@solid-primitives/props";
+import { Button, Card, Text, Title } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",
@@ -127,11 +134,12 @@ export function Popconfirm(props: PopconfirmProps) {
 
 	return (
 		<Popover.Root
-			isOpen={open()}
+			open={open()}
 			onOpenChange={setOpen}
 			placement={local.placement}
 		>
 			<Popover.Anchor ref={ref}>
+				{/* @ts-ignore */}
 				<Ref ref={setChildRef}>{local.children}</Ref>
 			</Popover.Anchor>
 			<Popover.Portal>
@@ -139,17 +147,26 @@ export function Popconfirm(props: PopconfirmProps) {
 					<Popover.Arrow class="popconfirm-arrow" />
 					<Card contrastBackground size="small">
 						<div class="popconfirm-header">
-							<Icon
-								class="popconfirm-icon"
-								icon={
-									{
-										info: "information",
-										danger: "error-warning",
-										warning: "alert",
-									}[local.type!]
-								}
-								aria-hidden={true}
-							/>
+							<Switch>
+								<Match when={local.type === "info"}>
+									<RiSystemInformationFill
+										class="popconfirm-icon"
+										aria-hidden={true}
+									/>
+								</Match>
+								<Match when={local.type === "danger"}>
+									<RiSystemErrorWarningFill
+										class="popconfirm-icon"
+										aria-hidden={true}
+									/>
+								</Match>
+								<Match when={local.type === "warning"}>
+									<RiSystemAlertFill
+										class="popconfirm-icon"
+										aria-hidden={true}
+									/>
+								</Match>
+							</Switch>
 							<Show when={local.title} fallback={<div />} keyed>
 								{(title) => (
 									<Popover.Title asChild>

@@ -1,6 +1,6 @@
-import { ValidComponent, ComponentProps } from "solid-js";
+import { ComponentProps, ValidComponent } from "solid-js";
 
 export type IntrinsicComponentProps<
 	Intrinsic extends ValidComponent,
-	Props = {},
+	Props = object,
 > = Props & Omit<ComponentProps<Intrinsic>, keyof Props>;

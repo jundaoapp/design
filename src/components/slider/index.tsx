@@ -1,11 +1,11 @@
-import "./index.scss";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
-import { Label, Spinner, Text } from "..";
-import { JSX } from "solid-js/types/jsx";
-import { createEffect, createSignal } from "solid-js";
-import { mergeRefs } from "@solid-primitives/refs";
 import { combineProps } from "@solid-primitives/props";
+import { mergeRefs } from "@solid-primitives/refs";
+import { createEffect, createSignal } from "solid-js";
+import { JSX } from "solid-js/types/jsx";
+import { Label, Spinner, Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type SliderProps = IntrinsicComponentProps<
 	"input",
@@ -81,7 +81,9 @@ export function Slider(props: SliderProps) {
 	});
 
 	const combinedProps = combineProps(others, {
-		ref: (el) => (ref = el),
+		ref: (el) => {
+			ref = el;
+		},
 		class: "jdd slider",
 		get style() {
 			return {

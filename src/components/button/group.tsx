@@ -1,7 +1,7 @@
-import "./index.scss";
+import { combineProps } from "@solid-primitives/props";
 import { Button } from "..";
 import { IntrinsicComponentProps } from "../types";
-import { combineProps } from "@solid-primitives/props";
+import "./index.scss";
 
 export type ButtonGroupProps = IntrinsicComponentProps<
 	"div",

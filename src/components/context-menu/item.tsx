@@ -1,5 +1,5 @@
-import { MenuItemProps } from "../menu/item";
 import { Menu } from "../menu";
+import { MenuItemProps } from "../menu/item";
 
 export type ContextMenuItemProps = Omit<MenuItemProps, "type">;
 

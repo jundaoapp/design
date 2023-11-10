@@ -1,4 +1,4 @@
-import { Layout, Button, useLayoutContext, Space } from "@jundao/design";
+import { Button, Layout, Space, useLayoutContext } from "@jundao/design";
 
 export default {
 	title: "Components/Layout",
@@ -150,6 +150,7 @@ Scroll.args = {};
 const MobileTemplate = (props) => {
 	return (
 		<iframe
+			title="mobile"
 			src="/iframe.html?args=&id=components-layout--scroll&viewMode=story"
 			style={{ height: "600px", width: "300px" }}
 		/>
@@ -250,6 +251,7 @@ ScrollControlled.args = {};
 const MobileControlledTemplate = (props) => {
 	return (
 		<iframe
+			title="mobile"
 			src="/iframe.html?args=&id=components-layout--scroll-controlled&viewMode=story"
 			style={{ height: "600px", width: "300px" }}
 		/>
@@ -356,6 +358,7 @@ LongSidebar.args = {};
 const MobileLongSidebarTemplate = (props) => {
 	return (
 		<iframe
+			title="mobile"
 			src="/iframe.html?args=&id=components-layout--long-sidebar&viewMode=story"
 			style={{ height: "600px", width: "300px" }}
 		/>

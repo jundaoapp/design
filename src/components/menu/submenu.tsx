@@ -1,10 +1,11 @@
+import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { RiArrowsArrowRightSLine } from "solid-icons/ri";
+import { JSXElement, Show, createMemo } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Card, Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { JSXElement, createMemo, Show } from "solid-js";
-import { ContextMenu, DropdownMenu, As } from "@kobalte/core";
-import { Card, Icon, Text } from "..";
-import { Dynamic } from "solid-js/web";
-import { combineProps } from "@solid-primitives/props";
 
 export type MenuSubmenuProps = IntrinsicComponentProps<
 	"div",
@@ -47,7 +48,7 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 						dropdown: DropdownMenu.SubTrigger,
 					}[local.type]
 				}
-				isDisabled={local.disabled}
+				disabled={local.disabled}
 				class="jdd item submenu"
 				classList={{
 					"with-icon": local.icon !== undefined,
@@ -56,7 +57,7 @@ export function MenuSubmenu(props: MenuSubmenuProps) {
 			>
 				<div class="indicator">
 					<Text>
-						<Icon icon="arrow-right-s" line />
+						<RiArrowsArrowRightSLine />
 					</Text>
 				</div>
 

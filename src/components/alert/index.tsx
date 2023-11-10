@@ -1,19 +1,24 @@
-import "./index.scss";
+import { Alert as KobalteAlert } from "@kobalte/core";
+import { Button } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { RiSystemCloseFill, RiSystemLoaderFill } from "solid-icons/ri";
+import { RiSystemCheckboxCircleFill } from "solid-icons/ri";
+import { RiSystemInformationFill } from "solid-icons/ri";
+import { RiSystemErrorWarningFill } from "solid-icons/ri";
+import { RiSystemAlertFill } from "solid-icons/ri";
 import {
-	createMemo,
-	createSignal,
 	JSXElement,
 	Match,
 	Show,
 	Switch,
+	createMemo,
+	createSignal,
 } from "solid-js";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { Transition } from "solid-transition-group";
-import { Icon, Text } from "..";
-import { Alert as KobalteAlert } from "@kobalte/core";
-import { Button } from "@kobalte/core";
-import { combineProps } from "@solid-primitives/props";
+import { Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type AlertProps = IntrinsicComponentProps<
 	"div",
@@ -75,19 +80,25 @@ export function Alert(props: AlertProps) {
 			<Show when={show()}>
 				<KobalteAlert.Root {...combinedProps}>
 					<Show when={local.showIcon}>
-						<Icon
-							class="alert-icon"
-							aria-hidden="true"
-							icon={
-								{
-									default: "loader",
-									success: "checkbox-circle",
-									info: "information",
-									error: "error-warning",
-									warning: "alert",
-								}[local.type!]
-							}
-						/>
+						<Text class="alert-icon">
+							<Switch>
+								<Match when={local.type === "default"}>
+									<RiSystemLoaderFill />
+								</Match>
+								<Match when={local.type === "success"}>
+									<RiSystemCheckboxCircleFill />
+								</Match>
+								<Match when={local.type === "info"}>
+									<RiSystemInformationFill />
+								</Match>
+								<Match when={local.type === "error"}>
+									<RiSystemErrorWarningFill />
+								</Match>
+								<Match when={local.type === "warning"}>
+									<RiSystemAlertFill />
+								</Match>
+							</Switch>
+						</Text>
 					</Show>
 
 					<Show when={typeof message() === "string"} fallback={message()}>
@@ -116,7 +127,7 @@ export function Alert(props: AlertProps) {
 							aria-label="Close"
 							onClick={() => setShow(false)}
 						>
-							<Icon aria-hidden={true} icon="close" />
+							<RiSystemCloseFill aria-hidden={true} />
 						</Button.Root>
 					</Show>
 				</KobalteAlert.Root>

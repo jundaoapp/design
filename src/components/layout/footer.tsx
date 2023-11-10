@@ -1,9 +1,9 @@
-import "./index.scss";
-import { IntrinsicComponentProps } from "../types";
 import { combineProps } from "@solid-primitives/props";
+import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
+import "./index.scss";
 
-export type LayoutFooterProps = IntrinsicComponentProps<"div", {}>;
+export type LayoutFooterProps = IntrinsicComponentProps<"div", object>;
 
 export default function LayoutFooter(props: LayoutFooterProps) {
 	const [local, others] = processProps({

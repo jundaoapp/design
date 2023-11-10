@@ -1,8 +1,8 @@
-import "./index.scss";
-import { IntrinsicComponentProps } from "../types";
 import { combineProps } from "@solid-primitives/props";
+import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useLayoutContext } from "./context";
+import "./index.scss";
 
 export type LayoutSidebarProps = IntrinsicComponentProps<
 	"div",

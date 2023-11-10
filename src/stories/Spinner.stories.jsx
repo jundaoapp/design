@@ -1,4 +1,4 @@
-import { Space, Text, Spinner } from "@jundao/design";
+import { Space, Spinner, Text } from "@jundao/design";
 
 export default {
 	title: "Components/Spinner",

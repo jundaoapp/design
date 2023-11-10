@@ -1,10 +1,10 @@
-import "./index.scss";
-import { JSXElement } from "solid-js";
-import AvatarGroup from "../avatar/group";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
-import { Image } from "..";
 import { combineProps } from "@solid-primitives/props";
+import { JSXElement } from "solid-js";
+import { Image, Text } from "..";
+import AvatarGroup from "../avatar/group";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",
@@ -44,7 +44,7 @@ function Avatar(props: AvatarProps) {
 				src={local.src}
 				srcset={local.srcset}
 				alt={local.alt}
-				fallback={local.icon ?? local.alt}
+				fallback={local.icon ? <Text>{local.icon}</Text> : local.alt}
 				shape={local.shape === "square" ? "rounded" : "circle"}
 			/>
 		</div>

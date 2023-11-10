@@ -33,11 +33,11 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 # Usage
 Install `@jundao/design` and peer dependency fonts:
 ```bash
-npm install @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+npm install @jundao/design@alpha @fontsource-variable/inter @fontsource-variable/jetbrains-mono
 # or
-yarn add @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+yarn add @jundao/design@alpha @fontsource-variable/inter @fontsource-variable/jetbrains-mono
 # or
-pnpm add @jundao/design@alpha @fontsource/inter @fontsource/jetbrains-mono
+pnpm add @jundao/design@alpha @fontsource-variable/inter @fontsource-variable/jetbrains-mono
 ```
 
 Import in entrypoint:
@@ -45,9 +45,8 @@ Import in entrypoint:
 import "@jundao/design/index.css";
 
 // Fonts
-import "@fontsource/inter/variable-full.css";
-import "@fontsource/jetbrains-mono/variable.css";
-import "@fontsource/jetbrains-mono/variable-italic.css";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
 ```
 
 Import components:
@@ -81,7 +80,6 @@ Currently implemented & planned components:
 - [ ] Form
 - [ ] Grid
 - [ ] HoverCard
-- [x] Icon
 - [x] Image
 - [x] Input
 - [x] Label

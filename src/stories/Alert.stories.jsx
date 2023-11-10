@@ -1,4 +1,4 @@
-import { Space, Alert, Text, Button } from "@jundao/design";
+import { Alert, Button, Space, Text } from "@jundao/design";
 
 export default {
 	title: "Components/Alert",

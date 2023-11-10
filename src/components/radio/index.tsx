@@ -1,12 +1,12 @@
-import "./index.scss";
-import { Space, Text } from "..";
-import RadioGroup from "./group";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
-import { createMemo, Show } from "solid-js";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
+import { Show, createMemo } from "solid-js";
+import { Space, Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import RadioGroup from "./group";
+import "./index.scss";
 
 export type RadioProps = IntrinsicComponentProps<
 	"label",
@@ -16,7 +16,7 @@ export type RadioProps = IntrinsicComponentProps<
 		danger?: boolean;
 		disabled?: boolean;
 		autofocus?: boolean;
-	} & Omit<KobalteRadioGroup.RadioGroupItemProps, "isDisabled">
+	} & KobalteRadioGroup.RadioGroupItemProps
 >;
 
 function Radio(props: RadioProps) {
@@ -26,7 +26,7 @@ function Radio(props: RadioProps) {
 			size: "default",
 			danger: false,
 		},
-		keys: ["size", "label", "danger", "disabled", "autofocus"],
+		keys: ["size", "label", "danger", "autofocus"],
 	});
 
 	let ref!: HTMLInputElement;
@@ -46,7 +46,7 @@ function Radio(props: RadioProps) {
 	});
 
 	return (
-		<KobalteRadioGroup.Item isDisabled={local.disabled} {...combinedProps}>
+		<KobalteRadioGroup.Item {...combinedProps}>
 			<KobalteRadioGroup.ItemInput ref={ref} />
 
 			<Space align="center">

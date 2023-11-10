@@ -1,10 +1,11 @@
-import "./index.scss";
-import { createMemo, JSXElement, Show } from "solid-js";
-import { Icon, Text } from "..";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { Collapsible } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
+import { RiArrowsArrowDownSLine } from "solid-icons/ri";
+import { JSXElement, Show, createMemo } from "solid-js";
+import { Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type CardProps = IntrinsicComponentProps<
 	"div",
@@ -73,8 +74,8 @@ export function Card(props: CardProps) {
 
 	return (
 		<Collapsible.Root
-			isOpen={local.collapsed === undefined ? undefined : !local.collapsed}
-			defaultIsOpen={!local.defaultCollapsed}
+			open={local.collapsed === undefined ? undefined : !local.collapsed}
+			defaultOpen={!local.defaultCollapsed}
 			{...combinedProps}
 		>
 			<Show
@@ -93,7 +94,7 @@ export function Card(props: CardProps) {
 					<Show when={local.collapsible || local.defaultCollapsed}>
 						<Collapsible.Trigger class="jdd collapse-toggle">
 							<Text>
-								<Icon icon="arrow-down-s" line />
+								<RiArrowsArrowDownSLine />
 							</Text>
 						</Collapsible.Trigger>
 					</Show>

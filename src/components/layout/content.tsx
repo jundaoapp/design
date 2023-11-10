@@ -1,11 +1,10 @@
-import "./index.scss";
-import { IntrinsicComponentProps } from "../types";
 import { combineProps } from "@solid-primitives/props";
+import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useLayoutContext } from "./context";
-import { Portal } from "solid-js/web";
+import "./index.scss";
 
-export type LayoutContentProps = IntrinsicComponentProps<"div", {}>;
+export type LayoutContentProps = IntrinsicComponentProps<"div", object>;
 
 export default function LayoutContent(props: LayoutContentProps) {
 	const [local, others] = processProps({

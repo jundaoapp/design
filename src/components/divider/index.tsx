@@ -1,10 +1,10 @@
-import "./index.scss";
+import { As, Separator } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
 import { JSXElement, Show } from "solid-js";
 import { Text } from "..";
-import { processProps } from "../utilities";
 import { IntrinsicComponentProps } from "../types";
-import { Separator, As } from "@kobalte/core";
-import { combineProps } from "@solid-primitives/props";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type DividerProps = IntrinsicComponentProps<
 	"div",

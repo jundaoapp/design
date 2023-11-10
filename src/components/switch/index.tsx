@@ -1,5 +1,6 @@
-import "./index.scss";
-import "../label/index.scss";
+import { Switch as KobalteSwitch } from "@kobalte/core";
+import { createAutofocus } from "@solid-primitives/autofocus";
+import { combineProps } from "@solid-primitives/props";
 import {
 	JSXElement,
 	Match,
@@ -8,11 +9,10 @@ import {
 	createMemo,
 } from "solid-js";
 import { Space, Spinner, Text } from "..";
-import { processProps } from "../utilities";
+import "../label/index.scss";
 import { IntrinsicComponentProps } from "../types";
-import { Switch as KobalteSwitch } from "@kobalte/core";
-import { createAutofocus } from "@solid-primitives/autofocus";
-import { combineProps } from "@solid-primitives/props";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"label",
@@ -50,16 +50,11 @@ export function Switch(props: SwitchProps) {
 			danger: false,
 		},
 		keys: [
-			"checked",
-			"defaultChecked",
-			"disabled",
 			"checkedChildren",
 			"uncheckedChildren",
-			"onChange",
 			"size",
 			"loading",
 			"danger",
-			"readonly",
 			"label",
 			"autofocus",
 		],
@@ -75,14 +70,7 @@ export function Switch(props: SwitchProps) {
 	});
 
 	return (
-		<KobalteSwitch.Root
-			defaultIsChecked={local.defaultChecked}
-			isChecked={local.checked}
-			isDisabled={local.disabled}
-			isReadOnly={local.readonly}
-			onCheckedChange={local.onChange}
-			{...combinedProps}
-		>
+		<KobalteSwitch.Root {...combinedProps}>
 			<KobalteSwitch.Input ref={ref} />
 			<Space>
 				<KobalteSwitch.Control
