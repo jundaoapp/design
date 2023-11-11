@@ -1,13 +1,13 @@
-import { processProps } from "../utilities";
 import { ContextMenu as KobalteContextMenu } from "@kobalte/core";
-import { ContextMenuItem } from "./item";
-import { ContextMenuGroup } from "./group";
+import { JSXElement, createSignal } from "solid-js";
+import { Menu, MenuProps } from "../menu";
+import { processProps } from "../utilities";
 import { ContextMenuCheckbox } from "./checkbox";
+import { ContextMenuGroup } from "./group";
+import { ContextMenuItem } from "./item";
 import { ContextMenuRadio } from "./radio";
 import { ContextMenuRadioGroup } from "./radio-group";
 import { ContextMenuSubmenu } from "./submenu";
-import { createSignal, JSXElement } from "solid-js";
-import { Menu, MenuProps } from "../menu";
 
 export type ContextMenuProps = {
 	children: JSXElement;

@@ -1,4 +1,4 @@
-import { Card, Text, Space, Button } from "@jundao/design";
+import { Button, Card, Space, Text } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {

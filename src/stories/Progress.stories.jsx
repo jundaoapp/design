@@ -1,4 +1,4 @@
-import { Progress, Space, Button, Icon } from "@jundao/design";
+import { Button, Progress, Space } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {
@@ -24,6 +24,38 @@ export default {
 		mini: { control: "boolean" },
 	},
 };
+
+// Solid Icons get treeshaken by mistake
+function RiSystemAddFill(props) {
+	return (
+		<svg
+			fill="currentColor"
+			stroke-width="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			style="overflow: visible; color: currentcolor;"
+			height="1em"
+			width="1em"
+		>
+			<path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6Z" />
+		</svg>
+	);
+}
+function RiSystemSubtractFill(props) {
+	return (
+		<svg
+			fill="currentColor"
+			stroke-width="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			style="overflow: visible; color: currentcolor;"
+			height="1em"
+			width="1em"
+		>
+			<path fill="currentColor" d="M19 11H5v2h14v-2Z" />
+		</svg>
+	);
+}
 
 const Template = (props) => {
 	return <Progress {...props} />;
@@ -174,10 +206,10 @@ const DynamicTemplate = (props) => {
 					onClick={() => setValue(value() + 10)}
 					disabled={value() === 100}
 				>
-					<Icon icon="add" />
+					<RiSystemAddFill />
 				</Button>
 				<Button onClick={() => setValue(value() - 10)} disabled={value() === 0}>
-					<Icon icon="subtract" />
+					<RiSystemSubtractFill />
 				</Button>
 			</Button.Group>
 		</Space>

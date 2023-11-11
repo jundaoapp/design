@@ -86,4 +86,8 @@ span.jdd.text {
   &.serif {
     font-family: var(--jdd-font-serif);
   }
+
+  > svg {
+    line-height: normal;
+  }
 }

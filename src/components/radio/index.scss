@@ -8,7 +8,7 @@
     border-radius: 9999px;
     appearance: none;
     border: 1px solid var(--jdd-gray-5);
-    cursor: pointer;
+    cursor: var(--jdd-button-cursor);
     transition: var(--jdd-transition-colors);
     display: flex;
     justify-content: center;

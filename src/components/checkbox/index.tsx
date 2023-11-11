@@ -1,12 +1,13 @@
-import "./index.scss";
-import { createMemo, createSignal, JSX, Show } from "solid-js";
-import { Icon, Space, Text } from "..";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
-import "../label/index.scss";
 import { combineProps } from "@solid-primitives/props";
+import { RiSystemCheckFill, RiSystemSubtractFill } from "solid-icons/ri";
+import { JSX, Show, createMemo, createSignal } from "solid-js";
+import { Space, Text } from "..";
+import "../label/index.scss";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"label",
@@ -19,22 +20,9 @@ export type CheckboxProps = IntrinsicComponentProps<
 		onIndeterminateChange?: (indeterminate: boolean) => void;
 		danger?: boolean;
 		label?: JSX.Element;
-		required?: boolean;
-		disabled?: boolean;
-		readonly?: boolean;
 		autofocus?: boolean;
 		children?: never;
-	} & Omit<
-		KobalteCheckbox.CheckboxRootProps,
-		| "isChecked"
-		| "defaultIsChecked"
-		| "onCheckedChange"
-		| "isIndeterminate"
-		| "isRequired"
-		| "isDisabled"
-		| "isReadOnly"
-		| "children"
-	>
+	} & Omit<KobalteCheckbox.CheckboxRootProps, "children">
 >;
 export function Checkbox(props: CheckboxProps) {
 	const [local, others] = processProps({
@@ -49,12 +37,9 @@ export function Checkbox(props: CheckboxProps) {
 			"defaultChecked",
 			"onChange",
 			"checked",
-			"required",
-			"readonly",
 			"size",
 			"disabled",
 			"onClick",
-			"indeterminate",
 			"onIndeterminateChange",
 			"label",
 			"danger",
@@ -88,12 +73,8 @@ export function Checkbox(props: CheckboxProps) {
 
 	return (
 		<KobalteCheckbox.Root
-			isChecked={local.checked ?? checked()}
-			defaultIsChecked={local.defaultChecked}
-			isIndeterminate={local.indeterminate}
-			isRequired={local.required}
-			isDisabled={local.disabled}
-			onCheckedChange={changeHandler}
+			checked={local.checked ?? checked()}
+			onChange={changeHandler}
 			{...combinedProps}
 		>
 			<KobalteCheckbox.Input ref={ref} />
@@ -101,8 +82,8 @@ export function Checkbox(props: CheckboxProps) {
 			<Space align="center">
 				<KobalteCheckbox.Control class="checkbox-control">
 					<KobalteCheckbox.Indicator>
-						<Icon icon="check" class="checkbox-check" />
-						<Icon icon="subtract" class="checkbox-indeterminate" />
+						<RiSystemCheckFill class="checkbox-check" />
+						<RiSystemSubtractFill class="checkbox-indeterminate" />
 					</KobalteCheckbox.Indicator>
 				</KobalteCheckbox.Control>
 				<Show when={label()}>

@@ -70,13 +70,20 @@
         }
     }
 
+    button.jdd {
+        cursor: var(--jdd-button-cursor);
+    }
+
+    .jdd.link {
+        cursor: pointer;
+    }
+
     .jdd.link, button.jdd {
         // Only required for Firefox, should be removed when css :has selector is officially enabled
         // https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility
         border-radius: 9999px;
         background: none;
         border: none;
-        cursor: pointer;
         padding: 0;
 
         .jdd.avatar {

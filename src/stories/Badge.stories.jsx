@@ -1,4 +1,4 @@
-import { Space, Badge, Avatar, Switch } from "@jundao/design";
+import { Avatar, Badge, Space, Switch } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {

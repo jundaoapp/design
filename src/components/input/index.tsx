@@ -1,12 +1,12 @@
-import "./index.scss";
-import { TextField, As } from "@kobalte/core";
-import { IntrinsicComponentProps } from "../types";
-import { JSXElement, Show, createMemo, createSignal } from "solid-js";
-import { processProps } from "../utilities";
-import { Text, Space } from "..";
-import { Dynamic } from "solid-js/web";
+import { As, TextField } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
+import { JSXElement, Show, createMemo, createSignal } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Space, Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type InputProps = IntrinsicComponentProps<
 	"input" | "textarea",
@@ -18,9 +18,6 @@ export type InputProps = IntrinsicComponentProps<
 		size?: "small" | "default" | "large";
 		label?: string;
 		danger?: boolean;
-		disabled?: boolean;
-		required?: boolean;
-		readonly?: boolean;
 		autofocus?: boolean;
 		invalid?: boolean;
 		errorMessage?: JSXElement;
@@ -45,11 +42,7 @@ export function Input(props: InputProps) {
 			"label",
 			"type",
 			"danger",
-			"disabled",
 			"autofocus",
-			"required",
-			"readonly",
-			"onChange",
 			"errorMessage",
 			"description",
 			"invalid",
@@ -68,7 +61,9 @@ export function Input(props: InputProps) {
 	const errorMessage = createMemo(() => local.errorMessage);
 
 	const combinedProps = combineProps(others, {
-		ref: (el) => (ref = el),
+		ref: (el) => {
+			ref = el;
+		},
 		class: "jdd input",
 		get classList() {
 			return {
@@ -85,13 +80,9 @@ export function Input(props: InputProps) {
 
 	return (
 		<TextField.Root
-			isDisabled={local.disabled}
-			isRequired={local.required}
-			isReadOnly={local.readonly}
 			value={local.value}
 			name={local.name}
 			defaultValue={local.defaultValue}
-			onValueChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
 			asChild
 		>

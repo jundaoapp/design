@@ -1,5 +1,5 @@
-import { MenuRadioGroupProps } from "../menu/radio-group";
 import { Menu } from "../menu";
+import { MenuRadioGroupProps } from "../menu/radio-group";
 
 export type DropdownMenuRadioGroupProps = Omit<MenuRadioGroupProps, "type">;
 

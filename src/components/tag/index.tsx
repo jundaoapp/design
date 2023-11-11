@@ -1,11 +1,11 @@
-import "./index.scss";
-import { createEffect, createSignal, mergeProps, on, Show } from "solid-js";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
-import { Transition } from "solid-transition-group";
-import { Dynamic } from "solid-js/web";
-import { Icon, Spinner, Text } from "..";
 import { combineProps } from "@solid-primitives/props";
+import { RiSystemCloseFill } from "solid-icons/ri";
+import { Show, createSignal } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Transition } from "solid-transition-group";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type TagProps = IntrinsicComponentProps<
 	"span" | "a",
@@ -55,13 +55,14 @@ export function Tag(props: TagProps) {
 
 					<Show when={local.closeable}>
 						<button
+							type="button"
 							class="tag-close"
 							onclick={() => {
 								local.onClose?.();
 								setShow(false);
 							}}
 						>
-							<Icon icon="close" />
+							<RiSystemCloseFill />
 						</button>
 					</Show>
 				</Dynamic>

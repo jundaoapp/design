@@ -1,10 +1,10 @@
+import { ContextMenu, DropdownMenu } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { JSXElement, Show, createMemo } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { createMemo, JSXElement, Show } from "solid-js";
-import { Text } from "..";
-import { Dynamic } from "solid-js/web";
-import { combineProps } from "@solid-primitives/props";
 
 export type MenuItemProps = IntrinsicComponentProps<
 	"div",
@@ -20,7 +20,7 @@ export type MenuItemProps = IntrinsicComponentProps<
 export function MenuItem(props: MenuItemProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["disabled", "children", "description", "type", "icon", "shortcut"],
+		keys: ["children", "description", "type", "icon", "shortcut"],
 	});
 
 	const children = createMemo(() => local.children);
@@ -44,7 +44,6 @@ export function MenuItem(props: MenuItemProps) {
 					dropdown: DropdownMenu.Item,
 				}[local.type]
 			}
-			isDisabled={local.disabled}
 			{...combinedProps}
 		>
 			<Dynamic

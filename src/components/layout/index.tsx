@@ -1,20 +1,21 @@
-import "./index.scss";
+import { WindowEventListener } from "@solid-primitives/event-listener";
+import { createBreakpoints } from "@solid-primitives/media";
+import { combineProps } from "@solid-primitives/props";
+import { Show, createEffect, createSignal } from "solid-js";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { combineProps } from "@solid-primitives/props";
-import LayoutHeader from "./header";
-import LayoutSidebar from "./sidebar";
 import LayoutContent from "./content";
-import LayoutFooter from "./footer";
 import { LayoutContextProvider, useLayoutContext } from "./context";
-import { createEffect, createSignal, Show } from "solid-js";
-import { createBreakpoints } from "@solid-primitives/media";
-import { WindowEventListener } from "@solid-primitives/event-listener";
+import LayoutFooter from "./footer";
+import LayoutHeader from "./header";
+import "./index.scss";
+import LayoutSidebar from "./sidebar";
 
 export type LayoutProps = IntrinsicComponentProps<
 	"div",
 	{
 		mobileWidthBreakpoint?: string;
+		swipeDistanceFromSides?: number;
 	}
 >;
 
@@ -31,8 +32,9 @@ function InnerLayout(props: LayoutProps) {
 		props,
 		default: {
 			mobileWidthBreakpoint: "600px",
+			swipeDistanceFromSides: 50,
 		},
-		keys: ["children", "mobileWidthBreakpoint"],
+		keys: ["children", "mobileWidthBreakpoint", "swipeDistanceFromSides"],
 	});
 
 	const breakpoints = createBreakpoints({
@@ -67,7 +69,9 @@ function InnerLayout(props: LayoutProps) {
 	});
 
 	const combinedProps = combineProps(others, {
-		ref: (el) => (ref = el),
+		ref: (el) => {
+			ref = el;
+		},
 		class: "jdd layout",
 		get classList() {
 			return {
@@ -83,7 +87,7 @@ function InnerLayout(props: LayoutProps) {
 				"--jdd-sidebar-transition": sidebarTransition()
 					? "transform 0.3s var(--jdd-transition-function), opacity 0.3s var(--jdd-transition-function)"
 					: "",
-				get ["--jdd-layout-backdrop-opacity"]() {
+				get "--jdd-layout-backdrop-opacity"() {
 					if (leftSidebarOpen() || rightSidebarOpen()) {
 						return "";
 					}
@@ -137,12 +141,12 @@ function InnerLayout(props: LayoutProps) {
 		let swipeDirection: "left" | "right" | undefined;
 
 		// Left swipe
-		if (swipeStart().x < 50) {
+		if (swipeStart().x < local.swipeDistanceFromSides) {
 			swipeDirection = "right";
 		}
 
 		// Right swipe
-		if (window.innerWidth - swipeStart().x < 50) {
+		if (window.innerWidth - swipeStart().x < local.swipeDistanceFromSides) {
 			swipeDirection = "left";
 		}
 

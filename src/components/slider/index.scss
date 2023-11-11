@@ -50,7 +50,7 @@
         border-radius: 9999px;
         border: .15rem solid var(--jdd-blue-6);
         transition: var(--jdd-transition-colors), height .1s var(--jdd-transition-function), width .1s var(--jdd-transition-function), border .1s var(--jdd-transition-function);
-        cursor: pointer;
+        cursor: var(--jdd-button-cursor);
         transform: translateY(-38.5%);
         box-sizing: border-box;
 
@@ -67,7 +67,7 @@
         border-radius: 9999px;
         border: .15rem solid var(--jdd-blue-6);
         transition: var(--jdd-transition-colors), height .1s var(--jdd-transition-function), width .1s var(--jdd-transition-function), border .1s var(--jdd-transition-function);
-        cursor: pointer;
+        cursor: var(--jdd-button-cursor);
         box-sizing: border-box;
 
         .jdd-dark & {

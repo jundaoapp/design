@@ -29,7 +29,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
 
       - name: Get pnpm store directory
@@ -50,4 +50,4 @@ jobs:
         run: pnpm install
 
       - name: Run Rome Format
-        run: pnpm exec rome ci src/
+        run: pnpm dlx @biomejs/biome ci src/

@@ -1,6 +1,6 @@
-import { splitProps, mergeProps, SplitProps, MergeProps } from "solid-js";
-import { IntrinsicComponentProps } from "../types";
+import { MergeProps, SplitProps, mergeProps, splitProps } from "solid-js";
 import { ValidComponent } from "solid-js";
+import { IntrinsicComponentProps } from "../types";
 
 export function processProps<
 	T extends IntrinsicComponentProps<ValidComponent>,

@@ -1,4 +1,4 @@
-import { Switch, Icon as IconComp, Space } from "@jundao/design";
+import { Space, Switch } from "@jundao/design";
 
 export default {
 	title: "Components/Switch",
@@ -19,6 +19,44 @@ export default {
 		autofocus: { control: "boolean" },
 	},
 };
+
+// Solid Icons get treeshaken by mistake
+function RiSystemCheckFill(props) {
+	return (
+		<svg
+			fill="currentColor"
+			stroke-width="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			style="overflow: visible; color: currentcolor;"
+			height="1em"
+			width="1em"
+		>
+			<path
+				fill="currentColor"
+				d="m10 15.17 9.193-9.191 1.414 1.414-10.606 10.606-6.364-6.364 1.414-1.414 4.95 4.95Z"
+			/>
+		</svg>
+	);
+}
+function RiSystemCloseFill(props) {
+	return (
+		<svg
+			fill="currentColor"
+			stroke-width="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			style="overflow: visible; color: currentcolor;"
+			height="1em"
+			width="1em"
+		>
+			<path
+				fill="currentColor"
+				d="m12 10.586 4.95-4.95 1.415 1.415-4.95 4.95 4.95 4.95-1.415 1.414-4.95-4.95-4.95 4.95-1.413-1.415 4.95-4.95-4.95-4.95L7.05 5.638l4.95 4.95Z"
+			/>
+		</svg>
+	);
+}
 
 const Template = (props) => {
 	return <Switch {...props} />;
@@ -41,8 +79,8 @@ Text.args = { checkedChildren: "on", uncheckedChildren: "off" };
 
 export const Icon = Template.bind({});
 Icon.args = {
-	checkedChildren: <IconComp icon="check" line label="Checked" />,
-	uncheckedChildren: <IconComp icon="close" line label="Unchecked" />,
+	checkedChildren: <RiSystemCheckFill title="Checked" />,
+	uncheckedChildren: <RiSystemCloseFill title="Unchecked" />,
 };
 
 export const Large = Template.bind({});

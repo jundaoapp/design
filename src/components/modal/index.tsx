@@ -1,19 +1,20 @@
-import "./index.scss";
-import "../title/index.scss";
+import { Dialog } from "@kobalte/core";
+import { mergeRefs } from "@solid-primitives/refs";
+import { RiSystemCloseFill } from "solid-icons/ri";
 import {
+	JSXElement,
+	Show,
 	createEffect,
 	createMemo,
 	createSignal,
-	JSXElement,
 	on,
-	Show,
 } from "solid-js";
-import { Card, Icon, Text } from "..";
-import { processProps } from "../utilities";
+import { Card, Text } from "..";
+import "../title/index.scss";
 import { IntrinsicComponentProps } from "../types";
-import { Dialog } from "@kobalte/core";
-import { mergeRefs } from "@solid-primitives/refs";
+import { processProps } from "../utilities";
 import { useOverlayContext } from "../utilities/overlay";
+import "./index.scss";
 
 export type ModalProps = IntrinsicComponentProps<
 	"div",
@@ -50,7 +51,9 @@ export function Modal(props: ModalProps) {
 	let ref: HTMLDivElement | undefined;
 
 	const handleRef = (element: HTMLDivElement) => {
-		mergeRefs((el) => (ref = el), local.ref)(element);
+		mergeRefs((el) => {
+			ref = el;
+		}, local.ref)(element);
 
 		if (local.open === true) {
 			if (ref !== undefined) {
@@ -102,8 +105,8 @@ export function Modal(props: ModalProps) {
 	return (
 		<OverlayContextProvider value={{ level: level + 1 }}>
 			<Dialog.Root
-				isModal={true}
-				isOpen={local.open}
+				modal={true}
+				open={local.open}
 				onOpenChange={local.onOpenChange}
 			>
 				<Dialog.Portal>
@@ -128,7 +131,7 @@ export function Modal(props: ModalProps) {
 									</Show>
 
 									<Dialog.CloseButton class="jdd modal-close">
-										<Icon icon="close" />
+										<RiSystemCloseFill />
 									</Dialog.CloseButton>
 								</div>
 								<Dialog.Description class="modal-description">

@@ -14,7 +14,7 @@
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
+    cursor: var(--jdd-button-cursor);
     font-size: .8rem;
     color: currentColor;
     height: .8rem;
@@ -103,7 +103,7 @@
 @keyframes jdd-tag-exit {
   to {
     max-width: 0;
-    margin: 0;
+    margin: 0 -.6rem;
     opacity: 0;
   }
 }

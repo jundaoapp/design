@@ -1,4 +1,4 @@
-import { Button, Space, Popconfirm, Link } from "@jundao/design";
+import { Button, Link, Popconfirm, Space } from "@jundao/design";
 import { action } from "@storybook/addon-actions";
 
 export default {

@@ -1,4 +1,4 @@
-import { Text, Space } from "@jundao/design";
+import { Space, Text } from "@jundao/design";
 
 export default {
 	title: "Components/Typography/Text",

@@ -1,10 +1,14 @@
-import "./index.scss";
-import { Progress as KobalteProgress, As } from "@kobalte/core";
-import { IntrinsicComponentProps } from "../types";
-import { JSXElement, Show, For, Switch, Match, createMemo } from "solid-js";
-import { processProps } from "../utilities";
-import { Text, Icon } from "..";
+import { As, Progress as KobalteProgress } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
+import {
+	RiSystemCheckboxCircleFill,
+	RiSystemCloseCircleFill,
+} from "solid-icons/ri";
+import { For, JSXElement, Match, Show, Switch, createMemo } from "solid-js";
+import { Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type ProgressProps = IntrinsicComponentProps<
 	"div",
@@ -78,7 +82,7 @@ export function Progress(props: ProgressProps) {
 
 	return (
 		<KobalteProgress.Root
-			isIndeterminate={local.status === "indeterminate"}
+			indeterminate={local.status === "indeterminate"}
 			getValueLabel={
 				local.steps ? (params) => `${params.value} / ${params.max}` : undefined
 			}
@@ -163,21 +167,22 @@ export function Progress(props: ProgressProps) {
 				>
 					<Match
 						when={
-							local.status === "success" ||
-							(!Array.isArray(local.value) &&
-								local.status !== "fail" &&
-								local.successOnComplete &&
-								local.value === local.max)
+							local.statusIcon &&
+							(local.status === "success" ||
+								(!Array.isArray(local.value) &&
+									local.status !== "fail" &&
+									local.successOnComplete &&
+									local.value === local.max))
 						}
 					>
 						<Text class="progress-info" type="success">
-							<Icon icon="checkbox-circle" />
+							<RiSystemCheckboxCircleFill />
 						</Text>
 					</Match>
 
-					<Match when={local.status === "fail"}>
+					<Match when={local.statusIcon && local.status === "fail"}>
 						<Text class="progress-info" type="danger">
-							<Icon icon="close-circle" />
+							<RiSystemCloseCircleFill />
 						</Text>
 					</Match>
 				</Switch>
@@ -188,8 +193,9 @@ export function Progress(props: ProgressProps) {
 
 function getCurrentValue(index: number, values: number[]): number {
 	let total = 0;
-	while (index >= 0) {
-		total += values[index--];
+	let i = index;
+	while (i >= 0) {
+		total += values[i--];
 	}
 	return total;
 }

@@ -1,4 +1,4 @@
-import { Button, Space, Text, Divider } from "@jundao/design";
+import { Button, Divider, Space, Text } from "@jundao/design";
 import { For } from "solid-js";
 
 export default {

@@ -11,7 +11,6 @@ export * from "./context-menu";
 export * from "./divider";
 export * from "./drawer";
 export * from "./dropdown-menu";
-export * from "./icon";
 export * from "./image";
 export * from "./input";
 export * from "./label";

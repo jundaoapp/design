@@ -1,16 +1,16 @@
-import "./index.scss";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
-import { ContextMenu, DropdownMenu, As } from "@kobalte/core";
+import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
+import { JSXElement, Show } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import { Card } from "..";
-import { MenuItem } from "./item";
-import { MenuGroup } from "./group";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
 import { MenuCheckbox } from "./checkbox";
+import { MenuGroup } from "./group";
+import "./index.scss";
+import { MenuItem } from "./item";
 import { MenuRadio } from "./radio";
 import { MenuRadioGroup } from "./radio-group";
 import { MenuSubmenu } from "./submenu";
-import { JSXElement, Show } from "solid-js";
-import { Dynamic } from "solid-js/web";
 
 export type MenuProps = IntrinsicComponentProps<
 	"div",
@@ -30,15 +30,7 @@ function Menu(props: MenuProps) {
 		default: {
 			modal: false,
 		},
-		keys: [
-			"type",
-			"open",
-			"onOpenChange",
-			"placement",
-			"children",
-			"trigger",
-			"modal",
-		],
+		keys: ["type", "onOpenChange", "placement", "children", "trigger"],
 	});
 
 	return (
@@ -49,8 +41,6 @@ function Menu(props: MenuProps) {
 					dropdown: DropdownMenu.Root,
 				}[local.type]
 			}
-			isModal={local.modal}
-			isOpen={local.open}
 			onOpenChange={local.onOpenChange}
 			placement={local.placement}
 		>

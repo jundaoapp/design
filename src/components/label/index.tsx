@@ -1,9 +1,9 @@
-import "./index.scss";
-import { splitProps, ComponentProps, createMemo } from "solid-js";
-import { Text } from "..";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { combineProps } from "@solid-primitives/props";
+import { createMemo } from "solid-js";
+import { Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type LabelProps = IntrinsicComponentProps<
 	"label",

@@ -1,5 +1,5 @@
-import { Space, Tag, Switch } from "@jundao/design";
-import { createSignal, Show } from "solid-js";
+import { Space, Switch, Tag } from "@jundao/design";
+import { Show, createSignal } from "solid-js";
 
 export default {
 	title: "Components/Tag",

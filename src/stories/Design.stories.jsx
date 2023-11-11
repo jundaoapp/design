@@ -1,4 +1,4 @@
-import { Text, Title, Space, Divider } from "@jundao/design";
+import { Divider, Space, Text, Title } from "@jundao/design";
 import { For } from "solid-js";
 
 export default { title: "Design" };

@@ -1,15 +1,16 @@
-import "./index.scss";
+import { As, DropdownMenu as KobalteDropdownMenu } from "@kobalte/core";
+import { RiArrowsArrowDownSLine } from "solid-icons/ri";
+import { JSXElement, Show } from "solid-js";
+import { Button } from "..";
+import { Menu, MenuProps } from "../menu";
 import { processProps } from "../utilities";
-import { DropdownMenu as KobalteDropdownMenu, As } from "@kobalte/core";
-import { Button, Icon } from "..";
-import { DropdownMenuItem } from "./item";
-import { DropdownMenuGroup } from "./group";
 import { DropdownMenuCheckbox } from "./checkbox";
+import { DropdownMenuGroup } from "./group";
+import "./index.scss";
+import { DropdownMenuItem } from "./item";
 import { DropdownMenuRadio } from "./radio";
 import { DropdownMenuRadioGroup } from "./radio-group";
 import { DropdownMenuSubmenu } from "./submenu";
-import { JSXElement, Show } from "solid-js";
-import { Menu, MenuProps } from "../menu";
 
 export type DropdownMenuProps = {
 	label?: string;
@@ -34,7 +35,7 @@ function DropdownMenu(props: DropdownMenuProps) {
 					when={local.customTrigger}
 					keyed
 					fallback={
-						<KobalteDropdownMenu.Trigger asChild isDisabled={local.disabled}>
+						<KobalteDropdownMenu.Trigger asChild disabled={local.disabled}>
 							<As
 								component={Button}
 								class="dropdown-menu-trigger"
@@ -44,17 +45,13 @@ function DropdownMenu(props: DropdownMenuProps) {
 								danger={local.danger}
 							>
 								{local.label}
-								<Icon
-									icon="arrow-down-s"
-									line
-									class="dropdown-menu-trigger-icon"
-								/>
+								<RiArrowsArrowDownSLine class="dropdown-menu-trigger-icon" />
 							</As>
 						</KobalteDropdownMenu.Trigger>
 					}
 				>
 					{(customTrigger) => (
-						<KobalteDropdownMenu.Trigger asChild isDisabled={local.disabled}>
+						<KobalteDropdownMenu.Trigger asChild disabled={local.disabled}>
 							<As component="div" class="jdd dropdown-menu-trigger">
 								{customTrigger}
 							</As>

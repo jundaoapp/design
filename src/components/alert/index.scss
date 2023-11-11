@@ -148,7 +148,7 @@
         right: 1rem;
         top: 1.25rem;
         font-size: 2rem;
-        cursor: pointer;
+        cursor: var(--jdd-button-cursor);
         transition: var(--jdd-transition-colors);
         margin: .3rem 0;
         color: var(--jdd-gray-9);
@@ -192,8 +192,6 @@
     }
 
     &.alert-animation-exit-to {
-        max-height: 0;
-        opacity: 0;
         max-height: 0;
         opacity: 0;
         padding-top: 0;

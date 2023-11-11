@@ -1,4 +1,4 @@
-import { Text, Space, Breadcrumb, Switch } from "@jundao/design";
+import { Breadcrumb, Space, Switch, Text } from "@jundao/design";
 import { createSignal } from "solid-js";
 import { Link } from "../components";
 

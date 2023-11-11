@@ -1,10 +1,11 @@
+import { ContextMenu, DropdownMenu } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { RiSystemCheckboxBlankCircleFill } from "solid-icons/ri";
+import { JSXElement, Show, createMemo } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { ContextMenu, DropdownMenu } from "@kobalte/core";
-import { createMemo, JSXElement, Show } from "solid-js";
-import { Icon, Text } from "..";
-import { Dynamic } from "solid-js/web";
-import { combineProps } from "@solid-primitives/props";
 
 export type MenuRadioProps = IntrinsicComponentProps<
 	"div",
@@ -19,7 +20,7 @@ export type MenuRadioProps = IntrinsicComponentProps<
 export function MenuRadio(props: MenuRadioProps) {
 	const [local, others] = processProps({
 		props,
-		keys: ["disabled", "children", "description", "type", "shortcut"],
+		keys: ["children", "description", "type", "shortcut"],
 	});
 
 	const children = createMemo(() => local.children);
@@ -37,7 +38,6 @@ export function MenuRadio(props: MenuRadioProps) {
 					dropdown: DropdownMenu.RadioItem,
 				}[local.type]
 			}
-			isDisabled={local.disabled}
 			{...combinedProps}
 		>
 			<Dynamic
@@ -50,7 +50,7 @@ export function MenuRadio(props: MenuRadioProps) {
 				class="indicator"
 			>
 				<Text>
-					<Icon icon="checkbox-blank-circle" />
+					<RiSystemCheckboxBlankCircleFill />
 				</Text>
 			</Dynamic>
 

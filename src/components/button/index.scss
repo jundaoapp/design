@@ -3,7 +3,7 @@
   background-color: var(--jdd-gray-4);
   padding: .4rem 1rem;
   border-radius: var(--jdd-border-radius);
-  cursor: pointer;
+  cursor: var(--jdd-button-cursor);
   transition: var(--jdd-transition-colors), translateX 0.2s var(--jdd-transition-function);
   font-size: .9rem;
   touch-action: manipulation;
@@ -16,12 +16,12 @@
     color: var(--jdd-gray-1);
     background-color: var(--jdd-gray-12);
 
-    &[data-disabled] {
+    &[disabled] {
       color: var(--jdd-gray-5);
       background-color: var(--jdd-gray-10);
     }
 
-    &:not([data-disabled]) {
+    &:not([disabled]) {
         &:hover, &.loading {
             background-color: var(--jdd-gray-11);
         }
@@ -52,7 +52,7 @@
   }
 
   &.danger {
-    &:not([data-disabled]) {
+    &:not([disabled]) {
         &:hover, &.loading {
             background-color: var(--jdd-red-1);
             color: var(--jdd-red-6);
@@ -65,11 +65,11 @@
     }
 
     .jdd-dark & {
-        &[data-disabled] {
+        &[disabled] {
             color: var(--jdd-gray-5);
         }
 
-        &:not([data-disabled]) {
+        &:not([disabled]) {
             &:hover, &.loading {
                 background-color: var(--jdd-red-10);
             }
@@ -81,7 +81,7 @@
     }
   }
 
-  &:not([data-disabled]) {
+  &:not([disabled]) {
     &:hover, &.loading {
       background-color: var(--jdd-gray-5);
     }
@@ -96,7 +96,7 @@
     }
   }
 
-  &[data-disabled] {
+  &[disabled] {
     cursor: not-allowed;
     color: var(--jdd-gray-10);
     background-color: var(--jdd-gray-5);
@@ -132,7 +132,7 @@ div.button-group.jdd {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
 
-                :not([data-disabled]) {
+                :not([disabled]) {
                     &:hover, &:focus {
                         position: relative;
                         z-index: calc(101 + var(--jdd-overlay-zindex-increment));

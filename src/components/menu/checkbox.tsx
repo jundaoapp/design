@@ -1,10 +1,11 @@
+import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
+import { combineProps } from "@solid-primitives/props";
+import { RiSystemCheckFill } from "solid-icons/ri";
+import { JSXElement, Show, createMemo } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { DropdownMenu, ContextMenu, As } from "@kobalte/core";
-import { createMemo, JSXElement, Show } from "solid-js";
-import { Icon, Text } from "..";
-import { Dynamic } from "solid-js/web";
-import { combineProps } from "@solid-primitives/props";
 
 export type MenuCheckboxProps = IntrinsicComponentProps<
 	"div",
@@ -24,15 +25,7 @@ export type MenuCheckboxProps = IntrinsicComponentProps<
 export function MenuCheckbox(props: MenuCheckboxProps) {
 	const [local, others] = processProps({
 		props,
-		keys: [
-			"disabled",
-			"checked",
-			"children",
-			"description",
-			"onChange",
-			"type",
-			"shortcut",
-		],
+		keys: ["children", "description", "type", "shortcut"],
 	});
 
 	const children = createMemo(() => local.children);
@@ -50,9 +43,6 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 					dropdown: DropdownMenu.CheckboxItem,
 				}[local.type]
 			}
-			isDisabled={local.disabled}
-			isChecked={local.checked}
-			onCheckedChange={local.onChange}
 			{...combinedProps}
 		>
 			<Dynamic
@@ -65,7 +55,7 @@ export function MenuCheckbox(props: MenuCheckboxProps) {
 				asChild
 			>
 				<As component={Text} class="indicator">
-					<Icon icon="check" />
+					<RiSystemCheckFill />
 				</As>
 			</Dynamic>
 

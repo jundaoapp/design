@@ -1,4 +1,4 @@
-import { Drawer, Button, Modal } from "@jundao/design";
+import { Button, Drawer, Modal } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {

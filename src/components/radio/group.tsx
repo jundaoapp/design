@@ -1,28 +1,17 @@
-import { createMemo, JSX, Show } from "solid-js";
+import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
+import { JSX, Show, createMemo } from "solid-js";
+import { Space, Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
-import { Space, Text } from "..";
 
 export type RadioGroupProps = IntrinsicComponentProps<
 	"div",
 	{
 		label?: string;
-		disabled?: boolean;
-		readonly?: boolean;
-		required?: boolean;
-		onChange?: (value: string) => void;
 		errorMessage?: JSX.Element;
 		description?: JSX.Element;
 		invalid?: boolean;
-	} & Omit<
-		KobalteRadioGroup.RadioGroupRootProps,
-		| "isDisabled"
-		| "isReadOnly"
-		| "isRequired"
-		| "onValueChange"
-		| "validationState"
-	>
+	} & Omit<KobalteRadioGroup.RadioGroupRootProps, "validationState">
 >;
 
 export default function RadioGroup(props: RadioGroupProps) {
@@ -31,16 +20,7 @@ export default function RadioGroup(props: RadioGroupProps) {
 		default: {
 			invalid: false,
 		},
-		keys: [
-			"label",
-			"disabled",
-			"readonly",
-			"required",
-			"onChange",
-			"errorMessage",
-			"description",
-			"invalid",
-		],
+		keys: ["label", "errorMessage", "description", "invalid"],
 	});
 
 	const label = createMemo(() => local.label);
@@ -49,10 +29,6 @@ export default function RadioGroup(props: RadioGroupProps) {
 
 	return (
 		<KobalteRadioGroup.Root
-			isDisabled={local.disabled}
-			isReadOnly={local.readonly}
-			isRequired={local.required}
-			onValueChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
 			{...others}
 		>

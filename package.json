@@ -4,10 +4,10 @@
   "version": "0.0.0-development",
   "description": "A simple, fast and modern SolidJS UI library.",
   "scripts": {
-    "check": "rome check src/",
-    "format": "rome format src/ --write",
+    "check": "pnpm dlx @biomejs/biome check src/",
+    "format": "pnpm dlx @biomejs/biome format src/ --write",
     "check-typescript": "tsc --noEmit",
-    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 4000 --no-open",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook && cp .storybook/favicon.ico storybook-static",
     "ca": "pnpm format && pnpm check && pnpm check-typescript",
     "build": "tsup"
@@ -43,6 +43,7 @@
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
+    "@biomejs/biome": "1.3.3",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
@@ -67,11 +68,10 @@
     "esbuild": "^0.17.11",
     "esbuild-sass-plugin": "^2.6.0",
     "resolve": "^1.22.1",
-    "rome": "^11.0.0",
     "sass": "^1.58.3",
     "semantic-release": "^20.1.1",
     "solid-devtools": "^0.26.0",
-    "solid-js": "^1.6.15",
+    "solid-js": "^1.8.5",
     "storybook-dark-mode": "^2.1.1",
     "tsup": "^6.6.3",
     "tsup-preset-solid": "^0.1.8",
@@ -80,14 +80,15 @@
     "vite-plugin-solid": "^2.6.1"
   },
   "dependencies": {
-    "@kobalte/core": "^0.8.0",
+    "@kobalte/core": "^0.11.2",
     "@neodrag/solid": "^2.0.3",
     "@solid-primitives/autofocus": "^0.0.100",
     "@solid-primitives/event-listener": "^2.2.9",
     "@solid-primitives/media": "^2.1.5",
     "@solid-primitives/props": "^3.1.1",
-    "@solid-primitives/refs": "^0.3.7",
-    "remixicon": "^2.5.0",
+    "@solid-primitives/refs": "^1.0.5",
+    "intl-messageformat": "10.5.4",
+    "solid-icons": "^1.1.0",
     "solid-transition-group": "^0.0.12"
   },
   "peerDependencies": {

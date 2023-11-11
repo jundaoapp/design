@@ -1,11 +1,25 @@
-import {
-	Icon as IconComp,
-	Text,
-	Avatar,
-	Space,
-	Link as LinkComp,
-} from "@jundao/design";
+import { Avatar, Link as LinkComp, Space } from "@jundao/design";
 import { action } from "@storybook/addon-actions";
+
+// Solid Icons get treeshaken by mistake
+function RiUserFacesUser3Fill(props) {
+	return (
+		<svg
+			fill="currentColor"
+			stroke-width="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			style="overflow: visible; color: currentcolor;"
+			height="1em"
+			width="1em"
+		>
+			<path
+				fill="currentColor"
+				d="M20 22H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2Zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"
+			/>
+		</svg>
+	);
+}
 
 export default {
 	title: "Components/Avatar",
@@ -32,7 +46,7 @@ export const Square = Template.bind({});
 Square.args = { alt: "U", shape: "square" };
 
 export const Icon = Template.bind({});
-Icon.args = { alt: "User", icon: <IconComp icon="user-3" label="User" /> };
+Icon.args = { alt: "User", icon: <RiUserFacesUser3Fill title="User" /> };
 
 export const Small = Template.bind({});
 Small.args = { size: "small", alt: "U" };

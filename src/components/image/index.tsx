@@ -1,9 +1,9 @@
-import "./index.scss";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
 import { Image as KobalteImage } from "@kobalte/core";
-import { createMemo, JSX, Show } from "solid-js";
 import { combineProps } from "@solid-primitives/props";
+import { JSX, Show, createMemo } from "solid-js";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type ImageProps = IntrinsicComponentProps<
 	"span",

@@ -1,11 +1,11 @@
-import "./index.scss";
-import { Show } from "solid-js";
-import { processProps } from "../utilities";
-import { IntrinsicComponentProps } from "../types";
-import { Transition } from "solid-transition-group";
-import { Dynamic } from "solid-js/web";
-import { Spinner, Text } from "..";
 import { combineProps } from "@solid-primitives/props";
+import { Show } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { Transition } from "solid-transition-group";
+import { Spinner, Text } from "..";
+import { IntrinsicComponentProps } from "../types";
+import { processProps } from "../utilities";
+import "./index.scss";
 
 export type BadgeProps = IntrinsicComponentProps<
 	"div",

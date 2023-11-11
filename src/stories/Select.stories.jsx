@@ -55,7 +55,7 @@ Full.args = {
 };
 
 const MultiTemplate = (props) => {
-	return <Select.Multi {...props} />;
+	return <Select multiple {...props} />;
 };
 
 export const Multi = MultiTemplate.bind({});
