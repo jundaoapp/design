@@ -9,7 +9,7 @@ Our [Discord server](https://discord.gg/uUw8Hj4AzE) is open for help and more ad
 ## Getting Started
 
 Building this project requires Node.js [`v19.1.0`](./.nvmrc), which can be installed using [nvm](https://github.com/nvm-sh/nvm) (recommended) or [Node.js](https://nodejs.org/).
-We use pnpm `7.17.0` as a package manager, which can be installed following [pnpm Installation](https://pnpm.io/installation).
+We use pnpm `8.10.2` as a package manager, which can be installed following [pnpm Installation](https://pnpm.io/installation).
 
 Clone the repository and navigate to the `design` directory:
 ```bash
