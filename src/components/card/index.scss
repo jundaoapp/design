@@ -12,7 +12,7 @@ div.jdd.card {
 
         .collapse-toggle {
             float: right;
-            cursor: pointer;
+            cursor: var(--jdd-button-cursor);
             margin-bottom: -100%;
             margin-top: 0;
             margin-right: -.5rem;

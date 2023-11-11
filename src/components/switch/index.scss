@@ -14,7 +14,7 @@ $large-multiplier: 1.35;
     border-radius: 9999px;
     position: relative;
     padding: 0;
-    cursor: pointer;
+    cursor: var(--jdd-button-cursor);
     transition: var(--jdd-transition-colors);
     vertical-align: middle;
     display: inline-block;
