@@ -50,4 +50,4 @@ jobs:
         run: pnpm install
 
       - name: Run Rome Format
-        run: pnpm exec rome ci src/
+        run: pnpm dlx @biomejs/biome ci src/
