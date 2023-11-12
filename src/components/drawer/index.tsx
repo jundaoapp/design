@@ -72,6 +72,7 @@ export function Drawer(props: DrawerProps) {
 						<div
 							use:draggable={{
 								axis: "y",
+								disabled: local.position !== "bottom",
 								handle: handleRef,
 								position: position(),
 								onDrag: ({ offsetX, offsetY }) =>
