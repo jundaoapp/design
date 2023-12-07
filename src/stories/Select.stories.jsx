@@ -4,6 +4,7 @@ export default {
 	title: "Components/Select",
 	argTypes: {
 		label: { control: "text" },
+		onChange: { action: "onChange" },
 		placeholder: { control: "text" },
 		description: { control: "text" },
 		errorMessage: { control: "text" },

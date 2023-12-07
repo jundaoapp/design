@@ -6,7 +6,7 @@ export default {
 		label: { control: "text" },
 		description: { control: "text" },
 		errorMessage: { control: "text" },
-		onClick: { action: "onClick" },
+		onChange: { action: "onChange" },
 		type: {
 			control: { type: "select" },
 			options: ["text", "textarea"],
