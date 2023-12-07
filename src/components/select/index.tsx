@@ -60,6 +60,7 @@ export function Select<Option>(props: SelectProps<Option>) {
 			"valueComponent",
 			"tags",
 			"multiple",
+			"onChange",
 		],
 	});
 
@@ -89,6 +90,7 @@ export function Select<Option>(props: SelectProps<Option>) {
 			multiple={local.multiple ?? false}
 			value={local.value}
 			defaultValue={local.defaultValue}
+			onChange={local.onChange}
 			validationState={local.invalid ? "invalid" : "valid"}
 			itemComponent={(props: SelectBaseItemComponentProps<Option>) =>
 				(

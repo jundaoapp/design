@@ -48,6 +48,7 @@ export function Input(props: InputProps) {
 			"invalid",
 			"value",
 			"defaultValue",
+			"onChange",
 		],
 	});
 
@@ -84,6 +85,7 @@ export function Input(props: InputProps) {
 			name={local.name}
 			defaultValue={local.defaultValue}
 			validationState={local.invalid ? "invalid" : "valid"}
+			onChange={local.onChange}
 			asChild
 		>
 			<As
