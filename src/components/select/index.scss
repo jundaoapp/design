@@ -64,6 +64,8 @@
 
     .content {
         padding: .25rem;
+        max-height: 50dvh;
+        overflow-y: auto;
 
         .select-list {
             outline: none !important;
