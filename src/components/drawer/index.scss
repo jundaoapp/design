@@ -114,6 +114,8 @@
                     flex-grow: 1;
                     overflow-y: auto;
                     height: 0;
+                    margin: calc(var(--jdd-accessibility-outline-width) * -1);
+                    padding: var(--jdd-accessibility-outline-width);
                 }
             }
         }

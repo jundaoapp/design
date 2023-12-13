@@ -56,10 +56,14 @@
         flex-direction: column;
         flex-shrink: 1;
         overflow: hidden;
+        margin: calc(var(--jdd-accessibility-outline-width) * -1);
+        padding: var(--jdd-accessibility-outline-width);
 
         .modal-description-content {
             flex-shrink: 1;
             overflow-y: auto;
+            margin: calc(var(--jdd-accessibility-outline-width) * -1);
+            padding: var(--jdd-accessibility-outline-width);
         }
     }
 
