@@ -135,12 +135,14 @@ export function Modal(props: ModalProps) {
 									</Dialog.CloseButton>
 								</div>
 								<Dialog.Description class="modal-description">
-									<Show
-										when={typeof children() === "string"}
-										fallback={children()}
-									>
-										<Text>{children()}</Text>
-									</Show>
+									<div class="modal-description-content">
+										<Show
+											when={typeof children() === "string"}
+											fallback={children()}
+										>
+											<Text>{children()}</Text>
+										</Show>
+									</div>
 
 									<Show when={local.footer} keyed>
 										{(footer) => <div class="modal-footer">{footer}</div>}
