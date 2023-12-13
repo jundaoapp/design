@@ -20,7 +20,7 @@
     top: 0;
     left: 0;
     position: fixed;
-    max-width: min(90vw, 40rem);
+    max-width: 90vw;
     transition-property: var(--jdd-modal-transition-property);
     transition-duration: var(--jdd-transition-duration);
     transition-timing-function: var(--jdd-transition-function);
@@ -32,6 +32,13 @@
 
     --jdd-modal-transition-property: transform;
 
+    > .jdd.card > .content {
+        max-height: calc(100dvh - 2rem);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
     .modal-header {
         display: flex;
         align-items: center;
@@ -40,6 +47,19 @@
 
         .title {
             margin-bottom: 0;
+        }
+    }
+
+    .modal-description {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex-shrink: 1;
+        overflow: hidden;
+
+        .modal-description-content {
+            flex-shrink: 1;
+            overflow-y: auto;
         }
     }
 
