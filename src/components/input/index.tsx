@@ -107,7 +107,9 @@ export function Input(props: InputProps) {
 				<Space vertical>
 					{/* @ts-ignore: TS Can't infer type */}
 					<Dynamic
-						component={local.type === "textarea" ? TextField.TextArea : TextField.Input}
+						component={
+							local.type === "textarea" ? TextField.TextArea : TextField.Input
+						}
 						type={local.type === "textarea" ? undefined : local.type}
 						{...combinedProps}
 					/>
