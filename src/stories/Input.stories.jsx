@@ -9,7 +9,7 @@ export default {
 		onChange: { action: "onChange" },
 		type: {
 			control: { type: "select" },
-			options: ["text", "textarea"],
+			options: ["text", "textarea", "email", "password"],
 		},
 		size: {
 			control: { type: "select" },

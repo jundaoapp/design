@@ -14,7 +14,7 @@ export type InputProps = IntrinsicComponentProps<
 		value?: string;
 		defaultValue?: string;
 		onChange?: (value: string) => void;
-		type?: "text" | "textarea";
+		type?: HTMLInputElement["type"] | "textarea";
 		size?: "small" | "default" | "large";
 		label?: string;
 		danger?: boolean;
@@ -107,12 +107,8 @@ export function Input(props: InputProps) {
 				<Space vertical>
 					{/* @ts-ignore: TS Can't infer type */}
 					<Dynamic
-						component={
-							{
-								text: TextField.Input,
-								textarea: TextField.TextArea,
-							}[local.type!]
-						}
+						component={local.type === "textarea" ? TextField.TextArea : TextField.Input}
+						type={local.type === "textarea" ? undefined : local.type}
 						{...combinedProps}
 					/>
 
