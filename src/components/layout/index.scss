@@ -6,8 +6,10 @@
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100dvh;
+  width: 100dvw;
+  overflow-x: hidden;
+  overflow-y: visible;
 
 
   .layout-header {
@@ -19,13 +21,12 @@
     flex-grow: 1;
     display: flex;
     flex-direction: row;
+    align-items: stretch;
 
     .layout-sidebar {
       position: sticky;
       top: 0;
-      height: 100vh;
-      height: 100dvh;
-      overflow: scroll;
+      overflow-y: auto;
     }
 
     .layout-content {
@@ -58,7 +59,7 @@
       }
     }
 
-   .layout-backdrop {
+    .layout-backdrop {
       opacity: max(0, var(--jdd-layout-backdrop-opacity));
       position: fixed;
       transition: var(--jdd-sidebar-transition);

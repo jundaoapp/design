@@ -30,4 +30,6 @@ export default function LayoutSidebar(props: LayoutSidebarProps) {
 		local.position === "left" ? context.sidebarLeft : context.sidebarRight;
 
 	set(<div {...combinedProps} />);
+
+	return <></>;
 }
