@@ -6,15 +6,15 @@ import "./index.scss";
 export type LayoutHeaderProps = IntrinsicComponentProps<"header", object>;
 
 export default function LayoutHeader(props: LayoutHeaderProps) {
-  const [local, others] = processProps({
-    props,
-    default: {},
-    keys: [],
-  });
+	const [local, others] = processProps({
+		props,
+		default: {},
+		keys: [],
+	});
 
-  const combinedProps = combineProps(props, {
-    class: "jdd layout-header",
-  });
+	const combinedProps = combineProps(props, {
+		class: "jdd layout-header",
+	});
 
-  return <header {...combinedProps} />;
+	return <header {...combinedProps} />;
 }
