@@ -5,7 +5,7 @@ import { useLayoutContext } from "./context";
 import "./index.scss";
 
 export type LayoutSidebarProps = IntrinsicComponentProps<
-	"div",
+	"aside",
 	{
 		position?: "right" | "left";
 	}
@@ -29,7 +29,7 @@ export default function LayoutSidebar(props: LayoutSidebarProps) {
 	const [_, set] =
 		local.position === "left" ? context.sidebarLeft : context.sidebarRight;
 
-	set(<div {...combinedProps} />);
+	set(<aside {...combinedProps} />);
 
 	return <></>;
 }

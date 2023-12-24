@@ -3,7 +3,7 @@ import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.scss";
 
-export type LayoutHeaderProps = IntrinsicComponentProps<"div", object>;
+export type LayoutHeaderProps = IntrinsicComponentProps<"header", object>;
 
 export default function LayoutHeader(props: LayoutHeaderProps) {
 	const [local, others] = processProps({
@@ -16,5 +16,5 @@ export default function LayoutHeader(props: LayoutHeaderProps) {
 		class: "jdd layout-header",
 	});
 
-	return <div {...combinedProps} />;
+	return <header {...combinedProps} />;
 }

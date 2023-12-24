@@ -3,7 +3,7 @@ import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.scss";
 
-export type LayoutFooterProps = IntrinsicComponentProps<"div", object>;
+export type LayoutFooterProps = IntrinsicComponentProps<"footer", object>;
 
 export default function LayoutFooter(props: LayoutFooterProps) {
 	const [local, others] = processProps({
@@ -16,5 +16,5 @@ export default function LayoutFooter(props: LayoutFooterProps) {
 		class: "jdd layout-footer",
 	});
 
-	return <div {...combinedProps} />;
+	return <footer {...combinedProps} />;
 }
