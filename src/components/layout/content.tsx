@@ -22,4 +22,6 @@ export default function LayoutContent(props: LayoutContentProps) {
 	const [_, set] = context.content;
 
 	set(<div {...combinedProps} />);
+
+	return <></>;
 }
