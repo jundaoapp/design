@@ -1,113 +1,117 @@
 div.jdd.card {
-    border-radius: var(--jdd-border-radius-large);
-    background: var(--jdd-gray-1);
-    overflow: hidden;
-    box-shadow: var(--jdd-shadow);
-    border: 1px solid var(--jdd-gray-2);
+  border-radius: var(--jdd-border-radius-large);
+  background: var(--jdd-gray-1);
+  overflow: hidden;
+  box-shadow: var(--jdd-shadow);
+  border: 1px solid var(--jdd-gray-2);
 
+  > .title {
+    font-size: 1.15rem;
+    background: var(--jdd-gray-2);
+    padding: .5rem 1.5rem;
+
+    .collapse-toggle {
+      float: right;
+      cursor: var(--jdd-button-cursor);
+      margin-bottom: -100%;
+      margin-top: 0;
+      margin-right: -.5rem;
+      background: none;
+      border: none;
+      height: calc(100% - 1rem);
+      width: 2rem;
+      display: block;
+
+      svg {
+        transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
+        font-size: 1.5rem;
+        margin: auto;
+      }
+    }
+  }
+
+  &:not(.collapsible) {
+    display: flex;
+    flex-direction: column;
+
+    > .content {
+      flex-grow: 1;
+    }
+  }
+
+  &.collapsible[data-expanded] {
     > .title {
-        font-size: 1.15rem;
-        background: var(--jdd-gray-2);
-        padding: .5rem 1.5rem;
-
-        .collapse-toggle {
-            float: right;
-            cursor: var(--jdd-button-cursor);
-            margin-bottom: -100%;
-            margin-top: 0;
-            margin-right: -.5rem;
-            background: none;
-            border: none;
-            height: calc(100% - 1rem);
-            width: 2rem;
-            display: block;
-
-            svg {
-                transition: transform var(--jdd-transition-duration) var(--jdd-transition-function);
-                font-size: 1.5rem;
-                margin: auto;
-            }
-        }
+      .collapse-toggle svg {
+        transform: rotateX(180deg);
+      }
     }
 
-    &:not(.collapsible) {
-        display: flex;
-        flex-direction: column;
-
-        > .content {
-            flex-grow: 1;
-        }
+    > .content {
+      overflow: hidden;
+      animation: jdd-card-open var(--jdd-transition-duration) var(--jdd-transition-function);
     }
+  }
 
-    &.collapsible[data-expanded] {
-        > .content {
-            overflow: hidden;
-            animation: jdd-card-open var(--jdd-transition-duration) var(--jdd-transition-function);
-        }
+  &.collapsible:not([data-expanded]) {
+    > .content.content {
+      animation: jdd-card-collapse var(--jdd-transition-duration) var(--jdd-transition-function);
     }
+  }
 
-    &.collapsible:not([data-expanded]) {
+  &:not(.no-padding) > .content {
+    padding: 1.25rem 1.5rem;
+  }
 
-        > .title {
-            .collapse-toggle svg {
-                transform: rotateX(180deg);
-            }
-        }
-
-        > .content.content {
-            animation: jdd-card-collapse var(--jdd-transition-duration) var(--jdd-transition-function);
-        }
+  &.small {
+    > .title {
+      padding: .25rem 1.1rem;
     }
 
     &:not(.no-padding) > .content {
-        padding: 1.25rem 1.5rem;
+      padding: .9rem 1.1rem;
     }
+  }
 
-    &.small {
-        > .title {
-            padding: .25rem 1.1rem;
-        }
-
-        &:not(.no-padding) > .content {
-            padding: .9rem 1.1rem;
-        }
-    }
-
-    &.contrast-background {
-        .jdd-dark & {
-            background: var(--jdd-gray-12);
-            border: 1px solid var(--jdd-gray-11);
-        }
-    }
-
+  &.contrast-background {
     .jdd-dark & {
-        background: var(--jdd-gray-14);
-        box-shadow: none;
-        border: none;
-
-        > .title {
-            background: var(--jdd-gray-13);
-        }
+      background: var(--jdd-gray-12);
+      border: 1px solid var(--jdd-gray-11);
     }
+  }
+
+  .jdd-dark & {
+    background: var(--jdd-gray-14);
+    box-shadow: none;
+    border: none;
+
+    > .title {
+      background: var(--jdd-gray-13);
+    }
+  }
 }
 
 @keyframes jdd-card-open {
-    from {
-        height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+  from {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
   to {
-        height: calc(var(--kb-collapsible-content-height) - 45px);
-    }
+    opacity: 1;
+    height: calc(var(--kb-collapsible-content-height) - 45px);
+  }
 }
+
 @keyframes jdd-card-collapse {
-    from {
-        height: calc(var(--kb-collapsible-content-height) - 45px);
-    }
+  from {
+    height: calc(var(--kb-collapsible-content-height) - 45px);
+    opacity: 1;
+  }
   to {
-        height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
 }

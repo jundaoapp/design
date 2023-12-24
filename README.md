@@ -15,11 +15,12 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 
 </div>
 
-> **Warning** 
+> **Warning**
 > Jundao Design is in early stage and **not ready** for production.<br/>
 > Unstable API, see [Versioning](#versioning)
 
 # Features
+
 * Fast - Built on [SolidJS](https://www.solidjs.com).
 * Type Safe - Entirely coded in [Typescript](https://www.typescriptlang.org/).
 * Modern - Uses the latest available ES & CSS features.
@@ -31,7 +32,9 @@ A simple, fast and modern [SolidJS](https://www.solidjs.com) UI library.
 * Fresh UI - Light & Dark mode with professional looking design.
 
 # Usage
+
 Install `@jundao/design` and peer dependency fonts:
+
 ```bash
 npm install @jundao/design@alpha @fontsource-variable/inter @fontsource-variable/jetbrains-mono
 # or
@@ -41,6 +44,7 @@ pnpm add @jundao/design@alpha @fontsource-variable/inter @fontsource-variable/je
 ```
 
 Import in entrypoint:
+
 ```ts
 import "@jundao/design/index.css";
 
@@ -50,15 +54,20 @@ import "@fontsource-variable/jetbrains-mono";
 ```
 
 Import components:
-```ts
-import { Button } from "@jundao/design";
 
-<Button>Click Me</Button>
+```ts
+import {Button} from "@jundao/design";
+
+<Button>Click
+Me < /Button>
 ```
+
 :sparkles: All done!
 
 # Components
+
 Currently implemented & planned components:
+
 - [ ] Accordion
 - [x] Alert
 - [x] Avatar
@@ -97,6 +106,7 @@ Currently implemented & planned components:
 - [ ] QRCode
 - [x] Radio
 - [x] Select
+- [x] Sidenav
 - [ ] Skeleton
 - [x] Slider
 - [x] Space
@@ -114,12 +124,17 @@ Currently implemented & planned components:
 - [ ] Upload
 
 # Versioning
-Versions `1.x.x` should all be considered unstabled and all minor updates may include BREAKING CHANGES even without explicit mention.
-This direct [contradiction to the Semantic Versioning](https://semver.org/spec/v2.0.0.html#spec-item-4) is due to a [bad implementation and limitation in semantic-release](https://github.com/semantic-release/semantic-release/issues/1507#issuecomment-605079708).
 
-Versions `2.x.x` and onwards will be considered stable and adhere to the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+Versions `1.x.x` should all be considered unstabled and all minor updates may include BREAKING CHANGES even without
+explicit mention.
+This direct [contradiction to the Semantic Versioning](https://semver.org/spec/v2.0.0.html#spec-item-4) is due to
+a [bad implementation and limitation in semantic-release](https://github.com/semantic-release/semantic-release/issues/1507#issuecomment-605079708).
+
+Versions `2.x.x` and onwards will be considered stable and adhere to
+the [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
 # Contributing
+
 Before contributing please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 All contributions are moderated under the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).

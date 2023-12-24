@@ -78,28 +78,19 @@ export function Card(props: CardProps) {
 			defaultOpen={!local.defaultCollapsed}
 			{...combinedProps}
 		>
-			<Show
-				when={
-					title() ||
-					local.collapsible ||
-					local.collapsed ||
-					local.defaultCollapsed
-				}
-			>
-				<div class="title">
-					<Show when={typeof title() === "string"} fallback={title()}>
-						<Text>{title()}</Text>
-					</Show>
+			<div class="title">
+				<Show when={typeof title() === "string"} fallback={title()}>
+					<Text>{title()}</Text>
+				</Show>
 
-					<Show when={local.collapsible || local.defaultCollapsed}>
-						<Collapsible.Trigger class="jdd collapse-toggle">
-							<Text>
-								<RiArrowsArrowDownSLine />
-							</Text>
-						</Collapsible.Trigger>
-					</Show>
-				</div>
-			</Show>
+				<Show when={local.collapsible || local.defaultCollapsed}>
+					<Collapsible.Trigger class="jdd collapse-toggle">
+						<Text>
+							<RiArrowsArrowDownSLine />
+						</Text>
+					</Collapsible.Trigger>
+				</Show>
+			</div>
 			<Collapsible.Content class="content">
 				{local.children}
 			</Collapsible.Content>
