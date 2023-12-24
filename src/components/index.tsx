@@ -21,6 +21,7 @@ export * from "./popconfirm";
 export * from "./progress";
 export * from "./radio";
 export * from "./select";
+export * from "./sidenav";
 export * from "./slider";
 export * from "./space";
 export * from "./spinner";

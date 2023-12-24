@@ -4,6 +4,7 @@ import { RiSystemMoreFill } from "solid-icons/ri";
 import {
 	For,
 	JSXElement,
+	Show,
 	createEffect,
 	createMemo,
 	createSignal,
@@ -118,18 +119,14 @@ function Breadcrumb(props: BreadcrumbProps) {
 		>
 			<ol>
 				<For each={renderItems()}>
-					{(item, index) => {
-						if (index() + 1 < renderItems().length) {
-							return (
-								<li>
-									{item}
-									<KobalteBreadcrumbs.Separator />
-								</li>
-							);
-						}
-
-						return item;
-					}}
+					{(item, index) => (
+						<li>
+							{item}
+							<Show when={index() + 1 < renderItems().length}>
+								<KobalteBreadcrumbs.Separator />
+							</Show>
+						</li>
+					)}
 				</For>
 			</ol>
 		</KobalteBreadcrumbs.Root>

@@ -7,7 +7,7 @@ span.jdd.text {
   }
 
   &.secondary, &.secondary mark.jdd.text {
-    color: var(--jdd-gray-8);
+    color: var(--jdd-gray-7);
 
     .jdd-dark & {
       color: var(--jdd-gray-6);
@@ -67,12 +67,12 @@ span.jdd.text {
     border-radius: 3px;
   }
 
-    &.small {
-      font-size: .8rem;
+  &.small {
+    font-size: .8rem;
   }
 
-    &.large {
-      font-size: 1.2rem;
+  &.large {
+    font-size: 1.2rem;
   }
 
   &.sans {

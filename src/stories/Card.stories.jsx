@@ -11,6 +11,7 @@ export default {
 		},
 		collapsible: { control: "boolean" },
 		collapsed: { control: "boolean" },
+		contrastBackground: { control: "boolean" },
 	},
 };
 
