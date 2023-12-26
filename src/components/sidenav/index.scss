@@ -46,9 +46,11 @@
     color: var(--jdd-blue-6);
   }
 
-  &:hover:not(:disabled):not([aria-disabled]) {
-    background: var(--jdd-blue-6);
-    color: var(--jdd-gray-1);
+  &:not(:disabled):not([aria-disabled]) {
+    &:hover, &:focus-visible {
+      background: var(--jdd-blue-6);
+      color: var(--jdd-gray-1);
+    }
   }
 
   > svg, span > svg {

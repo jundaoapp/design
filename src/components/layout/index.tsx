@@ -2,6 +2,7 @@ import { WindowEventListener } from "@solid-primitives/event-listener";
 import { createBreakpoints } from "@solid-primitives/media";
 import { combineProps } from "@solid-primitives/props";
 import { Show, createEffect, createSignal } from "solid-js";
+import { isServer } from "solid-js/web";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import LayoutContent from "./content";
@@ -57,6 +58,7 @@ function InnerLayout(props: LayoutProps) {
 	const [sidebarTransition, setSidebarTransition] = createSignal(false);
 
 	createEffect(() => {
+		if (isServer) return;
 		setSidebarTransition(true);
 
 		setTimeout(() => {
@@ -88,7 +90,7 @@ function InnerLayout(props: LayoutProps) {
 					? "transform 0.3s var(--jdd-transition-function), opacity 0.3s var(--jdd-transition-function)"
 					: "",
 				get "--jdd-layout-backdrop-opacity"() {
-					if (leftSidebarOpen() || rightSidebarOpen()) {
+					if (isServer || leftSidebarOpen() || rightSidebarOpen()) {
 						return "";
 					}
 
@@ -140,13 +142,19 @@ function InnerLayout(props: LayoutProps) {
 
 		let swipeDirection: "left" | "right" | undefined;
 
-		// Left swipe
-		if (swipeStart().x < local.swipeDistanceFromSides) {
+		// Swipe from left to right
+		if (
+			getSidebarLeft() !== undefined &&
+			swipeStart().x < local.swipeDistanceFromSides
+		) {
 			swipeDirection = "right";
 		}
 
-		// Right swipe
-		if (window.innerWidth - swipeStart().x < local.swipeDistanceFromSides) {
+		// Swipe from right to left
+		if (
+			getSidebarRight() !== undefined &&
+			window.innerWidth - swipeStart().x < local.swipeDistanceFromSides
+		) {
 			swipeDirection = "left";
 		}
 
