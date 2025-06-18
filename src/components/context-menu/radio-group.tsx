@@ -1,5 +1,5 @@
 import { Menu } from "../menu";
-import { MenuRadioGroupProps } from "../menu/radio-group";
+import type { MenuRadioGroupProps } from "../menu/radio-group";
 
 export type ContextMenuRadioGroupProps = Omit<MenuRadioGroupProps, "type">;
 

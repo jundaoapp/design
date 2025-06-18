@@ -1,5 +1,5 @@
 import { Menu } from "../menu";
-import { MenuRadioProps } from "../menu/radio";
+import type { MenuRadioProps } from "../menu/radio";
 
 export type DropdownMenuRadioProps = Omit<MenuRadioProps, "type">;
 

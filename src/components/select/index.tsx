@@ -1,12 +1,12 @@
 import { As, Select as KobalteSelect } from "@kobalte/core";
-import { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/select-base";
-import { SelectValueState } from "@kobalte/core/dist/types/select/select-value";
+import type { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/select-base";
+import type { SelectValueState } from "@kobalte/core/dist/types/select/select-value";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
 import { RiDevelopmentCodeFill, RiSystemCheckFill } from "solid-icons/ri";
-import { For, JSXElement, Show, createMemo } from "solid-js";
+import { createMemo, For, type JSXElement, Show } from "solid-js";
 import { Button, Card, Space, Tag, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 

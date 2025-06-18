@@ -1,22 +1,24 @@
-import { Alert as KobalteAlert } from "@kobalte/core";
-import { Button } from "@kobalte/core";
+import { Button, Alert as KobalteAlert } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
-import { RiSystemCloseFill, RiSystemLoaderFill } from "solid-icons/ri";
-import { RiSystemCheckboxCircleFill } from "solid-icons/ri";
-import { RiSystemInformationFill } from "solid-icons/ri";
-import { RiSystemErrorWarningFill } from "solid-icons/ri";
-import { RiSystemAlertFill } from "solid-icons/ri";
 import {
-	JSXElement,
+	RiSystemAlertFill,
+	RiSystemCheckboxCircleFill,
+	RiSystemCloseFill,
+	RiSystemErrorWarningFill,
+	RiSystemInformationFill,
+	RiSystemLoaderFill,
+} from "solid-icons/ri";
+import {
+	createMemo,
+	createSignal,
+	type JSXElement,
 	Match,
 	Show,
 	Switch,
-	createMemo,
-	createSignal,
 } from "solid-js";
 import { Transition } from "solid-transition-group";
 import { Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 

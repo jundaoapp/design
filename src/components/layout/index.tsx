@@ -1,9 +1,9 @@
 import { WindowEventListener } from "@solid-primitives/event-listener";
 import { createBreakpoints } from "@solid-primitives/media";
 import { combineProps } from "@solid-primitives/props";
-import { Show, createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, Show } from "solid-js";
 import { isServer } from "solid-js/web";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import LayoutContent from "./content";
 import { LayoutContextProvider, useLayoutContext } from "./context";

@@ -71,8 +71,8 @@ CustomText.args = {
 };
 
 const delay = () => {
-	const now = new Date().getTime();
-	while (new Date().getTime() < now + 3000) {}
+	const now = Date.now();
+	while (Date.now() < now + 3000) {}
 };
 
 export const Delayed = Template.bind({});

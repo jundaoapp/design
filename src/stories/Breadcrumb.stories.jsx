@@ -1,6 +1,5 @@
-import { Breadcrumb, Space, Switch, Text } from "@jundao/design";
+import { Breadcrumb, Space, Switch } from "@jundao/design";
 import { createSignal } from "solid-js";
-import { Link } from "../components";
 
 export default {
 	title: "Components/Breadcrumb",

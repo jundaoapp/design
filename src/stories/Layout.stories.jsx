@@ -5,7 +5,7 @@ export default {
 	argTypes: {},
 };
 
-const Template = (props) => {
+const Template = (_props) => {
 	return (
 		<Layout style={{ "min-width": "90vw", "min-height": "90vh" }}>
 			<Layout.Header
@@ -71,7 +71,7 @@ const Template = (props) => {
 export const Default = Template.bind({});
 Default.args = {};
 
-const ScrollTemplate = (props) => {
+const ScrollTemplate = (_props) => {
 	return (
 		<>
 			<style>
@@ -147,7 +147,7 @@ const ScrollTemplate = (props) => {
 export const Scroll = ScrollTemplate.bind({});
 Scroll.args = {};
 
-const MobileTemplate = (props) => {
+const MobileTemplate = (_props) => {
 	return (
 		<iframe
 			title="mobile"
@@ -160,7 +160,7 @@ const MobileTemplate = (props) => {
 export const Mobile = MobileTemplate.bind({});
 Mobile.args = {};
 
-const ScrollControlledTemplate = (props) => {
+const ScrollControlledTemplate = (_props) => {
 	const context = useLayoutContext();
 
 	const [_ignored, setLeftSidebarOpen] = context.sidebarLeftOpen;
@@ -248,7 +248,7 @@ const ScrollControlledTemplate = (props) => {
 export const ScrollControlled = ScrollControlledTemplate.bind({});
 ScrollControlled.args = {};
 
-const MobileControlledTemplate = (props) => {
+const MobileControlledTemplate = (_props) => {
 	return (
 		<iframe
 			title="mobile"
@@ -261,7 +261,7 @@ const MobileControlledTemplate = (props) => {
 export const MobileControlled = MobileControlledTemplate.bind({});
 MobileControlled.args = {};
 
-const LongSidebarTemplate = (props) => {
+const LongSidebarTemplate = (_props) => {
 	return (
 		<>
 			<style>
@@ -355,7 +355,7 @@ const LongSidebarTemplate = (props) => {
 export const LongSidebar = LongSidebarTemplate.bind({});
 LongSidebar.args = {};
 
-const MobileLongSidebarTemplate = (props) => {
+const MobileLongSidebarTemplate = (_props) => {
 	return (
 		<iframe
 			title="mobile"

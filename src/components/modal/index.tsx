@@ -2,16 +2,16 @@ import { Dialog } from "@kobalte/core";
 import { mergeRefs } from "@solid-primitives/refs";
 import { RiSystemCloseFill } from "solid-icons/ri";
 import {
-	JSXElement,
-	Show,
 	createEffect,
 	createMemo,
 	createSignal,
+	type JSXElement,
 	on,
+	Show,
 } from "solid-js";
 import { Card, Text } from "..";
 import "../title/index.css";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useOverlayContext } from "../utilities/overlay";
 import "./index.css";

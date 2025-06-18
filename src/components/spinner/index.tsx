@@ -1,6 +1,5 @@
 import { combineProps } from "@solid-primitives/props";
-import { ComponentProps, mergeProps, splitProps } from "solid-js";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 

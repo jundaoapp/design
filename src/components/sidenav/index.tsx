@@ -1,5 +1,5 @@
 import { combineProps } from "@solid-primitives/props";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import SidenavGroup from "./group";
 import "./index.css";

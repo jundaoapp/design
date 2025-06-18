@@ -1,5 +1,5 @@
 import { Menu } from "../menu";
-import { MenuCheckboxProps } from "../menu/checkbox";
+import type { MenuCheckboxProps } from "../menu/checkbox";
 
 export type ContextMenuCheckboxProps = Omit<MenuCheckboxProps, "type">;
 

@@ -2,10 +2,10 @@ import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
 import { RiSystemCheckFill, RiSystemSubtractFill } from "solid-icons/ri";
-import { JSX, Show, createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, type JSX, Show } from "solid-js";
 import { Space, Text } from "..";
 import "../label/index.css";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 

@@ -2,17 +2,17 @@ import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
 import { RiSystemMoreFill } from "solid-icons/ri";
 import {
-	For,
-	JSXElement,
-	Show,
 	createEffect,
 	createMemo,
 	createSignal,
+	For,
+	type JSXElement,
 	on,
+	Show,
 } from "solid-js";
 import { Button, Text } from "..";
 import "../link/index.css";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 import { BreadcrumbLink } from "./link";

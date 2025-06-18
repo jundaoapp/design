@@ -9,7 +9,7 @@ export default {
 };
 
 // Solid Icons get treeshaken by mistake
-function RiDocumentFileEditLine(props) {
+function RiDocumentFileEditLine(_props) {
 	return (
 		<svg
 			fill="currentColor"
@@ -27,7 +27,7 @@ function RiDocumentFileEditLine(props) {
 		</svg>
 	);
 }
-function RiDocumentFolderAddLine(props) {
+function RiDocumentFolderAddLine(_props) {
 	return (
 		<svg
 			fill="currentColor"
@@ -45,7 +45,7 @@ function RiDocumentFolderAddLine(props) {
 		</svg>
 	);
 }
-function RiSystemShareForwardFill(props) {
+function RiSystemShareForwardFill(_props) {
 	return (
 		<svg
 			fill="currentColor"

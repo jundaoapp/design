@@ -4,9 +4,16 @@ import {
 	RiSystemCheckboxCircleFill,
 	RiSystemCloseCircleFill,
 } from "solid-icons/ri";
-import { For, JSXElement, Match, Show, Switch, createMemo } from "solid-js";
+import {
+	createMemo,
+	For,
+	type JSXElement,
+	Match,
+	Show,
+	Switch,
+} from "solid-js";
 import { Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import "./index.css";
 
@@ -111,7 +118,10 @@ export function Progress(props: ProgressProps) {
 							class="progress-track"
 							classList={{
 								completed: local.steps
-									? index < local.value!
+									? index <
+										(Array.isArray(local.value)
+											? local.value[index]
+											: local.value)!
 									: local.value === local.max,
 								current: local.steps ? index === local.value : true,
 							}}

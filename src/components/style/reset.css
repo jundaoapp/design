@@ -83,6 +83,7 @@ video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	/* biome-ignore lint/suspicious/noShorthandPropertyOverrides: ik */
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -116,6 +117,7 @@ blockquote:after,
 q:before,
 q:after {
 	content: "";
+	/* biome-ignore lint/suspicious/noDuplicateProperties: ik */
 	content: none;
 }
 table {

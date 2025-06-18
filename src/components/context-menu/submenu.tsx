@@ -1,5 +1,5 @@
 import { Menu } from "../menu";
-import { MenuSubmenuProps } from "../menu/submenu";
+import type { MenuSubmenuProps } from "../menu/submenu";
 
 export type ContextMenuSubmenuProps = Omit<MenuSubmenuProps, "type">;
 

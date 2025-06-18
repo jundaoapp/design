@@ -1,5 +1,4 @@
 import { Slider } from "@jundao/design";
-import { mergeProps } from "solid-js";
 
 export default {
 	title: "Components/Slider",

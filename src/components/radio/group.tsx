@@ -1,7 +1,7 @@
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
-import { JSX, Show, createMemo } from "solid-js";
+import { createMemo, type JSX, Show } from "solid-js";
 import { Space, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 
 export type RadioGroupProps = IntrinsicComponentProps<

@@ -1,6 +1,6 @@
 import { ContextMenu, DropdownMenu } from "@kobalte/core";
 import { Dynamic } from "solid-js/web";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 
 export type MenuRadioGroupProps = IntrinsicComponentProps<

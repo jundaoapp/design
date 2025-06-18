@@ -1,5 +1,5 @@
 import { combineProps } from "@solid-primitives/props";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useLayoutContext } from "./context";
 import "./index.css";
@@ -12,7 +12,7 @@ export type LayoutSidebarProps = IntrinsicComponentProps<
 >;
 
 export default function LayoutSidebar(props: LayoutSidebarProps) {
-	const [local, others] = processProps({
+	const [local, _others] = processProps({
 		props,
 		default: {
 			position: "left",

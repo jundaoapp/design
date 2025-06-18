@@ -2,10 +2,10 @@ import { Dialog } from "@kobalte/core";
 import { createDraggable } from "@neodrag/solid";
 import { combineProps } from "@solid-primitives/props";
 import { RiSystemCloseFill } from "solid-icons/ri";
-import { JSXElement, Show, createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, type JSXElement, Show } from "solid-js";
 import { Card, Text } from "..";
 import "../title/index.css";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useOverlayContext } from "../utilities/overlay";
 import "./index.css";
@@ -40,6 +40,7 @@ export function Drawer(props: DrawerProps) {
 		],
 	});
 
+	// biome-ignore lint/correctness/noUnusedVariables: use
 	const { draggable } = createDraggable();
 
 	const [OverlayContextProvider, context] = useOverlayContext();
