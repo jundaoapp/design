@@ -2,26 +2,26 @@ import { Button, Checkbox, Divider, Space, Text } from "@jundao/design";
 import { createSignal, splitProps } from "solid-js";
 
 export default {
-  title: "Components/Checkbox",
-  argTypes: {
-    onClick: { action: "onClick" },
-    onChange: { action: "onChange" },
-    size: {
-      control: { type: "select" },
-      options: ["small", "default", "large"],
-    },
-    indeterminate: { control: "boolean" },
-    disabled: { control: "boolean" },
-    checked: { control: "boolean" },
-    danger: { control: "boolean" },
-    defaultChecked: { control: "boolean" },
-    label: { control: "text" },
-    autofocus: { control: "boolean" },
-  },
+	title: "Components/Checkbox",
+	argTypes: {
+		onClick: { action: "onClick" },
+		onChange: { action: "onChange" },
+		size: {
+			control: { type: "select" },
+			options: ["small", "default", "large"],
+		},
+		indeterminate: { control: "boolean" },
+		disabled: { control: "boolean" },
+		checked: { control: "boolean" },
+		danger: { control: "boolean" },
+		defaultChecked: { control: "boolean" },
+		label: { control: "text" },
+		autofocus: { control: "boolean" },
+	},
 };
 
 const Template = (props) => {
-  return <Checkbox {...props} />;
+	return <Checkbox {...props} />;
 };
 
 export const Default = Template.bind({});
@@ -40,54 +40,54 @@ export const Small = Template.bind({});
 Small.args = { size: "small" };
 
 export const All = (props) => (
-  <Space vertical>
-    <Checkbox size="small" />
-    <Checkbox {...props} />
-    <Checkbox size="large" />
-  </Space>
+	<Space vertical>
+		<Checkbox size="small" />
+		<Checkbox {...props} />
+		<Checkbox size="large" />
+	</Space>
 );
 
 export const Controlled = Template.bind({});
 Controlled.args = { checked: true };
 
 const IndeterminateTemplate = (props) => {
-  const [local, others] = splitProps(props, ["onChange"]);
+	const [local, others] = splitProps(props, ["onChange"]);
 
-  const [indeterminate, setIndeterminate] = createSignal(false);
-  const [checked, setChecked] = createSignal(false);
+	const [indeterminate, setIndeterminate] = createSignal(false);
+	const [checked, setChecked] = createSignal(false);
 
-  const changeHandler = (value) => {
-    if (typeof local.onChange === "function") local.onChange(value);
-    setChecked(value);
-  };
+	const changeHandler = (value) => {
+		if (typeof local.onChange === "function") local.onChange(value);
+		setChecked(value);
+	};
 
-  return (
-    <Space vertical align="start">
-      <Space>
-        <Checkbox
-          indeterminate={indeterminate()}
-          onIndeterminateChange={setIndeterminate}
-          onChange={changeHandler}
-          {...others}
-        />
-        <Button
-          type="primary"
-          size="small"
-          onClick={() => {
-            setIndeterminate(!indeterminate());
-          }}
-        >
-          Toggle Indeterminate
-        </Button>
-      </Space>
+	return (
+		<Space vertical align="start">
+			<Space>
+				<Checkbox
+					indeterminate={indeterminate()}
+					onIndeterminateChange={setIndeterminate}
+					onChange={changeHandler}
+					{...others}
+				/>
+				<Button
+					type="primary"
+					size="small"
+					onClick={() => {
+						setIndeterminate(!indeterminate());
+					}}
+				>
+					Toggle Indeterminate
+				</Button>
+			</Space>
 
-      <Text>
-        Checked: {checked().toString()}
-        <br />
-        Indeterminate: {indeterminate().toString()}
-      </Text>
-    </Space>
-  );
+			<Text>
+				Checked: {checked().toString()}
+				<br />
+				Indeterminate: {indeterminate().toString()}
+			</Text>
+		</Space>
+	);
 };
 
 export const Indeterminate = IndeterminateTemplate.bind({});

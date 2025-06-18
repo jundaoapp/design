@@ -2,28 +2,28 @@ import { Button, Card, Space, Text } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {
-  title: "Components/Card",
-  argTypes: {
-    title: { control: "text" },
-    size: {
-      control: { type: "select" },
-      options: ["small", "default"],
-    },
-    collapsible: { control: "boolean" },
-    collapsed: { control: "boolean" },
-    contrastBackground: { control: "boolean" },
-  },
+	title: "Components/Card",
+	argTypes: {
+		title: { control: "text" },
+		size: {
+			control: { type: "select" },
+			options: ["small", "default"],
+		},
+		collapsible: { control: "boolean" },
+		collapsed: { control: "boolean" },
+		contrastBackground: { control: "boolean" },
+	},
 };
 
 const Template = (props) => (
-  <Card {...props} style={{ width: "16rem" }}>
-    <Text>Card content</Text>
-    <br />
-    <Text>Card content</Text>
-    <br />
-    <Text>Card content</Text>
-    <br />
-  </Card>
+	<Card {...props} style={{ width: "16rem" }}>
+		<Text>Card content</Text>
+		<br />
+		<Text>Card content</Text>
+		<br />
+		<Text>Card content</Text>
+		<br />
+	</Card>
 );
 
 export const Default = Template.bind({});
@@ -41,23 +41,23 @@ export const Collapsible = Template.bind({});
 Collapsible.args = { title: "Card Title", collapsible: true };
 
 const TemplateCollapsed = (props) => {
-  const [collapsed, setCollapsed] = createSignal(props.collapsed);
-  return (
-    <Space align="start">
-      <Card {...props} collapsed={collapsed()} style={{ width: "16rem" }}>
-        <Text>Card content</Text>
-        <br />
-        <Text>Card content</Text>
-        <br />
-        <Text>Card content</Text>
-        <br />
-      </Card>
+	const [collapsed, setCollapsed] = createSignal(props.collapsed);
+	return (
+		<Space align="start">
+			<Card {...props} collapsed={collapsed()} style={{ width: "16rem" }}>
+				<Text>Card content</Text>
+				<br />
+				<Text>Card content</Text>
+				<br />
+				<Text>Card content</Text>
+				<br />
+			</Card>
 
-      <Button type="primary" onClick={() => setCollapsed(!collapsed())}>
-        Toggle
-      </Button>
-    </Space>
-  );
+			<Button type="primary" onClick={() => setCollapsed(!collapsed())}>
+				Toggle
+			</Button>
+		</Space>
+	);
 };
 
 export const Collapsed = TemplateCollapsed.bind({});

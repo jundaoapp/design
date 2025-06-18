@@ -2,37 +2,37 @@ import { Button, Divider, Space, Text } from "@jundao/design";
 import { For } from "solid-js";
 
 export default {
-  title: "Components/Space",
-  argTypes: {
-    vertical: { control: "boolean" },
-    size: {
-      control: { type: "select" },
-      options: ["small", "medium", "large"],
-    },
-    wrap: { control: "boolean" },
-    align: {
-      control: { type: "select" },
-      options: ["left", "center", "right"],
-    },
-  },
+	title: "Components/Space",
+	argTypes: {
+		vertical: { control: "boolean" },
+		size: {
+			control: { type: "select" },
+			options: ["small", "medium", "large"],
+		},
+		wrap: { control: "boolean" },
+		align: {
+			control: { type: "select" },
+			options: ["left", "center", "right"],
+		},
+	},
 };
 
 const Template = (props) => {
-  const { vertical } = props;
+	const { vertical } = props;
 
-  return (
-    <>
-      <Space {...props}>
-        <Button>Button</Button>
-        <Button>Button</Button>
-        <Button>Button</Button>
-        <Text>Text</Text>
-        <Text>Text</Text>
-        <Divider vertical={!vertical} />
-        <Text>Text</Text>
-      </Space>
-    </>
-  );
+	return (
+		<>
+			<Space {...props}>
+				<Button>Button</Button>
+				<Button>Button</Button>
+				<Button>Button</Button>
+				<Text>Text</Text>
+				<Text>Text</Text>
+				<Divider vertical={!vertical} />
+				<Text>Text</Text>
+			</Space>
+		</>
+	);
 };
 
 export const Default = Template.bind({});
@@ -54,15 +54,15 @@ export const End = Template.bind({});
 End.args = { vertical: true, align: "end" };
 
 const WrapTemplate = (props) => {
-  return (
-    <div style={{ width: "40rem" }}>
-      <Space {...props}>
-        <For each={[...Array(10).keys()]} fallback={<div>Loading...</div>}>
-          {() => <Button>Button</Button>}
-        </For>
-      </Space>
-    </div>
-  );
+	return (
+		<div style={{ width: "40rem" }}>
+			<Space {...props}>
+				<For each={[...Array(10).keys()]} fallback={<div>Loading...</div>}>
+					{() => <Button>Button</Button>}
+				</For>
+			</Space>
+		</div>
+	);
 };
 
 export const Wrap = WrapTemplate.bind({});
