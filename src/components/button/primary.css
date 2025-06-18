@@ -1,0 +1,81 @@
+.jdd.button.primary {
+	background-color: var(--jdd-blue-6);
+	color: white;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+	.jdd-dark & {
+		&:not([data-disabled]) {
+			&:hover,
+			&.loading {
+				background-color: var(--jdd-blue-7);
+			}
+
+			&:active {
+				background-color: var(--jdd-blue-4);
+			}
+		}
+
+		&[data-disabled] {
+			color: var(--jdd-gray-5);
+		}
+	}
+
+	&.danger {
+		background-color: var(--jdd-red-6);
+		color: white;
+
+		.jdd-dark & {
+			&:not([data-disabled]) {
+				&:hover,
+				&.loading {
+					background-color: var(--jdd-red-7);
+				}
+
+				&:active {
+					background-color: var(--jdd-red-4);
+				}
+			}
+
+			&[data-disabled] {
+				color: var(--jdd-gray-5);
+				background-color: var(--jdd-gray-10);
+			}
+		}
+
+		&:not([data-disabled]) {
+			&:hover,
+			&.loading {
+				background-color: var(--jdd-red-4);
+				color: var(--jdd-gray-1);
+			}
+
+			&:active {
+				background-color: var(--jdd-red-7);
+				color: var(--jdd-gray-1);
+			}
+		}
+
+		&[data-disabled] {
+			color: var(--jdd-gray-10);
+			background-color: var(--jdd-gray-2);
+		}
+	}
+
+	&:not([data-disabled]) {
+		&:hover,
+		&.loading {
+			background-color: var(--jdd-blue-5);
+			color: var(--jdd-gray-1);
+		}
+
+		&:active {
+			background-color: var(--jdd-blue-7);
+			color: var(--jdd-gray-1);
+		}
+	}
+
+	&[data-disabled] {
+		color: var(--jdd-gray-10);
+		text-shadow: none;
+	}
+}

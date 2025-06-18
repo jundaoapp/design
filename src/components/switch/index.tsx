@@ -2,17 +2,17 @@ import { Switch as KobalteSwitch } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
 import {
-	JSXElement,
+	createMemo,
+	type JSXElement,
 	Match,
 	Show,
 	Switch as SolidSwitch,
-	createMemo,
 } from "solid-js";
 import { Space, Spinner, Text } from "..";
-import "../label/index.scss";
-import { IntrinsicComponentProps } from "../types";
+import "../label/index.css";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"label",

@@ -1,8 +1,8 @@
 import { Collapsible } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
 import { RiArrowsArrowDownSLine } from "solid-icons/ri";
-import { ComponentProps } from "solid-js";
-import { IntrinsicComponentProps } from "../types";
+import type { ComponentProps } from "solid-js";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 
 export type SidenavGroupProps = IntrinsicComponentProps<
@@ -38,6 +38,7 @@ export default function SidenavGroup(props: SidenavGroupProps) {
 			defaultOpen={local.defaultOpen}
 			onOpenChange={local.onChange}
 			as="li"
+			// biome-ignore lint/a11y/useSemanticElements: ik
 			role="group"
 			disabled={local.disabled}
 			{...(combinedProps as ComponentProps<typeof Collapsible.Root>)}

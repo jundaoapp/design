@@ -1,10 +1,9 @@
 import { Link as KobalteLink } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
-import { mergeRefs } from "@solid-primitives/refs";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type LinkProps = IntrinsicComponentProps<
 	"a",

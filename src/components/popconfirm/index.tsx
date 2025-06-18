@@ -7,19 +7,19 @@ import {
 	RiSystemInformationFill,
 } from "solid-icons/ri";
 import {
-	JSXElement,
-	Match,
-	Setter,
-	Show,
-	Switch,
 	createEffect,
 	createMemo,
 	createSignal,
+	type JSXElement,
+	Match,
+	type Setter,
+	Show,
+	Switch,
 } from "solid-js";
 import { Button, Card, Text, Title } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",

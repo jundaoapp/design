@@ -1,5 +1,5 @@
 import { Menu } from "../menu";
-import { MenuGroupProps } from "../menu/group";
+import type { MenuGroupProps } from "../menu/group";
 
 export type DropdownMenuGroupProps = Omit<MenuGroupProps, "type">;
 

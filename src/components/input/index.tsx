@@ -1,12 +1,12 @@
 import { As, TextField } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
-import { JSXElement, Show, createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, type JSXElement, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Space, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type InputProps = IntrinsicComponentProps<
 	"input" | "textarea",

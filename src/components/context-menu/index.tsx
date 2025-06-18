@@ -1,6 +1,6 @@
 import { ContextMenu as KobalteContextMenu } from "@kobalte/core";
-import { JSXElement, createSignal } from "solid-js";
-import { Menu, MenuProps } from "../menu";
+import type { JSXElement } from "solid-js";
+import { Menu, type MenuProps } from "../menu";
 import { processProps } from "../utilities";
 import { ContextMenuCheckbox } from "./checkbox";
 import { ContextMenuGroup } from "./group";

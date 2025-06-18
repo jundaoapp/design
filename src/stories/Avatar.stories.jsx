@@ -1,8 +1,8 @@
 import { Avatar, Link as LinkComp, Space } from "@jundao/design";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 // Solid Icons get treeshaken by mistake
-function RiUserFacesUser3Fill(props) {
+function RiUserFacesUser3Fill(_props) {
 	return (
 		<svg
 			fill="currentColor"

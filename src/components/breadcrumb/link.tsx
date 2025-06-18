@@ -1,7 +1,7 @@
 import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
-import "../link/index.scss";
-import { IntrinsicComponentProps } from "../types";
+import "../link/index.css";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 
 export type BreadcrumbLinkProps = IntrinsicComponentProps<
@@ -13,7 +13,7 @@ export type BreadcrumbLinkProps = IntrinsicComponentProps<
 >;
 
 export function BreadcrumbLink(props: BreadcrumbLinkProps) {
-	const [local, others] = processProps({
+	const [_local, others] = processProps({
 		props,
 		keys: [],
 	});

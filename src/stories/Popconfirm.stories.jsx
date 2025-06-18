@@ -1,5 +1,5 @@
 import { Button, Link, Popconfirm, Space } from "@jundao/design";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 export default {
 	title: "Components/Popconfirm",
@@ -71,8 +71,8 @@ CustomText.args = {
 };
 
 const delay = () => {
-	const now = new Date().getTime();
-	while (new Date().getTime() < now + 3000) {}
+	const now = Date.now();
+	while (Date.now() < now + 3000) {}
 };
 
 export const Delayed = Template.bind({});

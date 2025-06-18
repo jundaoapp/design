@@ -26,7 +26,7 @@ export default {
 };
 
 // Solid Icons get treeshaken by mistake
-function RiSystemAddFill(props) {
+function RiSystemAddFill(_props) {
 	return (
 		<svg
 			fill="currentColor"
@@ -41,7 +41,7 @@ function RiSystemAddFill(props) {
 		</svg>
 	);
 }
-function RiSystemSubtractFill(props) {
+function RiSystemSubtractFill(_props) {
 	return (
 		<svg
 			fill="currentColor"

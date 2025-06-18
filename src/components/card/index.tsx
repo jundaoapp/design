@@ -1,11 +1,11 @@
 import { Collapsible } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
 import { RiArrowsArrowDownSLine } from "solid-icons/ri";
-import { JSXElement, Show, createMemo } from "solid-js";
+import { createMemo, type JSXElement, Show } from "solid-js";
 import { Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type CardProps = IntrinsicComponentProps<
 	"div",

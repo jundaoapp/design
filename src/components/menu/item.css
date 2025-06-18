@@ -1,0 +1,110 @@
+.item {
+	padding: 0.25rem 1rem;
+	padding-right: 0.75rem;
+	border-radius: var(--jdd-border-radius);
+	cursor: var(--jdd-button-cursor);
+
+	> .description {
+		font-size: 0.75rem;
+	}
+
+	> .label {
+		display: flex;
+		align-items: center;
+
+		> .shortcut {
+			font-size: 0.75rem;
+			margin-left: auto;
+			padding-left: 1rem;
+		}
+	}
+
+	&.with-icon {
+		> .label > .jdd.text:first-child {
+			line-height: 1;
+
+			> svg {
+				vertical-align: bottom;
+				margin-left: -0.75rem;
+				width: 1.5rem;
+				font-size: 1rem;
+			}
+		}
+	}
+
+	&.no-icon {
+		> .label {
+			margin-left: 0.75rem;
+		}
+	}
+
+	&[data-highlighted] {
+		outline: none;
+		background: var(--jdd-blue-6);
+
+		> .label > .jdd.text {
+			color: var(--jdd-gray-1);
+		}
+
+		> .description > .jdd.text {
+			color: var(--jdd-gray-3);
+		}
+	}
+
+	&[data-disabled] {
+		cursor: default;
+
+		> .label > .jdd.text,
+		> .description > .jdd.text {
+			color: var(--jdd-gray-7);
+		}
+	}
+
+	&.radio,
+	&.checkbox {
+		position: relative;
+		padding-left: 1.75rem;
+
+		> .indicator {
+			position: absolute;
+		}
+	}
+
+	&:not(.radio):not(.checkbox) {
+		> .description {
+			margin-left: 0.75rem;
+		}
+	}
+
+	&.radio > .indicator {
+		font-size: 0.4rem;
+		left: 0.6rem;
+		top: 0.75rem;
+	}
+
+	&.checkbox > .indicator {
+		font-size: 1rem;
+		left: 0.3rem;
+		top: 0.25rem;
+	}
+
+	&.submenu {
+		position: relative;
+		padding-right: 1.75rem;
+
+		&:not([data-highlighted])[data-expanded] {
+			background: var(--jdd-blue-3);
+
+			.jdd-dark & {
+				background: var(--jdd-blue-9);
+			}
+		}
+
+		> .indicator {
+			position: absolute;
+			font-size: 1.5rem;
+			right: 0.15rem;
+			top: 0;
+		}
+	}
+}

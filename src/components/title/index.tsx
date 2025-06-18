@@ -1,8 +1,8 @@
 import { combineProps } from "@solid-primitives/props";
 import { Dynamic } from "solid-js/web";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type TitleProps = IntrinsicComponentProps<
 	"h1",

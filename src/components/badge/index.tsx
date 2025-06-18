@@ -3,9 +3,9 @@ import { Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Transition } from "solid-transition-group";
 import { Spinner, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type BadgeProps = IntrinsicComponentProps<
 	"div",
@@ -59,6 +59,7 @@ export function Badge(props: BadgeProps) {
 				<Show when={local.show && (local.showZero || local.count !== 0)}>
 					<Dynamic
 						component={local.href === undefined ? "div" : "a"}
+						// biome-ignore lint/a11y/useSemanticElements: ik
 						role="status"
 						href={local.href}
 						class={`jdd badge ${local.status}`}

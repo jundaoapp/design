@@ -1,4 +1,4 @@
-import { Button, Checkbox, Divider, Space, Text } from "@jundao/design";
+import { Button, Checkbox, Space, Text } from "@jundao/design";
 import { createSignal, splitProps } from "solid-js";
 
 export default {

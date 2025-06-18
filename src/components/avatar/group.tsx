@@ -1,19 +1,19 @@
 import { Button } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
 import {
+	createMemo,
 	For,
-	JSX,
-	JSXElement,
+	type JSX,
+	type JSXElement,
 	Match,
 	Show,
 	Switch,
-	createMemo,
 } from "solid-js";
-import { AvatarProps } from ".";
 import { Avatar, Link, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import type { AvatarProps } from ".";
+import "./index.css";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",

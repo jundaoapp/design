@@ -1,10 +1,10 @@
 import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
 import { RiArrowsArrowRightSLine } from "solid-icons/ri";
-import { JSXElement, Show, createMemo } from "solid-js";
+import { createMemo, type JSXElement, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Card, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 
 export type MenuSubmenuProps = IntrinsicComponentProps<

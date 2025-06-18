@@ -1,12 +1,13 @@
 import { As, Button as KobalteButton } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
-import { Show, createMemo } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import { Spinner } from "..";
 import ButtonGroup from "../button/group";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
+import "./primary.css";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",

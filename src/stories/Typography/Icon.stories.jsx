@@ -8,7 +8,7 @@ export default {
 };
 
 // Solid Icons get treeshaken by mistake
-function RiBuildingsHomeFill(props) {
+function RiBuildingsHomeFill(_props) {
 	return (
 		<svg
 			fill="currentColor"
@@ -26,7 +26,7 @@ function RiBuildingsHomeFill(props) {
 		</svg>
 	);
 }
-function RiDevelopmentTerminalBoxFill(props) {
+function RiDevelopmentTerminalBoxFill(_props) {
 	return (
 		<svg
 			fill="currentColor"
@@ -44,7 +44,7 @@ function RiDevelopmentTerminalBoxFill(props) {
 		</svg>
 	);
 }
-function RiSystemLoader5Line(props) {
+function RiSystemLoader5Line(_props) {
 	return (
 		<svg
 			fill="currentColor"

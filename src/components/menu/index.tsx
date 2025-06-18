@@ -1,12 +1,12 @@
 import { As, ContextMenu, DropdownMenu } from "@kobalte/core";
-import { JSXElement, Show } from "solid-js";
+import { type JSXElement, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { Card } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { MenuCheckbox } from "./checkbox";
 import { MenuGroup } from "./group";
-import "./index.scss";
+import "./index.css";
 import { MenuItem } from "./item";
 import { MenuRadio } from "./radio";
 import { MenuRadioGroup } from "./radio-group";

@@ -1,11 +1,10 @@
 import { combineProps } from "@solid-primitives/props";
-import { mergeRefs } from "@solid-primitives/refs";
 import { createEffect, createSignal } from "solid-js";
-import { JSX } from "solid-js/types/jsx";
-import { Label, Spinner, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { JSX } from "solid-js/types/jsx";
+import { Label } from "..";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SliderProps = IntrinsicComponentProps<
 	"input",

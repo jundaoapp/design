@@ -1,12 +1,12 @@
 import { As, DropdownMenu as KobalteDropdownMenu } from "@kobalte/core";
 import { RiArrowsArrowDownSLine } from "solid-icons/ri";
-import { JSXElement, Show } from "solid-js";
+import { type JSXElement, Show } from "solid-js";
 import { Button } from "..";
-import { Menu, MenuProps } from "../menu";
+import { Menu, type MenuProps } from "../menu";
 import { processProps } from "../utilities";
 import { DropdownMenuCheckbox } from "./checkbox";
 import { DropdownMenuGroup } from "./group";
-import "./index.scss";
+import "./index.css";
 import { DropdownMenuItem } from "./item";
 import { DropdownMenuRadio } from "./radio";
 import { DropdownMenuRadioGroup } from "./radio-group";

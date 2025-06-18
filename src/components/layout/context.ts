@@ -1,8 +1,8 @@
 import {
-	JSXElement,
-	Signal,
 	createContext,
 	createSignal,
+	type JSXElement,
+	type Signal,
 	useContext,
 } from "solid-js";
 

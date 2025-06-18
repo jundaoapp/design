@@ -1,9 +1,9 @@
 import { Image as KobalteImage } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
-import { JSX, Show, createMemo } from "solid-js";
-import { IntrinsicComponentProps } from "../types";
+import { createMemo, type JSX, Show } from "solid-js";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type ImageProps = IntrinsicComponentProps<
 	"span",
@@ -44,7 +44,7 @@ export function Image(props: ImageProps) {
 			<KobalteImage.Img
 				src={local.src}
 				alt={
-					local.alt ?? typeof fallback() === "string"
+					(local.alt ?? typeof fallback() === "string")
 						? (fallback() as string)
 						: undefined
 				}

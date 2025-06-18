@@ -1,5 +1,4 @@
-import { Space, Switch, Tag } from "@jundao/design";
-import { Show, createSignal } from "solid-js";
+import { Space, Tag } from "@jundao/design";
 
 export default {
 	title: "Components/Tag",
@@ -42,5 +41,5 @@ export const CustomColor = Template.bind({});
 CustomColor.args = {
 	children: "Tag",
 	color: "var(--jdd-purple-6)",
-	background: "rgba(var(--jdd-purple-9-rgb), .2)",
+	background: "color-mix(in oklch, var(--jdd-purple-9) 20%, transparent)",
 };

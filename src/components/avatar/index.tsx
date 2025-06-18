@@ -1,10 +1,10 @@
 import { combineProps } from "@solid-primitives/props";
-import { JSXElement } from "solid-js";
+import type { JSXElement } from "solid-js";
 import { Image, Text } from "..";
 import AvatarGroup from "../avatar/group";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",

@@ -1,8 +1,7 @@
 import { combineProps } from "@solid-primitives/props";
-import { ComponentProps, mergeProps, splitProps } from "solid-js";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SpinnerProps = IntrinsicComponentProps<
 	"svg",

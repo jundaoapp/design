@@ -1,13 +1,13 @@
 import { combineProps } from "@solid-primitives/props";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useLayoutContext } from "./context";
-import "./index.scss";
+import "./index.css";
 
 export type LayoutContentProps = IntrinsicComponentProps<"div", object>;
 
 export default function LayoutContent(props: LayoutContentProps) {
-	const [local, others] = processProps({
+	const [_local, _others] = processProps({
 		props,
 		default: {},
 		keys: [],

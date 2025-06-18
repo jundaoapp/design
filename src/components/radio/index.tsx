@@ -1,12 +1,12 @@
 import { RadioGroup as KobalteRadioGroup } from "@kobalte/core";
 import { createAutofocus } from "@solid-primitives/autofocus";
 import { combineProps } from "@solid-primitives/props";
-import { Show, createMemo } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import { Space, Text } from "..";
-import { IntrinsicComponentProps } from "../types";
+import type { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import RadioGroup from "./group";
-import "./index.scss";
+import "./index.css";
 
 export type RadioProps = IntrinsicComponentProps<
 	"label",
