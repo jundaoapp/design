@@ -2,25 +2,25 @@ import { Space, Switch, Tag } from "@jundao/design";
 import { Show, createSignal } from "solid-js";
 
 export default {
-	title: "Components/Tag",
-	argTypes: {
-		children: { control: "string" },
-		status: {
-			control: { type: "select" },
-			options: ["success", "default", "error", "warning"],
-		},
-		href: { control: "text" },
-	},
+  title: "Components/Tag",
+  argTypes: {
+    children: { control: "string" },
+    status: {
+      control: { type: "select" },
+      options: ["success", "default", "error", "warning"],
+    },
+    href: { control: "text" },
+  },
 };
 
 const Template = (props) => (
-	<Space align="start">
-		<Tag {...props} />
-		<Tag status="success">Success</Tag>
-		<Tag closeable {...props} />
-		<Tag status="warning">Warning</Tag>
-		<Tag status="error">Error</Tag>
-	</Space>
+  <Space align="start">
+    <Tag {...props} />
+    <Tag status="success">Success</Tag>
+    <Tag closeable {...props} />
+    <Tag status="warning">Warning</Tag>
+    <Tag status="error">Error</Tag>
+  </Space>
 );
 
 export const Default = Template.bind({});
@@ -40,7 +40,7 @@ Link.args = { children: "Tag", href: "#" };
 
 export const CustomColor = Template.bind({});
 CustomColor.args = {
-	children: "Tag",
-	color: "var(--jdd-purple-6)",
-	background: "rgba(var(--jdd-purple-9-rgb), .2)",
+  children: "Tag",
+  color: "var(--jdd-purple-6)",
+  background: "color-mix(in oklch, var(--jdd-purple-9) 20%, transparent)",
 };

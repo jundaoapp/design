@@ -4,10 +4,10 @@ import { combineProps } from "@solid-primitives/props";
 import { RiSystemCheckFill, RiSystemSubtractFill } from "solid-icons/ri";
 import { JSX, Show, createMemo, createSignal } from "solid-js";
 import { Space, Text } from "..";
-import "../label/index.scss";
+import "../label/index.css";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type CheckboxProps = IntrinsicComponentProps<
 	"label",

@@ -1,5 +1,4 @@
 import { defineConfig } from "tsup-preset-solid";
-import { sassPlugin } from "esbuild-sass-plugin";
 
 export default defineConfig(
 	[
@@ -9,8 +8,7 @@ export default defineConfig(
 	],
 	{
 		dropConsole: true,
-		cjs: true,
-		esbuildPlugins: [sassPlugin()],
+		cjs: false,
 		esbuildOptions(options) {
 			options.logOverride = {
 				"ignored-bare-import": "silent",

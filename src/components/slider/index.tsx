@@ -5,7 +5,7 @@ import { JSX } from "solid-js/types/jsx";
 import { Label, Spinner, Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SliderProps = IntrinsicComponentProps<
 	"input",

@@ -3,26 +3,21 @@ const Solid = require("vite-plugin-solid");
 const devtools = require('solid-devtools/vite');
 
 module.exports = {
-	stories: ["../src/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
-	addons: [
-		"@storybook/addon-links",
-		"@storybook/addon-essentials",
-		"storybook-dark-mode",
-		"@storybook/addon-a11y",
-	],
-	babel: async (options) => ({
-		...options,
-		presets: ["solid", ...options.presets],
-	}),
-	framework: "@storybook/html",
-	core: {
-		builder: "@storybook/builder-vite",
-	},
-	features: {
-		storyStoreV7: true,
-	},
-	async viteFinal(config, { configType }) {
-		config.plugins.unshift(Solid({ hot: false }));
+    stories: ["../src/stories/**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
+
+    addons: [
+        "@storybook/addon-links",
+        "@storybook/addon-a11y",
+        "@chromatic-com/storybook",
+        "@storybook/addon-docs"
+    ],
+
+    framework: {
+        name: "@kachurun/storybook-solid-vite",
+        options: {}
+    },
+
+    async viteFinal(config, { configType }) {
 		config.plugins.unshift(devtools({
 			autoname: true,
 		}));
@@ -44,5 +39,5 @@ module.exports = {
         );
 
 		return config;
-	},
+	}
 };

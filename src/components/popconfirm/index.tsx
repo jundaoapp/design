@@ -19,7 +19,7 @@ import {
 import { Button, Card, Text, Title } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type PopconfirmProps = IntrinsicComponentProps<
 	"div",

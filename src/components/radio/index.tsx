@@ -6,7 +6,7 @@ import { Space, Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import RadioGroup from "./group";
-import "./index.scss";
+import "./index.css";
 
 export type RadioProps = IntrinsicComponentProps<
 	"label",

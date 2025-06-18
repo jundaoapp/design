@@ -11,10 +11,10 @@ import {
 	on,
 } from "solid-js";
 import { Button, Text } from "..";
-import "../link/index.scss";
+import "../link/index.css";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 import { BreadcrumbLink } from "./link";
 
 export type BreadcrumbProps = IntrinsicComponentProps<

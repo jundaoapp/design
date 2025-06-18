@@ -1,7 +1,7 @@
 import { combineProps } from "@solid-primitives/props";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SpaceProps = IntrinsicComponentProps<
 	"div",

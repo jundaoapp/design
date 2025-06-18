@@ -43,7 +43,7 @@ span.jdd.text {
   }
 
   mark.jdd.text {
-    background-color: rgba(var(--jdd-blue-5-rgb), 0.5);
+    background-color: color-mix(in oklch, var(--jdd-blue-5) 50%, transparent);
   }
 
   > code.jdd.text {

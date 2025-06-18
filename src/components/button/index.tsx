@@ -6,7 +6,8 @@ import { Spinner } from "..";
 import ButtonGroup from "../button/group";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
+import "./primary.css";
 
 export type ButtonProps = IntrinsicComponentProps<
 	"button",

@@ -1,6 +1,6 @@
 import { Breadcrumbs as KobalteBreadcrumbs } from "@kobalte/core";
 import { combineProps } from "@solid-primitives/props";
-import "../link/index.scss";
+import "../link/index.css";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 

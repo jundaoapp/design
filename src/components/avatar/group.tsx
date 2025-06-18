@@ -13,7 +13,7 @@ import { AvatarProps } from ".";
 import { Avatar, Link, Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type AvatarGroupProps = IntrinsicComponentProps<
 	"div",

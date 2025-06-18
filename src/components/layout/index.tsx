@@ -9,7 +9,7 @@ import LayoutContent from "./content";
 import { LayoutContextProvider, useLayoutContext } from "./context";
 import LayoutFooter from "./footer";
 import LayoutHeader from "./header";
-import "./index.scss";
+import "./index.css";
 import LayoutSidebar from "./sidebar";
 
 export type LayoutProps = IntrinsicComponentProps<

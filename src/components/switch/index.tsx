@@ -9,10 +9,10 @@ import {
 	createMemo,
 } from "solid-js";
 import { Space, Spinner, Text } from "..";
-import "../label/index.scss";
+import "../label/index.css";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type SwitchProps = IntrinsicComponentProps<
 	"label",

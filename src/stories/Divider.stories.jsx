@@ -2,34 +2,34 @@ import { Divider } from "@jundao/design";
 import { Text } from "../components";
 
 export default {
-	title: "Components/Divider",
-	argTypes: {
-		children: { control: "text" },
-		vertical: { control: "boolean" },
-		dashed: { control: "boolean" },
-		textPosition: {
-			control: { type: "select" },
-			options: ["left", "center", "right"],
-		},
-	},
+  title: "Components/Divider",
+  argTypes: {
+    children: { control: "text" },
+    vertical: { control: "boolean" },
+    dashed: { control: "boolean" },
+    textPosition: {
+      control: { type: "select" },
+      options: ["left", "center", "right"],
+    },
+  },
 };
 
 const Template = (props) => {
-	return (
-		<>
-			<Text>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
-				merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
-				quo modo.
-			</Text>
-			<Divider {...props} />
-			<Text>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
-				merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
-				quo modo.
-			</Text>
-		</>
-	);
+  return (
+    <>
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+        merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
+        quo modo.
+      </Text>
+      <Divider {...props} />
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+        merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen,
+        quo modo.
+      </Text>
+    </>
+  );
 };
 
 export const Default = Template.bind({});
@@ -48,13 +48,13 @@ export const WithTextRight = Template.bind({});
 WithTextRight.args = { children: "Text", textPosition: "right" };
 
 const VerticalTemplate = (props) => {
-	return (
-		<>
-			<Text>Text</Text>
-			<Divider {...props} />
-			<Text>Text</Text>
-		</>
-	);
+  return (
+    <>
+      <Text>Text</Text>
+      <Divider {...props} />
+      <Text>Text</Text>
+    </>
+  );
 };
 
 export const Vertical = VerticalTemplate.bind({});

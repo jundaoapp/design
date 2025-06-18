@@ -6,7 +6,7 @@ import { Menu, MenuProps } from "../menu";
 import { processProps } from "../utilities";
 import { DropdownMenuCheckbox } from "./checkbox";
 import { DropdownMenuGroup } from "./group";
-import "./index.scss";
+import "./index.css";
 import { DropdownMenuItem } from "./item";
 import { DropdownMenuRadio } from "./radio";
 import { DropdownMenuRadioGroup } from "./radio-group";

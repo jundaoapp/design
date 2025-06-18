@@ -2,7 +2,7 @@ import { combineProps } from "@solid-primitives/props";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import SidenavGroup from "./group";
-import "./index.scss";
+import "./index.css";
 import SidenavLink from "./link";
 
 export type SidenavProps = IntrinsicComponentProps<

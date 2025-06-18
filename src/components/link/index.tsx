@@ -4,7 +4,7 @@ import { combineProps } from "@solid-primitives/props";
 import { mergeRefs } from "@solid-primitives/refs";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type LinkProps = IntrinsicComponentProps<
 	"a",

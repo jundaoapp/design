@@ -1,14 +1,14 @@
 .jdd.drawer-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(var(--jdd-gray-15-rgb), 0.2);
+    background: color-mix(in oklch, var(--jdd-gray-15) 20%, transparent);
     animation: jdd-drawer-background-exit;
     animation-timing-function: var(--jdd-transition-function);
     animation-duration: var(--jdd-transition-duration);
     animation-fill-mode: forwards;
 
     .jdd-dark & {
-        background: rgba(var(--jdd-gray-1-rgb), 0.15);
+        background: color-mix(in oklch, var(--jdd-gray-1) 15%, transparent);
     }
 
     &[data-expanded] {

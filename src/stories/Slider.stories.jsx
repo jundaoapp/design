@@ -2,23 +2,23 @@ import { Slider } from "@jundao/design";
 import { mergeProps } from "solid-js";
 
 export default {
-	title: "Components/Slider",
-	argTypes: {
-		min: { control: "number" },
-		max: { control: "number" },
-		defaultValue: { control: "number" },
-		value: { control: "number" },
-		step: { control: "number" },
-		disabled: { control: "boolean" },
-		onChange: { action: "onChange" },
-		onInput: { action: "onInput" },
-	},
+  title: "Components/Slider",
+  argTypes: {
+    min: { control: "number" },
+    max: { control: "number" },
+    defaultValue: { control: "number" },
+    value: { control: "number" },
+    step: { control: "number" },
+    disabled: { control: "boolean" },
+    onChange: { action: "onChange" },
+    onInput: { action: "onInput" },
+  },
 };
 
 const Template = (props) => (
-	<div style={{ width: "20rem" }}>
-		<Slider {...props} />
-	</div>
+  <div style={{ width: "20rem" }}>
+    <Slider {...props} />
+  </div>
 );
 
 export const Default = Template.bind({});

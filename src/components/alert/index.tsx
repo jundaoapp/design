@@ -18,7 +18,7 @@ import { Transition } from "solid-transition-group";
 import { Text } from "..";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type AlertProps = IntrinsicComponentProps<
 	"div",

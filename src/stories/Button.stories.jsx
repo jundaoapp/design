@@ -1,27 +1,27 @@
 import { Button, Space } from "@jundao/design";
 
 export default {
-	title: "Components/Button",
-	argTypes: {
-		children: { control: "text" },
-		onClick: { action: "onClick" },
-		type: {
-			control: { type: "select" },
-			options: ["primary", "default"],
-		},
-		size: {
-			control: { type: "select" },
-			options: ["small", "default", "large"],
-		},
-		disabled: { control: "boolean" },
-		danger: { control: "boolean" },
-		loading: { control: "boolean" },
-		autofocus: { control: "boolean" },
-	},
+  title: "Components/Button",
+  argTypes: {
+    children: { control: "text" },
+    onClick: { action: "onClick" },
+    type: {
+      control: { type: "select" },
+      options: ["primary", "default"],
+    },
+    size: {
+      control: { type: "select" },
+      options: ["small", "default", "large"],
+    },
+    disabled: { control: "boolean" },
+    danger: { control: "boolean" },
+    loading: { control: "boolean" },
+    autofocus: { control: "boolean" },
+  },
 };
 
 const Template = (props) => {
-	return <Button {...props} />;
+  return <Button {...props} />;
 };
 
 export const Primary = Template.bind({});
@@ -46,19 +46,19 @@ export const Loading = Template.bind({});
 Loading.args = { children: "Button", loading: true };
 
 const GroupTemplate = (props) => (
-	<Space vertical>
-		<Button.Group>
-			<Button {...props} />
-			<Button {...props} />
-			<Button {...props} />
-		</Button.Group>
+  <Space vertical>
+    <Button.Group>
+      <Button {...props} />
+      <Button {...props} />
+      <Button {...props} />
+    </Button.Group>
 
-		<Button.Group>
-			<Button>Button</Button>
-			<Button {...props} />
-			<Button>Button</Button>
-		</Button.Group>
-	</Space>
+    <Button.Group>
+      <Button>Button</Button>
+      <Button {...props} />
+      <Button>Button</Button>
+    </Button.Group>
+  </Space>
 );
 
 export const Group = GroupTemplate.bind({});

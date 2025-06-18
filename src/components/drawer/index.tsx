@@ -4,11 +4,11 @@ import { combineProps } from "@solid-primitives/props";
 import { RiSystemCloseFill } from "solid-icons/ri";
 import { JSXElement, Show, createMemo, createSignal } from "solid-js";
 import { Card, Text } from "..";
-import "../title/index.scss";
+import "../title/index.css";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
 import { useOverlayContext } from "../utilities/overlay";
-import "./index.scss";
+import "./index.css";
 
 export type DrawerProps = IntrinsicComponentProps<
 	"div",

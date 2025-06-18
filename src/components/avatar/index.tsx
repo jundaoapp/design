@@ -4,7 +4,7 @@ import { Image, Text } from "..";
 import AvatarGroup from "../avatar/group";
 import { IntrinsicComponentProps } from "../types";
 import { processProps } from "../utilities";
-import "./index.scss";
+import "./index.css";
 
 export type AvatarProps = IntrinsicComponentProps<
 	"div",

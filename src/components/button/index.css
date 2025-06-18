@@ -37,8 +37,6 @@
     }
   }
 
-  @import "primary";
-
   &.small {
     font-size: .8rem;
     padding: .25rem .5rem;
@@ -118,7 +116,7 @@ div.button-group.jdd {
     align-items: stretch;
     align-content: stretch;
 
-    > .jdd.button,, > .dropdown-trigger {
+    > .jdd.button, > .dropdown-trigger {
         &:not(:first-child) {
             &, > .jdd.button {
                 border-top-left-radius: 0;

@@ -2,63 +2,63 @@ import { Button, Progress, Space } from "@jundao/design";
 import { createSignal } from "solid-js";
 
 export default {
-	title: "Components/Progress",
-	argTypes: {
-		label: { control: "text" },
-		value: { control: "number" },
-		type: {
-			control: { type: "select" },
-			options: ["line", "circle"],
-		},
-		min: { control: "number" },
-		max: { control: "number" },
-		status: {
-			control: { type: "select" },
-			options: ["default", "active", "indeterminate", "success", "fail"],
-		},
-		successOnComplete: { control: "boolean" },
-		steps: { control: "boolean" },
-		showInfo: { control: "boolean" },
-		statusIcon: { control: "boolean" },
-		customColor: { control: "text" },
-		mini: { control: "boolean" },
-	},
+  title: "Components/Progress",
+  argTypes: {
+    label: { control: "text" },
+    value: { control: "number" },
+    type: {
+      control: { type: "select" },
+      options: ["line", "circle"],
+    },
+    min: { control: "number" },
+    max: { control: "number" },
+    status: {
+      control: { type: "select" },
+      options: ["default", "active", "indeterminate", "success", "fail"],
+    },
+    successOnComplete: { control: "boolean" },
+    steps: { control: "boolean" },
+    showInfo: { control: "boolean" },
+    statusIcon: { control: "boolean" },
+    customColor: { control: "text" },
+    mini: { control: "boolean" },
+  },
 };
 
 // Solid Icons get treeshaken by mistake
 function RiSystemAddFill(props) {
-	return (
-		<svg
-			fill="currentColor"
-			stroke-width="0"
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			style="overflow: visible; color: currentcolor;"
-			height="1em"
-			width="1em"
-		>
-			<path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6Z" />
-		</svg>
-	);
+  return (
+    <svg
+      fill="currentColor"
+      stroke-width="0"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      style="overflow: visible; color: currentcolor;"
+      height="1em"
+      width="1em"
+    >
+      <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6Z" />
+    </svg>
+  );
 }
 function RiSystemSubtractFill(props) {
-	return (
-		<svg
-			fill="currentColor"
-			stroke-width="0"
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			style="overflow: visible; color: currentcolor;"
-			height="1em"
-			width="1em"
-		>
-			<path fill="currentColor" d="M19 11H5v2h14v-2Z" />
-		</svg>
-	);
+  return (
+    <svg
+      fill="currentColor"
+      stroke-width="0"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      style="overflow: visible; color: currentcolor;"
+      height="1em"
+      width="1em"
+    >
+      <path fill="currentColor" d="M19 11H5v2h14v-2Z" />
+    </svg>
+  );
 }
 
 const Template = (props) => {
-	return <Progress {...props} />;
+  return <Progress {...props} />;
 };
 
 export const Default = Template.bind({});
@@ -77,11 +77,11 @@ export const Fail = Template.bind({});
 Fail.args = { value: 40, status: "fail" };
 
 const CircleTemplate = (props) => {
-	return (
-		<div style={{ width: "4rem" }}>
-			<Progress {...props} />
-		</div>
-	);
+  return (
+    <div style={{ width: "4rem" }}>
+      <Progress {...props} />
+    </div>
+  );
 };
 
 export const Circle = CircleTemplate.bind({});
@@ -94,16 +94,16 @@ export const NoInfo = Template.bind({});
 NoInfo.args = { value: 40, showInfo: false };
 
 const MiniTemplate = (props) => {
-	return (
-		<Space align="center">
-			<div style={{ width: "4rem" }}>
-				<Progress {...props} />
-			</div>
-			<div style={{ width: "1rem" }}>
-				<Progress type="circle" {...props} />
-			</div>
-		</Space>
-	);
+  return (
+    <Space align="center">
+      <div style={{ width: "4rem" }}>
+        <Progress {...props} />
+      </div>
+      <div style={{ width: "1rem" }}>
+        <Progress type="circle" {...props} />
+      </div>
+    </Space>
+  );
 };
 
 export const Mini = MiniTemplate.bind({});
@@ -123,97 +123,97 @@ CustomColor.args = { value: 40, customColor: "var(--jdd-purple-6)" };
 
 export const CustomStepsColor = Template.bind({});
 CustomStepsColor.args = {
-	value: 4,
-	max: 5,
-	steps: true,
-	customColor: [
-		"var(--jdd-blue-6)",
-		"var(--jdd-orange-6)",
-		"var(--jdd-purple-6)",
-	],
+  value: 4,
+  max: 5,
+  steps: true,
+  customColor: [
+    "var(--jdd-blue-6)",
+    "var(--jdd-orange-6)",
+    "var(--jdd-purple-6)",
+  ],
 };
 
 export const Multiple = Template.bind({});
 Multiple.args = {
-	value: [40, 20, 30],
-	customColor: [
-		"var(--jdd-blue-6)",
-		"var(--jdd-orange-6)",
-		"var(--jdd-purple-6)",
-	],
+  value: [40, 20, 30],
+  customColor: [
+    "var(--jdd-blue-6)",
+    "var(--jdd-orange-6)",
+    "var(--jdd-purple-6)",
+  ],
 };
 
 const DynamicTemplate = (props) => {
-	const [value, setValue] = createSignal(40);
+  const [value, setValue] = createSignal(40);
 
-	return (
-		<Space align="center">
-			<Space vertical style={{ "flex-grow": 1 }}>
-				<Progress value={value()} {...props} />
-				<Progress
-					value={[value(), 20, 10]}
-					customColor={[
-						"var(--jdd-blue-6)",
-						"var(--jdd-orange-6)",
-						"var(--jdd-purple-6)",
-					]}
-					{...props}
-				/>
-				<Progress value={Math.floor(value() / 10)} max={10} steps {...props} />
-				<Progress value={Math.floor(value() / 20)} max={5} steps {...props} />
-				<Space align="center">
-					<div style={{ width: "4rem" }}>
-						<Progress mini value={value()} {...props} />
-					</div>
-					<div style={{ width: "1rem" }}>
-						<Progress mini type="circle" value={value()} {...props} />
-					</div>
-					<div style={{ width: "1rem" }}>
-						<Progress
-							type="circle"
-							value={[value(), 20, 10]}
-							mini
-							customColor={[
-								"var(--jdd-blue-6)",
-								"var(--jdd-orange-6)",
-								"var(--jdd-purple-6)",
-							]}
-							{...props}
-						/>
-					</div>
-				</Space>
-				<Space>
-					<div style={{ width: "10rem" }}>
-						<Progress value={value()} {...props} type="circle" />
-					</div>
+  return (
+    <Space align="center">
+      <Space vertical style={{ "flex-grow": 1 }}>
+        <Progress value={value()} {...props} />
+        <Progress
+          value={[value(), 20, 10]}
+          customColor={[
+            "var(--jdd-blue-6)",
+            "var(--jdd-orange-6)",
+            "var(--jdd-purple-6)",
+          ]}
+          {...props}
+        />
+        <Progress value={Math.floor(value() / 10)} max={10} steps {...props} />
+        <Progress value={Math.floor(value() / 20)} max={5} steps {...props} />
+        <Space align="center">
+          <div style={{ width: "4rem" }}>
+            <Progress mini value={value()} {...props} />
+          </div>
+          <div style={{ width: "1rem" }}>
+            <Progress mini type="circle" value={value()} {...props} />
+          </div>
+          <div style={{ width: "1rem" }}>
+            <Progress
+              type="circle"
+              value={[value(), 20, 10]}
+              mini
+              customColor={[
+                "var(--jdd-blue-6)",
+                "var(--jdd-orange-6)",
+                "var(--jdd-purple-6)",
+              ]}
+              {...props}
+            />
+          </div>
+        </Space>
+        <Space>
+          <div style={{ width: "10rem" }}>
+            <Progress value={value()} {...props} type="circle" />
+          </div>
 
-					<div style={{ width: "10rem" }}>
-						<Progress
-							type="circle"
-							value={[value(), 20, 10]}
-							customColor={[
-								"var(--jdd-blue-6)",
-								"var(--jdd-orange-6)",
-								"var(--jdd-purple-6)",
-							]}
-							{...props}
-						/>
-					</div>
-				</Space>
-			</Space>
-			<Button.Group>
-				<Button
-					onClick={() => setValue(value() + 10)}
-					disabled={value() === 100}
-				>
-					<RiSystemAddFill />
-				</Button>
-				<Button onClick={() => setValue(value() - 10)} disabled={value() === 0}>
-					<RiSystemSubtractFill />
-				</Button>
-			</Button.Group>
-		</Space>
-	);
+          <div style={{ width: "10rem" }}>
+            <Progress
+              type="circle"
+              value={[value(), 20, 10]}
+              customColor={[
+                "var(--jdd-blue-6)",
+                "var(--jdd-orange-6)",
+                "var(--jdd-purple-6)",
+              ]}
+              {...props}
+            />
+          </div>
+        </Space>
+      </Space>
+      <Button.Group>
+        <Button
+          onClick={() => setValue(value() + 10)}
+          disabled={value() === 100}
+        >
+          <RiSystemAddFill />
+        </Button>
+        <Button onClick={() => setValue(value() - 10)} disabled={value() === 0}>
+          <RiSystemSubtractFill />
+        </Button>
+      </Button.Group>
+    </Space>
+  );
 };
 
 export const Dynamic = DynamicTemplate.bind({});
