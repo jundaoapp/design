@@ -1,130 +1,130 @@
 .jdd.checkbox {
-    display: flex;
-    gap: .5rem;
-    align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
 
-    .checkbox-control {
-        height: 1.25rem;
-        width: 1.25rem;
-        border-radius: var(--jdd-border-radius-small);
-        appearance: none;
-        border: 1px solid var(--jdd-gray-5);
-        cursor: pointer;
-        transition: var(--jdd-transition-colors);
-        background-size: contain;
-        font-size: 1.25rem;
+	.checkbox-control {
+		height: 1.25rem;
+		width: 1.25rem;
+		border-radius: var(--jdd-border-radius-small);
+		appearance: none;
+		border: 1px solid var(--jdd-gray-5);
+		cursor: pointer;
+		transition: var(--jdd-transition-colors);
+		background-size: contain;
+		font-size: 1.25rem;
 
-        .jdd-dark & {
-            color: var(--jdd-gray-1);
-            border-color: var(--jdd-gray-9);
+		.jdd-dark & {
+			color: var(--jdd-gray-1);
+			border-color: var(--jdd-gray-9);
 
-            &[data-disabled] {
-                color: var(--jdd-gray-8);
-                border-color: var(--jdd-gray-8);
-                background-color: var(--jdd-gray-10);
-            }
-            &:not([data-disabled]) {
-                &[data-checked],
-                &[data-indeterminate] {
-                    &:hover,
-                    &:focus-visible {
-                        background-color: var(--jdd-blue-7);
-                        border-color: var(--jdd-blue-7);
+			&[data-disabled] {
+				color: var(--jdd-gray-8);
+				border-color: var(--jdd-gray-8);
+				background-color: var(--jdd-gray-10);
+			}
+			&:not([data-disabled]) {
+				&[data-checked],
+				&[data-indeterminate] {
+					&:hover,
+					&:focus-visible {
+						background-color: var(--jdd-blue-7);
+						border-color: var(--jdd-blue-7);
 
-                        .jdd.checkbox-control.danger & {
-                            background-color: var(--jdd-red-7);
-                            border-color: var(--jdd-red-7);
-                        }
-                    }
-                }
-                &:hover,
-                &:focus-visible {
-                    background-color: var(--jdd-gray-11);
-                }
-            }
-        }
+						.jdd.checkbox-control.danger & {
+							background-color: var(--jdd-red-7);
+							border-color: var(--jdd-red-7);
+						}
+					}
+				}
+				&:hover,
+				&:focus-visible {
+					background-color: var(--jdd-gray-11);
+				}
+			}
+		}
 
-        &[data-checked],
-        &[data-indeterminate] {
-            background-color: var(--jdd-blue-6);
-            border-color: var(--jdd-blue-6);
-            color: var(--jdd-gray-1);
+		&[data-checked],
+		&[data-indeterminate] {
+			background-color: var(--jdd-blue-6);
+			border-color: var(--jdd-blue-6);
+			color: var(--jdd-gray-1);
 
-            .jdd.checkbox-control.danger & {
-                background-color: var(--jdd-red-6);
-                border-color: var(--jdd-red-6);
-            }
-        }
+			.jdd.checkbox-control.danger & {
+				background-color: var(--jdd-red-6);
+				border-color: var(--jdd-red-6);
+			}
+		}
 
-        &:not([data-checked]), &[data-indeterminate] {
-            .checkbox-check {
-                display: none;
-            }
-        }
+		&:not([data-checked]),
+		&[data-indeterminate] {
+			.checkbox-check {
+				display: none;
+			}
+		}
 
-        &:not([data-indeterminate]) .checkbox-indeterminate {
-            display: none;
-        }
+		&:not([data-indeterminate]) .checkbox-indeterminate {
+			display: none;
+		}
 
-        &[data-disabled] {
-            cursor: not-allowed;
-            border-color: var(--jdd-gray-6);
-            background-color: var(--jdd-gray-3);
-        }
+		&[data-disabled] {
+			cursor: not-allowed;
+			border-color: var(--jdd-gray-6);
+			background-color: var(--jdd-gray-3);
+		}
 
-        &:not([data-disabled]) {
-            &[data-checked],
-            &[data-indeterminate] {
-                &:hover,
-                &:focus-visible {
-                    background-color: var(--jdd-blue-5);
-                    border-color: var(--jdd-blue-5);
+		&:not([data-disabled]) {
+			&[data-checked],
+			&[data-indeterminate] {
+				&:hover,
+				&:focus-visible {
+					background-color: var(--jdd-blue-5);
+					border-color: var(--jdd-blue-5);
 
-                    .jdd.checkbox-control.danger & {
-                        background-color: var(--jdd-red-5);
-                        border-color: var(--jdd-red-5);
-                    }
-                }
-            }
+					.jdd.checkbox-control.danger & {
+						background-color: var(--jdd-red-5);
+						border-color: var(--jdd-red-5);
+					}
+				}
+			}
 
-            &:hover,
-            &:focus-visible {
-                background-color: var(--jdd-gray-2);
-                border-color: var(--jdd-blue-6);
+			&:hover,
+			&:focus-visible {
+				background-color: var(--jdd-gray-2);
+				border-color: var(--jdd-blue-6);
 
-                .jdd.checkbox-control.danger & {
-                    border-color: var(--jdd-red-6);
-                }
-            }
-        }
+				.jdd.checkbox-control.danger & {
+					border-color: var(--jdd-red-6);
+				}
+			}
+		}
 
+		> div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 
-        > div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
+	&.small .checkbox-control {
+		height: 1rem;
+		width: 1rem;
+		font-size: 1rem;
+	}
 
-    &.small .checkbox-control {
-        height: 1rem;
-        width: 1rem;
-        font-size: 1rem;
-    }
+	&.large .checkbox-control {
+		height: 1.5rem;
+		width: 1.5rem;
+		font-size: 1.5rem;
+	}
 
-    &.large .checkbox-control {
-        height: 1.5rem;
-        width: 1.5rem;
-        font-size: 1.5rem;
-    }
+	input:focus-visible + .jdd.space {
+		.checkbox-control {
+			outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
 
-    input:focus-visible + .jdd.space {
-        .checkbox-control {
-            outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
-
-            .jdd-dark & {
-                outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
-            }
-        }
-    }
+			.jdd-dark & {
+				outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
+			}
+		}
+	}
 }

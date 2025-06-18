@@ -4,17 +4,18 @@
 @import "variables";
 
 .jdd {
-  font-family: var(--jdd-font-sans);
+	font-family: var(--jdd-font-sans);
 
-  &.focus-ring, &:focus-visible {
-    outline: none;
-  }
+	&.focus-ring,
+	&:focus-visible {
+		outline: none;
+	}
 
-  &:focus-visible {
-    outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
+	&:focus-visible {
+		outline: solid var(--jdd-blue-6) var(--jdd-accessibility-outline-width);
 
-    .jdd-dark & {
-      outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
-    }
-  }
+		.jdd-dark & {
+			outline: solid var(--jdd-blue-5) var(--jdd-accessibility-outline-width);
+		}
+	}
 }

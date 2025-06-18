@@ -1,63 +1,63 @@
 .jdd.menu {
-    position: relative;
-    z-index: calc(101 + var(--jdd-overlay-zindex-increment));
-    animation-name: jdd-menu-exit;
-    animation-timing-function: var(--jdd-transition-function);
-    animation-duration: var(--jdd-transition-duration);
-    animation-fill-mode: forwards;
-    transform-origin: var(--kb-menu-content-transform-origin);
-    overflow: visible !important;
+	position: relative;
+	z-index: calc(101 + var(--jdd-overlay-zindex-increment));
+	animation-name: jdd-menu-exit;
+	animation-timing-function: var(--jdd-transition-function);
+	animation-duration: var(--jdd-transition-duration);
+	animation-fill-mode: forwards;
+	transform-origin: var(--kb-menu-content-transform-origin);
+	overflow: visible !important;
 
-    &[data-expanded] {
-        animation-name: jdd-menu-enter;
-    }
+	&[data-expanded] {
+		animation-name: jdd-menu-enter;
+	}
 
-    .dropdown-menu-arrow {
-        fill: var(--jdd-gray-1) !important;
-        stroke: var(--jdd-gray-2) !important;
-        stroke-width: 2px !important;
-        margin-bottom: -1px;
+	.dropdown-menu-arrow {
+		fill: var(--jdd-gray-1) !important;
+		stroke: var(--jdd-gray-2) !important;
+		stroke-width: 2px !important;
+		margin-bottom: -1px;
 
-        .jdd-dark & {
-            fill: var(--jdd-gray-12) !important;
-            stroke: var(--jdd-gray-11) !important;
-        }
-    }
+		.jdd-dark & {
+			fill: var(--jdd-gray-12) !important;
+			stroke: var(--jdd-gray-11) !important;
+		}
+	}
 
-    > .content {
-        padding: .25rem;
+	> .content {
+		padding: 0.25rem;
 
-        > .jdd.divider {
-            width: 90%;
-            min-width: 90%;
-            margin: .25rem 0 .25rem 5%;
-        }
-    }
+		> .jdd.divider {
+			width: 90%;
+			min-width: 90%;
+			margin: 0.25rem 0 0.25rem 5%;
+		}
+	}
 
-    .group {
-        > .label {
-            padding: .25rem 1rem;
-            font-size: .85rem;
-        }
-    }
+	.group {
+		> .label {
+			padding: 0.25rem 1rem;
+			font-size: 0.85rem;
+		}
+	}
 
-    @import "./item";
+	@import "./item";
 }
 
 @keyframes jdd-menu-enter {
-    from {
-        opacity: 0;
-        transform: scale(.96);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+	from {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 @keyframes jdd-menu-exit {
-    to {
-        opacity: 0;
-        transform: scale(.96);
-    }
+	to {
+		opacity: 0;
+		transform: scale(0.96);
+	}
 }

@@ -44,7 +44,7 @@ export function Image(props: ImageProps) {
 			<KobalteImage.Img
 				src={local.src}
 				alt={
-					local.alt ?? typeof fallback() === "string"
+					(local.alt ?? typeof fallback() === "string")
 						? (fallback() as string)
 						: undefined
 				}
